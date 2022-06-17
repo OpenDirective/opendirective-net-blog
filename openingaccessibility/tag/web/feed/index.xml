@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>web &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/tag/web/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>&#8220;I don&#8217;t care about the OS, just give me my web Apps&#8221;</title>
+		<link>/openingaccessibility/2016/05/i-dont-care-about-the-os-just-give-me-my-web-apps/</link>
+		<comments>/openingaccessibility/2016/05/i-dont-care-about-the-os-just-give-me-my-web-apps/#respond</comments>
+		<pubDate>Tue, 10 May 2016 18:01:34 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[a11y]]></category>
+		<category><![CDATA[Apps]]></category>
+		<category><![CDATA[web]]></category>
+		<category><![CDATA[web apps]]></category>
+		<category><![CDATA[web a11y]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=668</guid>
+		<description><![CDATA[So I tweeted in jest to Bruce Lawson today in a conversation about Progressive Web Apps in the aftermath of the excellent WebProgressions one-day conference. And then I realised, I actually meant it! My point is that as a user &#8230; <a href="/openingaccessibility/2016/05/i-dont-care-about-the-os-just-give-me-my-web-apps/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>So I tweeted in jest to Bruce Lawson today in a conversation about Progressive Web Apps in the aftermath of the excellent <a href="https://webprogressions.org/">WebProgressions </a>one-day conference.</p>
+<p>And then I realised, I actually meant it!</p>
+<p>My point is that as a user of tech I want to get at the content or functionality I find useful or interesting when I want to. I want to do so whatever device I have in front of me of me or on me. I&#8217;m not interested in arbitrary platform distinctions or fan bouy love affairs. To be honest I find the main desktop OSs are ‘the same but different’. Ditto mobile OSs. And that’s OK. I&#8217;d even be happy if devices became commodity infrastructure. But the market isn&#8217;t quite like that.</p>
+<p>If I quickly want some info I&#8217;ll use the web. If I want to do something repeatedly and it&#8217;s convenient for me to let the service save info about me for *my* benefit, I&#8217;ll use an app. Furthermore,  as I want probably to get access to the same stuff on different devices that really means I want a web app. That&#8217;s the closest we&#8217;ve so far got to the &#8220;write once, run anywhere dream.</p>
+<p>Variety is good for choice and drives quality so I&#8217;m happy that there are competing browsers and OSs. Just as long as they seamlessly support the features I want. And these days that probably means they use basic features covered by a W3C standard.</p>
+<p>Does that mean I want my experience of the web sites and apps I access to be identical whatever? Absolutely not. I want variation that suites</p>
+<ul>
+<li>My interaction modes and environment. For example, desktop with keyboard and large screen or mobile with touch (but note these personal and technical modes are all blurring)</li>
+<li>Personalised access according to my preferences and accessibility requirements and environmental constraints (eg driving)</li>
+</ul>
+<p>Actually, those 2 are really just different facets of the same thing. Personalised Accessible User Experience or AUX</p>
+<p>I don&#8217;t want experience based on the suppliers development priorities or convenience. Nor on some marketing wish to push stuff at me for business benefits (especially Ads).  But, it turns out platform <strong>does</strong> matter as the accessible experiences are not equal.</p>
+<p>I want a user-centred AUX whatever the device. No more and no less.</p>
+<p>Having started taking Microsoft seriously again I do think they get much of this. Even if they are going to start charging for Windows 10 again. It looks like they are focussing on the cloud and services rather than just the Windows OS. With Edge, they are now engaging with web users and development community in very impressive and meaningful ways. They have made accessibility important at a high level. Continuum and devices like Surface Pro accept our desire to change our interaction modes during the day: and even encourage it.</p>
+<p>Just don&#8217;t expect them to open source Windows just yet!</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2016/05/i-dont-care-about-the-os-just-give-me-my-web-apps/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>More on portable npm scripts</title>
+		<link>/openingaccessibility/2016/03/more-on-portable-npm-scripts/</link>
+		<comments>/openingaccessibility/2016/03/more-on-portable-npm-scripts/#comments</comments>
+		<pubDate>Thu, 17 Mar 2016 15:46:55 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[web]]></category>
+		<category><![CDATA[Windows]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[nodejs]]></category>
+		<category><![CDATA[npm]]></category>
+		<category><![CDATA[Virtualisation]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=640</guid>
+		<description><![CDATA[Following on from my earlier post on the topic of writing portable npm scripts, here&#8217;s a few more useful tips. [UPDATE 2016/03/31: Bash for Windows was announced at Microsoft Build 2016. This exciting feature will allow running of Linux npm &#8230; <a href="/openingaccessibility/2016/03/more-on-portable-npm-scripts/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Following on from my earlier post on the topic of <a href="/openingaccessibility/2015/12/writing-portable-npm-build-scripts/">writing portable npm scripts</a>, here&#8217;s a few more useful tips.</p>
+<p>[UPDATE 2016/03/31: Bash for Windows was announced at Microsoft Build 2016. This exciting feature will allow running of Linux npm script builds with ease. See <a href="http://www.hanselman.com/blog/DevelopersCanRunBashShellAndUsermodeUbuntuLinuxBinariesOnWindows10.aspx">Scott Hanselman&#8217;s blog post</a>]</p>
+<p>[UPDATE: 2016/03/29:  The recently released <a href="https://blog.docker.com/2016/03/docker-for-mac-windows-beta/">Docker for Windows Beta</a> might be a good alternative to using a VM. It user Hyper-V.]</p>
+<p>[UPDATE: 2016/03/29:  This is a comprehensive article on <a href="http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/">using npm for build</a>]</p>
+<h1>Copying files</h1>
+<p>Use the <a href="https://www.npmjs.com/package/ncp">ncp </a>module to copy files. This goes nicely with mkdirp and rimraf  mentioned before.</p>
+<h1>Setting environment variables</h1>
+<p>It&#8217;s common to have scripts with a command line of the form</p><pre class="crayon-plain-tag">NODE_ENV=production webpack --config client/webpack.config.js</pre><p>This sets the environment variable NODE_ENV for the duration the command runs. In this case it is use to perform a production build with webpack.</p>
+<p>Such syntax works fine in bash etc on Linux / OS X but fails on windows where npm scripts always use CMD. One solution is to use the <a href="https://www.npmjs.com/package/cross-env">cross-env</a> npm module which uses a regx to find environment settings (and so is probably not fool-proof). Once installed you just prefix your command like so</p><pre class="crayon-plain-tag">cross-env NODE_ENV=production webpack --config client/webpack.config.js</pre><p></p>
+<h1>Running an extra bash process</h1>
+<p>I use the <a href="https://git-for-windows.github.io/">Git for Windows</a> bash shell for all my development CLI needs on Windows (It is also installed as part of the <a href="https://desktop.github.com/">GitHub Desktop for Windows</a>). This is a port of the mature MSYS / MinGW port of Linux build environments and works pretty well, though some of the commands are old versions.</p>
+<p>On Windows, npm ignores the current shell from which you run it and doesn&#8217;t pass the shell on to the sub processes as you would expect. However, you can easily run bash as the main command in a npm script (it&#8217;s an extra process but that hardly matters). This works as bash sets the path which is then inherited by the cmd subshell in which npm runs your package.json scripts. As a result it&#8217;s easy enough to create portable scripts or convert linux based scripts to also run on Windows. You just need to wrap the command in <pre class="crayon-plain-tag">bash -c "...."</pre> For example, the above env setting script can be recoded as follows</p><pre class="crayon-plain-tag">bash -c"NODE_ENV=production webpack --config client/webpack.config.js"</pre><p>The only issue i found is the need to carefully quote &#8221; characters. For example here&#8217;s a little script to prompt before deploying to GitHub pages (I&#8217;m showing the full package.json entry for clarity)</p><pre class="crayon-plain-tag">"deploy": "bash -c \"read -n1 -p\\\"Have you commited ready to deploy (yY) \\\"; echo; [[ $REPLY = [yY] ]] &amp;&amp; npm run _buildanddeploy || { echo \\\"You didn't answer yes, or deploy failed.\\\"; }",</pre><p></p>
+<h1>Using a Linux VM</h1>
+<p>I often use a Linux VM as part of my development. With Vagrent it&#8217;s easy to provision a headless VirtualBox (or other) VM that shares the host filespace and exposes a SSH terminal. Thus you can edit using Windows tools like VisualStudio Code yet run everything in the Linux VM. This lets you run local tests in the same VM as a CI or CD system (which will usually be Linux , unless you are using Azure). One easy configuration I&#8217;ve used is this <a href="https://github.com/GPII/qi-development-environments">Quality Infrastructure</a> from the GPII project.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2016/03/more-on-portable-npm-scripts/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Working with Windows native code from node.js</title>
+		<link>/openingaccessibility/2015/10/working-with-windows-native-code-from-node-js/</link>
+		<comments>/openingaccessibility/2015/10/working-with-windows-native-code-from-node-js/#comments</comments>
+		<pubDate>Mon, 19 Oct 2015 20:48:17 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[nodejs]]></category>
+		<category><![CDATA[web]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=581</guid>
+		<description><![CDATA[[UPDATE 02 Feb 2016: While this post discusses Win32 access, here&#8217;s an interesting option for UWP access from JXCore that should eventually work with nodejs when the Microsoft PR for Chakra is merged.] While the node.js ecosystem provides an amazing &#8230; <a href="/openingaccessibility/2015/10/working-with-windows-native-code-from-node-js/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>[UPDATE 02 Feb 2016: While this post discusses Win32 access, here&#8217;s an interesting option for <a href="http://jxcore.com/universal-windows-platform-uwp-samples-using-jxcore/">UWP access from JXCore</a> that should eventually work with nodejs when the Microsoft PR for Chakra is merged.]</p>
+<p>While the <a href="https://nodejs.org/en/">node.js</a> ecosystem provides an amazing number of modules covering almost every imaginable use, sometimes you want to work with existing code created in other languages and tool chains. For example, you may have an existing C++ library or perhaps you want to call operating systems APIs not yet available in <a href="https://www.npmjs.com/">npm</a> or elsewhere.</p>
+<p>When integrating between different language infrastructures you have a choice of which side of the divide to write the required glue code. Glue that provides data <a href="https://en.wikipedia.org/wiki/Marshalling_%28computer_science%29">marshalling</a>, function calling and event processing. If you want to access code with a C style calling convention then it relatively easy to add code on the C side as node is itself created in C++. This is easily enough done by  creating <a href="https://nodejs.org/api/addons.html">C/C++ addons</a> but often involves reams of boilerplate code. However, if you do choose that option then you&#8217;re going to want to use a tool like <a href="https://github.com/nodejs/nan">nan</a> to make your life tolerable. As the nan readme explains:</p>
+<blockquote><p>Thanks to the crazy changes in V8 (and some in Node core), keeping native addons compiling happily across versions, particularly 0.10 to 0.12 to 4.0, is a minor nightmare. The goal of this project is to store all logic necessary to develop native Node.js add-ons without having to inspect <code>NODE_MODULE_VERSION</code> and get yourself into a macro-tangle.</p></blockquote>
+<p>If you want to work on the Javascript side of the divide then <a href="https://github.com/TooTallNate/ref">ref</a> by <a href="https://twitter.com/TooTallNate">@TooTallNate</a> provides all the facilities you need for marshalling to/from the C world. It does this by extending node&#8217;s <a href="https://nodejs.org/api/buffer.html">Buffer class</a> to provide a type system and facilities for:</p>
+<blockquote>
+<ul>
+<li>Getting the memory address of a Buffer</li>
+<li>Checking the endianness of the processor</li>
+<li>Checking if a Buffer represents the NULL pointer</li>
+<li>Reading and writing &#8220;pointers&#8221; with Buffers</li>
+<li>Reading and writing C Strings (NULL-terminated)</li>
+<li>Reading and writing JavaScript Object references</li>
+<li>Reading and writing <strong>int64_t</strong> and <strong>uint64_t</strong> values</li>
+<li>A &#8220;type&#8221; convention to define the contents of a Buffer</li>
+</ul>
+</blockquote>
+<p>Further related  <a href="https://github.com/search?utf8=%E2%9C%93&amp;q=user%3ATooTallNate+ref&amp;type=Repositories&amp;ref=searchresults">ref modules</a> support javascript representations of other C/C++ types including arrays, structures and unions.</p>
+<p>Building on ref&#8217;s facilities is <a href="https://github.com/node-ffi/node-ffi">node-fii</a> which provides a foreign function interface (ffi) for loading and calling functions exported by dynamic libraries (dlls on Windows). It is also possible to call functions in the current process, ideal for functions in static libraries.</p>
+<p>While this eliminates large amounts of C boilerplate, it does have a significant calling overhead. Accordingly you are unlikely to want to use it for functions called in a tight loop or otherwise time sensitive applications.</p>
+<p>Here&#8217;s a simple example from the lib-ffi documentation for wrapping <a href="https://sourceware.org/newlib/libm.html#floor">libm&#8217;s ceil()</a> function which takes a double parameter and returns a double result and also the static <a href="http://www.cplusplus.com/reference/cstdlib/atoi/">atoi()</a> which takes a string and returns an int.</p>
+<div class="highlight highlight-source-js">
+<pre class="crayon-plain-tag">var ffi = require('ffi');
+
+var libm = ffi.Library('libm', {
+  'ceil': [ 'double', [ 'double' ] ]
+});
+libm.ceil(1.5); // 2
+
+// You can also access just functions in the current process by passing a null
+var current = ffi.Library(null, {
+  'atoi': [ 'int', [ 'string' ] ]
+});
+current.atoi('1234'); // 1234</pre>
+</div>
+<p>A more complex example can be seen is some code I wrote for the <a href="http://gpii.net/">GPII</a> system for automatic personalisation from preferences. This is perhaps a slightly unusual application of Node.js as it runs on a Windows device in order to launch and configure various Windows&#8217; settings and assistive technology programmes.</p>
+<p>The actual code provides a function GetDisplayResolution() that calls the Windows API <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd162611(v=vs.85).aspx">EnumDisplaySettings()</a> which returns into the fairly complex <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd183565(v=vs.85).aspx">DEVICEMODE</a> structure. Note that the DEVMODE structure includes nested unions of structures and while the ref modules support these I decided to  flattened out the declaration (after testing my assumptions about packing and padding).</p>
+<div class="highlight highlight-source-js">
+<pre class="crayon-plain-tag">var ffi = require(&quot;ffi&quot;);
+var ref = require(&quot;ref&quot;);
+var Struct = require(&quot;ref-struct&quot;);
+var arrayType = require(&quot;ref-array&quot;);
+
+/**
+* A map between Windows and C types.
+* https://msdn.microsoft.com/en-us/library/windows/desktop/aa383751%28v=vs.85%29.aspx
+*/
+windows.types = {
+    &quot;BOOL&quot;:   &quot;int&quot;,
+    &quot;INT&quot;:    &quot;int&quot;,
+    &quot;UINT&quot;:   &quot;uint&quot;,
+    &quot;ULONG&quot;:  &quot;ulong&quot;,
+    &quot;DWORD&quot;:  &quot;ulong&quot;,
+    &quot;HKL&quot;:    &quot;void*&quot;,
+    &quot;ULONG_PTR&quot;: &quot;ulong&quot;,
+    &quot;LONG&quot;:   &quot;long&quot;,
+    &quot;HANDLE&quot;: &quot;uint32&quot;,
+    &quot;WORD&quot;:   &quot;uint16&quot;,
+    &quot;TCHAR&quot;:  &quot;uint16&quot;  // assuming unicode. (ASCII is char, UNICODE is WCHAR -&amp;gt; wchar_t -&amp;gt; unsigned short === UINT16 === uint16
+};
+
+var t = windows.types;
+// https://msdn.microsoft.com/en-us/library/windows/desktop/dd183565(v=vs.85).aspx
+
+var CCHDEVICENAME = 32;
+var CCHFORMNAME = 32;
+
+windows.DEVMODEW = new Struct([
+    [arrayType(t.TCHAR, CCHDEVICENAME), &quot;dmDeviceName&quot;],
+    [t.WORD, &quot;dmSpecVersion&quot;],
+    [t.WORD, &quot;dmDriverVersion&quot;],
+    [t.WORD, &quot;dmSize&quot;],
+    [t.WORD, &quot;dmDriverExtra&quot;],
+    [t.DWORD, &quot;dmFields&quot;],
+    //union {   // TODO there is a ref-union npm module - but this technique is OK for now
+    //  struct {
+    [&quot;short&quot;, &quot;dmOrientation&quot;],
+    [&quot;short&quot;, &quot;dmPaperSize&quot;],
+    [&quot;short&quot;, &quot;dmPaperLength&quot;],
+    [&quot;short&quot;, &quot;dmPaperWidth&quot;],
+    [&quot;short&quot;, &quot;dmScale&quot;],
+    [&quot;short&quot;, &quot;dmCopies&quot;],
+    [&quot;short&quot;, &quot;dmDefaultSource&quot;],
+    [&quot;short&quot;, &quot;dmPrintQuality&quot;],
+    //  };
+    //  struct {
+    //      POINTL dmPosition;
+    //      DWORD dmDisplayOrientation;
+    //      DWORD dmDisplayFixedOutput;
+    //  };
+    //};
+    [&quot;short&quot;, &quot;dmColor&quot;],
+    [&quot;short&quot;, &quot;dmDuplex&quot;],
+    [&quot;short&quot;, &quot;dmYResolution&quot;],
+    [&quot;short&quot;, &quot;dmTTOption&quot;],
+    [&quot;short&quot;, &quot;dmCollate&quot;],
+    [arrayType(t.TCHAR, CCHFORMNAME), &quot;dmFormName&quot;],
+    [t.WORD, &quot;dmLogPixels&quot;],
+    [t.DWORD, &quot;dmBitsPerPel&quot;],
+    [t.DWORD, &quot;dmPelsWidth&quot;],
+    [t.DWORD, &quot;dmPelsHeight&quot;],
+    //union {
+        [t.DWORD,&quot;dmDisplayFlags&quot;],
+    //  DWORD dmNup;
+    //};
+    [t.DWORD, &quot;dmDisplayFrequency&quot;],
+    //#if (WINVER &amp;gt;= 0x0400)
+    [t.DWORD, &quot;dmICMMethod&quot;],
+    [t.DWORD, &quot;dmICMIntent&quot;],
+    [t.DWORD, &quot;dmMediaType&quot;],
+    [t.DWORD, &quot;dmDitherType&quot;],
+    [t.DWORD, &quot;dmReserved1&quot;],
+    [t.DWORD, &quot;dmReserved2&quot;],
+    //#if (WINVER &amp;gt;= 0x0500) || (_WIN32_WINNT &amp;gt;= 0x0400)
+    [t.DWORD, &quot;dmPanningWidth&quot;],
+    [t.DWORD, &quot;dmPanningHeight&quot;]
+    //#endif
+    //#endif
+]);
+
+windows.user32 = ffi.Library(&quot;user32&quot;, {
+    // https://msdn.microsoft.com/en-us/library/windows/desktop/dd162611(v=vs.85).aspx
+    // LPCWSTR, DWORD, DEVMODE*
+    &quot;EnumDisplaySettingsW&quot;: [
+        t.BOOL, [&quot;pointer&quot;, t.DWORD, &quot;pointer&quot;]
+    ]
+});
+
+/**
+ *  Gets the current screen resolution
+ *
+ * @return {Object) The width and height of the screen.
+ */
+windows.getScreenResolution = function () {
+    var dm = new windows.DEVMODEW();
+    dm.ref().fill(0);
+    dm.dmSize = windows.DEVMODEW.size;
+
+    if (c.FALSE != windows.user32.EnumDisplaySettingsW(ref.NULL, c.ENUM_CURRENT_SETTINGS, dm.ref()))
+    {
+        // note for unknown reason on win 10 the returned dmSize is 188 not expected 220
+        return { width: dm.dmPelsWidth, height: dm.dmPelsHeight };
+    }
+    return { width: 0, height: 0 };
+
+}</pre>
+</div>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2015/10/working-with-windows-native-code-from-node-js/feed/</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+		</item>
+		<item>
+		<title>Safari tab key navigation disabled by default</title>
+		<link>/openingaccessibility/2011/05/safari-tab-key-navigation-disabled-by-default/</link>
+		<comments>/openingaccessibility/2011/05/safari-tab-key-navigation-disabled-by-default/#comments</comments>
+		<pubDate>Tue, 03 May 2011 13:12:26 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[a11y]]></category>
+		<category><![CDATA[keyboard]]></category>
+		<category><![CDATA[safari]]></category>
+		<category><![CDATA[tab access]]></category>
+		<category><![CDATA[web]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=23</guid>
+		<description><![CDATA[For some bizarre reason tab key navigation is turned off by default in the Mac Safari web browser. By this I mean hitting the tab key repeatedly does not visit each interactive element on the page. This lack is a &#8230; <a href="/openingaccessibility/2011/05/safari-tab-key-navigation-disabled-by-default/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>For some bizarre reason <a href="http://www.w3.org/TR/html401/interact/forms.html#h-17.11.1">tab key navigation</a> is turned off by default in the Mac Safari web browser. By this I mean hitting the tab key repeatedly does not visit each interactive element on the page.</p>
+<p>This lack is a pain for keen keyboard users as it&#8217;s the only guaranteed way to access all links and form elements. Even if  websites were to apply the <a href="http://www.w3.org/TR/html401/interact/forms.html#h-17.11.2">AccessKey</a> attribute to all links and fields, browsers in general do not provide a way to discover what allocations have been made. Browsers do provide a useful default tab order, assuming the HTML markup has a reasonable element flow.</p>
+<p>Another group of users that need tab key access  are users of simple alternative input like switches. The overlay assistive technology that such users often use translate simple gestures into tab and enter key events, thus allowing access to most of the web app doc. This is slow and painful in many cases. especially if the tab order is not well designed. However it does provide access. The common exceptions are any &#8216;clever&#8217; javascript custom controls that forget to provide any keyboard access, assuming pointer only is used. This is more common than it should be and is yet another good reason to use an established accessible toolkit like <a href="http://jqueryui.com/">jQuery UI</a> , <a href="http://dojotoolkit.org/">Dojo</a> or <a href="http://fluidproject.org/products/infusion/">Fluid Infusion</a> for your web app.</p>
+<p>Screen reader user also benefit from tab navigation, though screen readers provide do more useful ways to navigate the screen. For example they can list headings (assuming the document has been well structured, as screen readers can&#8217;t work miracles).</p>
+<p>So I wonder why this is turned off by default? I use Firefox as my default browser on my Mac Book Pro, but when setting up this blog I ran Safari for a quick test of a guest user. I used the tab key to check the Accessible 2 sub theme was doing its stuff. It was broken and tab skipped straight to the search box (the first form input element), missing all the links.</p>
+<p>There has long been an option in system prefs &#8211; &gt; keyboard that enables tab to all fields, but even though this was on I had no joy. Eventually after a twitter discussion, I stumbled across a new (?) similar option in Safari -&gt; Prefs -&gt; Advanced that also need to be turned on in order to enable <strong>basic</strong> tab navigation.</p>
+<p>Does anyone know the logic for having tab navigation turned off in Safari by default? I&#8217;m guessing someone with influence had an issue of some sort. In Windows and Linux, tab navigation is a fundamental of any UI whether it&#8217;s a dialog or an app. HTML5 allows <a href="http://www.w3.org/TR/html5/editing.html#focus">any item to be focusable</a> either programmatically or by the user. So having tab navigation off is a bad move.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2011/05/safari-tab-key-navigation-disabled-by-default/feed/</wfw:commentRss>
+		<slash:comments>5</slash:comments>
+		</item>
+	</channel>
+</rss>

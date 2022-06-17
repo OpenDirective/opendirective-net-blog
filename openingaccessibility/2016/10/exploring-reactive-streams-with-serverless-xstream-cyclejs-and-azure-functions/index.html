@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<title>Using reactive streams on serverless with cyclejs, xstream and Azure Functions | Opening Accessibility</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="stylesheet" type="text/css" media="all" href="/openingaccessibility/wp-content/themes/accessible/style.css" />
+<link rel="pingback" href="/openingaccessibility/xmlrpc.php" />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Opening Accessibility &raquo; Feed" href="/openingaccessibility/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Opening Accessibility &raquo; Comments Feed" href="/openingaccessibility/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Opening Accessibility &raquo; Using reactive streams on serverless with cyclejs, xstream and Azure Functions Comments Feed" href="/openingaccessibility/2016/10/exploring-reactive-streams-with-serverless-xstream-cyclejs-and-azure-functions/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.8"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='crayon-css'  href='/openingaccessibility/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-theme-classic-css'  href='/openingaccessibility/wp-content/plugins/crayon-syntax-highlighter/themes/classic/classic.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-font-monaco-css'  href='/openingaccessibility/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<script type='text/javascript' src='/openingaccessibility/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='/openingaccessibility/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/openingaccessibility/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta'></script>
+<link rel='https://api.w.org/' href='/openingaccessibility/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/openingaccessibility/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="/openingaccessibility/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Is the web getting less webby and will serverless make it worse?' href='/openingaccessibility/2016/09/is-the-web-getting-less-webby/' />
+<link rel='next' title='At last — true grids in web browsers' href='/openingaccessibility/2017/03/at-last-true-grids-in-web-browsers/' />
+<meta name="generator" content="WordPress 4.9.8" />
+<link rel="canonical" href="/openingaccessibility/2016/10/exploring-reactive-streams-with-serverless-xstream-cyclejs-and-azure-functions/" />
+<link rel='shortlink' href='/openingaccessibility/?p=699' />
+<link rel="alternate" type="application/json+oembed" href="/openingaccessibility/wp-json/oembed/1.0/embed?url=%2F2016%2F10%2Fexploring-reactive-streams-with-serverless-xstream-cyclejs-and-azure-functions%2F" />
+<link rel="alternate" type="text/xml+oembed" href="/openingaccessibility/wp-json/oembed/1.0/embed?url=%2F2016%2F10%2Fexploring-reactive-streams-with-serverless-xstream-cyclejs-and-azure-functions%2F&#038;format=xml" />
+
+<!-- Bad Behavior 2.2.22 run time: 3.956 ms -->
+</head>
+
+<body class="post-template-default single single-post postid-699 single-format-standard">
+<div id="wrapper" class="hfeed">
+	<div id="header">
+		<div id="masthead">
+			<div id="branding" role="banner">
+								<div id="site-title">
+					<span>
+						<a href="/openingaccessibility/" title="Opening Accessibility" rel="home">Opening Accessibility</a>
+					</span>
+				</div>
+				<div id="site-description">Where open source joins accessibility</div>
+
+										<img src="/openingaccessibility/wp-content/uploads/2013/02/copy-cropped-Lapland-gateway.jpg" width="940" height="198" alt="" />
+								</div><!-- #branding -->
+
+			<div id="access" role="navigation">
+			  				<div class="skip-link screen-reader-text"><a href="#content" title="Skip to content">Skip to content</a></div>
+								<div class="menu"><ul>
+<li ><a href="/openingaccessibility/">Home</a></li><li class="page_item page-item-8"><a href="/openingaccessibility/about/">About</a></li>
+</ul></div>
+			</div><!-- #access -->
+		</div><!-- #masthead -->
+	</div><!-- #header -->
+
+	<div id="main">
+
+		<div id="container">
+			<div id="content" role="main">
+
+			
+
+				<div id="nav-above" class="navigation">
+					<div class="nav-previous"><a href="/openingaccessibility/2016/09/is-the-web-getting-less-webby/" rel="prev"><span class="meta-nav">&larr;</span> Is the web getting less webby and will serverless make it worse?</a></div>
+					<div class="nav-next"><a href="/openingaccessibility/2017/03/at-last-true-grids-in-web-browsers/" rel="next">At last — true grids in web browsers <span class="meta-nav">&rarr;</span></a></div>
+				</div><!-- #nav-above -->
+
+				<div id="post-699" class="post-699 post type-post status-publish format-standard hentry category-development category-web tag-javascript tag-reactive-programming tag-serverless">
+					<h1 class="entry-title">Using reactive streams on serverless with cyclejs, xstream and Azure Functions</h1>
+
+					<div class="entry-meta">
+						<span class="meta-prep meta-prep-author">Posted on</span> <a href="/openingaccessibility/2016/10/exploring-reactive-streams-with-serverless-xstream-cyclejs-and-azure-functions/" title="11:00 pm" rel="bookmark"><span class="entry-date">October 22, 2016</span></a> <span class="meta-sep">by</span> <span class="author vcard"><a class="url fn n" href="/openingaccessibility/author/steveopendirective-com/" title="View all posts by Steve">Steve</a></span>					</div><!-- .entry-meta -->
+
+					<div class="entry-content">
+						<p>[ Update 2016-10-23 the code is now in the <a href="https://github.com/cyclejs-community/cycle-serverless">cyclejs community repo</a>]</p>
+<p>During development of my latest SaaS product, Brian, I&#8217;ve settled on a couple of key architectural decisions. For the Frontend I&#8217;m using Reactive programming (RP) with streams and for the backend I&#8217;ve decided on the &#8216;Serverless&#8217; (FaaS) approach. Specifically, I&#8217;m using  Andre Stalz&#8217;s <a href="http://staltz.com/xstream">xstream</a> with the incredibly light &#8216;framework&#8217; <a href="https://cycle.js.org/">cyclejs</a> (but cyclejs supports other streaming libs, including the excellent <a href="https://rxjs.codeplex.com/">RxJS</a>) . Microsoft&#8217;s <a href="https://azure.microsoft.com/en-us/services/functions/">Azure Functions</a> give a FaaS solution backed-up by many other options including BaaS &amp; PaaS should they be required. This post looks at using them together on the backend.</p>
+<div style="width: 285px" class="wp-caption alignleft"><img src="https://cycle.js.org/img/cyclejs_logo.svg" alt="Cyclejs" width="275" height="275" /><p class="wp-caption-text">Cyclejs</p></div>
+<div style="width: 287px" class="wp-caption alignright"><img src="http://stiller.co.il/blog/wp-content/uploads/2016/04/Azure-Functions-Logo.png" alt="Functions logo" width="277" height="278" /><p class="wp-caption-text">Functions logo</p></div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>I&#8217;m happy that the trade-offs and benefits with these approaches should meet my requirements. Namely, achieving  rapid development by focussing energy higher &#8216;up the stack&#8217;. I want to concentrate on innovation of user features and &#8216;business logic&#8217; and not boilerplate or DevOps. From my early explorations I think Serverless and cyclejs manage to hit sweet spots of benefit and learning curve. However, they are most definitely not silver bullets, having wrinkles all their own that take time and effort to learn and overcome.</p>
+<p>When I initially created Functions code using a traditional imperative style I rapidly found I missed the RP style I&#8217;d become familiar with when using CycleJS with RxJS. It&#8217;s a style that gets under your skin once you make the mental shift. Perhaps my background in real-time async communications predisposes me to seeing the benefits of asynchronous handling of streams. But whatever, I thought it would be fun to try it in the serverless context. At least both front and back ends would then be similar in architecture.</p>
+<p>You may wonder why on earth I would consider using RP in a FaaS context. After all, the  FaaS architecture is all about small functions which are run once triggered and then quickly end. Thus, it would seem there isn&#8217;t much scope for streams when there is single trigger input event plus perhaps another data source or two.  One often touted advantage of RP is that it&#8217;s pure functions are easier to test, but that&#8217;s also a recommend practice with FaaS so that&#8217;s not an obvious advantage for having RP as well as FaaS.</p>
+<p>One reason for wanting to use RP is that any non trivial functions are likely to have other asynchronous event sources, including SaaS requests and database updates over REST. Even so, there are other less tangible benefits of RP with cyclejs that I personally I found over imperative code style:</p>
+<ul>
+<li>Loose coupling through reactive observers</li>
+<li>Declarative style married to functional programming techniques</li>
+<li>Separation of input, output side effects from the &#8220;pure&#8221; business logic</li>
+</ul>
+<p>Together these engender a clean high-level way to describe program logic. Bugs also appear to be reduced and it also enables testing without excessive mocking due to the absence of side effects in the main code. Sometimes however, debugging can be more involved due to current tooling supporting imperative and not reactive. However, tooling is starting to appear as more turn to RP.</p>
+<p>So what are the differences found when running xstream and cyclejs on Azure Functions environment compared to the usual browser (and sometimes nodejs) contexts?Surprisingly few it turns out. Fortunately, Functions builds on Azure Web Apps which supports nodejs and express. Better, it&#8217;s node 6.x that is provided which includes all those key ES6 features that really help clean up RP code. Another plus is that the cycle HTTP driver works fine on node.</p>
+<p>In this implementation I&#8217;ve taken the approach of providing a cycle runtime in each Azure Function. Effectively, each Function is a component in the cycle sense of the word, though connections between components will have to be via HTTP, queues or other out of process couplings. This approach seems to be the a good choice as you can use Cyclejs or not for any individual function, depending on the complexity and preferences. As the Functions run time is open source there is scope to explore different and more deeply embedded approaches.</p>
+<p>So without further a-do here&#8217;s the Functions driver code.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5b9fe85def66d302508424" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">JavaScript</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+const xs = require('xstream').default
+
+module.exports = function makeFunctionsDriver(context, dispwrap, inArgs) {
+
+    function driver(s$) {
+        s$.addListener({ next: (i) =&gt; { setTimeout(() =&gt; {  // next tick to allow other listenerns to be iterated
+                                            context.res = i 
+                                            if (dispwrap &amp;&amp;
+                                                typeof dispwrap.disposer === 'function') {
+                                                dispwrap.disposer()
+                                            }
+                                            context.done()
+                                            }, 1)
+                         },   
+                         error: () =&gt; {},
+                         complete: () =&gt; {}
+        })
+
+        return xs.createWithMemory({
+            start: listener =&gt; {
+                setTimeout(() =&gt; {listener.next({context, inArgs})}, 1)
+            },
+            stop: () =&gt; {},
+        })
+
+  
+    }
+
+    const logger = a =&gt; context.log(a)
+    return {driver, logger}
+}</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums" data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5b9fe85def66d302508424-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def66d302508424-2">2</div><div class="crayon-num" data-line="crayon-5b9fe85def66d302508424-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def66d302508424-4">4</div><div class="crayon-num" data-line="crayon-5b9fe85def66d302508424-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def66d302508424-6">6</div><div class="crayon-num" data-line="crayon-5b9fe85def66d302508424-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def66d302508424-8">8</div><div class="crayon-num" data-line="crayon-5b9fe85def66d302508424-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def66d302508424-10">10</div><div class="crayon-num" data-line="crayon-5b9fe85def66d302508424-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def66d302508424-12">12</div><div class="crayon-num" data-line="crayon-5b9fe85def66d302508424-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def66d302508424-14">14</div><div class="crayon-num" data-line="crayon-5b9fe85def66d302508424-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def66d302508424-16">16</div><div class="crayon-num" data-line="crayon-5b9fe85def66d302508424-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def66d302508424-18">18</div><div class="crayon-num" data-line="crayon-5b9fe85def66d302508424-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def66d302508424-20">20</div><div class="crayon-num" data-line="crayon-5b9fe85def66d302508424-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def66d302508424-22">22</div><div class="crayon-num" data-line="crayon-5b9fe85def66d302508424-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def66d302508424-24">24</div><div class="crayon-num" data-line="crayon-5b9fe85def66d302508424-25">25</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def66d302508424-26">26</div><div class="crayon-num" data-line="crayon-5b9fe85def66d302508424-27">27</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def66d302508424-28">28</div><div class="crayon-num" data-line="crayon-5b9fe85def66d302508424-29">29</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def66d302508424-30">30</div><div class="crayon-num" data-line="crayon-5b9fe85def66d302508424-31">31</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b9fe85def66d302508424-1"><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">xs</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-e">require</span><span class="crayon-sy">(</span><span class="crayon-s">'xstream'</span><span class="crayon-sy">)</span><span class="crayon-sy">.</span><span class="crayon-st">default</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def66d302508424-2">&nbsp;</div><div class="crayon-line" id="crayon-5b9fe85def66d302508424-3"><span class="crayon-v">module</span><span class="crayon-sy">.</span><span class="crayon-v">exports</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-t">function</span><span class="crayon-h"> </span><span class="crayon-e">makeFunctionsDriver</span><span class="crayon-sy">(</span><span class="crayon-v">context</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">dispwrap</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">inArgs</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def66d302508424-4">&nbsp;</div><div class="crayon-line" id="crayon-5b9fe85def66d302508424-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-t">function</span><span class="crayon-h"> </span><span class="crayon-e">driver</span><span class="crayon-sy">(</span><span class="crayon-v">s</span><span class="crayon-sy">$</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def66d302508424-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">s</span><span class="crayon-sy">$</span><span class="crayon-sy">.</span><span class="crayon-e">addListener</span><span class="crayon-sy">(</span><span class="crayon-sy">{</span><span class="crayon-h"> </span><span class="crayon-v">next</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">i</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-h"> </span><span class="crayon-r">setTimeout</span><span class="crayon-sy">(</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-c">// next tick to allow other listenerns to be iterated</span></div><div class="crayon-line" id="crayon-5b9fe85def66d302508424-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">context</span><span class="crayon-sy">.</span><span class="crayon-v">res</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-i">i</span><span class="crayon-h"> </span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def66d302508424-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">if</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">dispwrap</span><span class="crayon-h"> </span><span class="crayon-o">&amp;&amp;</span></div><div class="crayon-line" id="crayon-5b9fe85def66d302508424-9"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">typeof</span><span class="crayon-h"> </span><span class="crayon-v">dispwrap</span><span class="crayon-sy">.</span><span class="crayon-v">disposer</span><span class="crayon-h"> </span><span class="crayon-o">===</span><span class="crayon-h"> </span><span class="crayon-s">'function'</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def66d302508424-10"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">dispwrap</span><span class="crayon-sy">.</span><span class="crayon-e">disposer</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b9fe85def66d302508424-11"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def66d302508424-12"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">context</span><span class="crayon-sy">.</span><span class="crayon-e">done</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b9fe85def66d302508424-13"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def66d302508424-14"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-sy">}</span><span class="crayon-sy">,</span><span class="crayon-h">&nbsp;&nbsp; </span></div><div class="crayon-line" id="crayon-5b9fe85def66d302508424-15"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-v">error</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-sy">}</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def66d302508424-16"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-v">complete</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5b9fe85def66d302508424-17"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def66d302508424-18">&nbsp;</div><div class="crayon-line" id="crayon-5b9fe85def66d302508424-19"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">return</span><span class="crayon-h"> </span><span class="crayon-v">xs</span><span class="crayon-sy">.</span><span class="crayon-e">createWithMemory</span><span class="crayon-sy">(</span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def66d302508424-20"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">start</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-v">listener</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b9fe85def66d302508424-21"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">setTimeout</span><span class="crayon-sy">(</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-v">listener</span><span class="crayon-sy">.</span><span class="crayon-e">next</span><span class="crayon-sy">(</span><span class="crayon-sy">{</span><span class="crayon-v">context</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">inArgs</span><span class="crayon-sy">}</span><span class="crayon-sy">)</span><span class="crayon-sy">}</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def66d302508424-22"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-5b9fe85def66d302508424-23"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">stop</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-sy">}</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def66d302508424-24"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b9fe85def66d302508424-25">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def66d302508424-26"><span class="crayon-h">&nbsp;&nbsp;</span></div><div class="crayon-line" id="crayon-5b9fe85def66d302508424-27"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def66d302508424-28">&nbsp;</div><div class="crayon-line" id="crayon-5b9fe85def66d302508424-29"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">logger</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">a</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-v">context</span><span class="crayon-sy">.</span><span class="crayon-e">log</span><span class="crayon-sy">(</span><span class="crayon-v">a</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def66d302508424-30"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">return</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-v">driver</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">logger</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5b9fe85def66d302508424-31"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0087 seconds] -->
+<p>As with all drivers, the Function driver is there to handle useful side effects such as input and output. In this case it converts the Function inputs (&#8220;context&#8221; and an array of input bindings) into a source stream. It also sinks a stream containing the function&#8217;s output. This also acts as a signal that the function should complete (the driver calls context.done).  The sink also disposes of the streams created by run() for cleanup (this adds a little implementation complexity due to a forward declaration and JS&#8217;s lack of true pass-by-reference).</p>
+<p>It turns out that using console.log is not useful in Functions, rather the alternative context.log is used. Thus, we also provide a Log driver that uses this channel. This is also used with xstream&#8217;s debug operator, which fortunately accepts a function argument as well as a value. I also decided the FunctionsDriver factory would return the log function itself as well as the driver. In this way nearly all the FaaS platform dependencies are encapsulated in the driver. This makes it possible to write a version for AWS Lamda or other serverless frameworks.</p>
+<p>Here&#8217;s an example usage for a HTTP Function. It starts a 1 second ticker and on the 3rd tick makes a REST API request. It then returns the first item from the response in function output. The code demonstrates the use of all the driver features and the clarity of RP with cyclejs.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5b9fe85def683970085396" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">JavaScript</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+const xs = require('xstream').default
+const run = require('@cycle/xstream-run').run
+const makeHTTPDriver = require('@cycle/http').makeHTTPDriver
+const makeFunctionsDriver = require('./functionsDriver.js')
+
+module.exports = function (context, ...inArgs) {
+    const dispwrap = {}             // because JS doesn't do pass-by-ref
+    const {driver: functionsDriver, logger} = makeFunctionsDriver(context, dispwrap, inArgs)
+
+    const drivers = {
+        FaaS: functionsDriver,
+        HTTP: makeHTTPDriver(),
+        log: msg$ =&gt; { msg$.addListener({next: msg =&gt; logger(`${msg}`) }) }
+    }
+
+    dispwrap.disposer = run(main, drivers)
+   
+    function main(sources) {
+        const input$ = sources.FaaS
+            .map((s) =&gt; `context.req.originalUrl: ${s.context.req.originalUrl} /
+                         inArgs[0]: ${JSON.stringify(s.inArgs[0])}`)
+            
+        const ticks$ = xs.periodic(1000)
+            .map(t =&gt; (t + 1) * 100)
+        
+        const log$ = xs.merge(input$, ticks$)
+
+        const trigger$ = ticks$
+            .drop(2)
+            .debug((i) =&gt; logger(`trigger tick: ${i}`))
+ 
+        const request$ = trigger$
+            .map(() =&gt; ({
+                            url: 'http://jsonplaceholder.typicode.com/users/1',
+                            method: 'GET'
+                        }))
+
+        const response$ = sources.HTTP
+            .select()
+            .flatten()
+        const user1Data$ = response$.map(response =&gt; response.body)
+        const exit$ = user1Data$
+            .map(u =&gt; ({ status: 200, body: u}))
+
+        return {
+            FaaS: exit$,
+            log: log$,
+            HTTP: request$
+        }
+    }
+}</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums" data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5b9fe85def683970085396-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def683970085396-2">2</div><div class="crayon-num" data-line="crayon-5b9fe85def683970085396-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def683970085396-4">4</div><div class="crayon-num" data-line="crayon-5b9fe85def683970085396-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def683970085396-6">6</div><div class="crayon-num" data-line="crayon-5b9fe85def683970085396-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def683970085396-8">8</div><div class="crayon-num" data-line="crayon-5b9fe85def683970085396-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def683970085396-10">10</div><div class="crayon-num" data-line="crayon-5b9fe85def683970085396-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def683970085396-12">12</div><div class="crayon-num" data-line="crayon-5b9fe85def683970085396-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def683970085396-14">14</div><div class="crayon-num" data-line="crayon-5b9fe85def683970085396-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def683970085396-16">16</div><div class="crayon-num" data-line="crayon-5b9fe85def683970085396-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def683970085396-18">18</div><div class="crayon-num" data-line="crayon-5b9fe85def683970085396-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def683970085396-20">20</div><div class="crayon-num" data-line="crayon-5b9fe85def683970085396-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def683970085396-22">22</div><div class="crayon-num" data-line="crayon-5b9fe85def683970085396-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def683970085396-24">24</div><div class="crayon-num" data-line="crayon-5b9fe85def683970085396-25">25</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def683970085396-26">26</div><div class="crayon-num" data-line="crayon-5b9fe85def683970085396-27">27</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def683970085396-28">28</div><div class="crayon-num" data-line="crayon-5b9fe85def683970085396-29">29</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def683970085396-30">30</div><div class="crayon-num" data-line="crayon-5b9fe85def683970085396-31">31</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def683970085396-32">32</div><div class="crayon-num" data-line="crayon-5b9fe85def683970085396-33">33</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def683970085396-34">34</div><div class="crayon-num" data-line="crayon-5b9fe85def683970085396-35">35</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def683970085396-36">36</div><div class="crayon-num" data-line="crayon-5b9fe85def683970085396-37">37</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def683970085396-38">38</div><div class="crayon-num" data-line="crayon-5b9fe85def683970085396-39">39</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def683970085396-40">40</div><div class="crayon-num" data-line="crayon-5b9fe85def683970085396-41">41</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def683970085396-42">42</div><div class="crayon-num" data-line="crayon-5b9fe85def683970085396-43">43</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def683970085396-44">44</div><div class="crayon-num" data-line="crayon-5b9fe85def683970085396-45">45</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def683970085396-46">46</div><div class="crayon-num" data-line="crayon-5b9fe85def683970085396-47">47</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def683970085396-48">48</div><div class="crayon-num" data-line="crayon-5b9fe85def683970085396-49">49</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fe85def683970085396-50">50</div><div class="crayon-num" data-line="crayon-5b9fe85def683970085396-51">51</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b9fe85def683970085396-1"><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">xs</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-e">require</span><span class="crayon-sy">(</span><span class="crayon-s">'xstream'</span><span class="crayon-sy">)</span><span class="crayon-sy">.</span><span class="crayon-st">default</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def683970085396-2"><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">run</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-e">require</span><span class="crayon-sy">(</span><span class="crayon-s">'@cycle/xstream-run'</span><span class="crayon-sy">)</span><span class="crayon-sy">.</span><span class="crayon-e">run</span></div><div class="crayon-line" id="crayon-5b9fe85def683970085396-3"><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">makeHTTPDriver</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-e">require</span><span class="crayon-sy">(</span><span class="crayon-s">'@cycle/http'</span><span class="crayon-sy">)</span><span class="crayon-sy">.</span><span class="crayon-e">makeHTTPDriver</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def683970085396-4"><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">makeFunctionsDriver</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-e">require</span><span class="crayon-sy">(</span><span class="crayon-s">'./functionsDriver.js'</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b9fe85def683970085396-5">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def683970085396-6"><span class="crayon-v">module</span><span class="crayon-sy">.</span><span class="crayon-v">exports</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-t">function</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">context</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-sy">.</span><span class="crayon-sy">.</span><span class="crayon-sy">.</span><span class="crayon-v">inArgs</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b9fe85def683970085396-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">dispwrap</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-sy">}</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-c">// because JS doesn't do pass-by-ref</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def683970085396-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-v">driver</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-v">functionsDriver</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">logger</span><span class="crayon-sy">}</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-e">makeFunctionsDriver</span><span class="crayon-sy">(</span><span class="crayon-v">context</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">dispwrap</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">inArgs</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b9fe85def683970085396-9">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def683970085396-10"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">drivers</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b9fe85def683970085396-11"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">FaaS</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-v">functionsDriver</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def683970085396-12"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">HTTP</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">makeHTTPDriver</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-5b9fe85def683970085396-13"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">log</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-v">msg</span><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-h"> </span><span class="crayon-v">msg</span><span class="crayon-sy">$</span><span class="crayon-sy">.</span><span class="crayon-e">addListener</span><span class="crayon-sy">(</span><span class="crayon-sy">{</span><span class="crayon-v">next</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-v">msg</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-e">logger</span><span class="crayon-sy">(</span><span class="crayon-sy">`</span><span class="crayon-sy">$</span><span class="crayon-sy">{</span><span class="crayon-v">msg</span><span class="crayon-sy">}</span><span class="crayon-sy">`</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">}</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def683970085396-14"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5b9fe85def683970085396-15">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def683970085396-16"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">dispwrap</span><span class="crayon-sy">.</span><span class="crayon-v">disposer</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-e">run</span><span class="crayon-sy">(</span><span class="crayon-v">main</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">drivers</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b9fe85def683970085396-17"><span class="crayon-h">&nbsp;&nbsp; </span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def683970085396-18"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-t">function</span><span class="crayon-h"> </span><span class="crayon-e">main</span><span class="crayon-sy">(</span><span class="crayon-v">sources</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-5b9fe85def683970085396-19"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">input</span><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">sources</span><span class="crayon-sy">.</span><span class="crayon-i">FaaS</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def683970085396-20"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">.</span><span class="crayon-e">map</span><span class="crayon-sy">(</span><span class="crayon-sy">(</span><span class="crayon-v">s</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-sy">`</span><span class="crayon-v">context</span><span class="crayon-sy">.</span><span class="crayon-v">req</span><span class="crayon-sy">.</span><span class="crayon-v">originalUrl</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">$</span><span class="crayon-sy">{</span><span class="crayon-v">s</span><span class="crayon-sy">.</span><span class="crayon-v">context</span><span class="crayon-sy">.</span><span class="crayon-v">req</span><span class="crayon-sy">.</span><span class="crayon-v">originalUrl</span><span class="crayon-sy">}</span><span class="crayon-h"> </span><span class="crayon-o">/</span></div><div class="crayon-line" id="crayon-5b9fe85def683970085396-21"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-v">inArgs</span><span class="crayon-sy">[</span><span class="crayon-cn">0</span><span class="crayon-sy">]</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">$</span><span class="crayon-sy">{</span><span class="crayon-v">JSON</span><span class="crayon-sy">.</span><span class="crayon-e">stringify</span><span class="crayon-sy">(</span><span class="crayon-v">s</span><span class="crayon-sy">.</span><span class="crayon-v">inArgs</span><span class="crayon-sy">[</span><span class="crayon-cn">0</span><span class="crayon-sy">]</span><span class="crayon-sy">)</span><span class="crayon-sy">}</span><span class="crayon-sy">`</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def683970085396-22"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div><div class="crayon-line" id="crayon-5b9fe85def683970085396-23"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">ticks</span><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">xs</span><span class="crayon-sy">.</span><span class="crayon-e">periodic</span><span class="crayon-sy">(</span><span class="crayon-cn">1000</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def683970085396-24"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">.</span><span class="crayon-e">map</span><span class="crayon-sy">(</span><span class="crayon-v">t</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">t</span><span class="crayon-h"> </span><span class="crayon-o">+</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-o">*</span><span class="crayon-h"> </span><span class="crayon-cn">100</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b9fe85def683970085396-25"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def683970085396-26"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">log</span><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">xs</span><span class="crayon-sy">.</span><span class="crayon-e">merge</span><span class="crayon-sy">(</span><span class="crayon-v">input</span><span class="crayon-sy">$</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">ticks</span><span class="crayon-sy">$</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b9fe85def683970085396-27">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def683970085396-28"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">trigger</span><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">ticks</span><span class="crayon-sy">$</span></div><div class="crayon-line" id="crayon-5b9fe85def683970085396-29"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">.</span><span class="crayon-e">drop</span><span class="crayon-sy">(</span><span class="crayon-cn">2</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def683970085396-30"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">.</span><span class="crayon-e">debug</span><span class="crayon-sy">(</span><span class="crayon-sy">(</span><span class="crayon-v">i</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-e">logger</span><span class="crayon-sy">(</span><span class="crayon-sy">`</span><span class="crayon-e">trigger </span><span class="crayon-v">tick</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-sy">$</span><span class="crayon-sy">{</span><span class="crayon-v">i</span><span class="crayon-sy">}</span><span class="crayon-sy">`</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b9fe85def683970085396-31"><span class="crayon-h"> </span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def683970085396-32"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">request</span><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">trigger</span><span class="crayon-sy">$</span></div><div class="crayon-line" id="crayon-5b9fe85def683970085396-33"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">.</span><span class="crayon-e">map</span><span class="crayon-sy">(</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def683970085396-34"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">url</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">'http://jsonplaceholder.typicode.com/users/1'</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-5b9fe85def683970085396-35"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">method</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">'GET'</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def683970085396-36"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b9fe85def683970085396-37">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def683970085396-38"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">response</span><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">sources</span><span class="crayon-sy">.</span><span class="crayon-i">HTTP</span></div><div class="crayon-line" id="crayon-5b9fe85def683970085396-39"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">.</span><span class="crayon-e">select</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def683970085396-40"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">.</span><span class="crayon-e">flatten</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5b9fe85def683970085396-41"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">user1Data</span><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">response</span><span class="crayon-sy">$</span><span class="crayon-sy">.</span><span class="crayon-e">map</span><span class="crayon-sy">(</span><span class="crayon-v">response</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-v">response</span><span class="crayon-sy">.</span><span class="crayon-v">body</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def683970085396-42"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-m">const</span><span class="crayon-h"> </span><span class="crayon-v">exit</span><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">user1Data</span><span class="crayon-sy">$</span></div><div class="crayon-line" id="crayon-5b9fe85def683970085396-43"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">.</span><span class="crayon-e">map</span><span class="crayon-sy">(</span><span class="crayon-v">u</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-sy">{</span><span class="crayon-h"> </span><span class="crayon-v">status</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-cn">200</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">body</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-v">u</span><span class="crayon-sy">}</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def683970085396-44">&nbsp;</div><div class="crayon-line" id="crayon-5b9fe85def683970085396-45"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">return</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def683970085396-46"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">FaaS</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-v">exit</span><span class="crayon-sy">$</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-5b9fe85def683970085396-47"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">log</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-v">log</span><span class="crayon-sy">$</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def683970085396-48"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">HTTP</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-v">request</span><span class="crayon-sy">$</span></div><div class="crayon-line" id="crayon-5b9fe85def683970085396-49"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fe85def683970085396-50"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-5b9fe85def683970085396-51"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0166 seconds] -->
+<p>One issue that needs to be ironed out is sometimes exceptions such as syntax errors get lost and not presented in the Functions Logs. That&#8217;s probably xstream not re throwing captured exceptions. For now the fix is to put try&#8230;catch(log) blocks around parts of the code to get visibility.</p>
+<p>What do you think. Does this approach work for you?</p>
+											</div><!-- .entry-content -->
+
+
+					<div class="entry-utility">
+						This entry was posted in <a href="/openingaccessibility/category/development/" rel="category tag">development</a>, <a href="/openingaccessibility/category/web/" rel="category tag">web</a> and tagged <a href="/openingaccessibility/tag/javascript/" rel="tag">javascript</a>, <a href="/openingaccessibility/tag/reactive-programming/" rel="tag">Reactive Programming</a>, <a href="/openingaccessibility/tag/serverless/" rel="tag">serverless</a>. Bookmark the <a href="/openingaccessibility/2016/10/exploring-reactive-streams-with-serverless-xstream-cyclejs-and-azure-functions/" title="Permalink to Using reactive streams on serverless with cyclejs, xstream and Azure Functions" rel="bookmark">permalink</a>.											</div><!-- .entry-utility -->
+				</div><!-- #post-## -->
+
+				<div id="nav-below" class="navigation">
+					<div class="nav-previous"><a href="/openingaccessibility/2016/09/is-the-web-getting-less-webby/" rel="prev"><span class="meta-nav">&larr;</span> Is the web getting less webby and will serverless make it worse?</a></div>
+					<div class="nav-next"><a href="/openingaccessibility/2017/03/at-last-true-grids-in-web-browsers/" rel="next">At last — true grids in web browsers <span class="meta-nav">&rarr;</span></a></div>
+				</div><!-- #nav-below -->
+
+				<a href="#wrapper" class="skip-content screen-reader-text">Skip to top</a><h2 class="screen-reader-text">Comments</h2>
+			<div id="comments">
+
+
+
+	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/openingaccessibility/2016/10/exploring-reactive-streams-with-serverless-xstream-cyclejs-and-azure-functions/#respond" style="display:none;">Cancel reply</a></small></h3>			<form action="/openingaccessibility/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+				<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" value="" size="30" maxlength="200" /></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='699' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="53c8081b6c" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="10"/></p>			</form>
+			</div><!-- #respond -->
+	
+</div><!-- #comments -->
+
+
+			</div><!-- #content -->
+		</div><!-- #container -->
+
+<h2 class="screen-reader-text">More informations</h2>
+		<div id="primary" class="widget-area" role="complementary">
+			<ul class="xoxo">
+
+<li id="search-2" class="widget-container widget_search"><form role="search" method="get" id="searchform" class="searchform" action="/openingaccessibility/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s" />
+					<input type="submit" id="searchsubmit" value="Search" />
+				</div>
+			</form></li>		<li id="recent-posts-2" class="widget-container widget_recent_entries">		<h3 class="widget-title">Recent Posts</h3>		<ul>
+											<li>
+					<a href="/openingaccessibility/2017/03/at-last-true-grids-in-web-browsers/">At last — true grids in web browsers</a>
+									</li>
+											<li>
+					<a href="/openingaccessibility/2016/10/exploring-reactive-streams-with-serverless-xstream-cyclejs-and-azure-functions/">Using reactive streams on serverless with cyclejs, xstream and Azure Functions</a>
+									</li>
+											<li>
+					<a href="/openingaccessibility/2016/09/is-the-web-getting-less-webby/">Is the web getting less webby and will serverless make it worse?</a>
+									</li>
+											<li>
+					<a href="/openingaccessibility/2016/05/aws-azure-or-firebase-for-a-spa-browser-app/">AWS, Azure or Firebase for a SPA browser app? Nope, it&#8217;s Kinvey</a>
+									</li>
+											<li>
+					<a href="/openingaccessibility/2016/05/i-dont-care-about-the-os-just-give-me-my-web-apps/">&#8220;I don&#8217;t care about the OS, just give me my web Apps&#8221;</a>
+									</li>
+					</ul>
+		</li><li id="categories-2" class="widget-container widget_categories"><h3 class="widget-title">Categories</h3><form action="/openingaccessibility" method="get"><label class="screen-reader-text" for="cat">Categories</label><select  name='cat' id='cat' class='postform' >
+	<option value='-1'>Select Category</option>
+	<option class="level-0" value="5">a11y&nbsp;&nbsp;(12)</option>
+	<option class="level-0" value="32">age&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="16">Android&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="23">Apps&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="27">Assistve Technology&nbsp;&nbsp;(5)</option>
+	<option class="level-0" value="31">Audio&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="19">bass&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="20">dementia&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="28">development&nbsp;&nbsp;(12)</option>
+	<option class="level-0" value="53">devops&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="21">HTML&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="38">mobile&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="25">mobile a11y&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="18">music&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="3">opena11y&nbsp;&nbsp;(5)</option>
+	<option class="level-0" value="4">opensource&nbsp;&nbsp;(11)</option>
+	<option class="level-0" value="30">OS X&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="6">personal&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="34">PHP&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="55">serverless&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="29">ss12eu&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="1">Uncategorized&nbsp;&nbsp;(15)</option>
+	<option class="level-0" value="17">Video&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="9">web&nbsp;&nbsp;(10)</option>
+	<option class="level-0" value="26">web a11y&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="54">web apps&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="22">Win8&nbsp;&nbsp;(4)</option>
+	<option class="level-0" value="35">Windows&nbsp;&nbsp;(8)</option>
+	<option class="level-0" value="33">WordPress&nbsp;&nbsp;(1)</option>
+</select>
+</form>
+<script type='text/javascript'>
+/* <![CDATA[ */
+(function() {
+	var dropdown = document.getElementById( "cat" );
+	function onCatChange() {
+		if ( dropdown.options[ dropdown.selectedIndex ].value > 0 ) {
+			dropdown.parentNode.submit();
+		}
+	}
+	dropdown.onchange = onCatChange;
+})();
+/* ]]> */
+</script>
+
+</li><li id="linkcat-2" class="widget-container widget_links"><h3 class="widget-title">CMS Accessibility Blogs</h3>
+	<ul class='xoxo blogroll'>
+<li><a href="http://accessible.sprungmarker.de/" title="Home for Sylvia Egger&#8217;s Twenty Ten child theme and other musings">Accessibile Twitter</a></li>
+<li><a href="http://groups.drupal.org/accessibility">Drupal Accessibility group</a></li>
+<li><a href="http://make.wordpress.org/accessibility/" title="What it says on the tin &#8211; improving WP a11y">WordPress accessibility</a></li>
+
+	</ul>
+</li>
+<li id="linkcat-24" class="widget-container widget_links"><h3 class="widget-title">Web Accessibility Blogs</h3>
+	<ul class='xoxo blogroll'>
+<li><a href="http://www.456bereastreet.com/" title="Roger Johansson is one of the most active and knowledgeable accessibility bloggers.">456 Berea Street</a></li>
+<li><a href="https://medium.com/@dennisl/" title="Dennis E. Lembree&#8217;s blog (the man behind EasyChirp and @webaxe)">Dennis Lembrée</a></li>
+<li><a href="http://www.iheni.com/" title="Mobile and web accessibility goodness">Henny Swan</a></li>
+<li><a href="http://juicystudio.com/" title="Gez Lemon provides some of the most influential research and writing in the accessibility field, particularly on the technical aspects of accessibility and assistive technologies">Juicy Studio</a></li>
+<li><a href="http://blog.paciellogroup.com/" title="Blog from the leading supplier of commercial accessibility services and posts by the mighty Steve Faulkner">The Paciello Group</a></li>
+<li><a href="http://webaim.org/blog/" title="Jarrad and the crew at webAIM produce some of the best introductory and advanced articles on web accessibility">WebAIM</a></li>
+<li><a href="http://www.webaxe.org/" title="The Blog and podcast on Web Accessibility">WebAxe</a></li>
+
+	</ul>
+</li>
+<li id="meta-2" class="widget-container widget_meta"><h3 class="widget-title">Meta</h3>			<ul>
+						<li><a href="/openingaccessibility/wp-login.php">Log in</a></li>
+			<li><a href="/openingaccessibility/feed/">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="/openingaccessibility/comments/feed/">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>			</ul>
+			</li>			</ul>
+		</div><!-- #primary .widget-area -->
+
+	</div><!-- #main -->
+
+	<div id="footer" role="contentinfo">
+		<div id="colophon">
+
+<h2 class="screen-reader-text">More informations</h2>
+
+			<div id="site-info">
+				<a href="/openingaccessibility/" title="Opening Accessibility" rel="home">
+					Opening Accessibility				</a>
+			</div><!-- #site-info -->
+
+			<div id="site-generator">
+				<a href="#wrapper" class="skip-bottom screen-reader-text">Skip to top</a>				<a href="https://wordpress.org/" title="Semantic Personal Publishing Platform">Proudly powered by WordPress.</a>
+			</div><!-- #site-generator -->
+
+		</div><!-- #colophon -->
+	</div><!-- #footer -->
+
+</div><!-- #wrapper -->
+
+<script type='text/javascript' src='/openingaccessibility/wp-includes/js/comment-reply.min.js?ver=4.9.8'></script>
+<script type='text/javascript' src='/openingaccessibility/wp-includes/js/wp-embed.min.js?ver=4.9.8'></script>
+<script async="async" type='text/javascript' src='/openingaccessibility/wp-content/plugins/akismet/_inc/form.js?ver=4.0.8'></script>
+</body>
+</html>

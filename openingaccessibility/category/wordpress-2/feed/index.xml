@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>WordPress &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/category/wordpress-2/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Sending emails with PHP on cheap hosting</title>
+		<link>/openingaccessibility/2013/12/sending-emails-with-php-on-cheap-hosting/</link>
+		<comments>/openingaccessibility/2013/12/sending-emails-with-php-on-cheap-hosting/#respond</comments>
+		<pubDate>Mon, 09 Dec 2013 10:56:35 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[opensource]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[web]]></category>
+		<category><![CDATA[WordPress]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=318</guid>
+		<description><![CDATA[Many cheap or free share hosting services block the PHP mail() function so it silently does nothing. For example, I just added a contact form to a small WordPress based web site for a friend but it didn&#8217;t work as &#8230; <a href="/openingaccessibility/2013/12/sending-emails-with-php-on-cheap-hosting/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Many cheap or free share hosting services block the PHP mail() function so it silently does nothing. For example, I just added a contact form to a small <a href="http://wordpress.org/">WordPress</a> based <a href="http://davidburchfieldpoetry.com/">web site</a> for a friend but it didn&#8217;t work as the web hoster, xtreemhost, block it (or everything gets heavily spam filtered, which amounts to the same thing).</p>
+<p>The solution is to use a separate SMTP mail server and this is actually quite simple using one of the most popular PHP mail solutions <a href="https://github.com/PHPMailer/PHPMailer">PHPMailer</a> and a Gmail or Google Apps email account. Most SMTP servers will block such so called &#8220;relaying&#8221; when sending from different domain to the mail server. However, if you have a GMail account you can use the Google SMTP server authenticated as that user.</p>
+<p>In my case, I just added a new account to our family domain running on GApps and used that. I added the minimum PHPMailer files required (<a id="ace81e501931d8763b49f2410cf3094d-2f6831a81eeafba4b38f3bb4959db412d948c546" title="class.phpmailer.php" href="https://github.com/PHPMailer/PHPMailer/blob/master/class.phpmailer.php">class.phpmailer.php</a>, <a id="ac5c95a7c256b389656048bd46dc2985-6366724a761f25e8b601b45f39460fc54707c3bc" title="class.smtp.php" href="https://github.com/PHPMailer/PHPMailer/blob/master/class.smtp.php">class.smtp.php</a> and <a id="5114544afadc9af298ba54a73467bf22-be0dad2537abf6688545a56f77e84b89ea0ca904" title="PHPMailerAutoload.php" href="https://github.com/PHPMailer/PHPMailer/blob/master/PHPMailerAutoload.php">PHPMailerAutoload.php</a>) along with a child theme with my new mail() function in the functions.php file. Well, actually, I found the PHP override/replace functions for built-ins didn&#8217;t work so I had to edit the plugin code to use a new mail function explicitly, rather than just redefining it in the child theme. Not ideal, but an acceptable maintenance weak point.</p>
+<p>The PHPMailer examples include one for <a href="https://github.com/PHPMailer/PHPMailer/blob/master/examples/gmail.phps">using GMail SMTP</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2013/12/sending-emails-with-php-on-cheap-hosting/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

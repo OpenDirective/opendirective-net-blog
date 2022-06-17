@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+>
+
+<channel>
+	<title>kudu &#8211; AzureServerless</title>
+	<atom:link href="/azureserverless/tag/kudu/feed/" rel="self" type="application/rss+xml" />
+	<link>/azureserverless/</link>
+	<description>Using Microsoft Azure in a Serverless mode</description>
+	<lastBuildDate>Tue, 05 Sep 2017 08:46:08 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+
+<image>
+	<url>/azureserverless/wp-content/uploads/2016/11/cropped-Functions-32x32.png</url>
+	<title>kudu &#8211; AzureServerless</title>
+	<link>/azureserverless/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">119351739</site>	<item>
+		<title>Access live Azure Functions with a console</title>
+		<link>/azureserverless/2017/03/26/access-live-azure-functions-with-a-console/</link>
+		<comments>/azureserverless/2017/03/26/access-live-azure-functions-with-a-console/#respond</comments>
+		<pubDate>Sun, 26 Mar 2017 10:25:11 +0000</pubDate>
+		<dc:creator><![CDATA[steve@opendirective.com]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Functions]]></category>
+		<category><![CDATA[kudu]]></category>
+
+		<guid isPermaLink="false">/azureserverless/?p=243</guid>
+		<description><![CDATA[Sometimes you want to explore or update a live Function App filesystem, possibly to test solutions to problems. You might even want to execute commands directly on the live function rather than go through the usual &#8220;local build / deploy&#8221; or &#8220;CI&#8221; process. If you&#8217;ve already discovered the &#8216;Function App [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>Sometimes you want to explore or update a live Function App filesystem, possibly to test solutions to problems. You might even want to execute commands directly on the live function rather than go through the usual &#8220;local build / deploy&#8221; or &#8220;CI&#8221; process.</p>
+<p>If you&#8217;ve already discovered the &#8216;Function App Settings&#8217; -&gt; &#8216;Open dev console&#8217; button it&#8217;s likely you rapidly became frustrated with the lack of command line features. Specifically, the absence of Arrow key navigation and Tab completion makes for a most annoying time.</p>
+<p>The solution is use the &#8216;Go to Kudu&#8217; button. Although this is in the &#8216;Deployment&#8217; section, the home view is a very usable console along with a basic file explorer. You&#8217;ll need to navigate to your function app first though. A neat feature is the CD in the console stays in sync with the file explorer and visa versa.</p><pre class="crayon-plain-tag">cd site\wwwroot\FunctionApp</pre><p><img class="size-medium wp-image-244 aligncenter" src="/azureserverless/wp-content/uploads/2017/03/Screenshot-22-300x239.png" alt="" width="300" height="239" srcset="/azureserverless/wp-content/uploads/2017/03/Screenshot-22-300x239.png 300w, /azureserverless/wp-content/uploads/2017/03/Screenshot-22-768x612.png 768w, /azureserverless/wp-content/uploads/2017/03/Screenshot-22-1024x816.png 1024w, /azureserverless/wp-content/uploads/2017/03/Screenshot-22.png 1073w" sizes="(max-width: 300px) 100vw, 300px" /></p>
+<p>Kudu provides extensive developer access to the Web App service and scripts that Functions run on, including access to logs and the environment. Much of this is neatly packaged in the Functions Panel but sometimes it&#8217;s useful to get to the raw information, not just for deployment.</p>
+]]></content:encoded>
+			<wfw:commentRss>/azureserverless/2017/03/26/access-live-azure-functions-with-a-console/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">243</post-id>	</item>
+	</channel>
+</rss>

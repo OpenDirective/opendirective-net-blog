@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>FirefoxOS &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/tag/firefoxos/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Flashing Firefox OS onto a Flame with Windows</title>
+		<link>/openingaccessibility/2014/10/flashing-firefox-os-on-windows-2/</link>
+		<comments>/openingaccessibility/2014/10/flashing-firefox-os-on-windows-2/#respond</comments>
+		<pubDate>Sat, 18 Oct 2014 16:05:51 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[FirefoxOS]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=452</guid>
+		<description><![CDATA[Since being involved in the Mozilla Tablet Contribution Program I&#8217;ve seen community members often asked about flashing and building on Windows. This seems to be a something of a FAQ for both the &#8216;flatfish&#8217; tablet and &#8216;flame&#8217; reference phone, and &#8230; <a href="/openingaccessibility/2014/10/flashing-firefox-os-on-windows-2/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Since being involved in the Mozilla <a href="https://wiki.mozilla.org/FirefoxOS/TCP">Tablet Contribution Program</a> I&#8217;ve seen community members often asked about flashing and building on Windows. This seems to be a something of a FAQ for both the &#8216;flatfish&#8217; tablet and <a href="https://developer.mozilla.org/en-US/Firefox_OS/Developer_phone_guide/Flame">&#8216;flame&#8217; reference phone</a>, and I wonder if not also for other devices. The Firefox OS development community concentrate on using Linux and Mac OS X, which is another OS with UNIX roots, being based on BSD. Thus support for Windows has been a low priority; why bother when Linux is freely available on any device and works so well?</p>
+<p>It turns out the demand and suitability of using a Windows host is quite different for flashing and for building Firefox OS. It makes every sense for flashing, but not so for building. In this post I&#8217;ll explore flashing and introduce shallow_flash.bat for Flame. I&#8217;ll leave building Firefox OS on Windows to a later post</p>
+<p><strong>Flashing</strong></p>
+<p>Flashing a phone is something any community member with a phone might want to do and significant numbers of our wonderful community are not particularly technical and/or many have only a Windows machine at hand. While automatic &#8220;Over The Air&#8221; (OTA) updates are often available direct to the device, either from the device vendor or Mozilla, these may not meet the user&#8217;s requirements. Some vendors do provide flashing updates but often at their own cadence, leaving users a long way behind the latest versions.</p>
+<p>There are currently 3 channels of Mozilla supplied Firefox OS updates, with varying levels stability. Release is the most stable and vendors will usually supply and support this. Next is nighlty Aurora, the Beta channel which is fairly stable and just right for early adopters. Finally nightly Master is the latest developer build and likely to be buggy or broken. (Mozilla devs checkin directly to the master branch and don&#8217;t use a GitFlow type workflow). We really want people to be testing and improving the latest less stable channels if they are willing to. However, the only way to switch between these channels, say to Aurora from the supplied Release, is to flash your device.</p>
+<p>A flashing wrinkle is that some devices, like flatfish, currently use a full flash which updates the entire software stake of Gonk, Gecko and Gaia. Other devices, like the flame, take the approach of flashing a base full-stack image and then partially flashing updates to Gecko and Gaia. At some point another full flash will be required, usually when a new Gonk lands.</p>
+<p>Part of the reason for this is that some of the vendor supplied hardware specific components in Gonk cannot be freely redistributed in isolation by Mozilla due to licensing. Ideally, for Firefox OS to be fully open, no such restrictions would apply but the reality is different. For now these proprietary binary blobs get supplied as vendor images that are either combined with Mozilla generated code in a single flash, or provided as a base version for use with subsequent so called shallow flashing of Gecko and Gaia.</p>
+<p>Practically however, flashing is almost entirely a matter of running a program to talk to the device and copying files across. This can be done manually but is usually done with a script to combine all the steps and components. In fact, 2 programs from Android are used; ADB and Fastboot. These are similar but have different features and require the device to be in distinct states so they can communicate. Windows versions of these are available, but Windows also often requires device specific USB drivers, though the standard Android ones do often work.</p>
+<p>Flashing on Windows is not only desirable but also now achievable. For the TCP flatfish we&#8217;ve been providing Windows scripts to do the flash. The base versions for flame also have usable Windows scripts.   However, for devices like Flame, the &#8216;<a href="https://github.com/Mozilla-TWQA/B2G-flash-tool/blob/master/shallow_flash.sh">shallow_flash</a>&#8216; script provided by the <a href="https://github.com/Mozilla-TWQA/B2G-flash-tool">Mozilla Taiwan QA group</a> is written for use on Linux. Now however, after a couple of minor tweaks it also works on <a href="https://cygwin.com/">Cygwin</a>, a popular Linux emulator for Windows.</p>
+<p>Cygwin is fine for anyone with experience of the Linux command line. However those less technical are likely to be uncomfortable with its idiosyncratic installer and quite confused by the Linux-style command line, especially as the file paths are different to Windows.</p>
+<p>I wanted to make flashing much easier on Windows, especially after helping someone update their Flame to 2.1. So now a Windows script &#8216;<a href="https://github.com/Mozilla-TWQA/B2G-flash-tool/blob/master/shallow_flash.bat">shallow_flash.bat</a>&#8216; hides much of the complexity of using Cygwin and running shallowflash.sh. All that is required is to install Cygwin, copy the required Gecko and Gaia archive files and double click on the script to run it.</p>
+<p>I plan to update the script to make the Cygwin installation a little easier too.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2014/10/flashing-firefox-os-on-windows-2/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Flashing Mozilla Firefox OS Flame Phone on Windows</title>
+		<link>/openingaccessibility/2014/09/flashing-firefox-os-on-windows/</link>
+		<comments>/openingaccessibility/2014/09/flashing-firefox-os-on-windows/#comments</comments>
+		<pubDate>Fri, 26 Sep 2014 17:59:25 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[FirefoxOS]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=443</guid>
+		<description><![CDATA[tl;dr the shallow_flash.sh file used to flash Firefox OS nightly builds t to phones such as the Flame now works on Cygwin on Windows. The reason for previous failure and the solution highlight a difference between Linux and Windows. Mozilla&#8217;s &#8230; <a href="/openingaccessibility/2014/09/flashing-firefox-os-on-windows/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p><strong>tl;dr the shallow_flash.sh file used to flash Firefox OS nightly builds t to phones such as the Flame now works on Cygwin on Windows. The reason for previous failure and the solution highlight a difference between Linux and Windows.<br />
+</strong></p>
+<p>Mozilla&#8217;s <a href="https://developer.mozilla.org/en-US/Firefox_OS">Firefox OS</a> is undergoing rapid development, with the cutting edge nightly builds <a href="/openingaccessibility/wp-content/uploads/2014/09/Firefox-OS-Flame-Reference-Device-small.png"><img class="alignright size-full wp-image-444" src="/openingaccessibility/wp-content/uploads/2014/09/Firefox-OS-Flame-Reference-Device-small.png" alt="Firefox-OS-Flame-Reference-Device-small" width="150" height="305" srcset="/openingaccessibility/wp-content/uploads/2014/09/Firefox-OS-Flame-Reference-Device-small.png 150w, /openingaccessibility/wp-content/uploads/2014/09/Firefox-OS-Flame-Reference-Device-small-147x300.png 147w" sizes="(max-width: 150px) 100vw, 150px" /></a>now at version 2.2 (as compared to the less frequent Vendor supplied builds). Each Firefox OS phone has slightly different mechanism for flashing using these Mozilla builds but the general approach is similar. Basically a base version of all the full software stack (Gonk, Gecko and Gaia) is available for flashing and then partial builds update just Gecko and Gaia). There are also OTA updates that can be just Gecko &amp; Gaia not requiring a reboot, or a full update (FOTA) requiring a reboot.</p>
+<p>Firefox OS developers almost exclusively use Linux, or OS X. This is for good reasons,. In particular building on Windows can be slow as it is not so hot at processing lots of small files as required for a build. Something I soon found when building Desktop Firefox on my Windows laptop.</p>
+<p>However, when it comes to flashing, we find that people who are not building the software also want to use the pre-built images on their phones and these community members are often using Windows. They often do not wish to build and may not be particularly technical. Also the Mozilla builds have been created with a full set of features that can be lacking from personal builds (at least they are from mine).</p>
+<p>Unfortunately the official &#8216;shallow_flash.sh&#8217; script used for the partial flashes has been developed for linux. Although it should work on the <a href="https://cygwin.com/">Cygwin</a> linux &#8217;emulator&#8217; for Windows, flashed phones would never reboot. This has now been fixed.</p>
+<p>The core problem with the script highlights another reason Linux is better than Windows for Firefox OS development. In short, Firefox OS uses the Linux kernel and HAL layer from Android. Thus the close match between target and host operating systems when using Linux reduces many problems. In particular, some of the files contained in the Gecko updates require the X (executable) file attribute in order for Firefox OS to work at all. Windows doesn&#8217;t have this attribute and so when the files are unarchived and pushed to the phone the x attribute is lost resulting in a dead phone. In fact Cygwin tries to emulate the x attribute, but it really only pretends it is on for files it thinks are executable, something completely useless for the Firefox OS files in question.</p>
+<p>The good news is Cygwin provides all the wonderful *nix commands which have been used for years to perform administrative magic with seemingly little effort. The philosophy of using small focussed tools in combinations in order to get the job done comes to the rescue here. A single line can be added to the script to reset all those x attributes that got lost, Here it is</p><pre class="crayon-plain-tag">run_adb shell chmod 777 $(tar -tvf $GECKO_TAR_FILE | awk '$1 ~ /^[^d].*x$/ {print &quot;/system/&quot; $NF}')</pre><p>Without going into details this extracts from the .tar.gz archive the list of files with x set (and that are not also directories) and passes it to chmod to set the x attribute on the files on the phone. Simples.</p>
+<p>While I was at it I also fixed a bug with the way local files were handled. A hack copying files to a temporary folder worked around the problem and could be removed with a simple fix. Also, when testing we found problems if the files were place in a folder with spaces in the name so that was fixed too.</p>
+<p>Until the patch is merged in you can find the fixed version of shallow_flash.sh in <a href="https://github.com/Mozilla-TWQA/B2G-flash-tool/pull/276">this pull request </a>.</p>
+<p>In addition as the person this work  was for is not especially technical, I created <a href="http://opendirective.net/b2g/flame/B2GShallowFlash.zip">a single zip file</a> containing the script, the Firefox OS update files and a minimal version of Cygwin. This gives an easy download, unzip and run flash.bat UX. Since the Cygwin installer is complex and hardly accessible this might be useful to other folks too.</p>
+<p>As a foot note having submitted this pull request I found someone else had recently submitted a similar pull request (though only setting the x attribute on a few predefined files).  I do wish I had seen this one earlier as it took some time to figure it was the x attribute causing the problem. Heh. Such is open source <img src="https://s.w.org/images/core/emoji/11/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2014/09/flashing-firefox-os-on-windows/feed/</wfw:commentRss>
+		<slash:comments>10</slash:comments>
+		</item>
+		<item>
+		<title>Help: I bricked my Firefox OS device by enabling the Accessibility Screen Reader!</title>
+		<link>/openingaccessibility/2014/05/help-i-bricked-my-firefox-os-1-3-device-by-enabling-the-accessibility-screen-reader/</link>
+		<comments>/openingaccessibility/2014/05/help-i-bricked-my-firefox-os-1-3-device-by-enabling-the-accessibility-screen-reader/#comments</comments>
+		<pubDate>Thu, 22 May 2014 10:00:42 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[a11y]]></category>
+		<category><![CDATA[FirefoxOS]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=393</guid>
+		<description><![CDATA[Well you would fiddle, wouldn&#8217;t you! 😉 The screen reader feature as introduced in Firefox OS 1.3 is experimental &#8211; hence it is burried away in the developer settings. If you are not familiar with mobile screen readers you will &#8230; <a href="/openingaccessibility/2014/05/help-i-bricked-my-firefox-os-1-3-device-by-enabling-the-accessibility-screen-reader/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Well you would fiddle, wouldn&#8217;t you! <img src="https://s.w.org/images/core/emoji/11/72x72/1f609.png" alt="😉" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p>The screen reader feature as introduced in Firefox OS 1.3 is experimental &#8211; hence it is burried away in the developer settings. If you are not familiar with mobile screen readers you will find it difficult to turn it off once enabled, but it can be done if you learn a couple of new gestures. In 1.4, and beyond, the screen reader is more mature, easier to access and there is another way to toggle it on/off it using the volume up/down buttons.</p>
+<p><strong>tl;dr if you&#8217;ve just selected &#8220;screen reader&#8221; then double tap &#8220;screen reader&#8221; again to unselect it. If you have 1.4 use the volume key toggle explained below; If you&#8217;ve been tapping and swiping on 1.3 and gotton yourself into a right old mess then you need to navigate back to the &#8220;screen reader&#8221; option first. Do this by swiping right or left <strong>to move the selection rectangle </strong>and double tapping to drill down into the settings. This is similar to using Tab, Shift+Tab and Enter on a desktop. There may be scrolling bugs so sometimes you may find you can&#8217;t see the rectangle but the speech should tell you where it is  (just like it supposed too).<br />
+</strong></p>
+<p>So how DO you turn it off? Well first you have to realise that the screen reader is designed for people with no or very impared vision. These users need a different way of interacting with the device that gives clear feedback on were they are in the UI. Thus speech indicates selected items in the UI and taps and swipes work differently to avoid accidently activating the wrong thing.</p>
+<p>For the main gestures you might like to think of the touchscreen with the screen reader enabled as being a separate trackpad so there is no direct relationship with where you touch and what is on the screen at that point . Gestures can occur anywhere on the touch surface as follows.</p>
+<ul>
+<li><strong>Swipe left or right &#8211;</strong> selects the the next or previous item. One item is always selected and is shown with a focus rectangle drawn round it. This item is spoken about when it becomes selected.</li>
+<li><strong>Double tap</strong> &#8211; activates the selected item, just as if you had tapped on it when the screen reader is inactive</li>
+</ul>
+<p>Thus you can move to any item and activiate it using these 2 gestures. For example between list items, in and out of nested lists, between icons on the home screen or select a checkbox. Just look for the item with the rectangle round it to see what will happen when you double tap anywhere on the screen.</p>
+<p>Other screen reader gestures include:</p>
+<ul>
+<li><strong>Single press</strong> &#8211; selects item pressed. This alows random taps and provides orientation.</li>
+<li><strong>2 finger swipe</strong> &#8211; scrolls up/down or left/right</li>
+<li><strong>Audio preview</strong> &#8211; press and hold, then move fingure around so each item under the finger is selected and spoken.</li>
+</ul>
+<p>In Firefox OS 1.4 a new screen reader toggle on/off was introduced using the volume up and down buttons:</p>
+<ul>
+<li>Press volume up and volume down in succession 3 times (6 distinct presses).</li>
+<li>Get a voice prompt</li>
+<li>Press volume up and volume down in succession 3 times (6 distinct presses).</li>
+</ul>
+<p>See bug <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=957674">957674</a> for full details of this feature&#8217;s introduction.</p>
+<p>[UPDATE 22/05/14] Marco Zehe added some screen reader operation notes to the <a href="https://developer.mozilla.org/en-US/Firefox_OS/Debugging/Developer_settings#Show_accessibility_settings">MDN Firefox OS Developer Settings documentation</a></p>
+<p>[Update 2014-05-30] Added audio preview details.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2014/05/help-i-bricked-my-firefox-os-1-3-device-by-enabling-the-accessibility-screen-reader/feed/</wfw:commentRss>
+		<slash:comments>32</slash:comments>
+		</item>
+		<item>
+		<title>Success! Firefox OS 1.4 built and running on ZTE Open</title>
+		<link>/openingaccessibility/2014/04/success-firefox-os-1-4-built-and-running-on-zte-open/</link>
+		<comments>/openingaccessibility/2014/04/success-firefox-os-1-4-built-and-running-on-zte-open/#comments</comments>
+		<pubDate>Sun, 13 Apr 2014 14:29:24 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[mobile]]></category>
+		<category><![CDATA[FirefoxOS]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=362</guid>
+		<description><![CDATA[[Update 2013-04-13 : Trunk, currently 1.5.0.0 also happily builds and runs. Just use &#8220;BRANCH=master&#8221; with config and build] It&#8217;s been a long battle but I have finally got a Firefox OS 1.4 build running on the ZTE Open. I started &#8230; <a href="/openingaccessibility/2014/04/success-firefox-os-1-4-built-and-running-on-zte-open/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p><strong>[Update 2013-04-13 : Trunk, currently 1.5.0.0 also happily builds and runs. Just use &#8220;BRANCH=master&#8221; with config and build]</strong> It&#8217;s been a long battle but I have finally got a Firefox OS 1.4 build running on the ZTE Open. I started my career in embedded development but had quite forgot how &#8216;interesting&#8217; it can get, what with all the moving parts to get lined up (more thought&#8217;s below). To continue my <a href="/openingaccessibility/2014/04/zte-open-upgrading-to-firefox-os-1-2/">previous post on getting the 1.2 release from ZTE working</a>, I&#8217;ll now explain how to build and run Firefox OS 1.4 starting out with the the 1.0 installed on my device from ZTE on eBay. <a href="/openingaccessibility/wp-content/uploads/2014/04/WIN_20140413_153727-2.jpg"><img class="aligncenter size-medium wp-image-370" src="/openingaccessibility/wp-content/uploads/2014/04/WIN_20140413_153727-2-167x300.jpg" alt="WIN_20140413_153727 (2)" width="167" height="300" srcset="/openingaccessibility/wp-content/uploads/2014/04/WIN_20140413_153727-2-167x300.jpg 167w, /openingaccessibility/wp-content/uploads/2014/04/WIN_20140413_153727-2.jpg 401w" sizes="(max-width: 167px) 100vw, 167px" /></a> 1. Upgrade the phone to the FirefoxOS <a href="https://www.dropbox.com/sh/rnj3rja7gd54s98/kGH6LCBRmf">1.2 provided by ZTE</a> (US &amp; UK) and test. (Actually this is probably unnecessary) 2. Build 1.4 according to the <a href="Upgrade to 1.2 using the phone download method provided by ZTE (US &amp; UK)">MDN build instructions.</a>. I built the user version (no test apps and optimised)</p><pre class="crayon-plain-tag">cd B2G
+git pull
+./repo sync -d
+BRANCH=v1.4 VARIANT=user ./config.sh inari
+BRANCH=v1.4 VARIANT=user ./build.sh</pre><p>3. Flash the built .img files to the phone. This was the hard part to solve. Mozilla provide a nice little &#8216;flash.sh&#8217; script which wraps up all the details of using adb and fastboot for each device but I have never got it to work. Neither could I get a manual flash to work as described in the <a href="https://developer.mozilla.org/en-US/Firefox_OS/Developer_phone_guide/ZTE_OPEN">MDN ZTE open</a> page. The problem seems to that the ZTE fastbboot implementation reboots during a flash command (possible related to size of the image). The solution is to use the Windows NandDL_firefox tool provided as part of ZTE&#8217;s 1.2 release. This uses a special phone mode to copy files and flash them and does not require adb or fastboot. You may have realised that Firefox OS cannot be built on Windows (at least I have not tried with Cygwin or MinGW). Thus you need an VM or 2 machines. In my case I ran Ubuntu 12.04 as a guest on Windows 8.1 and shared the files between them. The only problem I&#8217;ve found is that even with almost 8GB and 4 cores in the guest some builds still fail with a mysterious build error 2. This is most likely due ot resources as a build on a Ubuntu machine is fine. To use the ZTE NandDL_firefox tool simple create a folder with the following files</p><pre class="crayon-plain-tag">boot.img
+partition.mbn
+partition_zte.mbn
+system.img
+userdata.img</pre><p>The 2 .mbn files are copied from the <a href="https://www.mediafire.com/?93rd9h278oq2z2m">ZTE 1.2 release</a> while system.img and userdata.img are those built and found in &#8230;/B2G/out/target/product/inari. That leaves boot.img which we need as the default ZTE 1.2 one does not work with the built images. Unfortunately this is not built for some reason (perhaps legal). However it is possible to create a working image such as <a href="https://www.mediafire.com/?93rd9h278oq2z2m">Emanuel Hoogeveen&#8217;s boot.img</a>  which I used (see <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=925502">bug 925502</a> for more details). To flash the phone:</p>
+<ol>
+<li>Install the Windows <a href="http://www.ztedevices.com/support/smart_phone/b5a2981a-1714-4ac7-89e1-630e93e220f8.html">ZTE USB driver</a>.</li>
+<li>Run the <a href="https://www.dropbox.com/sh/rnj3rja7gd54s98/kGH6LCBRmf">ZTE NandDL_firefox</a> tool (ensure the .bin file is in the same location as the exe).</li>
+<li>Remove the phone battery and press the volume up and down buttons while plugging into the computer via a USB cable.</li>
+<li>Select the folder containing the files.</li>
+<li>Ensure only the 3 image file (boot, system, userdata) are selected in the checkboxes.</li>
+<li>Click the bottom left button to start the upload.</li>
+<li>When the phone reboots remove the usb lead, fit the battery and restart.</li>
+<li>You may want to enter Recovery mode (hold volume up and power up) to clear the data and cash (ie factory reset).</li>
+</ol>
+<p>Once Firefox OS 1.2 or later is installed you can use the Firefox <a href="https://developer.mozilla.org/en-US/Firefox_OS/Using_the_App_Manager">App Manager</a> to manage your apps being developed on the phone, possibly in addition to developing them in the <a href="https://developer.mozilla.org/en-US/Firefox_OS/Using_the_App_Manager#Using_a_Firefox_OS_Simulator_Add-on">simulator</a>.</p>
+<h2>Final Thoughts</h2>
+<p>Mozilla&#8217;s reason for creating Fireox OS is to ensure everyone can access and particiapte in the internet/web using fully open mobile technology and services. This is an important part of the <a href="http://www.mozilla.org/en-GB/about/manifesto/">Mozilla Manifesto</a>. For this to work Mozilla needs partners who really get what openness means and, in particular, provide support for their devices thus allowing anyone to build and update the majority of software on the device and not just Apps (ideally all of the software should be buildable). Unfortunately ZTE have rather fallen short of this so far, making it extremely difficult for anyone wanting to develop Firefox OS on the ZTE Open. This can be easily seen by the result of a few web searches. Unfortunately this reflects badly on Firefox OS, and so Mozilla, as the developer experience with the ZTC Open is so <strong>very</strong> painful. I really hope ZTE will get on board and help play their part soon. The phone is certainly popular as a cheap developer device and they could do well with it while gaining respect from open mobile developers. We can only hope the partners behind devices like the Flame and soon-to-be- available Tablets are more switched on! The biggest pain point is ZTE&#8217;s failure to provide a full implementation of fastboot on the phone. This was supposed to have landed in their update to 1.1 but my and many other&#8217;s experience is it just does NOT work. Come on ZTE! I suspect that sadly many phones have been bricked and left in exasperation as  a nice orange paperweight. I know I nearly did that with mine. I&#8217;m so glad I didn&#8217;t do this as I can now play with almost any aspect of Firefox OS should I want/need to. That&#8217;s *my* definition of &#8220;Open&#8221;.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2014/04/success-firefox-os-1-4-built-and-running-on-zte-open/feed/</wfw:commentRss>
+		<slash:comments>35</slash:comments>
+		</item>
+		<item>
+		<title>ZTE Open &#8211; upgrading to Firefox OS 1.2</title>
+		<link>/openingaccessibility/2014/04/zte-open-upgrading-to-firefox-os-1-2/</link>
+		<comments>/openingaccessibility/2014/04/zte-open-upgrading-to-firefox-os-1-2/#comments</comments>
+		<pubDate>Sun, 06 Apr 2014 20:24:25 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[mobile]]></category>
+		<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[FirefoxOS]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=351</guid>
+		<description><![CDATA[[Continued in Success! Firefox OS 1.4 built and running on ZTE Open] I&#8217;ve just bought a ZTE Open phone with the intention of exploring Firefox OS, Mozilla&#8217;s new HTML-based, fully open mobile operating system. The idea was that at £54 &#8230; <a href="/openingaccessibility/2014/04/zte-open-upgrading-to-firefox-os-1-2/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p><strong>[Continued in <a href="/openingaccessibility/2014/04/success-firefox-os-1-4-built-and-running-on-zte-open/">Success! Firefox OS 1.4 built and running on ZTE Open</a>]</strong></p>
+<p>I&#8217;ve just bought a <a href="http://stores.ebay.co.uk/ZTE-Mobile-UK">ZTE Open</a> phone with the intention of exploring <a href="https://www.mozilla.org/en-US/firefox/os/">Firefox OS</a>, Mozilla&#8217;s new HTML-based, fully open mobile operating system. The idea was that at £54 pounds from ZTE Europe on eBay it is a very low cost entry into building <a href="https://marketplace.firefox.com/developers/">Firefox OS apps</a> or the <a href="https://developer.mozilla.org/en-US/Firefox_OS">OS itself</a>. Little did I expect it to be such a pain but the good news  is I finally managed to get it going and thought I should share how.</p>
+<p>The phone is OK but you get what you pay for. It reminds me of the very cheap Galaxy Europa I one brought a couple of years back.  With my fat fingers it&#8217;s very hard to type on the seemingly inaccurate and very small touch screen. A passive stylus doesn&#8217;t work either. However, it works well enough as a basic smartphone.</p>
+<p><a href="/openingaccessibility/wp-content/uploads/2014/04/open-orange.jpg"><img class="aligncenter size-medium wp-image-353" alt="ZTE Open" src="/openingaccessibility/wp-content/uploads/2014/04/open-orange-300x300.jpg" width="300" height="300" srcset="/openingaccessibility/wp-content/uploads/2014/04/open-orange-300x300.jpg 300w, /openingaccessibility/wp-content/uploads/2014/04/open-orange-150x150.jpg 150w, /openingaccessibility/wp-content/uploads/2014/04/open-orange.jpg 1000w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+<p>First the problem; the ZTE Open I received was at OS version 1.0 and I obviously want to hack on the latest (1.3 /1.4) and send updates to the phone. Also, the easiest entry  to developing apps is to use either the <a href="https://developer.mozilla.org/en-US/docs/Tools/Firefox_OS_Simulator">Firefox OS Simulator</a> or the <a href="https://developer.mozilla.org/en-US/Firefox_OS/Using_the_App_Manager">Apps Manager</a> connected to a real device running 1.2 or  higher.</p>
+<p>You know what it&#8217;s like, you hit a problem and Google throws up loads of fixes that have worked for others. The problem is that these solutions are often slightly different being discovered at various times since the problem 1st appeared and many subtle changes have occurred to the various bits of software or hardware, thus breaking the solutions. I got extremely frustrated and was even informed that the phone has been nicknamed the &#8220;ZTE Closed&#8221; by some folks at Mozilla. Anyway I won&#8217;t waste time on all the dead ends I tried but simply present the final solution that worked for me. I will just mention that I had no luck with the <a href="https://developer.mozilla.org/en-US/Firefox_OS/Developer_phone_guide/ZTE_OPEN">MDN page</a> or  <a href="https://hacks.mozilla.org/2014/01/upgrading-your-zte-open-to-firefox-1-1-or-1-2-fastboot-enabled/">Mozilla Hacks article</a> that&#8217;s worked for many &#8211; &#8220;fastboot devices&#8221; would just not work. I missed the note in that post to the solution that eventually worked for me (after a few problems). It might be due to my using Windows as host rather than Linux but I found the alternative solution before I tried on Linux.</p>
+<p>So the solution:</p>
+<ol>
+<li>Upgrade to 1.1B02 using the <a href="http://www.ztedevices.com/support/smart_phone/b5a2981a-1714-4ac7-89e1-630e93e220f8.html">SDCard method provide by ZTE</a> (US &amp; UK)</li>
+<li>Upgrade to 1.2 using the <a href="https://www.dropbox.com/sh/rnj3rja7gd54s98/kGH6LCBRmf">phone download method provided by ZTE</a> (US &amp; UK)</li>
+</ol>
+<p>The 1st step is probably not needed but I performed it as an early step anyway. I modified the second step to also update &#8220;system&#8221; which is not shown selected in the ZTE instructions.</p>
+<p><strong>ZTE Open Firmware site</strong></p>
+<p>As is so often the case once I finally solved it I found the perfect source of information. I don&#8217;t know who owns the site but <a href="https://sites.google.com/site/zteopenfirmware/fastboot">zteopenfirmware</a> is a real mine of information on the ZTE Open phones firmware. They even provide advice on using version 1.3 and 1.4 which I intend to build and flash soon as an exercise. While I discovered the same answer, I&#8217;d be hard put to provide such clear details on upgrading the ZTE Open. Thus I simply refer you to this excellent resource.</p>
+<p>Hopefully this short post will save a few others some pain. Good luck and happy hacking.</p>
+<p>PS. if you like such things, here is a draft <a href="http://www.movistar.co/documentos/manualesProductos/ZTE_Mozilla_Open_P752-Manual_de_Usuario.pdf">user manual for the ZTE Open</a> (pdf).</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2014/04/zte-open-upgrading-to-firefox-os-1-2/feed/</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+		</item>
+		<item>
+		<title>User experiences for low digital literacy and cognitive disabilities with Firefox</title>
+		<link>/openingaccessibility/2014/02/user-experiences-for-low-digital-literacy-and-cognitive-disabilities/</link>
+		<comments>/openingaccessibility/2014/02/user-experiences-for-low-digital-literacy-and-cognitive-disabilities/#respond</comments>
+		<pubDate>Tue, 25 Feb 2014 12:04:14 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[opensource]]></category>
+		<category><![CDATA[FirefoxOS]]></category>
+		<category><![CDATA[Low Digital Literacy]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=323</guid>
+		<description><![CDATA[[Update 2014-02-15] I&#8217;ve just discovered Mozilla X-Tag that allows extension elements to be created much like XBL. It&#8217;s a library rather than native browser implementation (&#8217;till W3C Web Components land) and I&#8217;m not sure if it allows nesting and inheritance which I &#8230; <a href="/openingaccessibility/2014/02/user-experiences-for-low-digital-literacy-and-cognitive-disabilities/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p><strong>[Update 2014-02-15] I&#8217;ve just discovered <a href="http://x-tags.org/">Mozilla X-Tag</a> that allows extension elements to be created much like XBL. It&#8217;s a library rather than native browser implementation (&#8217;till W3C <a href="https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/custom/index.html">Web Components</a> land) and I&#8217;m not sure if it allows nesting and inheritance which I used, but it&#8217;s a great start.</strong></p>
+<p>Back in 2007 I worked with University of Sheffield&#8217;s <a href="http://www.shef.ac.uk/scharr/sections/hsr/rrg/welcome">ScHARR RAT group</a> to create a prototype framework providing simple non threatening access to media and communications for people living with dementia. The <a href="http://maavis.fullmeasure.co.uk/">Maavis </a>design bucked the trend in full featured user experience by using a touch monitor, big buttons with text and images along with a consistent navigation model.</p>
+<p>Maavis provides access to photos, videos, music, web pages, programs and video calls , but avoids appearing to be a complicated computer. It proved very successful with the target audience, who welcomed it and enjoyed enhance communication experiences with others. We also found clear applications opportunities and interest for people with learning difficulties and other groups with low digital literacy.</p>
+<table cellpadding="0">
+<tbody>
+<tr>
+<td>
+<div>
+<p><a href="http://maavis.fullmeasure.co.uk/home/top.png?attredirects=0"><img alt="" src="http://maavis.fullmeasure.co.uk/_/rsrc/1287169751118/home/topTN.png" border="0" /></a></p>
+<div><a href="http://maavis.fullmeasure.co.uk/home/slideshow.png?attredirects=0"><img alt="" src="http://maavis.fullmeasure.co.uk/_/rsrc/1287169678999/home/slideshowTN.png" border="0" /></a></div>
+</div>
+</td>
+<td>
+<div><a href="http://maavis.fullmeasure.co.uk/home/choosephoto.png?attredirects=0"><img alt="" src="http://maavis.fullmeasure.co.uk/_/rsrc/1287169697531/home/choosephotoTN.png" border="0" /></a></div>
+<div><a href="http://maavis.fullmeasure.co.uk/home/info.png?attredirects=0"><img alt="" src="http://maavis.fullmeasure.co.uk/_/rsrc/1287169806018/home/infoTN.png" border="0" /></a></div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Since then of course, simpler touch enabled, button-based access has become the norm on phones and tablets and this is extending to touch enabled laptops with Windows 8, Ubuntu Linux and perhaps, even Android. The smaller friendly form factors of tablets coupled with apps that have simple user experiences have proved very effective with people living with dementia and others with low digital literacy. See for example the work of charity <a href="http://www.aliveactivities.org/">Alive!</a> in using iPads improving the quality of life of older people in care.</p>
+<p>However, there is in general apps a considerable complexity in interaction and cognitive load for the user groups Maavis is aimed at. Especially if they are to be use unassisted. Beyond the launcher home screens the experience is often complex, plus there is much inconsistency and lack of clear affordances showing how to interact. The range of gestures that are used may be good for proficient users but can be daunting to many. Thus there is still a clear need for something like Maavis.</p>
+<h2>What&#8217;s next?</h2>
+<p>It&#8217;s clear to OpenDirective that there is wide demand for products and services based on the Maavis concepts and in a number of market segments. In addition to the applications mentioned above, use in the third world is opening up with increased mobile device ownership infrastructure coupled with lack of historic experience with western tech. However,  despite tentative development efforts using HTML technology, further collaboration with ScHARR and funding application to Technology Strategy Board , OpenDirective have not yet shipped a product.</p>
+<p>I believe now is the time to play to our strengths which lie more in the &#8216;softer&#8217; tech skills of community and collaboration. Accordingly, in the newly launched Properity4All EC project OpenDirective is working on developing frameworks for low digital literacy and &#8220;stepping stone&#8221; applications that provide a bridge to stronger technical literacy. We will also be using our Maavis based product work (codenamed &#8216;Brian&#8217;) to evaluate the collaborative technology and tools developed in Prosperity4All. This work also builds on our participation in the related Cloud4All EC project where we have integrate Maavis with the automatic accessibility personalisation infrastructure being developed.</p>
+<p>These are exciting times for technological developments in support of those with low digital literacy and cognitive disabilities. Awareness of and commitment to support for living well with dementia  is growing across the board in the West as the population ages. That includes the recognition of the need for improved access to technology to be use as part of the proposed telecare solutions. In addition web accessibility has mature through the efforts many dedicated folks. Open Development and agile are also well embedded in commercial software developments. An  exciting recent development which specifically targets this area is the W3C <a href="http://www.w3.org/WAI/PF/cognitive-a11y-tf/">Cognitive and Learning Disabilities Accessibility Task Force</a> led by Lisa Seeman. Thus we now have a excellent opportunities for establishing good practices though community and frameworks.</p>
+<h2>From Mozilla Firefox XUL to HTML5</h2>
+<p>The <a href="http://maavis.fullmeasure.co.uk/">original Maavis</a> was developed as a Firefox extension, using the Mozilla XUL technology. This proved reasonable at the time, though as always there were hidden gotchas to be dealt with. The main reasons for choosing XUL were:</p>
+<ul>
+<li>Ability to run full screen in kiosk mode and appear to function as a windows program</li>
+<li>The firmly open collaborative stance of Mozilla and their dedication to accessibility</li>
+<li>Great community, especially support and access to the devs.</li>
+<li>Cross platform technology leaving few areas to be handled such as TextToSpeech</li>
+<li>Interesting HTML like tech with  XBL for custom tags and XPCOM for extensions</li>
+<li>JavaScript extensions such as code modules and more recent language version.</li>
+<li>Excellent tooling including debuggers and first class MDN docs</li>
+<li>Open source &#8211; goes without saying  but allows custom builds of Firefox as a very last resort</li>
+</ul>
+<p>Now however, times have moved on and the HTML5 etc technologies have matured rapidly, so much so that nearly all of those reasons apply equally to HTML technologies. New core features and APIs mean a simpler technical solution and frameworks add more value (at the risk of bloat and increased load times). Further, the VERY large number of people familiar with HTML removes one barrier to attracting developers. Plus HTML offers a fairly low skills entry barrier. Accordingly we&#8217;ve be working on using HTML for Brian.</p>
+<p>During the original development I hit 2 real pain points; crating a resizable grid layout of buttons and really simple video conferencing. I believe both these are now easily supported in HTML. The resizable &#8220;true grid&#8221; layout in particular was huge amount of work, requiring numerous hacks and work-arounds. This was well before responsive design was a twinkle in Ethan Marcotte&#8217;s eye but was a firm requirement. The solution I came up with used custom tags through XBL and I&#8217;m very pleased with the clean declarative solution to defining screens of buttons. However, XBL never &#8216;took&#8217; in HTML and while there are useable frameworks I&#8217;m not convinced they are the way to go. Now the <a href="http://dev.w3.org/csswg/css-grid/">CSS grid layout</a> looks like the perfect solution for layout.</p>
+<p>For video conferencing we wanted a really simple and uncluttered UX and in-fact Apple FaceTime which came out later was pretty much what we after. However, after trying the few  suitable video call apps we settled on trying to automate Skype. This was a nightmare. The APIs (at least those freely usable in an OpenSource project) only let you make or receive a call through the Skype programme, with all its horrid UI clutter and noise. Plus API bindings were severely limited. In the end I used a Python server, launched by Maavis which made the calls and also tried to control the Skype UI through synthesised key/mouse events. Naturally this is very fragile and it broke every Skype updated. I lost a lot of hair over this single feature which is easily the most popular with users. But now we have <a href="http://www.webrtc.org/">WebRTC</a> supported in three browsers (oh and Microsoft&#8217;s variant in IE) that allows more control and peer to peer calls. I am hopeful.</p>
+<h2>FirefoxOS</h2>
+<p>Firefox still looks very interesting as a platform in this space, but largely for different reasons to before. <a href="http://www.mozilla.org/en-US/firefox/partners">FirefoxOS</a><span style="text-decoration: underline;">&#8216;s</span> native support of HTML, coupled with the Marketplace app store and a truly open source solution are all strong pulls. The low cost of the <a href="http://reviews.cnet.com/8301-13970_7-57619338-78/with-firefox-os-mozilla-begins-the-$25-smartphone-push/">FirefoxOS mobile and tablet devices</a> coming out from Mozilla partners simply add to the attraction, especially if consider supporting the Global South. Mozilla are looking at africa later this year.</p>
+<p>We&#8217;ve previously looked at Windows Modern HTML apps, but while it has wide spread and is technically very good, it&#8217;s utterly commercial solution with there&#8217;s a awful lot of proprietary stack. Plus devices are currently all high end and so expensive.</p>
+<p>Time to explore FirefoxOS, especially now tablet support is being worked on.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2014/02/user-experiences-for-low-digital-literacy-and-cognitive-disabilities/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

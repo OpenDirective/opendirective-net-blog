@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Assistve Technology &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/category/assistve-technology/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Symbols for AAC using SVG and a RESTful web API</title>
+		<link>/openingaccessibility/2015/03/mulberry-symbols-for-aac-svg-and-apis/</link>
+		<comments>/openingaccessibility/2015/03/mulberry-symbols-for-aac-svg-and-apis/#comments</comments>
+		<pubDate>Sun, 29 Mar 2015 18:09:43 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[a11y]]></category>
+		<category><![CDATA[Apps]]></category>
+		<category><![CDATA[Assistve Technology]]></category>
+		<category><![CDATA[AAC]]></category>
+		<category><![CDATA[Symbols]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=490</guid>
+		<description><![CDATA[A good few years ago I hooked up with Garry Paxton who needed some development support for a charity website.  He had created straight-street.com to provide Speech and Language Therapists access to a new and freely available symbol set. Symbols &#8230; <a href="/openingaccessibility/2015/03/mulberry-symbols-for-aac-svg-and-apis/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>A good few years ago I hooked up with Garry Paxton who needed some development support for a charity website.  He had created <a href="http://straight-street.com/">straight-street.com</a> to provide Speech and Language Therapists access to a new and freely available symbol set. Symbols such as this Mulberry symbol set are vitally important for people with communication difficulties &#8211; such as an <a href="http://www.communicationmatters.org.uk/">inability to speak</a>. But often, like much in the AT world, proprietary symbols are expensive and so can be out of reach of many who would really benefit form them.</p>
+<p>While this work was carried out a few years ago I felt it should be documented and will hopefully inspire others to innovate.</p>
+<p><a href="http://straight-street.com/media/symbols/EN/svg/communication_aid.svg"><img class="alignnone" src="http://straight-street.com/media/symbols/EN/svg/communication_aid.svg" alt="Communication device" width="205" height="205" /></a><a href="http://straight-street.com/media/symbols/EN/svg/communication_board.svg"><img class="alignnone" src="http://straight-street.com/media/symbols/EN/svg/communication_board.svg" alt="Communication chart" width="207" height="207" /></a><img class="alignnone" src="http://straight-street.com/media/symbols/EN/svg/hello.svg" alt="Man waving hello" width="191" height="191" /></p>
+<h1>Open symbols</h1>
+<p>Garry&#8217;s goals for the symbols and website included</p>
+<ul>
+<li><strong>Provide an alternative symbol set</strong> for older users as available sets were largely aimed at children. This required extra &#8216;adult&#8217; symbols and a more appropriate style.</li>
+<li><strong>Promote innovation in symbol availability and use</strong> by allowing symbols to be freely used, shared, modified and accessed on the web. All symbols sets at the time had proprietary licences and often required a licence per use on a single PC. This was felt to be a serious barrier to users getting free access to critical communication aids they need. Personally I think that the majority of symbol set owners were behind the times as far as the technical possibilities were concerned and so users were missing out.</li>
+<li><strong>Demonstrate how symbols can be accessed</strong> in modern web apps through an API. This included providing an API to access symbols, a basic test App and also a protoype symbol chart maker app.</li>
+<li><strong>Provide a strong design workflow</strong> for the symbols so they have consistent style (even though permissive licence allows for derived works).</li>
+<li><strong>Encourage community</strong> suggestions for and review of symbols.</li>
+<li><strong>Allow easy access</strong> to entire symbols set or just a sub set based on criteria such as topic (eg &#8216;food&#8217;)</li>
+</ul>
+<p>I think most of these goals were reached by Garry and the team, despite being a little ahead of the curve technically. API usage and general SVG support were nowhere as well developed as they are now. Perhaps most importantly this was disruptive as far as symbol set owners and developers who used them were concerned. We see several web uses of symbols (eg hover over words on <a href="http://www.communicationmatters.org.uk/">commmunicationmatters.org.uk</a>) and a few free or otherwise better licensed symbol sets have become available. Currently the Mulberry symbols are used in many apps (native and web), though some people appear to be abusing the very permissive <a href="http://creativecommons.org/licenses/by-sa/2.0/uk/">CC BY-AT licence</a>. Unfortunately Garry&#8217;s charity funding dried up and so it was closed at the point the current 3,000 odd symbols were finished. <strong>Note to anyone interested in picking up on this &#8211; Garry would love to see the symbol development work resume.</strong></p>
+<blockquote><p>To see a fairly random selection of symbols go to  <a href="http://straight-street.com/gallery.php">straight-street.com</a> and click on &#8220;Search&#8221;. You can mouse over the symbols to get a larger preview.</p></blockquote>
+<h1>SVG</h1>
+<p>I loved the symbols and Garry&#8217;s aims  in terms of open accessibility so I quickly offered to help fix the website problems. I made several suggestions, in particular using SVG as an alternative to the  WMF (Windows meta format). WMF made sense for use in installed apps as most users had Windows PC programs that only support WMF. It&#8217;s scalable but rather crude, requiring considerable hand editing of exports from Adobe Designer (used to create the symbols). In addition, due to security problems Microsoft pulled the explorer support for showing thumb nails, thus reducing their general utility.</p>
+<p>I was well aware of the advantages of SVG as a mature scalable format and open standard. I hoped it would soon &#8216;break&#8217; into mainstream, something that is only just happening now, some 5 years on, largely I suspect as a result of the need for responsive images.</p>
+<p>Seeing I was promoting SVG to Garry as the web-friendly format for use on the web I needed to prove it could be easily used in webs apps for symbols. This proved to be basically the case though the test app is a little more complex then expected.</p>
+<div style="width: 152px" class="wp-caption alignleft"><a href="http://straight-street.com/media/symbols/EN/svg/baker_1b.svg"><img class="" src="http://straight-street.com/media/symbols/EN/svg/baker_1b.svg" alt="Man wearing bakers clothing and a loaf of bread" width="142" height="142" /></a><p class="wp-caption-text">Baker</p></div>
+<div style="width: 48px" class="wp-caption alignleft"><a href="http://straight-street.com/media/symbols/EN/svg/briefcase_2.svg"><img src="http://straight-street.com/media/symbols/EN/svg/briefcase_2.svg" alt="Briefcase" width="38" height="38" /></a><p class="wp-caption-text">Briefcase</p></div>
+<div style="width: 309px" class="wp-caption alignleft"><a href="http://straight-street.com/media/symbols/EN/svg/bath_animal_,_to.svg"><img class="" src="http://straight-street.com/media/symbols/EN/svg/bath_animal_,_to.svg" alt="person bathing a dog in a tub with a sponge" width="299" height="299" /></a><p class="wp-caption-text">bath_animal_,_to</p></div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Fortunately, that has now changed with improved SVG support in browsers. The biggest breakthrough is the support of SVG files in &lt;img&gt; tags &#8211; hurrah! To prove the point, you should be able to see above various the in differing sizes using an &lt;img&gt; tag (and you can click on them for a larger scaled image). These were added to WordPress using the &#8220;embed from URL&#8221; option without any special effort. Now symbols can easily be displayed in web apps without using awkward markup such as <span class="pl-s">&lt;object type=&#8221;image/svg+xml&#8221; data=&#8221;URL<span class="pl-pds">&#8220;</span></span><span class="pl-s">&gt; and feature testing code</span>.</p>
+<p>As an aside, for the straight-street.com site we didn&#8217;t use SVG. Rather we used 2 sizes of png (originally giff) for thumbnail and preview images. Plus the user can download zips of all the symbols in WMF, SVG and a size of png. All rather messy.</p>
+<h1>API</h1>
+<p>For the API design I researched best practice but found little solid wisdom available at that time. Still, I&#8217;m reasonably happy with the design, though no doubt it could be done much better now, especially as we have a good body of experience and examples (though I must say &#8220;both good and bad&#8221;). At the time, having just read <a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">Roy Fielding&#8217;s dissertation</a> I was keen to use a self describing discoverable REST style returning JSON with further URLs embedded.  This is perhaps closer to the <a href="https://sites.google.com/site/restframework/hypermedia-controls">hypermedia controls</a> approach rather that the alternative <a href="http://apiux.com/2013/04/09/rest-metadata-formats/">metadata formats</a> which seem to be currently slugging it out for dominance (and interestingly I see Microsoft have standardised on <a href="https://github.com/swagger-api/swagger-spec/blob/master/versions/1.2.md">Swagger Metadata</a> for Azure as most popular metadata). For our API we only require GET, at least as the API stands, which makes life much simpler in terms of API design and implementation.</p>
+<blockquote><p>Here&#8217;s an example request to get all symbols with name or tag containing &#8216;sweet&#8217;</p>
+<p><a href="http://straight-street.com/api/symbols/EN/sweet?appid=SSApiUsage">http://straight-street.com/api/symbols/EN/sweet</a> &#8211;</p>
+<p>The API&#8217;s home page <a href="http://straight-street.com/api">straight-street.com/api</a> provides details usage information. And a small interactive test applications is provided at <a href="http://straight-street.com/api/test.html">straight-street.com/api/test.html</a></p></blockquote>
+<p>For implementation I initially used Python which was a joy to write (as always) but as our free hosting only provided CGI is was REALLY slow. I therefore reimplemented it in PHP using a rather obscure light weight MVC framework for routing (<a href="http://doophp.com/">DooPHP</a>). This is reasonably fast. When it comes to a rewrite I&#8217;d no doubt use node.js + hapi or perhaps Python&#8217;s  Flask. In addition <a href="http://json-schema.org/latest/json-schema-hypermedia.html">JSON Hyper-Schema</a> looks like a good spec and tools to use.</p>
+<h1>Conclusion</h1>
+<p>Despite being a little ahead of the accessibility and web curve I think we managed a very reasonable first product implementation. Web support has moved on so far and fast that I&#8217;ve no doubt the web site, api and samples apps could be easily recreated and be in much better shape.</p>
+<p>We&#8217;d love for symbol users to get access to these symbols in a wide range of innovative on-line and web apps. We&#8217;d also like to see many more symbols being added to make this a comprehensive set with excellent utility. Perhaps most importantly we&#8217;d love to see a community grow around these symbols to ensure sustainability.</p>
+<p>We&#8217;ve put the Mulberry symbols, the API source and website source on GitHub in the <a href="https://github.com/straight-street">straight-street organisation</a>. I don&#8217;t really recommend looking at the website code &#8211; it has a strange history <img src="https://s.w.org/images/core/emoji/11/72x72/1f609.png" alt="😉" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p>If this resonates with you at all and you have access to funding and/or development time then please do talk to us.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2015/03/mulberry-symbols-for-aac-svg-and-apis/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>Cloud4All &#8211; providing automatic personalisation of access technologies</title>
+		<link>/openingaccessibility/2015/02/cloud4all-providing-automatic-personalisation-of-access-technologies/</link>
+		<comments>/openingaccessibility/2015/02/cloud4all-providing-automatic-personalisation-of-access-technologies/#comments</comments>
+		<pubDate>Fri, 06 Feb 2015 13:14:12 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[a11y]]></category>
+		<category><![CDATA[Assistve Technology]]></category>
+		<category><![CDATA[GPII]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=462</guid>
+		<description><![CDATA[The Cloud4All project has just undertaken it&#8217;s important penultimate review with EC, something of a milestone for any FP7 project. This is a good time to take stock and see where the project is at. This especially true for Clou4All &#8230; <a href="/openingaccessibility/2015/02/cloud4all-providing-automatic-personalisation-of-access-technologies/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>The <a href="http://www.cloud4all.info/ ">Cloud4All</a> project has just undertaken it&#8217;s important penultimate review with EC, something of a milestone for any FP7 project. This is a good time to take stock and see where the project is at. This especially true for Clou4All which is not an end itself, rather it is developing the core infrastructure for Automatic Personalisation from Preferences feature for the International <a href="http://gpii.net/">GPII in`itiative</a>.</p>
+<p>After 3 years of research and development I&#8217;m pleased to say we have a working system that not only clearly demonstrates the user experience of using a device with a number of access technologies configured for their best possible experience, but is also provides a flexible base for hardening into a widely deployable infrastructure.</p>
+<p>In order for the GPII to be a success it <strong>must</strong> be easy for developers of access technology to get their (or other)  solutions working with the GPII. For example, as part of the Cloud4All project activity we have already enabled a wide range of tools on several platforms:</p>
+<ul>
+<li>Android
+<ul>
+<li>Audio, Accessibility, UI settings</li>
+<li>Freespeech</li>
+<li>TalkBack</li>
+<li>eCTouch</li>
+</ul>
+</li>
+<li>Linux
+<ul>
+<li>magnifier, various UI settings, keyboard settings, volume</li>
+<li>Orca</li>
+<li>Web Anywhere</li>
+</ul>
+</li>
+<li>Windows
+<ul>
+<li>NVDA</li>
+<li>Jaws</li>
+<li>Read Write Gold</li>
+<li>built-in magnifier, OSK, high contrast, mouse trailing, cursors</li>
+<li>Web Anywhere</li>
+<li>Sociable</li>
+</ul>
+</li>
+<li>Web
+<ul>
+<li>Chrome browser (via a plugin)</li>
+<li>JME Themes</li>
+<li>SmartHouses</li>
+</ul>
+</li>
+</ul>
+<p>We are now getting ready to help 3rd party developers and <a href="http://wiki.gpii.net/w/Volunteer%27s_Emporium">volunteers </a>to adapt their accessibility solutions by providing information that developers will need. We&#8217;ve also set up a <a href="http://wiki.gpii.net/w/Imp_Tiger_Team">team to work on adding solutions</a> (operating under the name of the Tiger Team). In addition the related GPII project, <a href="http://www.prosperity4all.eu/ ">Prosperity4All</a>, will provide more new solutions that wok with the GPII.</p>
+<p>As an example of why developers will want to integrate solutions and how easy it is I&#8217;ll relate the experience I had with getting <a href="http://maavis.fullmeasure.co.uk/">Maavis</a> to work with the GPII.</p>
+<p>Maavis is an installed Windows application that provides a full screen ultra easy to use experience for people with dementia in a care environment. It provides access to media and communications and is not end user ready, rather it is both a prototype and a framework requiring configuration.</p>
+<p>The benefits I perceived from having Maavis working with the GPII include</p>
+<ul>
+<li>Makes Maavis more easily available to people who will benefit from it</li>
+<li>Provides mechanism to identify users who can not get on with login screens (user listeners like NFC)</li>
+<li>Provides alternative and automated mechanism to change user configuration.</li>
+<li>Help improve accessibility users general experience of accessing technology through automatic personalisation</li>
+</ul>
+<p>Plus, although it does not apply so much to Maavis, the GPII will also make it easy for users to discover the solutions that work best for them in conjunction with others tools, plus the best configurations of all these tools.</p>
+<p>The developer experience of getting a solution working with the GPII is actual quite easy due to careful design and a preference for declarative syntax. As long as your application can be started and stopped and provides away to programatically change the settings it straight forward. Your main work is then to provide details of how to invoke these operations.</p>
+<p>Here&#8217;s the <a href="https://github.com/GPII/universal/blob/master/testData/solutions/win32.json#L749-L782">example for Maavis</a> which stores it settings in a JSON file and so can use the GPII&#8217;s JSON settings converter. The GPII saves the user preferences for Maavis in a <a href="https://github.com/GPII/universal/blob/master/testData/preferences/maavis2.json">solution specific way </a>but there are standard terms and the developer can provide information about <a href="https://github.com/GPII/universal/blob/master/testData/solutions/win32.json#L149-L206">how to map between</a> the standard terms and their own settings.</p>
+<p>If you are interested in getting your solution working with the GPII then take a look at this <a href="http://wiki.gpii.net/w/GPII_Core_Infrastructure">developer information</a> (currently on the wiki but will move to our main <a href="http://blogs.cloud4all.info/developers/">developer website</a>). You can also drop me a line at: stevelee [at] raisingthefloor [dot] org</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2015/02/cloud4all-providing-automatic-personalisation-of-access-technologies/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>Free international SAPI voices from Microsoft</title>
+		<link>/openingaccessibility/2014/02/free-international-sapi-voices-from-microsoft/</link>
+		<comments>/openingaccessibility/2014/02/free-international-sapi-voices-from-microsoft/#respond</comments>
+		<pubDate>Fri, 28 Feb 2014 14:28:09 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[Assistve Technology]]></category>
+		<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Windows]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=329</guid>
+		<description><![CDATA[Either this is a well kept secret of I&#8217;ve been asleep, but I&#8217;ve only just found Microsoft provide easy access to the SAPI voices provided with other language versions of Windows. The following is the case in my Windows 8.1 Pro &#8230; <a href="/openingaccessibility/2014/02/free-international-sapi-voices-from-microsoft/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Either this is a well kept secret of I&#8217;ve been asleep, but I&#8217;ve only just found Microsoft provide easy access to the SAPI voices provided with other language versions of Windows. The following is the case in my Windows 8.1 Pro but your mileage may vary as they say.</p>
+<p>There don&#8217;t appear to be voices for every language, for example while I got German, I didn&#8217;t get one for Greek. There are several provided for Spanish.</p>
+<p>In order to get the extra voices you simple go to Control-&gt;Panel-&gt;Language and add a  language. When you double click on the new language you get (after a pause) an option to download and install a &#8216;Language pack&#8217;. This install takes forever, but eventually the new SAPI voices then appear in the Windows TTS options as usual.</p>
+<p>Additionally the language at the top of the list selects the system used for Windows text and is also reported to programs. You will need to log out or reboot for a change to take effect. We use this in the latest Maavis installer to provide internationalisation support for the Cloud4All project.</p>
+<p>Microsoft have done an excellent job with internationalisation &#8211; it&#8217;s a very clean user experience.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2014/02/free-international-sapi-voices-from-microsoft/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>SS12 EU Student assistive technology competition a success at AAATE conference</title>
+		<link>/openingaccessibility/2013/09/ss12-eu-student-assistive-technology-competition-a-success-at-aaate-conference/</link>
+		<comments>/openingaccessibility/2013/09/ss12-eu-student-assistive-technology-competition-a-success-at-aaate-conference/#respond</comments>
+		<pubDate>Sat, 21 Sep 2013 12:42:33 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[Assistve Technology]]></category>
+		<category><![CDATA[opensource]]></category>
+		<category><![CDATA[ss12eu]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=242</guid>
+		<description><![CDATA[[Updated 23/09/2013 &#8211; added posters, code and photograph] The second SS12 EU assistive technology (AT) competition held as part of the  AAATE 2013 conference culminated in the announcement of the winning student team as part of the closing session. As with the previous SS12 EU during ICCHP, &#8230; <a href="/openingaccessibility/2013/09/ss12-eu-student-assistive-technology-competition-a-success-at-aaate-conference/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p><strong>[Updated 23/09/2013 &#8211; added posters, code and photograph]</strong></p>
+<p>The second <a href="http://ss12.info/Europe/">SS12 EU</a> assistive technology (AT) competition held as part of the  <a href="http://www.aaate2013.eu/">AAATE 2013</a> conference culminated in the announcement of the winning student team as part of the closing session. As with the previous SS12 EU during <a href="http://www.icchp.org/">ICCHP</a>, and indeed previous events run in the United States of America, the students presented interesting and well executed assistive technology ideas. The winners hard work was rewarded with a trophy, certificates and a Nexus 7 tablet for each team member.</p>
+<p style="text-align: center;"><a href="/openingaccessibility/wp-content/uploads/2013/09/SS12.jpg"><img class="size-full wp-image-247  aligncenter" alt="SS12" src="/openingaccessibility/wp-content/uploads/2013/09/SS12.jpg" width="150" height="81" /></a></p>
+<p>The five teams of 2 or 3 students each presented the AT projects they had chosen to work on during the last semester (or in one case holiday). They are in no particular order:</p>
+<ul>
+<li><a href="http://www.univ-paris8.fr/">Université Paris 8</a> a smartphone sign language communicator for interactions with hearing people. <a href="/openingaccessibility/wp-content/uploads/2013/09/Poster_Frankreich_AAATE.pdf">Frankreich team poster</a>.</li>
+<li><a href="http://www.muni.cz/">Masaryk University</a> with a email extension for sending sign language video messages. <a href="/openingaccessibility/wp-content/uploads/2013/09/Poster_Masaryk_AAATE.pdf">Masaryk team poster</a>.</li>
+<li><a href="http://www.tuke.sk/tuke/university">Technical University of Košice</a> with a smartphone photographic text to speech device for the visually impared.  <a href="/openingaccessibility/wp-content/uploads/2013/09/Poster_Kosice_2_AAATE.pdf">Kosice team poster</a>. <a href="https://sourceforge.net/projects/lynxsightmobile/">LynxSight code</a>.</li>
+<li><a href="http://www.dundee.ac.uk/">University of Dundee</a> &#8211; with a photo sharing system for older people and their relatives. <a href="/openingaccessibility/wp-content/uploads/2013/09/Poster_Dundee_2_AAATE.pdf">Dundee team poster</a>. <a href="https://github.com/Phreakerr/KithandKin">Kith and Kin code.</a></li>
+<li><a href="http://www.jku.at/content">Johannes Kepler University Linz</a> with touch tablet Braille keyboard. <a href="/openingaccessibility/wp-content/uploads/2013/09/Poster_JKU_AAATE.pdf">JKU team poster</a>. <a href="https://github.com/jkuiis/SS12_JKU_2013_BrailleKeyboard">Braille Keyboard code.</a></li>
+</ul>
+<p><strong>And the winner is &#8230;&#8230; Johannes Kepler University </strong>with their Touch Braille keyboard.</p>
+<div id="attachment_253" style="width: 310px" class="wp-caption aligncenter"><a href="/openingaccessibility/wp-content/uploads/2013/09/SS122013.jpg"><img class="size-medium wp-image-253" alt="The SS12 teams and judges (Sean is behind camera)" src="/openingaccessibility/wp-content/uploads/2013/09/SS122013-300x225.jpg" width="300" height="225" srcset="/openingaccessibility/wp-content/uploads/2013/09/SS122013-300x225.jpg 300w, /openingaccessibility/wp-content/uploads/2013/09/SS122013.jpg 1024w" sizes="(max-width: 300px) 100vw, 300px" /></a><p class="wp-caption-text">The SS12 teams and judges (Sean is behind camera)</p></div>
+<p>The award presentation was part of a week of activity designed to enable the students to learn as much as possible about Assitive Technology research, products and services. These activities include introductions to a wide range of topics from the SS12 EU team as well as access to conference all sessions. <a href="http://www.linkedin.com/profile/view?id=18438577">Stanley Lam</a> described the history and aims of <a href="http://www.projectpossibility.org/">Project:Possibility</a>, the originators of SS12.  <a href="http://www.linkedin.com/profile/view?id=82677648">Sean Goggin</a>, chair of Project:Possibility, introduced the seminal <a href="http://www.csun.edu/cod/conference/">CSUN conference</a>, from the perspective of a member of the conference organising team.  <a href="http://www.linkedin.com/profile/view?id=113095174">Neel Shearer</a> discussed working in a commercial environment.  I gave a high level introduction to open development and it&#8217;s application to AT.</p>
+<p style="text-align: center;"><a href="/openingaccessibility/wp-content/uploads/2013/09/ProjPoss.jpg"><img class="aligncenter  wp-image-246" alt="Project:Possibility" src="/openingaccessibility/wp-content/uploads/2013/09/ProjPoss.jpg" width="266" height="130" /></a></p>
+<p>Critically, the students were given registration to the AAATE conference, one of the premier conferences for those working the field.  They also placed posters describing their projects. Of course, the social activities in a selection of Vilamoura (Portugese Algarve) restaurants and bars were an important highlight for all. Naturally, the students and others involved in SS12 had T-shirts to clearly identify them as a group. Ensuring all this activity ran smoothly, <a href="http://www.linkedin.com/profile/view?id=3844402">Andrea Petz</a> was kept fully occupied.</p>
+<div id="attachment_248" style="width: 220px" class="wp-caption aligncenter"><a href="/openingaccessibility/wp-content/uploads/2013/09/AAATE.jpg"><img class=" wp-image-248" alt="AAATE" src="/openingaccessibility/wp-content/uploads/2013/09/AAATE-300x286.jpg" width="210" height="200" srcset="/openingaccessibility/wp-content/uploads/2013/09/AAATE-300x286.jpg 300w, /openingaccessibility/wp-content/uploads/2013/09/AAATE.jpg 494w" sizes="(max-width: 210px) 100vw, 210px" /></a><p class="wp-caption-text">AAATE logo</p></div>
+<p>The AAATE conference forms an important part of <a href="http://www.aaate.net/">AAATE</a>&#8216;s mission to advance AT quality and uptake. This activity meshes well with that of Project:Possibility, namely to introduce computer science students to the worlds of AT and accessibility. In the EU the SS12 organisers, led by <a href="http://www.linkedin.com/profile/view?id=28345939">Klaus Meissenburger</a>, are also keen to embed AT modules into more university computing courses.</p>
+<p>Finally we raise a big &#8220;thank you&#8221; to our <a href="http://ss12.info/Europe/">sponsors</a> for enabling us to run such a great event this year.</p>
+<p>We&#8217;re looking forward to even more student teams and increased impact on AT awareness next year at ICCHP 2014. we hope you can join us. If you would like to enter a student team next year then keep an eye on the <a href="http://www.aaate.net/ProjectPossibility">AAATE Project:Possibility page</a> and the <a href="http://www.icchp.org/call/projectpossibility">ICCHP SS12 page</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2013/09/ss12-eu-student-assistive-technology-competition-a-success-at-aaate-conference/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>ATIS4ALL &#8211; discovering and discussing Assistive Technology</title>
+		<link>/openingaccessibility/2013/07/atis4all-discovering-and-discussing-assistive-technology/</link>
+		<comments>/openingaccessibility/2013/07/atis4all-discovering-and-discussing-assistive-technology/#respond</comments>
+		<pubDate>Fri, 19 Jul 2013 13:10:42 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[Assistve Technology]]></category>
+		<category><![CDATA[dementia]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=198</guid>
+		<description><![CDATA[Assistive Technology (AT, see video at end of post) is a peculiar subject for most of us. Often, by using AT to make adaptations to our physical environment or the technology we already use we can dramatically improve the quality of &#8230; <a href="/openingaccessibility/2013/07/atis4all-discovering-and-discussing-assistive-technology/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Assistive Technology (AT, see video at end of post) is a peculiar subject for most of us. Often, by using AT to make adaptations to our physical environment or the technology we already use we can dramatically improve the quality of life for ourselves or those we care for. We can thus make every day activities much easier, or perhaps, actually possible at all. For example low tech gadgets like <a href="http://www.tenura.co.uk/Home/Rubber-Jar-and-Bottle-Openers/Tenura-Anti-Slip-Silicone-Rubber-Jar-Opener-p5.html?gclid=CMjX8bbAu7gCFdHMtAod8hAA7A">jar openers</a> or using a computer&#8217;s <a href="http://en.wikipedia.org/wiki/StickyKeys">Sticky Keys feature for one handed keyboard input</a> will bring an end to endless frustration in our activities of daily living.  As a more sophisticated example, blind folks can happily use computers and mobile devices if they have screen reader AT like <a href="http://www.nvaccess.org/">NVDA</a> and <a href="http://www.possum.co.uk/products-and-services/environmental-control">Environmental controls</a> allow those with physical difficulties to independently manage their living spaces (again see the video)</p>
+<p>So given the benefits why aren&#8217;t we all buying, supplying and using more ATs, especially as they are readily available, often at major retailers, as with these <a href="http://www.amazon.co.uk/s/?ie=UTF8&amp;keywords=plug+with+handle&amp;tag=googhydr-21&amp;index=aps&amp;hvadid=21161236980&amp;hvpos=1t1&amp;hvexid=761820&amp;hvnetw=g&amp;hvrand=116206144329968063&amp;hvpone=&amp;hvptwo=&amp;hvqmt=b&amp;hvdev=c&amp;ref=pd_sl_2ja9pw83d8_b">plugs with handles from Amazon</a>. Well, a large part of the problem is knowing that specific ATs exist, how they can be applied to and how to find the right solutions for individual requirements.</p>
+<p>In fact, there exists in the UK, a range of ways to find out about AT at the national and local level. For example, much needed consumer research and reporting on accessibility is carried out by <a href="http://www.rica.org.uk/">Rica</a>. Specialists such as the <a href="http://www.rnib.org.uk/shop">RNIB list and sell many products</a> for people with a range of visual issues, <a href="http://www.atdementia.org.uk/">ATDemetia supply info on products</a> for people with dementia and the <a href="http://www.macularsociety.org/How-we-help">Macular Society run local support groups</a>. More general suppliers like <a href="http://www.alvolution.co.uk/">Alvolution</a> provide a range of AT products for conditions including Dementia, Learning Difficulties and Epilepsy. Plus, local organisations such as <a href="http://www.devoninsight.org.uk/resource-centre">Devon in Sight provide resource centres</a> where you can try out the options. Then again, national centres like the <a href="http://acecentre.org.uk/services">ACE Centre provide a wide range of services</a> including assessment and if you are lucky your local <a href="http://www.barnsleyhospital.nhs.uk/services/assistive-technology/">service provider will be really switched on about AT, like Barnsley NHS Trust</a>.</p>
+<p>But what about products and services from wider afield such as Europe, or even globally? And how do we ensure those working in Policy and Research activities are actively included and collaborate effectively with developers, manufacturers and service providers? At least in the UK we have <a href="http://www.fastuk.org/">FAST who do a sterling job ensuring information is disseminated</a>, even to the extent of producing the <a href="http://fast.isledev.co.uk/fastdocuments/S22%20Report%202012-13.pdf">Department of Health&#8217;s annual report on R&amp;D in AT (pdf).<br />
+</a></p>
+<p><a href="http://www.atis4all.eu/"><img class="aligncenter" alt="" src="http://www.atis4all.eu/img/atisLog.png" width="211" height="53" /></a></p>
+<p>Enter <a href="http://www.atis4all.eu/">ATIS4ALL</a>, an EU project (actually a Thematic Network) that aims to dramatically improve the widespread awareness and adoption of  AT. <a href="http://www.opendirective.com/">OpenDirective</a> are part of the diverse consortium of organisations all involved in AT in one way or another. As a group we are attacking the problem on 2 fronts:</p>
+<ul>
+<li><a href="http://collaborativeportal.atis4all.eu/en-GB/default.aspx">ATIS4all portal</a> &#8211; a community and meeting place for discovery and discussion.</li>
+<li><a href="http://www.etna-project.eu/">ETNA 2.0</a>&#8211; an online database of AT that combines many sources of information.</li>
+</ul>
+<p>Taken together these will enable ATIS4all to play an important role in addressing the issues discussed above so we can all more easily find the AT that will help us or those we care for.</p>
+<p>The <a href="http://collaborativeportal.atis4all.eu/en-GB/default.aspx">ATS4All portal</a> is now open for business and like any such service it NEEDS YOU. The more people we have using it and contributing the better it will be for all of us. In particular we are looking for supporters to become actively involved in small or large ways. We need users, suppliers, developers, policy people, services, basically anyone with an interest in AT. If you think this will be of use to you and you want to get involved then  we&#8217;d love you to <a href="http://collaborativeportal.atis4all.eu/en-GB/register.aspx">simply register and join in</a> or perhaps <a href="http://www.atis4all.eu/BecomeASupporter.aspx">become a Supporter</a>. You can do as little as hang out in the forums or as much as collecting and curating useful AT resources. It&#8217;s up to you.</p>
+<p>We hope to see you soon.</p>
+<p>[Update 19/07/2013] This <a href="http://www.scie.org.uk/">SCIE</a> Social Care TV <a href="http://www.scie.org.uk/socialcaretv/video-player.asp?guid=9BE2764A-D81E-4C5F-8A83-B15EEEDFFA7E">Video introduces AT</a> and also describes it&#8217;s use in Telecare and Telehealth (no subtitles).</p>
+<p>[Update 23/07/2013] Somehow my shout-out for <a href="http://www.smartboxat.com/">Smartbox</a> got lost in an edit. The Hawes&#8217; family-owned business is most defiantly worth exploring for AT, especially for AT designed for people with physical disabilities.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2013/07/atis4all-discovering-and-discussing-assistive-technology/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

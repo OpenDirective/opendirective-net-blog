@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>development &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/category/development/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Using reactive streams on serverless with cyclejs, xstream and Azure Functions</title>
+		<link>/openingaccessibility/2016/10/exploring-reactive-streams-with-serverless-xstream-cyclejs-and-azure-functions/</link>
+		<comments>/openingaccessibility/2016/10/exploring-reactive-streams-with-serverless-xstream-cyclejs-and-azure-functions/#respond</comments>
+		<pubDate>Sat, 22 Oct 2016 22:00:26 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[web]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[Reactive Programming]]></category>
+		<category><![CDATA[serverless]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=699</guid>
+		<description><![CDATA[[ Update 2016-10-23 the code is now in the cyclejs community repo] During development of my latest SaaS product, Brian, I&#8217;ve settled on a couple of key architectural decisions. For the Frontend I&#8217;m using Reactive programming (RP) with streams and &#8230; <a href="/openingaccessibility/2016/10/exploring-reactive-streams-with-serverless-xstream-cyclejs-and-azure-functions/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>[ Update 2016-10-23 the code is now in the <a href="https://github.com/cyclejs-community/cycle-serverless">cyclejs community repo</a>]</p>
+<p>During development of my latest SaaS product, Brian, I&#8217;ve settled on a couple of key architectural decisions. For the Frontend I&#8217;m using Reactive programming (RP) with streams and for the backend I&#8217;ve decided on the &#8216;Serverless&#8217; (FaaS) approach. Specifically, I&#8217;m using  Andre Stalz&#8217;s <a href="http://staltz.com/xstream">xstream</a> with the incredibly light &#8216;framework&#8217; <a href="https://cycle.js.org/">cyclejs</a> (but cyclejs supports other streaming libs, including the excellent <a href="https://rxjs.codeplex.com/">RxJS</a>) . Microsoft&#8217;s <a href="https://azure.microsoft.com/en-us/services/functions/">Azure Functions</a> give a FaaS solution backed-up by many other options including BaaS &amp; PaaS should they be required. This post looks at using them together on the backend.</p>
+<div style="width: 285px" class="wp-caption alignleft"><img src="https://cycle.js.org/img/cyclejs_logo.svg" alt="Cyclejs" width="275" height="275" /><p class="wp-caption-text">Cyclejs</p></div>
+<div style="width: 287px" class="wp-caption alignright"><img src="http://stiller.co.il/blog/wp-content/uploads/2016/04/Azure-Functions-Logo.png" alt="Functions logo" width="277" height="278" /><p class="wp-caption-text">Functions logo</p></div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>I&#8217;m happy that the trade-offs and benefits with these approaches should meet my requirements. Namely, achieving  rapid development by focussing energy higher &#8216;up the stack&#8217;. I want to concentrate on innovation of user features and &#8216;business logic&#8217; and not boilerplate or DevOps. From my early explorations I think Serverless and cyclejs manage to hit sweet spots of benefit and learning curve. However, they are most definitely not silver bullets, having wrinkles all their own that take time and effort to learn and overcome.</p>
+<p>When I initially created Functions code using a traditional imperative style I rapidly found I missed the RP style I&#8217;d become familiar with when using CycleJS with RxJS. It&#8217;s a style that gets under your skin once you make the mental shift. Perhaps my background in real-time async communications predisposes me to seeing the benefits of asynchronous handling of streams. But whatever, I thought it would be fun to try it in the serverless context. At least both front and back ends would then be similar in architecture.</p>
+<p>You may wonder why on earth I would consider using RP in a FaaS context. After all, the  FaaS architecture is all about small functions which are run once triggered and then quickly end. Thus, it would seem there isn&#8217;t much scope for streams when there is single trigger input event plus perhaps another data source or two.  One often touted advantage of RP is that it&#8217;s pure functions are easier to test, but that&#8217;s also a recommend practice with FaaS so that&#8217;s not an obvious advantage for having RP as well as FaaS.</p>
+<p>One reason for wanting to use RP is that any non trivial functions are likely to have other asynchronous event sources, including SaaS requests and database updates over REST. Even so, there are other less tangible benefits of RP with cyclejs that I personally I found over imperative code style:</p>
+<ul>
+<li>Loose coupling through reactive observers</li>
+<li>Declarative style married to functional programming techniques</li>
+<li>Separation of input, output side effects from the &#8220;pure&#8221; business logic</li>
+</ul>
+<p>Together these engender a clean high-level way to describe program logic. Bugs also appear to be reduced and it also enables testing without excessive mocking due to the absence of side effects in the main code. Sometimes however, debugging can be more involved due to current tooling supporting imperative and not reactive. However, tooling is starting to appear as more turn to RP.</p>
+<p>So what are the differences found when running xstream and cyclejs on Azure Functions environment compared to the usual browser (and sometimes nodejs) contexts?Surprisingly few it turns out. Fortunately, Functions builds on Azure Web Apps which supports nodejs and express. Better, it&#8217;s node 6.x that is provided which includes all those key ES6 features that really help clean up RP code. Another plus is that the cycle HTTP driver works fine on node.</p>
+<p>In this implementation I&#8217;ve taken the approach of providing a cycle runtime in each Azure Function. Effectively, each Function is a component in the cycle sense of the word, though connections between components will have to be via HTTP, queues or other out of process couplings. This approach seems to be the a good choice as you can use Cyclejs or not for any individual function, depending on the complexity and preferences. As the Functions run time is open source there is scope to explore different and more deeply embedded approaches.</p>
+<p>So without further a-do here&#8217;s the Functions driver code.</p><pre class="crayon-plain-tag">const xs = require('xstream').default
+
+module.exports = function makeFunctionsDriver(context, dispwrap, inArgs) {
+
+    function driver(s$) {
+        s$.addListener({ next: (i) =&gt; { setTimeout(() =&gt; {  // next tick to allow other listenerns to be iterated
+                                            context.res = i 
+                                            if (dispwrap &amp;&amp;
+                                                typeof dispwrap.disposer === 'function') {
+                                                dispwrap.disposer()
+                                            }
+                                            context.done()
+                                            }, 1)
+                         },   
+                         error: () =&gt; {},
+                         complete: () =&gt; {}
+        })
+
+        return xs.createWithMemory({
+            start: listener =&gt; {
+                setTimeout(() =&gt; {listener.next({context, inArgs})}, 1)
+            },
+            stop: () =&gt; {},
+        })
+
+  
+    }
+
+    const logger = a =&gt; context.log(a)
+    return {driver, logger}
+}</pre><p>As with all drivers, the Function driver is there to handle useful side effects such as input and output. In this case it converts the Function inputs (&#8220;context&#8221; and an array of input bindings) into a source stream. It also sinks a stream containing the function&#8217;s output. This also acts as a signal that the function should complete (the driver calls context.done).  The sink also disposes of the streams created by run() for cleanup (this adds a little implementation complexity due to a forward declaration and JS&#8217;s lack of true pass-by-reference).</p>
+<p>It turns out that using console.log is not useful in Functions, rather the alternative context.log is used. Thus, we also provide a Log driver that uses this channel. This is also used with xstream&#8217;s debug operator, which fortunately accepts a function argument as well as a value. I also decided the FunctionsDriver factory would return the log function itself as well as the driver. In this way nearly all the FaaS platform dependencies are encapsulated in the driver. This makes it possible to write a version for AWS Lamda or other serverless frameworks.</p>
+<p>Here&#8217;s an example usage for a HTTP Function. It starts a 1 second ticker and on the 3rd tick makes a REST API request. It then returns the first item from the response in function output. The code demonstrates the use of all the driver features and the clarity of RP with cyclejs.</p><pre class="crayon-plain-tag">const xs = require('xstream').default
+const run = require('@cycle/xstream-run').run
+const makeHTTPDriver = require('@cycle/http').makeHTTPDriver
+const makeFunctionsDriver = require('./functionsDriver.js')
+
+module.exports = function (context, ...inArgs) {
+    const dispwrap = {}             // because JS doesn't do pass-by-ref
+    const {driver: functionsDriver, logger} = makeFunctionsDriver(context, dispwrap, inArgs)
+
+    const drivers = {
+        FaaS: functionsDriver,
+        HTTP: makeHTTPDriver(),
+        log: msg$ =&gt; { msg$.addListener({next: msg =&gt; logger(`${msg}`) }) }
+    }
+
+    dispwrap.disposer = run(main, drivers)
+   
+    function main(sources) {
+        const input$ = sources.FaaS
+            .map((s) =&gt; `context.req.originalUrl: ${s.context.req.originalUrl} /
+                         inArgs[0]: ${JSON.stringify(s.inArgs[0])}`)
+            
+        const ticks$ = xs.periodic(1000)
+            .map(t =&gt; (t + 1) * 100)
+        
+        const log$ = xs.merge(input$, ticks$)
+
+        const trigger$ = ticks$
+            .drop(2)
+            .debug((i) =&gt; logger(`trigger tick: ${i}`))
+ 
+        const request$ = trigger$
+            .map(() =&gt; ({
+                            url: 'http://jsonplaceholder.typicode.com/users/1',
+                            method: 'GET'
+                        }))
+
+        const response$ = sources.HTTP
+            .select()
+            .flatten()
+        const user1Data$ = response$.map(response =&gt; response.body)
+        const exit$ = user1Data$
+            .map(u =&gt; ({ status: 200, body: u}))
+
+        return {
+            FaaS: exit$,
+            log: log$,
+            HTTP: request$
+        }
+    }
+}</pre><p>One issue that needs to be ironed out is sometimes exceptions such as syntax errors get lost and not presented in the Functions Logs. That&#8217;s probably xstream not re throwing captured exceptions. For now the fix is to put try&#8230;catch(log) blocks around parts of the code to get visibility.</p>
+<p>What do you think. Does this approach work for you?</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2016/10/exploring-reactive-streams-with-serverless-xstream-cyclejs-and-azure-functions/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Is the web getting less webby and will serverless make it worse?</title>
+		<link>/openingaccessibility/2016/09/is-the-web-getting-less-webby/</link>
+		<comments>/openingaccessibility/2016/09/is-the-web-getting-less-webby/#respond</comments>
+		<pubDate>Tue, 13 Sep 2016 11:43:58 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[HTML]]></category>
+		<category><![CDATA[web a11y]]></category>
+		<category><![CDATA[web apps]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[serverless]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=691</guid>
+		<description><![CDATA[[Title inspired by a quote from Scott Hanselman on Serverless with Azure Functions &#8216;It&#8217;s as close to &#8220;cloudy&#8221; as The Cloud can get&#8217;] There&#8217;s some big changes happening in web land that are fuelled by rapid app framework developments and &#8230; <a href="/openingaccessibility/2016/09/is-the-web-getting-less-webby/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>[Title inspired by a quote from Scott Hanselman on <a href="http://www.hanselman.com/blog/WhatIsServerlessComputingExploringAzureFunctions.aspx">Serverless with Azure Functions</a> &#8216;It&#8217;s as close to &#8220;cloudy&#8221; as The Cloud can get&#8217;]</p>
+<p>There&#8217;s some big changes happening in web land that are fuelled by rapid app framework developments and advances in cloud land. In particular the system architectural client-server split is shifting. We currently see these architectures (and variations):</p>
+<ul>
+<li>Classic 3 tier with web server passing presentation to the web browser as linked pages of HTML etc</li>
+<li>Ajax-ified with some presentation elements being dynamically requested and updated by the browser or even generated client-side from received data.</li>
+<li>Single Page Applications where presentation and navigation are completely generated in the browser which directly accesses various 1st and 3rd party RESTful APIs (SaaS).</li>
+<li>The Opera Mini browser Opera Mini is very popular, especially in poorer countries. It is something of  an architectural oddity as it renders  on a display server and uses a thin-client style display protocol to the client app for data efficiency. This is effectively a final stage applied after the others in this list.</li>
+<li>GraphQL is becoming popular for API queries as it lets the client dictate the payload and simplifies queries that would require multiple RESTful API round trips</li>
+</ul>
+<p>SPAs bring web apps into parity with Native Mobile Apps (and even some Desktop apps). The main difference now being the specific client side SDKs used to bind to the messaging protocols such as REST over HTTP.</p>
+<p>On the server we see hosting being outsourced at progressively higher levels in the stack: the so called cloudy IaaS, PaaS, BaaS, FaaS and WaaS. In addition, microservices are being used to break up monolithic middle tiers. In the last year we have seen the rise of interest in so called Serverless (BaaS, FaaS and WaaS). This was initiated by the introduction of AWS Lambda, quickly followed by other providers including Azure Functions, Google Cloud Functions, OpenWhisk.</p>
+<p><a href="/openingaccessibility/wp-content/uploads/2016/09/14867685775_c7044f0e2e_z.jpg"><img class="aligncenter wp-image-694 size-medium" src="/openingaccessibility/wp-content/uploads/2016/09/14867685775_c7044f0e2e_z-300x300.jpg" alt="cute pompom spider" width="300" height="300" srcset="/openingaccessibility/wp-content/uploads/2016/09/14867685775_c7044f0e2e_z-300x300.jpg 300w, /openingaccessibility/wp-content/uploads/2016/09/14867685775_c7044f0e2e_z-150x150.jpg 150w, /openingaccessibility/wp-content/uploads/2016/09/14867685775_c7044f0e2e_z.jpg 640w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+<p>So, exiting times for developers! But are these architectural changes eroding core Webby principals, especially the very carefully developed inclusive design principles? What is the impact on web users?</p>
+<p>After 25 years the classic web architecture has, with the help of Web standards, become available to almost everyone regardless of their device capabilities or their accessibility needs. Well, that&#8217;s in theory. The reality is completely dependent on developers being aware of best practices and prioritising them. HTML presentation elements are rendered by a wide range of browsers on varied devices including desktop with mouse and keyboard input, portable touch enabled devices with sizes from watches to tablets, and even hybrids such as 2 in ones. In addition to device variability, the Web standards and best practices support human and context variability through carefully baked in accessibility.</p>
+<p>The move to micro (and nano FaaS) service architectures on the back end should have limited impact on this webbiness as they are internal details of the servers.  However, the protocols used between client and server are RESTful in the web world, or rather, RESTful communications are the lifeblood of the web. Newer developments like GraphQL start to move away from the web&#8217;s RESTful architecture by effectively using one part of HTTP as a transport (somewhat like SOAP). However, this largely a detail of interest to developers only as far as most web users are concerned.</p>
+<p>On the face of it the use of client-side generated presentation with AJAX or a SPA should make no difference to webbiness either. True, dynamic creation of the UI is open to developers playing fast and loose with the standards. And accessibility is often being the first casualty. But this is just as possible when content is generated on the server.</p>
+<p>A big difference between SPAs and HTML apps is that browser developers put enormous effort into ensuring bad HTML and CSS fail gracefully across supported devices. JavaScript, on the other hand, is NOT fail safe. An error means it crashes and the user probably gets a nasty surprise. Individual developers or client side JavaScript framework developers have to effectively duplicate the effort that browser vendors go to in order to get as rugged an UX. Thus the user experience may not be as  consistent or as accessible with a SPA.</p>
+<p>Another issue is that developers want to use the latest and greatest browser features, often in order to give a great UX. For example Service Workers allow developers to provide a great offline experience. As the rate of change accelerates the chances of a user having an old browser that doesn&#8217;t support a shiny new feature increases. This is much more exaggerated with features accessed through JavaScript code compared to HTML as the speed and focus is currently there. Even the JavaScript language itself is rapidly evolving witch new features developers are keen to use. So, unless there&#8217;s careful design to work with a range of devices users may be left stranded.</p>
+<p>An established technique to avoid these problems is Progressive Enhancement where a basic HTML experience is available and UX enhancements are layered on for users with browsers that support the latest CSS and JavaScript shininess. But, with SPAs there is no initial HTML rendering for less able browsers. Lately techniques such as serverside rendering and Universal (isomorphic) JavaScript restore this to a large extent. Interestingly, the drive for these techniques has been SEO (Google can&#8217;t spider a client side app)  and time to initial display content of, rather than PE concerns.</p>
+<p>In summary, then, the architectural shifts we are seeing do provide new ways to break the carefully designed universal nature of the web and exclude users of some devices or with some accessibility needs. However by carefully following inclusive design thinking at the system level these can be minimised. The shape of web app architectures may be changing but we can ensure the core principles remain in our minds as we develop.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2016/09/is-the-web-getting-less-webby/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Free and easy HTTPS certificates with CDN with Kloudsec</title>
+		<link>/openingaccessibility/2016/03/free-and-easy-https-certificates-with-cdn/</link>
+		<comments>/openingaccessibility/2016/03/free-and-easy-https-certificates-with-cdn/#respond</comments>
+		<pubDate>Sat, 19 Mar 2016 17:11:54 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[devops]]></category>
+		<category><![CDATA[opensource]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=639</guid>
+		<description><![CDATA[HTTPS is a &#8216;must have&#8217; for any web service, SPA or progressive web application and so it is naturally high on my list of things to get to grips with. As a first step for the Brian project I&#8217;m creating &#8230; <a href="/openingaccessibility/2016/03/free-and-easy-https-certificates-with-cdn/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>HTTPS is a &#8216;must have&#8217; for any web service, SPA or progressive web application and so it is naturally high on my list of things to get to grips with. As a first step for the Brian project I&#8217;m creating a SPA (browser client side app) using web assets served up with GitHub pages (basically free hosting). It&#8217;s easy enough to set up the <a href="https://github.com/OpenDirective/brianLive">static pages</a> and a <a href="https://github.com/OpenDirective/brian/blob/master/scripts/deploy.sh">simple deploy script</a>. If you stick to the GitHub supplied URL (eg http://opendirective.github.io/brianLive/) you get CDN and HTTPS access</p>
+<p>However, if  you have a custom domain pointing at your Github Pages (eg  <a href="http://brian.opendirective.net/">brian.opendirective.net</a>) then a) You lose <code>HTTPS</code> support and b) You lose the <code>CDN</code> functionality if your custom domain is an apex domain (An apex domain is a domain without prefixes, such as <code>example.com</code>, not <code>www.example.com</code>)</p>
+<p>The thought of setting up HTTPS certificates used to fill me with dread. After reading around I was very disillusioned by the apparent complex tedious process. Assuming I understood it correctly.</p>
+<p><a href="/openingaccessibility/wp-content/uploads/2016/03/kloudsec.png" rel="attachment wp-att-649"><img class="aligncenter size-full wp-image-649" src="/openingaccessibility/wp-content/uploads/2016/03/kloudsec.png" alt="kloudsec" width="201" height="193" /></a>Recently however, <a href="https://letsencrypt.org/">LetsEncrypt</a> arrived on the scene, soothing stressed web developers with their streamlined process for creating free HTTPS certificates. Still, the process does include installing and operating a local client tool. I decided to wait a bit.</p>
+<p>Then Steve Goh (@nubela) of  <a href="https://kloudsec.com/">kloudsec</a> cold called me asking if I&#8217;d like to try the new version of their developer CDN service which supports GitHub Pages. I&#8217;m pleased he did. This new service provides GitHub custom domains a kloudsec CDN with HTTPS certificate provisioning and various plugins.</p>
+<p>As you can see from <a href="https://kloudsec.com/github-pages/">kloudsec.com/github-pages</a>. It&#8217;s a simple 3 step process. If you&#8217;ve already setup your GitHub pages then you&#8217;ll have done one step already. After registering with Kloudsec and setting up GitHub pages in your repository you&#8217;ll need to change your DNS settings.  This only requires adding 2 new records (and A and a TXT for verification of ownership), plus you&#8217;ll want to remove any CNAME you may have previously created for GitHub pages set up.</p>
+<p>It all goes very smoothly. The website dashboard is clear and you get progress emails. You&#8217;ll obviously need to wait an unknown time for DNS propagation but otherwise it&#8217;s a simple few click and edits before your GitHub pages are served as HTTPS. You can also turn on a redirect from HTTP to HTTPS as well.</p>
+<p>I hit a few rough edges which is not surprising given the Beta statement, but nothing I couldn&#8217;t easily resolve. The email and dashboard make it all pretty clear. I&#8217;m sure the process will be made even smoother.</p>
+<p>In summary, for zero cost except a few minutes work you get a CDN with North American, Europe and Asian access, speed optimisations, HTTPS serving with HTTPS certification and, automatic backup serving of your pages, anti hack features and a clear dashboard of performance. Other paid plugins are/ will be available and I sure the simple one-click install will make them really attractive. You can also download your certificate should you want to use with alternative hosting arrangements.</p>
+<p>The Kloudsec service is not just for GitHub pages but works with <a href="https://kloudsec.com/#/dashboard/website/new">any domain</a>.</p>
+<p>Highly recommended..</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2016/03/free-and-easy-https-certificates-with-cdn/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>More on portable npm scripts</title>
+		<link>/openingaccessibility/2016/03/more-on-portable-npm-scripts/</link>
+		<comments>/openingaccessibility/2016/03/more-on-portable-npm-scripts/#comments</comments>
+		<pubDate>Thu, 17 Mar 2016 15:46:55 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[web]]></category>
+		<category><![CDATA[Windows]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[nodejs]]></category>
+		<category><![CDATA[npm]]></category>
+		<category><![CDATA[Virtualisation]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=640</guid>
+		<description><![CDATA[Following on from my earlier post on the topic of writing portable npm scripts, here&#8217;s a few more useful tips. [UPDATE 2016/03/31: Bash for Windows was announced at Microsoft Build 2016. This exciting feature will allow running of Linux npm &#8230; <a href="/openingaccessibility/2016/03/more-on-portable-npm-scripts/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Following on from my earlier post on the topic of <a href="/openingaccessibility/2015/12/writing-portable-npm-build-scripts/">writing portable npm scripts</a>, here&#8217;s a few more useful tips.</p>
+<p>[UPDATE 2016/03/31: Bash for Windows was announced at Microsoft Build 2016. This exciting feature will allow running of Linux npm script builds with ease. See <a href="http://www.hanselman.com/blog/DevelopersCanRunBashShellAndUsermodeUbuntuLinuxBinariesOnWindows10.aspx">Scott Hanselman&#8217;s blog post</a>]</p>
+<p>[UPDATE: 2016/03/29:  The recently released <a href="https://blog.docker.com/2016/03/docker-for-mac-windows-beta/">Docker for Windows Beta</a> might be a good alternative to using a VM. It user Hyper-V.]</p>
+<p>[UPDATE: 2016/03/29:  This is a comprehensive article on <a href="http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/">using npm for build</a>]</p>
+<h1>Copying files</h1>
+<p>Use the <a href="https://www.npmjs.com/package/ncp">ncp </a>module to copy files. This goes nicely with mkdirp and rimraf  mentioned before.</p>
+<h1>Setting environment variables</h1>
+<p>It&#8217;s common to have scripts with a command line of the form</p><pre class="crayon-plain-tag">NODE_ENV=production webpack --config client/webpack.config.js</pre><p>This sets the environment variable NODE_ENV for the duration the command runs. In this case it is use to perform a production build with webpack.</p>
+<p>Such syntax works fine in bash etc on Linux / OS X but fails on windows where npm scripts always use CMD. One solution is to use the <a href="https://www.npmjs.com/package/cross-env">cross-env</a> npm module which uses a regx to find environment settings (and so is probably not fool-proof). Once installed you just prefix your command like so</p><pre class="crayon-plain-tag">cross-env NODE_ENV=production webpack --config client/webpack.config.js</pre><p></p>
+<h1>Running an extra bash process</h1>
+<p>I use the <a href="https://git-for-windows.github.io/">Git for Windows</a> bash shell for all my development CLI needs on Windows (It is also installed as part of the <a href="https://desktop.github.com/">GitHub Desktop for Windows</a>). This is a port of the mature MSYS / MinGW port of Linux build environments and works pretty well, though some of the commands are old versions.</p>
+<p>On Windows, npm ignores the current shell from which you run it and doesn&#8217;t pass the shell on to the sub processes as you would expect. However, you can easily run bash as the main command in a npm script (it&#8217;s an extra process but that hardly matters). This works as bash sets the path which is then inherited by the cmd subshell in which npm runs your package.json scripts. As a result it&#8217;s easy enough to create portable scripts or convert linux based scripts to also run on Windows. You just need to wrap the command in <pre class="crayon-plain-tag">bash -c "...."</pre> For example, the above env setting script can be recoded as follows</p><pre class="crayon-plain-tag">bash -c"NODE_ENV=production webpack --config client/webpack.config.js"</pre><p>The only issue i found is the need to carefully quote &#8221; characters. For example here&#8217;s a little script to prompt before deploying to GitHub pages (I&#8217;m showing the full package.json entry for clarity)</p><pre class="crayon-plain-tag">"deploy": "bash -c \"read -n1 -p\\\"Have you commited ready to deploy (yY) \\\"; echo; [[ $REPLY = [yY] ]] &amp;&amp; npm run _buildanddeploy || { echo \\\"You didn't answer yes, or deploy failed.\\\"; }",</pre><p></p>
+<h1>Using a Linux VM</h1>
+<p>I often use a Linux VM as part of my development. With Vagrent it&#8217;s easy to provision a headless VirtualBox (or other) VM that shares the host filespace and exposes a SSH terminal. Thus you can edit using Windows tools like VisualStudio Code yet run everything in the Linux VM. This lets you run local tests in the same VM as a CI or CD system (which will usually be Linux , unless you are using Azure). One easy configuration I&#8217;ve used is this <a href="https://github.com/GPII/qi-development-environments">Quality Infrastructure</a> from the GPII project.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2016/03/more-on-portable-npm-scripts/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Writing portable npm build scripts</title>
+		<link>/openingaccessibility/2015/12/writing-portable-npm-build-scripts/</link>
+		<comments>/openingaccessibility/2015/12/writing-portable-npm-build-scripts/#comments</comments>
+		<pubDate>Tue, 15 Dec 2015 23:09:28 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[Windows]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[nodejs]]></category>
+		<category><![CDATA[npm]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=624</guid>
+		<description><![CDATA[tl;dr; Developers need to install and build Javascript NPM modules on Windows as well as *nix. With a little care this is possible without using heavyweights tools like Grunt and Gulp . Modern HTML development usually includes a build and deploy process similar &#8230; <a href="/openingaccessibility/2015/12/writing-portable-npm-build-scripts/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p><strong>tl;dr; Developers need to <b>install and </b><b>build</b> Javascript NPM modules on Windows as well as *nix. With a little care this is possible without using heavyweights tools like Grunt and Gulp .</strong></p>
+<p>Modern HTML development usually includes a build and deploy process similar to those used in compiled development workflows. In this case, assets that end up deployed and accessed by end users are the result of a pipeline of operations such as transpiling, concatenation, minifying and zipping. In addition,  developers use these and others steps when developing, for example as part of test automation,  on check-in or as part of  continuous integration and deployment process. Perhaps somewhat surprisingly, the traditional build tools such as shell scripts, configure and Make (or Ant) are not commonplace. Rather, we often see newer JavaScript based tools like Grunt, Gulp or Broccoli being the &#8220;go-to&#8221; choice. Critically, these tools do have the advantage of largely working cross-platform on Linux/OS X and Windows.</p>
+<p><a href="/openingaccessibility/wp-content/uploads/2015/12/npmlogo.jpg" rel="attachment wp-att-634"><img class="aligncenter size-medium wp-image-634" src="/openingaccessibility/wp-content/uploads/2015/12/npmlogo-300x200.jpg" alt="npm logo" width="300" height="200" srcset="/openingaccessibility/wp-content/uploads/2015/12/npmlogo-300x200.jpg 300w, /openingaccessibility/wp-content/uploads/2015/12/npmlogo-768x512.jpg 768w, /openingaccessibility/wp-content/uploads/2015/12/npmlogo.jpg 1024w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+<p>An alternative build option is to use <a href="https://docs.npmjs.com/misc/scripts">NPM’s scripts feature</a> in the project or module package.json. You can use commands like ‘npm run test’ to invoke important build processes. This has the advantage of putting the scripts in the same place as the rest of your project configuration. Also, actions may be broken up into sub actions or invoked though life-cycle triggers (like &#8220;before publish&#8221;). Unfortunately though, while NPM tracks module dependencies, these are not used in the scripts to minimize the required build steps (as Make does). Perhaps that will come in time, but until then, either everything gets built every time or you’ll need to call a build tool like Make from scripts. One issue with While is while it is very effective it has a rather gnarly syntax and plenty of awkward features that you need to get to grips with. That said, common useful rules are simply implemented. Another tool, Webpack looks interesting for building as it manages dependencies and also works with modules rather than files, as Make does.</p>
+<p>Both Make and NPM scripts simply evoke the native command line shell to perform the actions for each build step and this raises an issue when you want to have your build work across platforms. The problem is that the shells have different syntax and command sets so you have to restrict npm scripts to a least common subset. Fortunately you can manage portability  with care. Evens  so, plenty of published modules exist that assume they are built on a *Nix Bash shell and so break on Windows. You might think you could get away with running one of the Bash shell systems for Windows (eg MSys, cygwin) but NPM always launches a Cmd shell (you can work around this by having your scripts run an extra bash shell, but that’s a bit hacky). More importantly using bash requires target build system configuration with yet another tool. We’d ideally like our build to work with just node (and thus npm) installed.</p>
+<p>So assuming we have to write NPM scripts that run on both Bash and Cmd what can you do to reduce problems?</p>
+<ul>
+<li>Separate commands in a single script with &amp;&amp; (&#8220;and if no error&#8221;) or || (&#8220;or if error&#8221;) instead of  the terminator (; or : ). Remember you can invoke subscripts with “npm run xxx”</li>
+<li>Modules like “concurrently” and “npm-run-all” add further task management options</li>
+<li>Operators &amp;&amp; || &amp; &lt; &gt; and | all work pretty much the same in cmd and bash and offer a lot of power</li>
+<li>Paths are a pain. While Windows system calls support the / separator it is also used for command options. Avoid as much as possible</li>
+<li>In npm scripts “node_modules/.bin” is on the path so any CLI command modules installed with &#8211;save or –save-dev will available to scripts when the package is installed. For example “rimraf”, “mkdirp” and “ncp”. This avoids tell devs to do global installs of tools which may conflict with other tools.</li>
+</ul>
+<p>Of course JavaScript itself is an ideal platform independent script tool so you could use <a href="http://www.ctomczyk.pl/why-i-switched-to-only-nodejs-npm-and-stopped-using-grunt/767/">nodejs to create build scripts</a> called from your NPM scripts. And after all, that is what Grunt and Gulp do by providing a full on framework for build services. The choice as always, is yours. A useful approach is to use the &#8220;<a href="https://www.npmjs.com/package/shelljs">Shelljs</a>&#8221; module that provides a unix style set of functions as an alternative to using the bash shell directly. In addition &#8220;Node-glob&#8221; provides wildcard expansions.</p>
+<p>As a final thought, modules are usually distributed in source form and some contain native module source that must be compiled using a toolchain of Python and C++. Fortunately this is getting easier on Windows as described in Microsoft&#8217;s new <a href="https://github.com/Microsoft/nodejs-guidelines">nodejs Guidelines for Windows</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2015/12/writing-portable-npm-build-scripts/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>Dealing with Windows text line endings in git</title>
+		<link>/openingaccessibility/2015/12/dealing-with-windows-text-line-endings-in-git/</link>
+		<comments>/openingaccessibility/2015/12/dealing-with-windows-text-line-endings-in-git/#respond</comments>
+		<pubDate>Thu, 03 Dec 2015 14:01:24 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[Windows]]></category>
+		<category><![CDATA[git]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=595</guid>
+		<description><![CDATA[Text line endings on Windows: Still painful after all these years Once upon a time, in the days of Microsoft MS-DOS development one of main pain points and source of bugs was the distinction between text and binary files. When &#8230; <a href="/openingaccessibility/2015/12/dealing-with-windows-text-line-endings-in-git/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<h1>Text line endings on Windows: Still painful after all these years</h1>
+<p>Once upon a time, in the days of Microsoft MS-DOS development one of main pain points and source of bugs was the distinction between text and binary files. When you opened a file you had to say if it was to be accessed in binary or text mode. In text mode the file content was translated when you read or wrote a string of text, meaning you had to know the file contents and use the correct mode. Presumably this was done to keep files smaller as the translation was 2 specific characters in memory mapped to 1 specific character in the file. Fortunately this translation on rad or write issue has mostly completely disappeared now those 2 characters are stored in files by Windows. But the legacy of those 2 pesky characters still causes pain whenever developers share files on multiple platforms such as Windows, Linux and OS X.</p>
+<div style="width: 605px" class="wp-caption alignnone"><img class="detail__media__img-highres js-detail-img js-detail-img-high" src="https://images.duckduckgo.com/iu/?u=http%3A%2F%2Flcjapan.com%2Fos%2Fms-dos.jpg&amp;f=1" alt="A MS-DOS start prompt on screen waiting for the user to type a command" width="595" height="446" /><p class="wp-caption-text">A legacy from MS-DOS days lurks in Windows</p></div>
+<h1>Shake your carriage</h1>
+<p>The characters in question are used to mark the end of each line of text (except if automatic text wrapping occurs). You don&#8217;t see them but they&#8217;re lurking there waiting to catch you out, especially when sharing files between OSs or when using version control.</p>
+<p>These 2 characters are technically the ASCII control characters for <a href="https://en.wikipedia.org/wiki/Carriage_return">Carriage Return</a> (CR) and <a href="https://en.wikipedia.org/wiki/Newline">Newline or Line Feed</a> (LF). Note that control characters are a special group that rather than being printed invoke some sort of action. They hark back to the days of Teletype printers where CR would make the print head scoot back to the start of the line (carriage being the mechanism carrying the print head) and LF would move the print head down a line with out effecting the horizontal position. Thus, whenever a new line needed to be started a CR+ LF pair would be sent to the Teletype.</p>
+<p>These character are represented in various ways in text files and programs, in ASCII or UNICODE:</p>
+<ul>
+<li>CR
+<ul>
+<li>0x0D hex</li>
+<li>&#8220;\r&#8221; in strings</li>
+<li>Ctrl M or ^M</li>
+</ul>
+</li>
+<li>LF
+<ul>
+<li>0x0A hex</li>
+<li>&#8220;\n&#8221; in strings</li>
+<li>Ctrl J or ^J</li>
+</ul>
+</li>
+</ul>
+<p>We&#8217;ve kept this ancient legacy so that the end of every text line (newline) is marked by these characters. Actually, that&#8217;s not exactly true. Rather, each OS uses a different set of characters and that is the root cause of the problem,</p>
+<ul>
+<li>Linux uses LF only</li>
+<li>Windows sticks with CRLF</li>
+<li>OS X for a while used CR only but now uses LF</li>
+</ul>
+<p>As a quick aside, you can discover a file&#8217;s line endings by using the &#8220;file&#8221; command that comes with Linux tools for Windows like &#8220;Cygwin&#8221; or &#8220;<a href="https://git-for-windows.github.io/">Git for Windows</a>&#8220;. If any line endings are not LF it will tell you. You can also use editors like venerable <a href="https://notepad-plus-plus.org/">notepad++</a> which also lets you change the line ending format.</p>
+<h1>Return to the future</h1>
+<p>Life gets complicated when you need to share text files between these OSs, either directly (eg via network access) or by copying files, perhaps via version control tools.  You can try to perform translation to the native format whenever you copy or have tools that support either end of line. The danger with the later approach is not processing all text files or ending up with files with mixed line endings. Mixed line endings will confuse tools that often only check the start of files to determine line ending format. In either case, you&#8217;ll likely to get strange effects in editors such as joined lines or funny characters (eg ^M).</p>
+<p>This problem surfaces quite often now with open source development where contributors can be using any tools on any OS. In addition to sharing files via version control, developers sometime access files share files between a VM and the host OS without checking out to each.</p>
+<p>So perhaps the best approach is to standardise on a single  format for all your files, namely LF.  Fortunately these days most Windows programs that developers use support the LF only style, whether they are Windows native or ports of Linux tools.  The notable exception is dear old notepad, which still insists on a CRLF pair to end each line (not doubt as it&#8217;s just a &#8220;souped up&#8221; edit control and Windows use CRLF natively).</p>
+<p>There are of course still issues and the ubiquitous git version control is one culprit you are almost certain to stumble across.</p>
+<h1>Make sure you git the right newlines</h1>
+<p>By default git assumes that your workspace files will use the OS native newline format for all text files. It will also try to auto detect text files. Internally however,  git uses LF only (usually) and translates on Windows during checkin and checkout. This is configured by the &#8220;core.eol&#8221; and &#8220;core.autocrlf&#8221; settings which default to &#8220;CRLF&#8221; and &#8220;true&#8221; on Git for Windows. These are hardcoded and not set in any of the usual git config files.</p>
+<p>On the face of it this is good as you get OS specific end of lines on each platform, but only if you always check out to the operating system you are working on. However, as noted above, developers often share files across OSs  so unless they standardise on a single format they&#8217;re likely to hit problems.</p>
+<p>If you want to use LF universally for your project you need to configure git appropriately. These days that is pretty easy using <a href="https://www.kernel.org/pub/software/scm/git/docs/gitattributes.html">gitattributes</a>, usually in a .gitattributes file at the root of your project working tree. This overrides any &#8211;global, &#8211;system or local config settings thereby ensuring a consistent experience in the project. You might possibly need to specify &#8211;local config settings as well as some .gitattribute options fallback to those.</p>
+<p>The catch, just as in those MS-DOS days, is that you must not translate anything if the file is not pure text but is some other &#8220;binary&#8221; format, eg non XML based word processor files. If you translate these files you corrupt them, &#8220;simples&#8221;. Accordingly, git tries to auto detect text files but you can also explicitly declare which files are to be treated as either text or binary.</p>
+<h1>Gitting practical</h1>
+<p>This leads to 2 approaches to using LF everywhere:</p>
+<ul>
+<li>Tell git to never translate anything</li>
+<li>Tell git to always convert to LF in your workspace</li>
+</ul>
+<h2>Never translate</h2>
+<p>The first option seems safe but you&#8217;ll have to ensure all text files you [potentially] wish to share only ever contain LFs. That means making sure editors and other tools never use a CRLF when creating the file or editing lines. Not easy when CRLF is still the native Windows line ending.</p>
+<p>Enter <a href="http://editorconfig.org/">EditorConfig</a> to the rescue! This is a standard configuration file supported by many editors and that specifies format options including line endings. Thus, developers get a consistent editing experience and files are created the same way whatever editor or IDE they use. Some editors support EditorConfig directly and others have plugins. For example, the <a href="https://visualstudiogallery.msdn.microsoft.com/c8bccfe2-650c-4b42-bc5c-845e21f96328">Visual Studio extension</a> supports most options including line endings, but currently the <a href="https://marketplace.visualstudio.com/items/chrisdias.vscodeEditorConfig">Visual Studio Code extension</a> only supports indent style so is no use here.</p>
+<p>The way to stop git translating anything is to use a .gitattributes entry of <strong>&#8220;* -text</strong>&#8220;. This simply says nothing should be treated as text. You can always override for specific filename patterns, for example &#8220;*.txt eol=lf&#8221;.</p>
+<p>The other thing you can do is to ensure your development workflow includes a check for  CRLF line endings. For example, you can check all files, including binary, using something like &#8220;<strong><span class="pln">grep </span><span class="pun">&#8211;</span><span class="pln">Url $</span><span class="str">&#8216;\x0D&#8217;</span></strong><span class="pln"><strong> *</strong>&#8221; in &#8220;Git for Windows&#8221;. This will return 0 if any matches, 1 otherwise.</span></p>
+<h2>Always LF</h2>
+<p>Alternatively, you may want to use the second option of having git translate line endings to LF in your workspace. But, bear in mind it only translates on checkout. Thus any CRLFs will remain in your workspace until you go though a complete checkin/checkout cycle.  Once again you&#8217;ll probably want to use EditorConfig to specify LF end of lines for all new writes.</p>
+<p>To get CRLFs translated you&#8217;ll need to force git to checkout your files over the existing copies as by default it doesn&#8217;t want to. Otherwise you can leave your workspace in an strange intermediate state that is different from what anyone will experience when they clone or checkout the code. This could potentially be a source of hard to track bugs (though most unlikely). If you use Continuous Integration in your workflow then any potential problems will be quickly found.</p>
+<p>To be fare, git gives a loud warning when you are in state when a checkout will change the line endings. However that error is slightly confusing.</p>
+<div id="attachment_618" style="width: 999px" class="wp-caption aligncenter"><a href="/openingaccessibility/wp-content/uploads/2015/12/Untitled1.png"><img class="size-full wp-image-618" src="/openingaccessibility/wp-content/uploads/2015/12/Untitled1.png" alt="Git warning when line endings are not yet translated." width="989" height="117" srcset="/openingaccessibility/wp-content/uploads/2015/12/Untitled1.png 989w, /openingaccessibility/wp-content/uploads/2015/12/Untitled1-300x35.png 300w" sizes="(max-width: 989px) 100vw, 989px" /></a><p class="wp-caption-text">Git warning when line endings are not yet translated.</p></div>
+<p>Git and editors may also complain about the mixed line endings issue described above.</p>
+<p>To configure git for this option use <strong>&#8220;* eol=lf&#8221;</strong> in .gitattributes. As this will force all files to be treated as text and so converted on checkin <strong>make sure you explicitly mark any binary files</strong> with lines like &#8220;*.png binary&#8221;. If you don&#8217;t then you checked in file may be corrupt and you may not notice for some time and be stuck with a hard to fix problem.</p>
+<p>Note when you first set this option you&#8217;ll probably get a load of warnings and all files will appear to change. See the notes on .gitattributes end-of-line conversion for the steps to overcome this.</p>
+<h1>Coming soon</h1>
+<p>A gitattributes option to support &#8220;* text=auto eol=lf&#8221; has <a href="http://git.661346.n2.nabble.com/EOL-conversion-on-checkout-for-text-files-only-td7628470.html">been discussed</a>. This would turn on auto textfile detection and then use LF end of lines for any text files. Currently the &#8220;eol=lf&#8221; options turns on text handling for all files and so you need to carefully declare all binary files.  That&#8217;s good practice any way, as no doubt git could incorrectly detect, but at least it would not be critical. We should push for this option.</p>
+<p>By the way, Editor Config should soon support a &#8220;end_of_line=native&#8221; option that will use whatever line ending makes sense according to the OS. That will play better with the default git behaviour but doesn&#8217;t help when files are shared without checkout such as in VMs.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2015/12/dealing-with-windows-text-line-endings-in-git/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Working with Windows native code from node.js</title>
+		<link>/openingaccessibility/2015/10/working-with-windows-native-code-from-node-js/</link>
+		<comments>/openingaccessibility/2015/10/working-with-windows-native-code-from-node-js/#comments</comments>
+		<pubDate>Mon, 19 Oct 2015 20:48:17 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[nodejs]]></category>
+		<category><![CDATA[web]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=581</guid>
+		<description><![CDATA[[UPDATE 02 Feb 2016: While this post discusses Win32 access, here&#8217;s an interesting option for UWP access from JXCore that should eventually work with nodejs when the Microsoft PR for Chakra is merged.] While the node.js ecosystem provides an amazing &#8230; <a href="/openingaccessibility/2015/10/working-with-windows-native-code-from-node-js/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>[UPDATE 02 Feb 2016: While this post discusses Win32 access, here&#8217;s an interesting option for <a href="http://jxcore.com/universal-windows-platform-uwp-samples-using-jxcore/">UWP access from JXCore</a> that should eventually work with nodejs when the Microsoft PR for Chakra is merged.]</p>
+<p>While the <a href="https://nodejs.org/en/">node.js</a> ecosystem provides an amazing number of modules covering almost every imaginable use, sometimes you want to work with existing code created in other languages and tool chains. For example, you may have an existing C++ library or perhaps you want to call operating systems APIs not yet available in <a href="https://www.npmjs.com/">npm</a> or elsewhere.</p>
+<p>When integrating between different language infrastructures you have a choice of which side of the divide to write the required glue code. Glue that provides data <a href="https://en.wikipedia.org/wiki/Marshalling_%28computer_science%29">marshalling</a>, function calling and event processing. If you want to access code with a C style calling convention then it relatively easy to add code on the C side as node is itself created in C++. This is easily enough done by  creating <a href="https://nodejs.org/api/addons.html">C/C++ addons</a> but often involves reams of boilerplate code. However, if you do choose that option then you&#8217;re going to want to use a tool like <a href="https://github.com/nodejs/nan">nan</a> to make your life tolerable. As the nan readme explains:</p>
+<blockquote><p>Thanks to the crazy changes in V8 (and some in Node core), keeping native addons compiling happily across versions, particularly 0.10 to 0.12 to 4.0, is a minor nightmare. The goal of this project is to store all logic necessary to develop native Node.js add-ons without having to inspect <code>NODE_MODULE_VERSION</code> and get yourself into a macro-tangle.</p></blockquote>
+<p>If you want to work on the Javascript side of the divide then <a href="https://github.com/TooTallNate/ref">ref</a> by <a href="https://twitter.com/TooTallNate">@TooTallNate</a> provides all the facilities you need for marshalling to/from the C world. It does this by extending node&#8217;s <a href="https://nodejs.org/api/buffer.html">Buffer class</a> to provide a type system and facilities for:</p>
+<blockquote>
+<ul>
+<li>Getting the memory address of a Buffer</li>
+<li>Checking the endianness of the processor</li>
+<li>Checking if a Buffer represents the NULL pointer</li>
+<li>Reading and writing &#8220;pointers&#8221; with Buffers</li>
+<li>Reading and writing C Strings (NULL-terminated)</li>
+<li>Reading and writing JavaScript Object references</li>
+<li>Reading and writing <strong>int64_t</strong> and <strong>uint64_t</strong> values</li>
+<li>A &#8220;type&#8221; convention to define the contents of a Buffer</li>
+</ul>
+</blockquote>
+<p>Further related  <a href="https://github.com/search?utf8=%E2%9C%93&amp;q=user%3ATooTallNate+ref&amp;type=Repositories&amp;ref=searchresults">ref modules</a> support javascript representations of other C/C++ types including arrays, structures and unions.</p>
+<p>Building on ref&#8217;s facilities is <a href="https://github.com/node-ffi/node-ffi">node-fii</a> which provides a foreign function interface (ffi) for loading and calling functions exported by dynamic libraries (dlls on Windows). It is also possible to call functions in the current process, ideal for functions in static libraries.</p>
+<p>While this eliminates large amounts of C boilerplate, it does have a significant calling overhead. Accordingly you are unlikely to want to use it for functions called in a tight loop or otherwise time sensitive applications.</p>
+<p>Here&#8217;s a simple example from the lib-ffi documentation for wrapping <a href="https://sourceware.org/newlib/libm.html#floor">libm&#8217;s ceil()</a> function which takes a double parameter and returns a double result and also the static <a href="http://www.cplusplus.com/reference/cstdlib/atoi/">atoi()</a> which takes a string and returns an int.</p>
+<div class="highlight highlight-source-js">
+<pre class="crayon-plain-tag">var ffi = require('ffi');
+
+var libm = ffi.Library('libm', {
+  'ceil': [ 'double', [ 'double' ] ]
+});
+libm.ceil(1.5); // 2
+
+// You can also access just functions in the current process by passing a null
+var current = ffi.Library(null, {
+  'atoi': [ 'int', [ 'string' ] ]
+});
+current.atoi('1234'); // 1234</pre>
+</div>
+<p>A more complex example can be seen is some code I wrote for the <a href="http://gpii.net/">GPII</a> system for automatic personalisation from preferences. This is perhaps a slightly unusual application of Node.js as it runs on a Windows device in order to launch and configure various Windows&#8217; settings and assistive technology programmes.</p>
+<p>The actual code provides a function GetDisplayResolution() that calls the Windows API <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd162611(v=vs.85).aspx">EnumDisplaySettings()</a> which returns into the fairly complex <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd183565(v=vs.85).aspx">DEVICEMODE</a> structure. Note that the DEVMODE structure includes nested unions of structures and while the ref modules support these I decided to  flattened out the declaration (after testing my assumptions about packing and padding).</p>
+<div class="highlight highlight-source-js">
+<pre class="crayon-plain-tag">var ffi = require(&quot;ffi&quot;);
+var ref = require(&quot;ref&quot;);
+var Struct = require(&quot;ref-struct&quot;);
+var arrayType = require(&quot;ref-array&quot;);
+
+/**
+* A map between Windows and C types.
+* https://msdn.microsoft.com/en-us/library/windows/desktop/aa383751%28v=vs.85%29.aspx
+*/
+windows.types = {
+    &quot;BOOL&quot;:   &quot;int&quot;,
+    &quot;INT&quot;:    &quot;int&quot;,
+    &quot;UINT&quot;:   &quot;uint&quot;,
+    &quot;ULONG&quot;:  &quot;ulong&quot;,
+    &quot;DWORD&quot;:  &quot;ulong&quot;,
+    &quot;HKL&quot;:    &quot;void*&quot;,
+    &quot;ULONG_PTR&quot;: &quot;ulong&quot;,
+    &quot;LONG&quot;:   &quot;long&quot;,
+    &quot;HANDLE&quot;: &quot;uint32&quot;,
+    &quot;WORD&quot;:   &quot;uint16&quot;,
+    &quot;TCHAR&quot;:  &quot;uint16&quot;  // assuming unicode. (ASCII is char, UNICODE is WCHAR -&amp;gt; wchar_t -&amp;gt; unsigned short === UINT16 === uint16
+};
+
+var t = windows.types;
+// https://msdn.microsoft.com/en-us/library/windows/desktop/dd183565(v=vs.85).aspx
+
+var CCHDEVICENAME = 32;
+var CCHFORMNAME = 32;
+
+windows.DEVMODEW = new Struct([
+    [arrayType(t.TCHAR, CCHDEVICENAME), &quot;dmDeviceName&quot;],
+    [t.WORD, &quot;dmSpecVersion&quot;],
+    [t.WORD, &quot;dmDriverVersion&quot;],
+    [t.WORD, &quot;dmSize&quot;],
+    [t.WORD, &quot;dmDriverExtra&quot;],
+    [t.DWORD, &quot;dmFields&quot;],
+    //union {   // TODO there is a ref-union npm module - but this technique is OK for now
+    //  struct {
+    [&quot;short&quot;, &quot;dmOrientation&quot;],
+    [&quot;short&quot;, &quot;dmPaperSize&quot;],
+    [&quot;short&quot;, &quot;dmPaperLength&quot;],
+    [&quot;short&quot;, &quot;dmPaperWidth&quot;],
+    [&quot;short&quot;, &quot;dmScale&quot;],
+    [&quot;short&quot;, &quot;dmCopies&quot;],
+    [&quot;short&quot;, &quot;dmDefaultSource&quot;],
+    [&quot;short&quot;, &quot;dmPrintQuality&quot;],
+    //  };
+    //  struct {
+    //      POINTL dmPosition;
+    //      DWORD dmDisplayOrientation;
+    //      DWORD dmDisplayFixedOutput;
+    //  };
+    //};
+    [&quot;short&quot;, &quot;dmColor&quot;],
+    [&quot;short&quot;, &quot;dmDuplex&quot;],
+    [&quot;short&quot;, &quot;dmYResolution&quot;],
+    [&quot;short&quot;, &quot;dmTTOption&quot;],
+    [&quot;short&quot;, &quot;dmCollate&quot;],
+    [arrayType(t.TCHAR, CCHFORMNAME), &quot;dmFormName&quot;],
+    [t.WORD, &quot;dmLogPixels&quot;],
+    [t.DWORD, &quot;dmBitsPerPel&quot;],
+    [t.DWORD, &quot;dmPelsWidth&quot;],
+    [t.DWORD, &quot;dmPelsHeight&quot;],
+    //union {
+        [t.DWORD,&quot;dmDisplayFlags&quot;],
+    //  DWORD dmNup;
+    //};
+    [t.DWORD, &quot;dmDisplayFrequency&quot;],
+    //#if (WINVER &amp;gt;= 0x0400)
+    [t.DWORD, &quot;dmICMMethod&quot;],
+    [t.DWORD, &quot;dmICMIntent&quot;],
+    [t.DWORD, &quot;dmMediaType&quot;],
+    [t.DWORD, &quot;dmDitherType&quot;],
+    [t.DWORD, &quot;dmReserved1&quot;],
+    [t.DWORD, &quot;dmReserved2&quot;],
+    //#if (WINVER &amp;gt;= 0x0500) || (_WIN32_WINNT &amp;gt;= 0x0400)
+    [t.DWORD, &quot;dmPanningWidth&quot;],
+    [t.DWORD, &quot;dmPanningHeight&quot;]
+    //#endif
+    //#endif
+]);
+
+windows.user32 = ffi.Library(&quot;user32&quot;, {
+    // https://msdn.microsoft.com/en-us/library/windows/desktop/dd162611(v=vs.85).aspx
+    // LPCWSTR, DWORD, DEVMODE*
+    &quot;EnumDisplaySettingsW&quot;: [
+        t.BOOL, [&quot;pointer&quot;, t.DWORD, &quot;pointer&quot;]
+    ]
+});
+
+/**
+ *  Gets the current screen resolution
+ *
+ * @return {Object) The width and height of the screen.
+ */
+windows.getScreenResolution = function () {
+    var dm = new windows.DEVMODEW();
+    dm.ref().fill(0);
+    dm.dmSize = windows.DEVMODEW.size;
+
+    if (c.FALSE != windows.user32.EnumDisplaySettingsW(ref.NULL, c.ENUM_CURRENT_SETTINGS, dm.ref()))
+    {
+        // note for unknown reason on win 10 the returned dmSize is 188 not expected 220
+        return { width: dm.dmPelsWidth, height: dm.dmPelsHeight };
+    }
+    return { width: 0, height: 0 };
+
+}</pre>
+</div>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2015/10/working-with-windows-native-code-from-node-js/feed/</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+		</item>
+		<item>
+		<title>Flashing Firefox OS onto a Flame with Windows</title>
+		<link>/openingaccessibility/2014/10/flashing-firefox-os-on-windows-2/</link>
+		<comments>/openingaccessibility/2014/10/flashing-firefox-os-on-windows-2/#respond</comments>
+		<pubDate>Sat, 18 Oct 2014 16:05:51 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[FirefoxOS]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=452</guid>
+		<description><![CDATA[Since being involved in the Mozilla Tablet Contribution Program I&#8217;ve seen community members often asked about flashing and building on Windows. This seems to be a something of a FAQ for both the &#8216;flatfish&#8217; tablet and &#8216;flame&#8217; reference phone, and &#8230; <a href="/openingaccessibility/2014/10/flashing-firefox-os-on-windows-2/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Since being involved in the Mozilla <a href="https://wiki.mozilla.org/FirefoxOS/TCP">Tablet Contribution Program</a> I&#8217;ve seen community members often asked about flashing and building on Windows. This seems to be a something of a FAQ for both the &#8216;flatfish&#8217; tablet and <a href="https://developer.mozilla.org/en-US/Firefox_OS/Developer_phone_guide/Flame">&#8216;flame&#8217; reference phone</a>, and I wonder if not also for other devices. The Firefox OS development community concentrate on using Linux and Mac OS X, which is another OS with UNIX roots, being based on BSD. Thus support for Windows has been a low priority; why bother when Linux is freely available on any device and works so well?</p>
+<p>It turns out the demand and suitability of using a Windows host is quite different for flashing and for building Firefox OS. It makes every sense for flashing, but not so for building. In this post I&#8217;ll explore flashing and introduce shallow_flash.bat for Flame. I&#8217;ll leave building Firefox OS on Windows to a later post</p>
+<p><strong>Flashing</strong></p>
+<p>Flashing a phone is something any community member with a phone might want to do and significant numbers of our wonderful community are not particularly technical and/or many have only a Windows machine at hand. While automatic &#8220;Over The Air&#8221; (OTA) updates are often available direct to the device, either from the device vendor or Mozilla, these may not meet the user&#8217;s requirements. Some vendors do provide flashing updates but often at their own cadence, leaving users a long way behind the latest versions.</p>
+<p>There are currently 3 channels of Mozilla supplied Firefox OS updates, with varying levels stability. Release is the most stable and vendors will usually supply and support this. Next is nighlty Aurora, the Beta channel which is fairly stable and just right for early adopters. Finally nightly Master is the latest developer build and likely to be buggy or broken. (Mozilla devs checkin directly to the master branch and don&#8217;t use a GitFlow type workflow). We really want people to be testing and improving the latest less stable channels if they are willing to. However, the only way to switch between these channels, say to Aurora from the supplied Release, is to flash your device.</p>
+<p>A flashing wrinkle is that some devices, like flatfish, currently use a full flash which updates the entire software stake of Gonk, Gecko and Gaia. Other devices, like the flame, take the approach of flashing a base full-stack image and then partially flashing updates to Gecko and Gaia. At some point another full flash will be required, usually when a new Gonk lands.</p>
+<p>Part of the reason for this is that some of the vendor supplied hardware specific components in Gonk cannot be freely redistributed in isolation by Mozilla due to licensing. Ideally, for Firefox OS to be fully open, no such restrictions would apply but the reality is different. For now these proprietary binary blobs get supplied as vendor images that are either combined with Mozilla generated code in a single flash, or provided as a base version for use with subsequent so called shallow flashing of Gecko and Gaia.</p>
+<p>Practically however, flashing is almost entirely a matter of running a program to talk to the device and copying files across. This can be done manually but is usually done with a script to combine all the steps and components. In fact, 2 programs from Android are used; ADB and Fastboot. These are similar but have different features and require the device to be in distinct states so they can communicate. Windows versions of these are available, but Windows also often requires device specific USB drivers, though the standard Android ones do often work.</p>
+<p>Flashing on Windows is not only desirable but also now achievable. For the TCP flatfish we&#8217;ve been providing Windows scripts to do the flash. The base versions for flame also have usable Windows scripts.   However, for devices like Flame, the &#8216;<a href="https://github.com/Mozilla-TWQA/B2G-flash-tool/blob/master/shallow_flash.sh">shallow_flash</a>&#8216; script provided by the <a href="https://github.com/Mozilla-TWQA/B2G-flash-tool">Mozilla Taiwan QA group</a> is written for use on Linux. Now however, after a couple of minor tweaks it also works on <a href="https://cygwin.com/">Cygwin</a>, a popular Linux emulator for Windows.</p>
+<p>Cygwin is fine for anyone with experience of the Linux command line. However those less technical are likely to be uncomfortable with its idiosyncratic installer and quite confused by the Linux-style command line, especially as the file paths are different to Windows.</p>
+<p>I wanted to make flashing much easier on Windows, especially after helping someone update their Flame to 2.1. So now a Windows script &#8216;<a href="https://github.com/Mozilla-TWQA/B2G-flash-tool/blob/master/shallow_flash.bat">shallow_flash.bat</a>&#8216; hides much of the complexity of using Cygwin and running shallowflash.sh. All that is required is to install Cygwin, copy the required Gecko and Gaia archive files and double click on the script to run it.</p>
+<p>I plan to update the script to make the Cygwin installation a little easier too.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2014/10/flashing-firefox-os-on-windows-2/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Flashing Mozilla Firefox OS Flame Phone on Windows</title>
+		<link>/openingaccessibility/2014/09/flashing-firefox-os-on-windows/</link>
+		<comments>/openingaccessibility/2014/09/flashing-firefox-os-on-windows/#comments</comments>
+		<pubDate>Fri, 26 Sep 2014 17:59:25 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[FirefoxOS]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=443</guid>
+		<description><![CDATA[tl;dr the shallow_flash.sh file used to flash Firefox OS nightly builds t to phones such as the Flame now works on Cygwin on Windows. The reason for previous failure and the solution highlight a difference between Linux and Windows. Mozilla&#8217;s &#8230; <a href="/openingaccessibility/2014/09/flashing-firefox-os-on-windows/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p><strong>tl;dr the shallow_flash.sh file used to flash Firefox OS nightly builds t to phones such as the Flame now works on Cygwin on Windows. The reason for previous failure and the solution highlight a difference between Linux and Windows.<br />
+</strong></p>
+<p>Mozilla&#8217;s <a href="https://developer.mozilla.org/en-US/Firefox_OS">Firefox OS</a> is undergoing rapid development, with the cutting edge nightly builds <a href="/openingaccessibility/wp-content/uploads/2014/09/Firefox-OS-Flame-Reference-Device-small.png"><img class="alignright size-full wp-image-444" src="/openingaccessibility/wp-content/uploads/2014/09/Firefox-OS-Flame-Reference-Device-small.png" alt="Firefox-OS-Flame-Reference-Device-small" width="150" height="305" srcset="/openingaccessibility/wp-content/uploads/2014/09/Firefox-OS-Flame-Reference-Device-small.png 150w, /openingaccessibility/wp-content/uploads/2014/09/Firefox-OS-Flame-Reference-Device-small-147x300.png 147w" sizes="(max-width: 150px) 100vw, 150px" /></a>now at version 2.2 (as compared to the less frequent Vendor supplied builds). Each Firefox OS phone has slightly different mechanism for flashing using these Mozilla builds but the general approach is similar. Basically a base version of all the full software stack (Gonk, Gecko and Gaia) is available for flashing and then partial builds update just Gecko and Gaia). There are also OTA updates that can be just Gecko &amp; Gaia not requiring a reboot, or a full update (FOTA) requiring a reboot.</p>
+<p>Firefox OS developers almost exclusively use Linux, or OS X. This is for good reasons,. In particular building on Windows can be slow as it is not so hot at processing lots of small files as required for a build. Something I soon found when building Desktop Firefox on my Windows laptop.</p>
+<p>However, when it comes to flashing, we find that people who are not building the software also want to use the pre-built images on their phones and these community members are often using Windows. They often do not wish to build and may not be particularly technical. Also the Mozilla builds have been created with a full set of features that can be lacking from personal builds (at least they are from mine).</p>
+<p>Unfortunately the official &#8216;shallow_flash.sh&#8217; script used for the partial flashes has been developed for linux. Although it should work on the <a href="https://cygwin.com/">Cygwin</a> linux &#8217;emulator&#8217; for Windows, flashed phones would never reboot. This has now been fixed.</p>
+<p>The core problem with the script highlights another reason Linux is better than Windows for Firefox OS development. In short, Firefox OS uses the Linux kernel and HAL layer from Android. Thus the close match between target and host operating systems when using Linux reduces many problems. In particular, some of the files contained in the Gecko updates require the X (executable) file attribute in order for Firefox OS to work at all. Windows doesn&#8217;t have this attribute and so when the files are unarchived and pushed to the phone the x attribute is lost resulting in a dead phone. In fact Cygwin tries to emulate the x attribute, but it really only pretends it is on for files it thinks are executable, something completely useless for the Firefox OS files in question.</p>
+<p>The good news is Cygwin provides all the wonderful *nix commands which have been used for years to perform administrative magic with seemingly little effort. The philosophy of using small focussed tools in combinations in order to get the job done comes to the rescue here. A single line can be added to the script to reset all those x attributes that got lost, Here it is</p><pre class="crayon-plain-tag">run_adb shell chmod 777 $(tar -tvf $GECKO_TAR_FILE | awk '$1 ~ /^[^d].*x$/ {print &quot;/system/&quot; $NF}')</pre><p>Without going into details this extracts from the .tar.gz archive the list of files with x set (and that are not also directories) and passes it to chmod to set the x attribute on the files on the phone. Simples.</p>
+<p>While I was at it I also fixed a bug with the way local files were handled. A hack copying files to a temporary folder worked around the problem and could be removed with a simple fix. Also, when testing we found problems if the files were place in a folder with spaces in the name so that was fixed too.</p>
+<p>Until the patch is merged in you can find the fixed version of shallow_flash.sh in <a href="https://github.com/Mozilla-TWQA/B2G-flash-tool/pull/276">this pull request </a>.</p>
+<p>In addition as the person this work  was for is not especially technical, I created <a href="http://opendirective.net/b2g/flame/B2GShallowFlash.zip">a single zip file</a> containing the script, the Firefox OS update files and a minimal version of Cygwin. This gives an easy download, unzip and run flash.bat UX. Since the Cygwin installer is complex and hardly accessible this might be useful to other folks too.</p>
+<p>As a foot note having submitted this pull request I found someone else had recently submitted a similar pull request (though only setting the x attribute on a few predefined files).  I do wish I had seen this one earlier as it took some time to figure it was the x attribute causing the problem. Heh. Such is open source <img src="https://s.w.org/images/core/emoji/11/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2014/09/flashing-firefox-os-on-windows/feed/</wfw:commentRss>
+		<slash:comments>10</slash:comments>
+		</item>
+		<item>
+		<title>Sending emails with PHP on cheap hosting</title>
+		<link>/openingaccessibility/2013/12/sending-emails-with-php-on-cheap-hosting/</link>
+		<comments>/openingaccessibility/2013/12/sending-emails-with-php-on-cheap-hosting/#respond</comments>
+		<pubDate>Mon, 09 Dec 2013 10:56:35 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[opensource]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[web]]></category>
+		<category><![CDATA[WordPress]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=318</guid>
+		<description><![CDATA[Many cheap or free share hosting services block the PHP mail() function so it silently does nothing. For example, I just added a contact form to a small WordPress based web site for a friend but it didn&#8217;t work as &#8230; <a href="/openingaccessibility/2013/12/sending-emails-with-php-on-cheap-hosting/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Many cheap or free share hosting services block the PHP mail() function so it silently does nothing. For example, I just added a contact form to a small <a href="http://wordpress.org/">WordPress</a> based <a href="http://davidburchfieldpoetry.com/">web site</a> for a friend but it didn&#8217;t work as the web hoster, xtreemhost, block it (or everything gets heavily spam filtered, which amounts to the same thing).</p>
+<p>The solution is to use a separate SMTP mail server and this is actually quite simple using one of the most popular PHP mail solutions <a href="https://github.com/PHPMailer/PHPMailer">PHPMailer</a> and a Gmail or Google Apps email account. Most SMTP servers will block such so called &#8220;relaying&#8221; when sending from different domain to the mail server. However, if you have a GMail account you can use the Google SMTP server authenticated as that user.</p>
+<p>In my case, I just added a new account to our family domain running on GApps and used that. I added the minimum PHPMailer files required (<a id="ace81e501931d8763b49f2410cf3094d-2f6831a81eeafba4b38f3bb4959db412d948c546" title="class.phpmailer.php" href="https://github.com/PHPMailer/PHPMailer/blob/master/class.phpmailer.php">class.phpmailer.php</a>, <a id="ac5c95a7c256b389656048bd46dc2985-6366724a761f25e8b601b45f39460fc54707c3bc" title="class.smtp.php" href="https://github.com/PHPMailer/PHPMailer/blob/master/class.smtp.php">class.smtp.php</a> and <a id="5114544afadc9af298ba54a73467bf22-be0dad2537abf6688545a56f77e84b89ea0ca904" title="PHPMailerAutoload.php" href="https://github.com/PHPMailer/PHPMailer/blob/master/PHPMailerAutoload.php">PHPMailerAutoload.php</a>) along with a child theme with my new mail() function in the functions.php file. Well, actually, I found the PHP override/replace functions for built-ins didn&#8217;t work so I had to edit the plugin code to use a new mail function explicitly, rather than just redefining it in the child theme. Not ideal, but an acceptable maintenance weak point.</p>
+<p>The PHPMailer examples include one for <a href="https://github.com/PHPMailer/PHPMailer/blob/master/examples/gmail.phps">using GMail SMTP</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2013/12/sending-emails-with-php-on-cheap-hosting/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

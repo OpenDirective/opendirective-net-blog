@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+>
+
+<channel>
+	<title>LogicApps &#8211; AzureServerless</title>
+	<atom:link href="/azureserverless/tag/logicapps/feed/" rel="self" type="application/rss+xml" />
+	<link>/azureserverless/</link>
+	<description>Using Microsoft Azure in a Serverless mode</description>
+	<lastBuildDate>Tue, 05 Sep 2017 08:46:08 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+
+<image>
+	<url>/azureserverless/wp-content/uploads/2016/11/cropped-Functions-32x32.png</url>
+	<title>LogicApps &#8211; AzureServerless</title>
+	<link>/azureserverless/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">119351739</site>	<item>
+		<title>Getting Started with Azure Serverless &#8211; a Roadmap for Getting up to Speed</title>
+		<link>/azureserverless/2017/04/27/getting-started-with-azure-serverless-a-roadmap-for-getting-up-to-speed/</link>
+		<comments>/azureserverless/2017/04/27/getting-started-with-azure-serverless-a-roadmap-for-getting-up-to-speed/#respond</comments>
+		<pubDate>Thu, 27 Apr 2017 14:27:22 +0000</pubDate>
+		<dc:creator><![CDATA[steve@opendirective.com]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Functions]]></category>
+		<category><![CDATA[LogicApps]]></category>
+
+		<guid isPermaLink="false">/azureserverless/?p=278</guid>
+		<description><![CDATA[This is not a tutorial on using Microsoft&#8217;s Azure Serverless offerings. There&#8217;s already plenty of those, with more appearing every day as Serverless popularity rapidly grows. Rather, this post provides a roadmap of info you&#8217;ll need to use these technologies in your projects or products. Just for good measure we [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>This is not a tutorial on using Microsoft&#8217;s Azure Serverless offerings. There&#8217;s already plenty of those, with more appearing every day as Serverless popularity rapidly grows. Rather, this post provides a roadmap of info you&#8217;ll need to use these technologies in your projects or products. Just for good measure we include a few tutorials as well.</p>
+<p>For now at least, the key Azure Serverless services are</p>
+<ul>
+<li><a href="https://azure.microsoft.com/en-gb/services/functions/">Azure Functions</a> &#8211; chunks of event triggered logic</li>
+<li><a href="https://azure.microsoft.com/en-us/services/logic-apps/">LogicApps</a> &#8211; declarative workflow that calls Functions and 3rd party services</li>
+</ul>
+<p>You&#8217;re very likely to use several other Azure services and tools in your solutions and are they are introduced below.</p>
+<h1>Background Software Knowledge</h1>
+<p>Perhaps Serverless&#8217; greatest attraction is that developers can largely forget about much of the software stack required to build and deploy a business system application or app backend (or even a static web server). As a cloud offering that builds on existing solutions it also abstracts away the hardware too. Thus, you can concentrate on your business or app logic, safe in the knowledge you have outsourced those other details to Microsoft. You do still require some system development and maintenance skills though, though many can be learnt as you become familiar with Azure Serverless.</p>
+<p>The largest impact of &#8220;going serverless&#8221; will be on your system architecture. You certainly won&#8217;t have a single monolith app or a classic 3-tier architecture. Instead, you&#8217;ll be connecting together services and functional chunks, some of which you&#8217;ll create and others coming from 3rd parties. The connections between components will be asynchronous mechanisms like HTTP triggers or messages in queues. Data and state are stored in services that wrap databases, most typically NoSQL. Accordingly, from the outset you&#8217;ll find it useful to have an acquaintance with some architectural techniques beyond basic software development.</p>
+<ul>
+<li>Software as a Service, both as a technical and business concept</li>
+<li>Event driven architectures, along with messages and queues for asynchronous coupling</li>
+<li>Distributed system design, possibly including Microservice architectures</li>
+<li>Monitoring and debugging techniques for distributed systems</li>
+<li>Basic deployment techniques including CI/CD (arguably basic development techniques)</li>
+<li>Backend, Functions and Workflow as a Service (BaaS, FaaS and WaaS) &#8211; strictly for label lovers</li>
+</ul>
+<p>Familiarity with these base technologies will be useful:</p>
+<ul>
+<li>HTTP RESTful architectures and APIs</li>
+<li>Possibly <a href="http://www.graphql.com/">graphQL</a> though it&#8217;s not directly supported</li>
+<li>C# .NET or NodeJS JavaScript &#8211; other languages are supported in Functions but these are arguably the main 2.</li>
+<li>SQL and/or NoSQL &#8211; your going to want to store data somewhere</li>
+</ul>
+<p>You may also find it useful to have a familiarity with code-level async techniques (eg callbacks, promises or reactive streams) but you can have Functions with out using them.</p>
+<p>Notice we didn&#8217;t mention typical cloud concepts such as IaaS or containers. They may be part of how Microsoft implement Azure Serverless but they are mostly hidden details you needn&#8217;t to worry about. In addition, while Serverless is an extension of PaaS you can largely forget about that too.</p>
+<p>Finally, the Functions framework is open source and you&#8217;ll want to have some familiarity with working this way on GitHub in order to <a href="https://github.com/Azure/Azure-Functions">engage and make contributions</a> to the very open team. LogicApps also provides a collection of handy open source <a href="https://github.com/logicappsio">examples and addons</a>.</p>
+<h1>Just do it!</h1>
+<p>With so many tutorials and videos out there it&#8217;s hard to select good ones to include. So I suggest you just google after looking at those below <img src="https://s.w.org/images/core/emoji/11/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p>Bear in mind that the Azure Portal UIs are the fastest way to get going as they are interactive and work online. You can explore using off line development and deployment tooling later. Also, there are generally 2 types of Serverless applications: business automation logic and backend for a mobile or web app. Note you can easily <a href="https://functions.azure.com/try">try Functions panel for free</a> without even logging into Azure or having an account.</p>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-create-a-logic-app">LogicApp tutorial</a> &#8211; send email when a RSS feed is updated &#8211; more are linked at then end</li>
+<li><a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-azure-function">Functions tutorial</a> &#8211; simple test in the portal &#8211; more linked at end</li>
+<li><a href="https://functionschallenge.azure.com/">The Azure Functions challenge</a> &#8211; test your coding skills and learn how to build solutions using Azure Functions at the same time</li>
+</ul>
+<h2>Videos</h2>
+<ul>
+<li>Watch Scott Hansleman&#8217;s short Functions <a href="https://www.youtube.com/watch?v=nCExarOuPAw">introductory video</a> and follow along</li>
+<li>A fairly detailed introduction to <a href="https://www.youtube.com/watch?time_continue=964&amp;v=YuiEAYvniEw">LogicApps</a> by Stephen Siciliano (May 2015)</li>
+<li>Serverless Applications with Azure Functions and Logic Apps &#8211; <a href="https://channel9.msdn.com/Blogs/Microsoft-Integration/Build-and-Deploy-Serverless-Part-1">Part 1</a> &amp; <a href="https://channel9.msdn.com/Blogs/Microsoft-Integration/Build-And-Deploy-Serverless-Part-2">Part2</a></li>
+<li><a href="https://mva.microsoft.com/en-US/training-courses/16829?l=360DZMY4C_105918563">Mastering Azure App Service, Part 1: Building Azure Logic Apps</a> &#8211; Microsoft Virtual Academy Course</li>
+</ul>
+<h1>Gaining Context</h1>
+<p>Your learning style may be to gain a background understanding before diving in to play, or you may like to pick up concepts as you explore. In either case these resources will provide the info you need:</p>
+<h2>Architectures</h2>
+<p>The Serverless community are busy figuring out which architectural patterns work best with Serverless. These patterns aren&#8217;t new and as indicated above, they currently draw from patterns in use in distributed, event driven, reactive systems. Here are a few starting resources.</p>
+<ul>
+<li><a href="https://www.martinfowler.com/articles/serverless.html">Serverless Architecture</a> by Mike Roberts</li>
+<li><a href="https://www.martinfowler.com/articles/microservices.html">Microservice architectures</a> by James Lewis and Martin Flower &#8211; fairly closely related to serverless architecture</li>
+<li>Yochay Kiriaty&#8217;s slides on <a href="https://www.slideshare.net/YochayKiriaty/serverless-patterns-v3-public">Practical Serverless Design Patterns</a> from ServerlessConf Autsin 17. Plus <a href="https://github.com/yochay/serverlesspatterns">code examples</a></li>
+<li><a href="http://www.reactivemanifesto.org/">The Reactive manifesto</a> &#8211; LogicApps and Functions enable this architecture style.
+<ul>
+<li><a href="https://www.oreilly.com/ideas/reactive-programming-vs-reactive-systems">Reactive programming vs. Reactive systems</a> &#8211; a little useful clarification need in the days of React and Reactive Programing</li>
+</ul>
+</li>
+</ul>
+<h2>Azure Specific topics</h2>
+<p>The key technologies are:</p>
+<ul>
+<li><a href="https://azure.microsoft.com/en-us/services/logic-apps/">LogicApps</a> &#8211; workflow definitions</li>
+<li><a href="https://azure.microsoft.com/en-gb/services/functions/">Functions</a> &#8211; event driven code</li>
+<li><a href="https://www.youtube.com/watch?v=8x5sBBUP6pM">Go serverless for the enterprise with Microsoft Azure</a> &#8211; Excellent general introductory video from Chris Anderson</li>
+</ul>
+<p>In addition you&#8217;re bound to use some of these:</p>
+<ul>
+<li><a href="https://azure.microsoft.com/en-gb/services/storage/?wt.srch=1&amp;wt.mc_id=AID529440_SEM_XLuVJVWX">Storage</a> &#8211; File, Disk, Table, Blobs, Queues</li>
+<li><a href="https://azure.microsoft.com/en-gb/services/service-bus/">Service Bus</a> &#8211; enterprise scale messaging</li>
+<li><a href="https://azure.microsoft.com/en-us/services/documentdb/">DocumentDB </a>&#8211; full powered NoSQL</li>
+<li><a href="https://azure.microsoft.com/en-gb/services/storage/tables/">TableStorage</a> &#8211; simple tables &#8211; not full SQL</li>
+<li><a href="https://azure.microsoft.com/en-us/services/event-hubs/">Event Hub</a> &#8211; IoT scale telemetry</li>
+<li><a href="https://azure.microsoft.com/en-us/services/notification-hubs/">Notification Hub</a> &#8211; push notifications</li>
+<li><a href="https://dev.botframework.com/">BotFramework</a> (preview) &#8211; conversational UIs</li>
+</ul>
+<p>A few crosscutting Azure specifics you&#8217;ll want to know about include:</p>
+<ul>
+<li><a href="https://portal.azure.com/">The Azure portal</a> &#8211; navigation and dashboards help tame the vast array of features on offer</li>
+<li><a href="https://azure.microsoft.com/en-us/regions/">Regions</a> &#8211; Data centre locations &#8211; make sure you <a href="http://www.azurespeed.com/">pick the best</a> for you or your users</li>
+<li>Subscriptions &#8211; there are <a href="https://azure.microsoft.com/en-gb/free/">free trials</a> and offers for <a href="https://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/">VisualStudio</a> or MSDN subscribers and <a href="https://bizspark.microsoft.com/">Microsoft BizSpark</a></li>
+<li>Resources and <a href="https://docs.microsoft.com/en-us/rest/api/resources/">Azure Resource Manager</a> (ARM) &#8211; &#8220;infrastructure as code&#8221; deployment management</li>
+<li><a href="https://azure.microsoft.com/en-us/services/app-service/">App Services</a> and especially the KUDU console &#8211;  Functions runs on top of these and inherit many useful features</li>
+<li>Functions pricing &#8211; the <a href="https://azure.microsoft.com/en-us/pricing/details/functions/">consumption plan</a> (pay as you use) can be very cheap indeed, if not free</li>
+<li><a href="https://azure.microsoft.com/en-gb/pricing/details/logic-apps/">LogicApps pricing</a></li>
+</ul>
+<h1>Tools</h1>
+<p>Right now there are 3 main development tools sets, though you can always mix and match too. The tools you uses depend on if you&#8217;re using Functions or LogicApps.</p>
+<p>For Functions the language you use also effects which local development OS you can use, plus available CI/CD options. Fortunately, the Functions Team are working on making all options available on all OSs.  A powerful feature is the ability to run, manage and test Functions locally (or on CI) while they still work with cloud based triggers and services; perfect for unit testing.</p>
+<ul>
+<li><a href="https://portal.azure.com/">The Azure portal</a> &#8211; interactive web app &#8211; great for quick experiments or small systems with a single developer, or a very careful team</li>
+<li><a href="https://www.visualstudio.com/">VisualStudio 2015</a> &#8211; Windows only IDE, team development and deployment. Visual editor for LogicApps. C# Functions</li>
+<li><a href="https://code.visualstudio.com/">Visual Studio Code + CLIs</a>  &#8211; NodeJS JavaScript Functions and soon TypeScript. See <a href="https://blogs.msdn.microsoft.com/appserviceteam/2016/12/01/running-azure-functions-locally-with-the-cli/">this post</a> for details
+<ul>
+<li>Code is a cross platform editor and debugger, powerful intellisense with C#, JavaScript and TypeScript</li>
+<li><a href="https://www.npmjs.com/package/azure-functions-cli">Azure Functions CLI</a> &#8211; Windows only. May merge with Azure CLI</li>
+<li><a href="https://docs.microsoft.com/en-us/cli/azure/overview">Azure CLI</a> &#8211; Cross platform, the latest version arguably makes simple queries rather complex</li>
+</ul>
+</li>
+</ul>
+<p>Both Functions and LogicApps use underlying declarative text files, meaning common text tools (grep, sed, awk etc) can be used when required. That&#8217;s a real lifesaver when you have to make a small change in many places!</p>
+<p>The <a href="https://serverless.com/">Serverless Framework</a> now supports Functions in addition to Apache OpenWhisk and the original AWS Lambda and . This impressive open source project cleanly abstracts away the differences between various Serverless platforms. It currently has a DevOps emphasis and only supports a subset of Functions features (as you&#8217;d expect given it&#8217;s abstraction)</p>
+<ul>
+<li>Introducing <a href="https://cmatskas.com/introducing-the-serverless-framework-for-azure-functions/">The Serverless Framework</a> for Functions by <a data-reactid=".7.2.$lazyPlaceholder_twitter_858322304497053697.2.1.0.1"><span class="rc-MetadataText -username" data-reactid=".7.2.$lazyPlaceholder_twitter_858322304497053697.2.1.0.1.1"><span data-reactid=".7.2.$lazyPlaceholder_twitter_858322304497053697.2.1.0.1.1.1">ChristosMatskas</span></span></a></li>
+</ul>
+<p>Other useful tools include:</p>
+<ul>
+<li><a href="https://azure.microsoft.com/en-us/services/application-insights/">Azure Application Insights</a> &#8211; see what you code is doing. Functions integration is in Preview</li>
+<li><a href="https://azure.microsoft.com/en-us/services/monitor/">Azure Monitor</a> &#8211; detailed azure analytics</li>
+<li><a href="https://www.getpostman.com/">Postman</a> &#8211; the HTTP API testing tool</li>
+<li><a href="http://storageexplorer.com/">Azure Storage Explorer</a> &#8211; Windows app that &#8220;does what it says on the tin&#8221;</li>
+</ul>
+<h1>More, More!</h1>
+<ul>
+<li>Mark Heath&#8217;s curated <a href="https://github.com/markheath/azure-functions-links">list of useful links for Functions</a> over on GitHub.</li>
+</ul>
+<h1>Enjoy</h1>
+<p>That might seem a lot to absorb but the reality is you can just start with a small stand-alone solution that is useful to you. Or perhaps, implement one part of a new or existing system using Functions. Visting the Azure Functions or LogicApps panel, selecting a template, entering some code and testing are all easy small steps. From little acorns&#8230;.</p>
+<p>As Chris Anderson, PM of Azure Functions said &#8220;Solve the problem and get on with the rest of your life&#8221;.</p>
+<h1>Stay informed</h1>
+<ul>
+<li>Follow us at <a href="https://twitter.com/AzureServerless">@AzureServerless</a></li>
+<li><script>(function() {
+	if (!window.mc4wp) {
+		window.mc4wp = {
+			listeners: [],
+			forms    : {
+				on: function (event, callback) {
+					window.mc4wp.listeners.push({
+						event   : event,
+						callback: callback
+					});
+				}
+			}
+		}
+	}
+})();
+</script><!-- MailChimp for WordPress v4.2.5 - https://wordpress.org/plugins/mailchimp-for-wp/ --><form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-70" method="post" data-id="70" data-name="Subscribe" ><div class="mc4wp-form-fields"><p>
+	<label for="email">Join our newsletter for updates and extras:</label>
+	<input type="email" id="email" name="EMAIL" placeholder="Your email address" required />
+	<input type="submit" value="Sign up" />
+</p></div><label style="display: none !important;">Leave this field empty if you're human: <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off" /></label><input type="hidden" name="_mc4wp_timestamp" value="1537204184" /><input type="hidden" name="_mc4wp_form_id" value="70" /><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-1" /><div class="mc4wp-response"></div></form><!-- / MailChimp for WordPress Plugin --></li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>/azureserverless/2017/04/27/getting-started-with-azure-serverless-a-roadmap-for-getting-up-to-speed/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">278</post-id>	</item>
+	</channel>
+</rss>

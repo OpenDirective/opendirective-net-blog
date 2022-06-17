@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>personal &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/category/personal/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Upgraded to HTML5 themes</title>
+		<link>/openingaccessibility/2011/05/upgraded-to-html5-themes/</link>
+		<comments>/openingaccessibility/2011/05/upgraded-to-html5-themes/#respond</comments>
+		<pubDate>Thu, 12 May 2011 11:18:43 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[opena11y]]></category>
+		<category><![CDATA[personal]]></category>
+		<category><![CDATA[html5]]></category>
+		<category><![CDATA[themes]]></category>
+		<category><![CDATA[twenttenfive]]></category>
+		<category><![CDATA[wordpress]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=37</guid>
+		<description><![CDATA[I just installed Richard Sheperd&#8217;s TwentyTenFive HTML5 version of the default WordPress theme and Sylvia Egger&#8217;s Accessible Five accessibility enhancing child theme. There was a slight glitch with the name of the TwentyTenFive folder name having changed, but all seems &#8230; <a href="/openingaccessibility/2011/05/upgraded-to-html5-themes/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I just installed Richard Sheperd&#8217;s <a href="http://www.twentytenfive.com/">TwentyTenFive</a> HTML5 version of the default WordPress theme and Sylvia Egger&#8217;s <a href="http://accessible.sprungmarker.de/2011/04/accessible-five">Accessible Five</a> accessibility enhancing child theme.</p>
+<p>There was a <a href="http://accessible.sprungmarker.de/2011/04/accessible-five/#comment-548">slight glitch</a> with the name of the TwentyTenFive folder name having changed, but all seems well now after I renamed it back to &#8216;TwentyTenFive&#8217;.</p>
+<p>We can just hope these both quickly make into WP core. Especially as there was a recent <a href="http://make.wordpress.org/accessibility/2011/05/06/if-anyone-would-like-to-take-a-stroll-th/">call for WP accessibility</a> contributions.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2011/05/upgraded-to-html5-themes/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Back in the blogsphere last</title>
+		<link>/openingaccessibility/2011/05/back-at-last/</link>
+		<comments>/openingaccessibility/2011/05/back-at-last/#comments</comments>
+		<pubDate>Mon, 02 May 2011 20:09:18 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[personal]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=14</guid>
+		<description><![CDATA[So I&#8217;ve finally set up a new blog to replace that which was lost when EduSpaces pulled the plug on the old Elgg community where I hung out. I should have moved on anyway given my focus is now open &#8230; <a href="/openingaccessibility/2011/05/back-at-last/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>So I&#8217;ve finally set up a new blog to replace that which was lost when EduSpaces pulled the plug on the old Elgg community where I hung out. I should have moved on anyway given my focus is now open accessibility, whereas at that time I was working in education (Exeter College MIS). Unfortunately my blog export turns out to be corrupt so it will be some time before I can resurrect some of those old posts.</p>
+<p>Since then I&#8217;ve been pretty active on Twitter as <a href="http://twitter.com/SteveALee">@SteveALee</a> and whilst being socially powerful, doing so really depletes the blogging muse. Still at times there is more I want to say than can be pared down to fit the lean and mean 140.</p>
+<p>I also work  for UK JISC funded FE/HE educational advisory service <a href="http://oss-watch.ac.uk/">OSS Watch</a> and I occasionally <a href="http://osswatch.jiscinvolve.org/">blog there</a> as well.</p>
+<p>So now I&#8217;m all set to go. I had intended this to be a Drupal blog, partly to gain familiarity with the excellent CMS with a view to using it for a refresh of fullmeasure.co.uk, and partly as the <a href="http://groups.drupal.org/accessibility">Drupal Accessibility community</a> are doing great things, many of which have landed in Drupal 7.  However, my otherwise excellent and open source friendly hoster, <a href="http://ukfsn.org/">UKFSN</a> are still using a version of PHP that is too old for Drupal 7. So for now I knocked up a quick WordPress install. It&#8217;s such an easy out-of-the-box blog setup and it&#8217;s fresh in my mind as I&#8217;ve just used it for a <a href="http://grkflood.co.uk/">couple</a> of <a href="http://suigenerissolutions.co.uk/">websites</a> for a client.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2011/05/back-at-last/feed/</wfw:commentRss>
+		<slash:comments>5</slash:comments>
+		</item>
+	</channel>
+</rss>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+>
+
+<channel>
+	<title>auth0 &#8211; AzureServerless</title>
+	<atom:link href="/azureserverless/tag/auth0/feed/" rel="self" type="application/rss+xml" />
+	<link>/azureserverless/</link>
+	<description>Using Microsoft Azure in a Serverless mode</description>
+	<lastBuildDate>Tue, 05 Sep 2017 08:46:08 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+
+<image>
+	<url>/azureserverless/wp-content/uploads/2016/11/cropped-Functions-32x32.png</url>
+	<title>auth0 &#8211; AzureServerless</title>
+	<link>/azureserverless/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">119351739</site>	<item>
+		<title>Using Serverless Azure Functions with Auth0 and Google APIs</title>
+		<link>/azureserverless/2017/03/15/using-serverless-azure-functions-with-auth0-and-google-apis/</link>
+		<comments>/azureserverless/2017/03/15/using-serverless-azure-functions-with-auth0-and-google-apis/#respond</comments>
+		<pubDate>Wed, 15 Mar 2017 12:12:31 +0000</pubDate>
+		<dc:creator><![CDATA[steve@opendirective.com]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[auth0]]></category>
+		<category><![CDATA[Functions]]></category>
+		<category><![CDATA[serverless]]></category>
+
+		<guid isPermaLink="false">/azureserverless/?p=230</guid>
+		<description><![CDATA[[Update 08 April 2017: The Auth0 post Navigating RS256 and JWKS describes RS256 in more detail, including an endpoint for accessing your Auth0 Public key] This post covers the following user story and appears as a guest post on the Auth0 blog. As a user, I want to log into [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>[Update 08 April 2017: The Auth0 post <a title="Published: April 03, 2017" href="https://auth0.com/blog/navigating-rs256-and-jwks/">Navigating RS256 and JWKS</a> describes RS256 in more detail, including an endpoint for accessing your Auth0 Public key]</p>
+<p>This post covers the following user story and appears as a <a href="https://auth0.com/blog/using-serverless-azure-functions-with-auth0-and-google-apis/">guest post on the Auth0 blog</a>.</p>
+<blockquote><p>As a user, I want to log into the app with my Google account so I get a list of my Google Photos albums.</p></blockquote>
+<p>The backend stack is Nodejs on Azure Functions calling Auth0 and the Google Photos Api via the request module. The client side is a plain old HTML + JavaScript app using the Auth0 Lock for user login in.</p>
+<p>NB &#8211; for clarity I left out code to check the API access token from Auth0. Normally you would check the user claims to see if is allowed to use the Function at all.</p>
+<p>The code is available as <a href="https://gitlab.com/azureserverless/auth0idp/">GitLab project auth0idp</a>.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>/azureserverless/2017/03/15/using-serverless-azure-functions-with-auth0-and-google-apis/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">230</post-id>	</item>
+	</channel>
+</rss>

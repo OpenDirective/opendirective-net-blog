@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>OS X &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/category/os-x/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Apple again raise the accessibility bar with OS X switch control</title>
+		<link>/openingaccessibility/2013/10/apple-again-raise-the-accessibility-bar-with-os-x-switch-control/</link>
+		<comments>/openingaccessibility/2013/10/apple-again-raise-the-accessibility-bar-with-os-x-switch-control/#comments</comments>
+		<pubDate>Thu, 24 Oct 2013 10:07:13 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[a11y]]></category>
+		<category><![CDATA[OS X]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=281</guid>
+		<description><![CDATA[One of the least promoted features in the Mavericks release of OS X, but in my view one of the most important, is the built-in switch access. Why? Well, one of the least supported group of people are those who &#8230; <a href="/openingaccessibility/2013/10/apple-again-raise-the-accessibility-bar-with-os-x-switch-control/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>One of the least promoted features in the Mavericks release of OS X, but in my view one of the most important, is the built-in switch access. Why? Well, one of the least supported group of people are those who rely on simple switch devices operated with limited gestures in order to interact with technology. Connecting switches is now less of a problem than it was with USB now a standard. Previously, hardware mods were required thus invalidating warranty, if at all possible. Also newer switch connectivity solutions for mobile devices like <a href="http://komodoopenlab.com/tecla/">Tecla</a> have arrived. Still, lack of built-in software control this has meant a limited choice of software that directly supports switches (eg <a href="http://www.oneswitch.org.uk/">a few games</a>) or specialist third party switch access software.</p>
+<p><a href="/openingaccessibility/wp-content/uploads/2013/10/OSX_switch1.jpg"><img class="size-medium wp-image-287 alignleft" title="Switched on and ready to go" alt="A Mac laptop with a bigh yellow switch connected" src="/openingaccessibility/wp-content/uploads/2013/10/OSX_switch1-300x169.jpg" width="300" height="169" srcset="/openingaccessibility/wp-content/uploads/2013/10/OSX_switch1-300x169.jpg 300w, /openingaccessibility/wp-content/uploads/2013/10/OSX_switch1-1024x577.jpg 1024w" sizes="(max-width: 300px) 100vw, 300px" /></a>As with VoiceOver, the built-in assistive technology that enables blind people to access OS X and iOS devices, switch access in these OSs means consumer kit is now more easily available to those who really need it. Plus, of course there is the usual so called &#8216;curb-cut&#8217; benefit to us all when we may find it useful in unexpected circumstances (eg triggering behaviour with a wired remote control when other means are not possible).</p>
+<h2>Who uses switches and how?</h2>
+<p>People with severely restricted mobility often have limited ability to make fine and/or course gestures and so are unable to operate a mouse, keyboard or touch device with any degree of accuracy. This obviously excludes interaction with most tech these days. For these people, a range of mechanical switch devices and associated assistive technology software provide alternative access through very basic gestures. Such gestures include press/release a big button, suck or blow on a straw and in the case of Stephen Hawkins, twitch a cheek muscle to operate a sensitve switch. Another related technology is eye gaze which tracks a user&#8217;s eye movements in order to control a pointer or selection on a device</p>
+<h2>How does switch access work?</h2>
+<p>As with screen readers for the blind, software is needed to convert between expected user interface interactions and what the operator wants to use. Generally, switch access focusses on input control, though as users may also need visual support speech feedback is often also provided.</p>
+<p><a href="/openingaccessibility/wp-content/uploads/2013/10/OSX_switch2.jpg"><img class="alignleft" title="OSK with row group selection" alt="Close up of OSK showing row group selection" src="/openingaccessibility/wp-content/uploads/2013/10/OSX_switch2-300x169.jpg" width="300" height="169" /></a></p>
+<p>As input gestures are greatly limited the interaction &#8216;events; are greatly simplified, often to  &#8216;next item&#8217; and &#8216;select item&#8217;. This leads to so called &#8216;scanning&#8217; when the input focus is moved from one item to the next until one is eventually selected by the user. As you can imagine this makes operation of an user interface or entering text <strong>extremely tedious</strong>! A number of scanning &#8216;modes&#8217; aim to alleviate this to some degree and also match user capabilities. Such modes include &#8216;auto scanning&#8217; where the cursor moves continuously and &#8216;group scanning&#8217; where groups of items are selected rather than each item in turn. However, this is an area that cries out for research and innovation!</p>
+<p>Traditionally, the user experience has been with a simple grid of items that can be selected. Movement from one item to the next in a grid provides simple linear access suitable for limited gestures Compare this to the more random access a pointer or keyboard. Grids are either a complete replacement user interface, as in the excellent <a href="http://www.sensorysoftware.com/thegrid2.html">Grid 2</a>, or an overlay that lies on top of main UI, in the same manner as On Screen Keyboards (OSKs) now familiar from touch devices.</p>
+<p><a href="/openingaccessibility/wp-content/uploads/2013/10/OSX_switch3.jpg"><img class="alignleft" alt="Close up of Mac screen showing in application scanning selection" src="/openingaccessibility/wp-content/uploads/2013/10/OSX_switch3-300x169.jpg" width="300" height="169" /></a>Another approach is direct in-application access, something I experimented with a few years back with Mozilla Firefox in a project called Jambu.  A further, example can be found in <a href="http://www.oatsoft.org/Software/SpecialAccessToWindows/">Special Access to Windows</a>, In this mode a selection marker (blue rectangle in the photo) is drawn directly around items in the interface, such as buttons or menu items. This indicates they have the input focus and can be selected. The movement is then between items, both across groups and within groups, providing a more immediate, less indirect user experience when compared to a grid.</p>
+<p>You can lean more about switch access in <a href="http://www.ace-centre.org.uk/assets/Product%20Downloads/SwitchScanningMaster_8_472.pdf">&#8216;Switch access to technology&#8217;</a>, a free pdf by David Colven and Simon Judge, available from the Ace Centre.</p>
+<h2>What have Apple added to OS X?</h2>
+<p>After a quick play with the new switch control options (available in system preferences -&gt; accessibility) it&#8217;s clear that Apple have done an excellent job and cover most requirements. The support allows full control of the UI and text entry, plus switch access to log-in is possible. By the way, switch access landed in iOS 7 a while back and while I haven&#8217;t tried it it appears similar from the <a href="http://www.spectronicsinoz.com/blog/apps-and-mobile-learning/accessibility-and-access/switching-it-up-in-ios-7/">blogs I&#8217;ve looked at</a>.</p>
+<p>As you can see in the first photograph, I plugged in a single button to a USB port using a  <a href="http://www.sensorysoftware.com/Joycable.html">Joy Cable</a> converter. Out-of-the-box, the default settings worked well providing usable auto scan once I had identified my switch  (by pressing it) and assigning it an action. The space bar is treated as a switch and give an action of &#8216;select item&#8217; by default. Some normal access was required to set up the options but once configure operation was perfectly possible with just a switch. Though, admittedly, I performed limited testing.</p>
+<p>A wide range of options are available and cover differing numbers of switches and scan modes. A home panel grid overlay provides user access to a range of interaction modes. Overlays are provided for pointer control and an On Screen Keyboard. Further custom overlay designs can be built with an editor. Further more, In-application scanning is provided and works well, though I had some issues getting to it from the main panel with my single switch. Other options such as speaking items with the TTS voice enhance the experience.</p>
+<p>So all-in-all this is another fantastic addition to accessibility from Apple. Once again, Apple have led the way on this. Windows has had basic switch support via games controllers for years, but no built in accessibility support, other than the OSK. Linux (GNOME) has had GOK and Caribu for a while but no in-application access. Let&#8217;s hope other desktop, and more importantly, portable, OSs follow Apple&#8217;s lead here.</p>
+<h2>A note for for developers</h2>
+<p>As with VoiceOver, the switch access used Apple&#8217;s Accessibility APIs to provide access and applications must be written to correctly support this and so be accessible. If you are a developer you should use best practices and either stick to built in controls, or be very clear on how to make custom controls fully accessible. The benefit is more users for you programs an apps. AT developers will find that unfortunately the Accessibility APIs are not very open so creating 3rd party AT support is as easy as it should be.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2013/10/apple-again-raise-the-accessibility-bar-with-os-x-switch-control/feed/</wfw:commentRss>
+		<slash:comments>14</slash:comments>
+		</item>
+	</channel>
+</rss>

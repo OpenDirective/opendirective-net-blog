@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: More on portable npm scripts</title>
+	<atom:link href="/openingaccessibility/2016/03/more-on-portable-npm-scripts/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility/2016/03/more-on-portable-npm-scripts/</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Tue, 24 Jul 2018 09:34:38 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>By: Steve</title>
+		<link>/openingaccessibility/2016/03/more-on-portable-npm-scripts/#comment-42138</link>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+		<pubDate>Tue, 24 Jul 2018 09:28:28 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=640#comment-42138</guid>
+		<description><![CDATA[Thanks for that! I&#039;ve not come across glob-exec but it looks very useful. 
+ShellJS / shx is useful too - https://github.com/shelljs/shx]]></description>
+		<content:encoded><![CDATA[<p>Thanks for that! I&#8217;ve not come across glob-exec but it looks very useful.<br />
+ShellJS / shx is useful too &#8211; <a href="https://github.com/shelljs/shx" rel="nofollow">https://github.com/shelljs/shx</a></p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: htor</title>
+		<link>/openingaccessibility/2016/03/more-on-portable-npm-scripts/#comment-42122</link>
+		<dc:creator><![CDATA[htor]]></dc:creator>
+		<pubDate>Sun, 15 Jul 2018 22:59:10 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=640#comment-42122</guid>
+		<description><![CDATA[thanks for the good tips! haven&#039;t heard about not using the ; operator and cross-env! just what i needed. funny this is one of the few articles i found talking about portability and npm scripts. 
+
+recently i made one of my projects&#039; npm scripts portable with some good packages for running processes (npm-run-all), globbing+iterating (glob-exec) and catting files (minicat). check out the package.json for my this project template for new keystone websites: https://github.com/htor/keystone-website/blob/master/package.json. all npm scripts runs on bash and cmd.exe]]></description>
+		<content:encoded><![CDATA[<p>thanks for the good tips! haven&#8217;t heard about not using the ; operator and cross-env! just what i needed. funny this is one of the few articles i found talking about portability and npm scripts. </p>
+<p>recently i made one of my projects&#8217; npm scripts portable with some good packages for running processes (npm-run-all), globbing+iterating (glob-exec) and catting files (minicat). check out the package.json for my this project template for new keystone websites: <a href="https://github.com/htor/keystone-website/blob/master/package.json" rel="nofollow">https://github.com/htor/keystone-website/blob/master/package.json</a>. all npm scripts runs on bash and cmd.exe</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

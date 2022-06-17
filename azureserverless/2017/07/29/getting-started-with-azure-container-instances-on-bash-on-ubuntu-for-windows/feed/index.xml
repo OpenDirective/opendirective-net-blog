@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+
+	>
+<channel>
+	<title>Comments on: Getting started with Azure Container Instances on Bash on Ubuntu for Windows</title>
+	<atom:link href="/azureserverless/2017/07/29/getting-started-with-azure-container-instances-on-bash-on-ubuntu-for-windows/feed/" rel="self" type="application/rss+xml" />
+	<link>/azureserverless/2017/07/29/getting-started-with-azure-container-instances-on-bash-on-ubuntu-for-windows/</link>
+	<description>Using Microsoft Azure in a Serverless mode</description>
+	<lastBuildDate>Tue, 12 Sep 2017 00:24:54 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>By: Azure Weekly: July 31, 2017 &#8211; Build Azure</title>
+		<link>/azureserverless/2017/07/29/getting-started-with-azure-container-instances-on-bash-on-ubuntu-for-windows/#comment-4</link>
+		<dc:creator><![CDATA[Azure Weekly: July 31, 2017 &#8211; Build Azure]]></dc:creator>
+		<pubDate>Mon, 31 Jul 2017 08:01:04 +0000</pubDate>
+		<guid isPermaLink="false">/azureserverless/?p=341#comment-4</guid>
+		<description><![CDATA[[&#8230;] Getting started with Azure Container Instances on Bash on Ubuntu for Windows by AzureServerless [&#8230;]]]></description>
+		<content:encoded><![CDATA[<p>[&#8230;] Getting started with Azure Container Instances on Bash on Ubuntu for Windows by AzureServerless [&#8230;]</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

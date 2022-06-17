@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>GPII &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/tag/gpii/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Cloud4All &#8211; providing automatic personalisation of access technologies</title>
+		<link>/openingaccessibility/2015/02/cloud4all-providing-automatic-personalisation-of-access-technologies/</link>
+		<comments>/openingaccessibility/2015/02/cloud4all-providing-automatic-personalisation-of-access-technologies/#comments</comments>
+		<pubDate>Fri, 06 Feb 2015 13:14:12 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[a11y]]></category>
+		<category><![CDATA[Assistve Technology]]></category>
+		<category><![CDATA[GPII]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=462</guid>
+		<description><![CDATA[The Cloud4All project has just undertaken it&#8217;s important penultimate review with EC, something of a milestone for any FP7 project. This is a good time to take stock and see where the project is at. This especially true for Clou4All &#8230; <a href="/openingaccessibility/2015/02/cloud4all-providing-automatic-personalisation-of-access-technologies/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>The <a href="http://www.cloud4all.info/ ">Cloud4All</a> project has just undertaken it&#8217;s important penultimate review with EC, something of a milestone for any FP7 project. This is a good time to take stock and see where the project is at. This especially true for Clou4All which is not an end itself, rather it is developing the core infrastructure for Automatic Personalisation from Preferences feature for the International <a href="http://gpii.net/">GPII in`itiative</a>.</p>
+<p>After 3 years of research and development I&#8217;m pleased to say we have a working system that not only clearly demonstrates the user experience of using a device with a number of access technologies configured for their best possible experience, but is also provides a flexible base for hardening into a widely deployable infrastructure.</p>
+<p>In order for the GPII to be a success it <strong>must</strong> be easy for developers of access technology to get their (or other)  solutions working with the GPII. For example, as part of the Cloud4All project activity we have already enabled a wide range of tools on several platforms:</p>
+<ul>
+<li>Android
+<ul>
+<li>Audio, Accessibility, UI settings</li>
+<li>Freespeech</li>
+<li>TalkBack</li>
+<li>eCTouch</li>
+</ul>
+</li>
+<li>Linux
+<ul>
+<li>magnifier, various UI settings, keyboard settings, volume</li>
+<li>Orca</li>
+<li>Web Anywhere</li>
+</ul>
+</li>
+<li>Windows
+<ul>
+<li>NVDA</li>
+<li>Jaws</li>
+<li>Read Write Gold</li>
+<li>built-in magnifier, OSK, high contrast, mouse trailing, cursors</li>
+<li>Web Anywhere</li>
+<li>Sociable</li>
+</ul>
+</li>
+<li>Web
+<ul>
+<li>Chrome browser (via a plugin)</li>
+<li>JME Themes</li>
+<li>SmartHouses</li>
+</ul>
+</li>
+</ul>
+<p>We are now getting ready to help 3rd party developers and <a href="http://wiki.gpii.net/w/Volunteer%27s_Emporium">volunteers </a>to adapt their accessibility solutions by providing information that developers will need. We&#8217;ve also set up a <a href="http://wiki.gpii.net/w/Imp_Tiger_Team">team to work on adding solutions</a> (operating under the name of the Tiger Team). In addition the related GPII project, <a href="http://www.prosperity4all.eu/ ">Prosperity4All</a>, will provide more new solutions that wok with the GPII.</p>
+<p>As an example of why developers will want to integrate solutions and how easy it is I&#8217;ll relate the experience I had with getting <a href="http://maavis.fullmeasure.co.uk/">Maavis</a> to work with the GPII.</p>
+<p>Maavis is an installed Windows application that provides a full screen ultra easy to use experience for people with dementia in a care environment. It provides access to media and communications and is not end user ready, rather it is both a prototype and a framework requiring configuration.</p>
+<p>The benefits I perceived from having Maavis working with the GPII include</p>
+<ul>
+<li>Makes Maavis more easily available to people who will benefit from it</li>
+<li>Provides mechanism to identify users who can not get on with login screens (user listeners like NFC)</li>
+<li>Provides alternative and automated mechanism to change user configuration.</li>
+<li>Help improve accessibility users general experience of accessing technology through automatic personalisation</li>
+</ul>
+<p>Plus, although it does not apply so much to Maavis, the GPII will also make it easy for users to discover the solutions that work best for them in conjunction with others tools, plus the best configurations of all these tools.</p>
+<p>The developer experience of getting a solution working with the GPII is actual quite easy due to careful design and a preference for declarative syntax. As long as your application can be started and stopped and provides away to programatically change the settings it straight forward. Your main work is then to provide details of how to invoke these operations.</p>
+<p>Here&#8217;s the <a href="https://github.com/GPII/universal/blob/master/testData/solutions/win32.json#L749-L782">example for Maavis</a> which stores it settings in a JSON file and so can use the GPII&#8217;s JSON settings converter. The GPII saves the user preferences for Maavis in a <a href="https://github.com/GPII/universal/blob/master/testData/preferences/maavis2.json">solution specific way </a>but there are standard terms and the developer can provide information about <a href="https://github.com/GPII/universal/blob/master/testData/solutions/win32.json#L149-L206">how to map between</a> the standard terms and their own settings.</p>
+<p>If you are interested in getting your solution working with the GPII then take a look at this <a href="http://wiki.gpii.net/w/GPII_Core_Infrastructure">developer information</a> (currently on the wiki but will move to our main <a href="http://blogs.cloud4all.info/developers/">developer website</a>). You can also drop me a line at: stevelee [at] raisingthefloor [dot] org</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2015/02/cloud4all-providing-automatic-personalisation-of-access-technologies/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+	</channel>
+</rss>

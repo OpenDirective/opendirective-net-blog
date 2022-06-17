@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+>
+
+<channel>
+	<title>Application Insights &#8211; AzureServerless</title>
+	<atom:link href="/azureserverless/tag/application-insights/feed/" rel="self" type="application/rss+xml" />
+	<link>/azureserverless/</link>
+	<description>Using Microsoft Azure in a Serverless mode</description>
+	<lastBuildDate>Tue, 05 Sep 2017 08:46:08 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+
+<image>
+	<url>/azureserverless/wp-content/uploads/2016/11/cropped-Functions-32x32.png</url>
+	<title>Application Insights &#8211; AzureServerless</title>
+	<link>/azureserverless/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">119351739</site>	<item>
+		<title>Gaining Visibility of your Functions&#8217; Behaviour with Application Insights</title>
+		<link>/azureserverless/2017/04/08/gaining-visibility-of-your-functions-with-application-insights/</link>
+		<comments>/azureserverless/2017/04/08/gaining-visibility-of-your-functions-with-application-insights/#respond</comments>
+		<pubDate>Sat, 08 Apr 2017 08:52:50 +0000</pubDate>
+		<dc:creator><![CDATA[steve@opendirective.com]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Application Insights]]></category>
+		<category><![CDATA[Functions]]></category>
+
+		<guid isPermaLink="false">/azureserverless/?p=269</guid>
+		<description><![CDATA[While Functions provides reasonable basic logging facilities you often want more detail without editing your code to add diagnostic logging lines. This is often critical during development or debugging when local execution of your function is not exhibiting the problem that occurs in the live Function. In addition, DevOps and [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>While Functions provides reasonable basic logging facilities you often want more detail without editing your code to add diagnostic logging lines. This is often critical during development or debugging when local execution of your function is not exhibiting the problem that occurs in the live Function. In addition, DevOps and business Management Information often require excellent run time telemetry of your deployed Functions, along with flexible display and analysis capabilties.</p>
+<p>As <span data-reactid=".0"><a data-reactid=".3.1.$lazyPlaceholder_twitter_848911168089579520.2.1.0.1"><span class="-name" data-reactid=".3.1.$lazyPlaceholder_twitter_848911168089579520.2.1.0.1.0">Christos Matskas</span></a></span> recently posted, there are at 3 main facilities for <a href="https://cmatskas.com/monitoring-applications-and-infrastructure-on-azure/">Monitoring applications and infrastructure on Microsoft Azure</a>. Out of these, <a href="https://azure.microsoft.com/en-us/services/application-insights/">Application Insights</a> is obviously useful with Functions, especially given that a key advantage of using them comes from letting Microsoft look after the infrastructure. Application Insights is a powerful monitoring and visualisation tool that easily provides you with all the graphs and charts you could ever want!</p>
+<p>The Functions team have been working hard to provide first class integration with Application Insights. Until recently you had to add the Application Insights SDKs in your Functions code and you also missed out on some of the automatic monitoring capabilities available to App Services (at least in nodejs functions). But no longer as Chris Anderson explains how easy it to get started <a href="https://blogs.msdn.microsoft.com/appserviceteam/2017/04/06/azure-functions-application-insights/">Azure Functions now has direct integration with Application Insights</a>.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>/azureserverless/2017/04/08/gaining-visibility-of-your-functions-with-application-insights/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">269</post-id>	</item>
+	</channel>
+</rss>

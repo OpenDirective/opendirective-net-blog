@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="/azureserverless/xmlrpc.php">
+
+	<title>Deploying to Azure Functions and Blob Storage from npm scripts &#8211; AzureServerless</title>
+<meta name='robots' content='noindex,follow' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//secure.gravatar.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="AzureServerless &raquo; Feed" href="/azureserverless/feed/" />
+<link rel="alternate" type="application/rss+xml" title="AzureServerless &raquo; Comments Feed" href="/azureserverless/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="AzureServerless &raquo; Deploying to Azure Functions and Blob Storage from npm scripts Comments Feed" href="/azureserverless/2017/08/12/deploying-to-azure-functions-from-npm-scripts/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.8"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='crayon-css'  href='/azureserverless/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-theme-classic-css'  href='/azureserverless/wp-content/plugins/crayon-syntax-highlighter/themes/classic/classic.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-font-monaco-css'  href='/azureserverless/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='styleguide-fonts-css'  href='https://fonts.googleapis.com/css?family=Helvetica%3A400%2C700&#038;subset=latin%2Clatin-ext&#038;ver=4.9.8' type='text/css' media='all' />
+<link rel='stylesheet' id='dashicons-css'  href='/azureserverless/wp-includes/css/dashicons.min.css?ver=4.9.8' type='text/css' media='all' />
+<link rel='stylesheet' id='kent-style-css'  href='/azureserverless/wp-content/themes/kent/styles/css/styles.css?ver=1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='kent-animate-css'  href='/azureserverless/wp-content/themes/kent/styles/css/animate.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='genericons-css'  href='/azureserverless/wp-content/plugins/jetpack/_inc/genericons/genericons/genericons.css?ver=3.1' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack-widget-social-icons-styles-css'  href='/azureserverless/wp-content/plugins/jetpack/modules/widgets/social-icons/social-icons.css?ver=20170506' type='text/css' media='all' />
+<link rel='stylesheet' id='social-logos-css'  href='/azureserverless/wp-content/plugins/jetpack/_inc/social-logos/social-logos.min.css?ver=1' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='/azureserverless/wp-content/plugins/jetpack/css/jetpack.css?ver=6.5' type='text/css' media='all' />
+<script type='text/javascript' src='/azureserverless/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='/azureserverless/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/azureserverless/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta'></script>
+<style>
+    #cover-image {
+        background-image: url( /azureserverless/wp-content/uploads/2016/11/cropped-FunctionHeader2.png);
+    }
+    #branding h1#logo a { color:#1e73be; }
+    #branding h1#logo a:hover { color:#1e73be; }
+</style>
+<link rel='https://api.w.org/' href='/azureserverless/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/azureserverless/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="/azureserverless/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Getting started with Azure Container Instances on Bash on Ubuntu for Windows' href='/azureserverless/2017/07/29/getting-started-with-azure-container-instances-on-bash-on-ubuntu-for-windows/' />
+<link rel='next' title='All about Function App Settings for storing secrets' href='/azureserverless/2017/08/18/all-about-function-app-settings-for-storing-secrets/' />
+<meta name="generator" content="WordPress 4.9.8" />
+<link rel="canonical" href="/azureserverless/2017/08/12/deploying-to-azure-functions-from-npm-scripts/" />
+<link rel='shortlink' href='https://wp.me/p84MQ3-5M' />
+<link rel="alternate" type="application/json+oembed" href="/azureserverless/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2017%2F08%2F12%2Fdeploying-to-azure-functions-from-npm-scripts%2F" />
+<link rel="alternate" type="text/xml+oembed" href="/azureserverless/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2F2017%2F08%2F12%2Fdeploying-to-azure-functions-from-npm-scripts%2F&#038;format=xml" />
+
+<!-- Bad Behavior 2.2.22 run time: 4.703 ms -->
+
+<link rel='dns-prefetch' href='//v0.wordpress.com'/>
+<link rel='dns-prefetch' href='//jetpack.wordpress.com'/>
+<link rel='dns-prefetch' href='//s0.wp.com'/>
+<link rel='dns-prefetch' href='//s1.wp.com'/>
+<link rel='dns-prefetch' href='//s2.wp.com'/>
+<link rel='dns-prefetch' href='//public-api.wordpress.com'/>
+<link rel='dns-prefetch' href='//0.gravatar.com'/>
+<link rel='dns-prefetch' href='//1.gravatar.com'/>
+<link rel='dns-prefetch' href='//2.gravatar.com'/>
+<style type='text/css'>img#wpstats{display:none}</style><style>
+#main header.masthead h1.logo a,
+#main header.masthead h2.description {
+color:#1e73be;}
+</style>
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #ffffff; }
+</style>
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Deploying to Azure Functions and Blob Storage from npm scripts" />
+<meta property="og:url" content="/2017/08/12/deploying-to-azure-functions-from-npm-scripts/" />
+<meta property="og:description" content="My latest web app project is a Typescript SPA frontend hosted in Blob storage with a Serverless Azure Functions Javascript backend. For an optimal development experience I need automated deployment…" />
+<meta property="article:published_time" content="2017-08-12T10:35:27+00:00" />
+<meta property="article:modified_time" content="2017-09-05T08:46:08+00:00" />
+<meta property="og:site_name" content="AzureServerless" />
+<meta property="og:image" content="/wp-content/uploads/2016/11/cropped-Functions.png" />
+<meta property="og:image:width" content="512" />
+<meta property="og:image:height" content="512" />
+<meta property="og:locale" content="en_GB" />
+<meta name="twitter:creator" content="@AzureServerless" />
+<meta name="twitter:site" content="@SteveALee" />
+<meta name="twitter:text:title" content="Deploying to Azure Functions and Blob Storage from npm scripts" />
+<meta name="twitter:image" content="/wp-content/uploads/2016/11/cropped-Functions-270x270.png" />
+<meta name="twitter:card" content="summary" />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="icon" href="/azureserverless/wp-content/uploads/2016/11/cropped-Functions-32x32.png" sizes="32x32" />
+<link rel="icon" href="/azureserverless/wp-content/uploads/2016/11/cropped-Functions-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="/azureserverless/wp-content/uploads/2016/11/cropped-Functions-180x180.png" />
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2016/11/cropped-Functions-270x270.png" />
+<!-- Styleguide styles -->
+<style>body,
+	.page-main-nav a span {
+		font-family: "Helvetica Neue", Helvetica, sans-serif;
+		font-weight: inherit;
+	}
+	h1, h2, h3, h4, h5, h6 {
+		font-family: {{font-headers}};
+		font-weight: {{font-headers-weight}};
+	}
+	.page-main-nav a,
+	.main a,
+	a {
+		color: #8224e3;
+	}
+	.main a:hover,
+	a:hover {
+		color: #621baa;
+	}
+	.col-sidebar,
+	#main article.sticky:after,
+	.page-main-nav a:hover,
+	blockquote {
+		border-color: #8224e3;
+	}
+	#main article.sticky:after {
+		border-bottom-color:transparent;
+	}
+	#main article .tags a:hover,
+	#main article .categories a:hover,
+	nav.menu,
+	.page-main-nav a:hover,
+	#main .pagination span,
+	#main .archive-pagination span,
+	#main .pagination span.current,
+	#main .archive-pagination span.current {
+		background-color: #8224e3;
+		color: #ffffff;
+	}
+	nav.menu ul li a:hover,
+	nav.menu ul li a.menu-expand:hover,
+	nav.menu ul li a.menu-expand {
+		background-color: #621baa;
+		color: #ffffff;
+	}
+	#main article.sticky {
+		background-color: #f3eafd;
+		color: #000000;
+	}
+	nav.menu a.menu-close {
+		background-color: #411272;
+		color: #8224e3;
+	}
+	nav.menu a.menu-close:hover {
+		background-color: #0d0417;
+		color: #8224e3;
+	}
+	nav.menu form.searchform,
+	nav.menu ul li {
+		border-color: #621baa;
+	}
+	#main .writer {
+		border-top-color: #8224e3;
+	}</style></head>
+
+<body class="post-template-default single single-post postid-358 single-format-standard custom-background">
+
+	<nav class="menu" role="navigation">
+		<a href="#" class="menu-close">&lsaquo; return</a>
+<form method="get" class="searchform animated" action="/azureserverless/">
+	<fieldset>
+		<input type="text" value="" name="s" class="searchfield" placeholder="Search..." />
+		<button class="searchsubmit">&#62464;</button>
+	</fieldset>
+</form>
+<div class="menu-menu-1-container"><ul id="nav" class="menu-wrap animated"><li id="menu-item-73" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-73"><a href="/azureserverless/test/">Welcome to AzureServerless</a></li>
+<li id="menu-item-123" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-123"><a href="/azureserverless/what-is-serverless/">What is Serverless?</a></li>
+<li id="menu-item-99" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-99"><a href="/azureserverless/azure-features-for-serverless/">Azure features for Serverless</a></li>
+<li id="menu-item-98" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-98"><a href="/azureserverless/getting-started/">Getting Started with Functions and LogicApps</a></li>
+<li id="menu-item-75" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75"><a href="/azureserverless/blog/">Blog</a></li>
+<li id="menu-item-84" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-84"><a href="/azureserverless/get-the-newsletter/">Get the Newsletter</a></li>
+</ul></div>	</nav>
+
+	<div class="container">
+		<div class="page-main-nav">
+			<a class="link-open-nav"><span>Menu</span></a>
+			<a class="link-home" href="/azureserverless/"><span>Home</span></a>
+		</div>
+
+		<div id="aside">
+			<div id="cover-image">
+				<div class="social_container animated fadeInDown">
+<div class="social_links"><a href="https://twitter.com/AzureServerless" class="social_link_twitter"><span>twitter</span></a></div>				</div>
+			</div>
+		</div>
+
+		<div id="main" class="main">
+			<header class="masthead animated fadeInLeft" role="banner">
+				<div class="branding">
+					<h1 class="logo">
+						<a href="/azureserverless/" title="Home">
+							AzureServerless						</a>
+					</h1>
+					<h2 class="description">
+						Using Microsoft Azure in a Serverless mode					</h2>
+				</div>
+			</header>
+<article id="post-358" class="post-358 post type-post status-publish format-standard hentry category-uncategorized tag-functions">
+	<h1 class="posttitle">
+		Deploying to Azure Functions and Blob Storage from npm scripts	</h1>
+		<p class="postmetadata">
+By <span class="author vcard"><a class="url fn n" href="/azureserverless/author/steveopendirective-com/" title="View all posts by steve@opendirective.com" rel="author">steve@opendirective.com</a></span> on <a href="/azureserverless/2017/08/12/deploying-to-azure-functions-from-npm-scripts/" title="10:35 am" rel="bookmark"><time class="entry-date" datetime="2017-08-12T10:35:27+00:00">August 12, 2017</time></a>	&bull; <span class="commentcount">( <a href="/azureserverless/2017/08/12/deploying-to-azure-functions-from-npm-scripts/#comments">1 Comment</a> )</span>
+	</p>
+	<section class="entry">
+<p>My latest web app project is a Typescript SPA frontend hosted in Blob storage with a Serverless Azure Functions Javascript backend. For an optimal development experience I need automated deployment that is easy and reproducible. This will be used on my Windows git4windows bash development environment and later on a CI/CD server (which might be Windows but more likely, Linux). I expected this was going to be &#8220;easy-peasy&#8221; given Azure Function&#8217;s relative maturity and the number of deployment options available. Wrong! I spent considerable time fiddling about getting something &#8216;just right&#8217; for deploying the SPA and and backend to Azure. The problem is an absence of portable CLI commands that sync a local directory to either the AzureFunction file space or Blob storage. Hopefully this post will save others the same hassle.</p>
+<p>The simple portable solution uses:</p>
+<ul>
+<li>The <a href="https://docs.microsoft.com/en-us/azure/storage/storage-use-azcopy">AzCopy</a> command to deploy the SPA to Blob storage while setting the correct ContentType (sets MIME type when served over HTTP)</li>
+<li>FTP ncftpput (part of the <a href="http://ncftp.com/ncftp/">ncftp client</a>) to recursively deploy the Function App directory structure, without using any repositories</li>
+<li>npm <a href="https://www.npmjs.com/package/dotenv">dotenv</a> and <a href="https://www.npmjs.com/package/cross-env">cross-env</a> to provide cross platform private env var access (both are npm CLI packages)</li>
+</ul>
+<p>This is by no means a perfect solution and I explore some potential alternatives below. Note WAWSDeploy is an effective Windows-only solution for the Functions code.</p>
+<p>Here are the relevant npm scripts I use:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5b9fdf8833ee7619509662" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title">Commands to deploy to Azure Functions</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+"deploy:spa": "dotenv cross-env-shell AzCopy /Source:build /Dest:$AZURE_SPA_CONTAINER_URL /DestKey:$AZURE_SPA_STORAGE_KEY /S /Y /SetContentType",
+"deploy:func": "dotenv cross-env-shell \"ncftpput -R -u $AZURE_FTP_USER -p $AZURE_FTP_PWD $AZURE_FTP_HOST / functionApp/src/\"",
+"deploy": "npm run deploy:spa &amp;&amp; npm run deploy:func"</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums" data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5b9fdf8833ee7619509662-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fdf8833ee7619509662-2">2</div><div class="crayon-num" data-line="crayon-5b9fdf8833ee7619509662-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b9fdf8833ee7619509662-1"><span class="crayon-s">"deploy:spa"</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">"dotenv cross-env-shell AzCopy /Source:build /Dest:$AZURE_SPA_CONTAINER_URL /DestKey:$AZURE_SPA_STORAGE_KEY /S /Y /SetContentType"</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fdf8833ee7619509662-2"><span class="crayon-s">"deploy:func"</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">"dotenv cross-env-shell \"ncftpput -R -u $AZURE_FTP_USER -p $AZURE_FTP_PWD $AZURE_FTP_HOST / functionApp/src/\""</span><span class="crayon-sy">,</span></div><div class="crayon-line" id="crayon-5b9fdf8833ee7619509662-3"><span class="crayon-s">"deploy"</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">"npm run deploy:spa &amp;&amp; npm run deploy:func"</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0011 seconds] -->
+<p></p>
+<ul>
+<li>The Azure Functions FTP settings are now rather hidden in the <code>Functions -&gt; Platform Features -&gt; Properties</code>. I used <code>FTPS host name</code> and <code>FTP/deployment user</code>. You set a subscription-wide username and password in <code>Functions -&gt; Platform Features -&gt; Deployment Credentials</code>. Note, changing the password requires changing the username to something else and then back again to avoid an &#8216;in use&#8217; error.</li>
+<li>Cross-env lets you use a portable <code>$ENVVAR</code> form of environment variable reference in your npm scripts</li>
+<li>Dotenv lets you provide all your deployment variables in a provate <code>.env</code> file. Hopefully, it&#8217;s obvious that you must <strong>never checkin</strong> this to VC, so add <code>*.env</code> to your <code>.gitignore</code>. You can provide a different <code>.env</code> file per deployment scenario, or on a CI/CD server you could just set the env vars directly.</li>
+<li>The extra <code>\"</code> round the <code>ncftpput</code> command stop dotenv interpreting the <code>-p</code> option</li>
+</ul>
+<p>And sample output from <code><code>npm run deploy</code></code>:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5b9fdf8833eff532252321" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title">Command output for deploy</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+C:\projects\brian&gt;npm run deploy
+
+&gt; brian@0.1.0 deploy C:\projects\brian
+&gt; npm run deploy:spa &amp;&amp; npm run deploy:func
+
+&gt; brian@0.1.0 deploy:spa C:\projects\brian
+&gt; dotenv cross-env-shell AzCopy /Source:build /Dest:$AZURE_SPA_CONTAINER_URL /DestKey:$AZURE_SPA_STORAGE_KEY /S /Y /SetContentType
+
+Finished 5 of total 5 file(s).
+[2017/08/12 11:00:52] Transfer summary:
+-----------------
+Total files transferred: 5
+Transfer successfully:   5
+Transfer skipped:        0
+Transfer failed:         0
+Elapsed time:            00.00:00:02
+
+&gt; brian@0.1.0 deploy:func C:\projects\brian
+&gt; dotenv cross-env-shell "ncftpput -R -u $AZURE_FTP_USER -p $AZURE_FTP_PAWD $AZURE_FTP_HOST / functionApp/src/"
+
+functionApp\src\host.json:                               2.00 B    43.07 B/s
+functionApp\src\local.settings.json:                     1.14 kB   14.83 kB/s
+functionApp\src\proxies.json:                          721.00 B     9.96 kB/s
+functionApp\src\HttpTriggerJS1\function.json:          257.00 B     4.73 kB/s
+functionApp\src\HttpTriggerJS1\index.js:               510.00 B    12.45 kB/s</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums" data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5b9fdf8833eff532252321-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fdf8833eff532252321-2">2</div><div class="crayon-num" data-line="crayon-5b9fdf8833eff532252321-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fdf8833eff532252321-4">4</div><div class="crayon-num" data-line="crayon-5b9fdf8833eff532252321-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fdf8833eff532252321-6">6</div><div class="crayon-num" data-line="crayon-5b9fdf8833eff532252321-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fdf8833eff532252321-8">8</div><div class="crayon-num" data-line="crayon-5b9fdf8833eff532252321-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fdf8833eff532252321-10">10</div><div class="crayon-num" data-line="crayon-5b9fdf8833eff532252321-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fdf8833eff532252321-12">12</div><div class="crayon-num" data-line="crayon-5b9fdf8833eff532252321-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fdf8833eff532252321-14">14</div><div class="crayon-num" data-line="crayon-5b9fdf8833eff532252321-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fdf8833eff532252321-16">16</div><div class="crayon-num" data-line="crayon-5b9fdf8833eff532252321-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fdf8833eff532252321-18">18</div><div class="crayon-num" data-line="crayon-5b9fdf8833eff532252321-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fdf8833eff532252321-20">20</div><div class="crayon-num" data-line="crayon-5b9fdf8833eff532252321-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fdf8833eff532252321-22">22</div><div class="crayon-num" data-line="crayon-5b9fdf8833eff532252321-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fdf8833eff532252321-24">24</div><div class="crayon-num" data-line="crayon-5b9fdf8833eff532252321-25">25</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b9fdf8833eff532252321-1"><span class="crayon-v">C</span><span class="crayon-o">:</span><span class="crayon-sy">\</span><span class="crayon-v">projects</span><span class="crayon-sy">\</span><span class="crayon-v">brian</span><span class="crayon-o">&gt;</span><span class="crayon-e">npm </span><span class="crayon-e">run </span><span class="crayon-v">deploy</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fdf8833eff532252321-2">&nbsp;</div><div class="crayon-line" id="crayon-5b9fdf8833eff532252321-3"><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-v">brian</span><span class="crayon-sy">@</span><span class="crayon-cn">0.1.0</span><span class="crayon-h"> </span><span class="crayon-i">deploy</span><span class="crayon-h"> </span><span class="crayon-v">C</span><span class="crayon-o">:</span><span class="crayon-sy">\</span><span class="crayon-v">projects</span><span class="crayon-sy">\</span><span class="crayon-v">brian</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fdf8833eff532252321-4"><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-e">npm </span><span class="crayon-e">run </span><span class="crayon-v">deploy</span><span class="crayon-o">:</span><span class="crayon-v">spa</span><span class="crayon-h"> </span><span class="crayon-o">&amp;&amp;</span><span class="crayon-h"> </span><span class="crayon-e">npm </span><span class="crayon-e">run </span><span class="crayon-v">deploy</span><span class="crayon-o">:</span><span class="crayon-v">func</span></div><div class="crayon-line" id="crayon-5b9fdf8833eff532252321-5">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5b9fdf8833eff532252321-6"><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-v">brian</span><span class="crayon-sy">@</span><span class="crayon-cn">0.1.0</span><span class="crayon-h"> </span><span class="crayon-v">deploy</span><span class="crayon-o">:</span><span class="crayon-i">spa</span><span class="crayon-h"> </span><span class="crayon-v">C</span><span class="crayon-o">:</span><span class="crayon-sy">\</span><span class="crayon-v">projects</span><span class="crayon-sy">\</span><span class="crayon-v">brian</span></div><div class="crayon-line" id="crayon-5b9fdf8833eff532252321-7"><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-e">dotenv </span><span class="crayon-v">cross</span><span class="crayon-o">-</span><span class="crayon-r">env</span><span class="crayon-o">-</span><span class="crayon-e">shell </span><span class="crayon-v">AzCopy</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">Source</span><span class="crayon-o">:</span><span class="crayon-v">build</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">Dest</span><span class="crayon-o">:</span><span class="crayon-v">$AZURE_SPA_CONTAINER_URL</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">DestKey</span><span class="crayon-o">:</span><span class="crayon-v">$AZURE_SPA_STORAGE_KEY</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">S</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">Y</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-e">SetContentType</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fdf8833eff532252321-8">&nbsp;</div><div class="crayon-line" id="crayon-5b9fdf8833eff532252321-9"><span class="crayon-i">Finished</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-h"> </span><span class="crayon-e">of </span><span class="crayon-i">total</span><span class="crayon-h"> </span><span class="crayon-cn">5</span><span class="crayon-h"> </span><span class="crayon-r">file</span><span class="crayon-sy">(</span><span class="crayon-v">s</span><span class="crayon-sy">)</span><span class="crayon-sy">.</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fdf8833eff532252321-10"><span class="crayon-sy">[</span><span class="crayon-cn">2017</span><span class="crayon-o">/</span><span class="crayon-cn">08</span><span class="crayon-o">/</span><span class="crayon-cn">12</span><span class="crayon-h"> </span><span class="crayon-cn">11</span><span class="crayon-o">:</span><span class="crayon-cn">00</span><span class="crayon-o">:</span><span class="crayon-cn">52</span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-e">Transfer </span><span class="crayon-v">summary</span><span class="crayon-o">:</span></div><div class="crayon-line" id="crayon-5b9fdf8833eff532252321-11"><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">-</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fdf8833eff532252321-12"><span class="crayon-e">Total </span><span class="crayon-e">files </span><span class="crayon-v">transferred</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-cn">5</span></div><div class="crayon-line" id="crayon-5b9fdf8833eff532252321-13"><span class="crayon-e">Transfer </span><span class="crayon-v">successfully</span><span class="crayon-o">:</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">5</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fdf8833eff532252321-14"><span class="crayon-e">Transfer </span><span class="crayon-v">skipped</span><span class="crayon-o">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">0</span></div><div class="crayon-line" id="crayon-5b9fdf8833eff532252321-15"><span class="crayon-e">Transfer </span><span class="crayon-v">failed</span><span class="crayon-o">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">0</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fdf8833eff532252321-16"><span class="crayon-e">Elapsed </span><span class="crayon-r">time</span><span class="crayon-o">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">00.00</span><span class="crayon-o">:</span><span class="crayon-cn">00</span><span class="crayon-o">:</span><span class="crayon-cn">02</span></div><div class="crayon-line" id="crayon-5b9fdf8833eff532252321-17">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5b9fdf8833eff532252321-18"><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-v">brian</span><span class="crayon-sy">@</span><span class="crayon-cn">0.1.0</span><span class="crayon-h"> </span><span class="crayon-v">deploy</span><span class="crayon-o">:</span><span class="crayon-i">func</span><span class="crayon-h"> </span><span class="crayon-v">C</span><span class="crayon-o">:</span><span class="crayon-sy">\</span><span class="crayon-v">projects</span><span class="crayon-sy">\</span><span class="crayon-v">brian</span></div><div class="crayon-line" id="crayon-5b9fdf8833eff532252321-19"><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-e">dotenv </span><span class="crayon-v">cross</span><span class="crayon-o">-</span><span class="crayon-r">env</span><span class="crayon-o">-</span><span class="crayon-i">shell</span><span class="crayon-h"> </span><span class="crayon-s">"ncftpput -R -u $AZURE_FTP_USER -p $AZURE_FTP_PAWD $AZURE_FTP_HOST / functionApp/src/"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fdf8833eff532252321-20">&nbsp;</div><div class="crayon-line" id="crayon-5b9fdf8833eff532252321-21"><span class="crayon-v">functionApp</span><span class="crayon-sy">\</span><span class="crayon-v">src</span><span class="crayon-sy">\</span><span class="crayon-v">host</span><span class="crayon-e">.json</span><span class="crayon-o">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">2.00</span><span class="crayon-h"> </span><span class="crayon-i">B</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">43.07</span><span class="crayon-h"> </span><span class="crayon-v">B</span><span class="crayon-o">/</span><span class="crayon-i">s</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fdf8833eff532252321-22"><span class="crayon-v">functionApp</span><span class="crayon-sy">\</span><span class="crayon-v">src</span><span class="crayon-sy">\</span><span class="crayon-v">local</span><span class="crayon-e">.settings</span><span class="crayon-e">.json</span><span class="crayon-o">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">1.14</span><span class="crayon-h"> </span><span class="crayon-i">kB</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">14.83</span><span class="crayon-h"> </span><span class="crayon-v">kB</span><span class="crayon-o">/</span><span class="crayon-i">s</span></div><div class="crayon-line" id="crayon-5b9fdf8833eff532252321-23"><span class="crayon-v">functionApp</span><span class="crayon-sy">\</span><span class="crayon-v">src</span><span class="crayon-sy">\</span><span class="crayon-v">proxies</span><span class="crayon-e">.json</span><span class="crayon-o">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">721.00</span><span class="crayon-h"> </span><span class="crayon-i">B</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">9.96</span><span class="crayon-h"> </span><span class="crayon-v">kB</span><span class="crayon-o">/</span><span class="crayon-i">s</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fdf8833eff532252321-24"><span class="crayon-v">functionApp</span><span class="crayon-sy">\</span><span class="crayon-v">src</span><span class="crayon-sy">\</span><span class="crayon-v">HttpTriggerJS1</span><span class="crayon-sy">\</span><span class="crayon-t">function</span><span class="crayon-e">.json</span><span class="crayon-o">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">257.00</span><span class="crayon-h"> </span><span class="crayon-i">B</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">4.73</span><span class="crayon-h"> </span><span class="crayon-v">kB</span><span class="crayon-o">/</span><span class="crayon-i">s</span></div><div class="crayon-line" id="crayon-5b9fdf8833eff532252321-25"><span class="crayon-v">functionApp</span><span class="crayon-sy">\</span><span class="crayon-v">src</span><span class="crayon-sy">\</span><span class="crayon-v">HttpTriggerJS1</span><span class="crayon-sy">\</span><span class="crayon-v">index</span><span class="crayon-e">.js</span><span class="crayon-o">:</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">510.00</span><span class="crayon-h"> </span><span class="crayon-i">B</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">12.45</span><span class="crayon-h"> </span><span class="crayon-v">kB</span><span class="crayon-o">/</span><span class="crayon-v">s</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0101 seconds] -->
+<p>Here&#8217;s an elided <code>.env</code> file</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5b9fdf8833f0b669328928" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title">A sample .env file</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+AZURE_SPA_STORAGE_KEY=&lt;KEY&gt;
+AZURE_SPA_CONTAINER_URL=&lt;URL&gt;
+AZURE_FTP_USER=&lt;USER&gt;
+AZURE_FTP_PWD=&lt;PWD&gt;
+AZURE_FTP_HOST=&lt;HOST-DOMAIN&gt; # without the protocol provided in the portal</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums" data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5b9fdf8833f0b669328928-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fdf8833f0b669328928-2">2</div><div class="crayon-num" data-line="crayon-5b9fdf8833f0b669328928-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5b9fdf8833f0b669328928-4">4</div><div class="crayon-num" data-line="crayon-5b9fdf8833f0b669328928-5">5</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b9fdf8833f0b669328928-1"><span class="crayon-v">AZURE_SPA_STORAGE_KEY</span><span class="crayon-o">=</span><span class="crayon-o">&lt;</span><span class="crayon-v">KEY</span><span class="crayon-o">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fdf8833f0b669328928-2"><span class="crayon-v">AZURE_SPA_CONTAINER_URL</span><span class="crayon-o">=</span><span class="crayon-o">&lt;</span><span class="crayon-v">URL</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5b9fdf8833f0b669328928-3"><span class="crayon-v">AZURE_FTP_USER</span><span class="crayon-o">=</span><span class="crayon-o">&lt;</span><span class="crayon-v">USER</span><span class="crayon-o">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5b9fdf8833f0b669328928-4"><span class="crayon-v">AZURE_FTP_PWD</span><span class="crayon-o">=</span><span class="crayon-o">&lt;</span><span class="crayon-v">PWD</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-5b9fdf8833f0b669328928-5"><span class="crayon-v">AZURE_FTP_HOST</span><span class="crayon-o">=</span><span class="crayon-o">&lt;</span><span class="crayon-v">HOST</span><span class="crayon-o">-</span><span class="crayon-v">DOMAIN</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-p"># without the protocol provided in the portal</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0014 seconds] -->
+<p></p>
+<h2>Notes</h2>
+<ul>
+<li>A disadvantage of FTP is it does not do a full sync and delete files that no are longer needed. It&#8217;s a shame rsync is not supported, though that can be a pain to get configured. Indeed, it appears that there is no single cross platform tool that can sync folders to/from Functions filespace. Perhaps another AzureFunction for that.</li>
+<li>AzCopy also does not delete existing files, though it does copy directory trees to a Blob container.</li>
+<li>NcFTP is a mature, portable client and offers directory tree copy, unlike basic clients. However FTP copying is slow compared to the optimised Git sync methods, especially as there is a lack of incremental updates. A common technique is to transfer a single .ZIP archive and have the server unpack it. Unfortunately, this doesn&#8217;t seem to be available for simple FTP deployments. Perhaps a new Azure Function would fix that. [Update: it can be done using the Kudu REST API, but again does not delete unwanted files]</li>
+<li>The OneDrive and DropBox deployment options for Azure Functions sound useful but they require a manual sync in the portal, making then useless for automated deployment.</li>
+</ul>
+<h3> Why not Git?</h3>
+<ul>
+<li>Azure Functions deployment options are heavily oriented to using VC, git specifically,  but that really is is not ideal as you either have to commit all your deploy-able artifacts to your source repository or use a separate repository just for deployment. Having these in VC does mean you can roll back to any version, but I intend to use slots for 1 level rollback and will use the source VC to rebuild other version if ever needed. You may not be bothered about putting built artifacts in your main repository but I see it as an anti pattern, not to mention the unnecessary bloat. Typescript produces JS and typings and for Javascript on nodejs you currently need to bundle all the dependencies to get over the slow cold start times.</li>
+<li>Another reason for using a separate deployment repository is your main repository is extremely likely to contain many files that you do NOT want deployed, but will be.</li>
+<li>Azure Functions does not support SSH authentication and Git HTTPS authentication options mean you will be prompted for a password unless you use a credential manager.</li>
+<li>While it would be possible to create/use a separate git repository for deployment, it cannot live in the project directory structure (can&#8217;t nest git repos) and seems like quite a bit of hassle to get right with scripting. Git submodules may be a solution.</li>
+</ul>
+<h2>In search of a better solution</h2>
+<h3>Functions</h3>
+<p>For the back-end&#8217;s AzureFunction deployment, the limitations of FTP are a problem. FTP is slow, is not incremental and will not sync directory trees by removing unwanted files. I&#8217;ve not found a simple cross platform sync tool that does all this. If you know of one please do tell in the comments!</p>
+<p>Git does address these all issues with its fast minimal on wire protocols and working directory syncing. That&#8217;s probably why the AzureFunctions deployment options are so centred around git. Given this I should either forget my aversion to having a separate deployment repository or investigate a workjable solution, complete wit hthe require git setup. This might use git submodules for a local repo dynamically created in a temporary folder.</p>
+<p>The <a href="https://github.com/Azure/azure-functions-cli">Azure Functions Core Tools</a> does include a non syncing publish action but the tool is too dependent on context and has to be run in the correct folder making it fiddly to use. It is also WIndows only</p>
+<p>A Windows-only solution is David Ebbo&#8217;s <a href="https://github.com/davidebbo/WAWSDeploy">WAWSDeploy</a> which wraps msdeploy and does have a delete option. It works really well. You only need deploy the .PublishSettings file you can dowload from the Azure Function App blade in the portal (<code>Get Publish Profile</code>) and use a npm script like this (don&#8217;t forget to add <code>*.PublishSettinigs</code> to .gitingore):</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5b9fdf8833f20293821856" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title">Using WAWSDeploy</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+"deploy:func:win": "&lt;...&gt;\WAWSDeploy.exe functionApp\\build functionApp.PublishSettings /d"</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums" data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5b9fdf8833f20293821856-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5b9fdf8833f20293821856-1"><span class="crayon-s">"deploy:func:win"</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-s">"&lt;...&gt;\WAWSDeploy.exe functionApp\\build functionApp.PublishSettings /d"</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0003 seconds] -->
+<p></p>
+<h3>Blob Storage</h3>
+<p>Again, for the SPA&#8217;s Azure Blob Storage, I could find no CLI utility that will both sync and set ContentType. So, until the Azure CLI tool supports both (&#8220;PRs welcome&#8221;) the answer is to use AZCopy with either an occasional manual cleanup or perhaps using cron or an AzureFunction.</p>
+<p>While the <a href="https://docs.microsoft.com/en-us/cli/azure/overview">Azure CLI</a> might seem the obvious choice, it <a href="https://github.com/Azure/azure-cli/issues/1949">currently</a> does not set the Blob storage ContentType automatically based on file extension. [Update: A <a href="https://github.com/Azure/azure-cli/pull/4342">fix has been commited</a> now].</p>
+<p>AzCopy does do this and is available for Windows and Linux. Strangely though, the Windows version does not accept the &#8211; option switch character which would be portable. The Azure CLI does not offer a directory sync option either, just a basic copy. In fact, there doesn&#8217;t appear to be any tool that does both and is cross platform.</p>
+<p>Possible solutions include a new feature in the Azure CLI , an update to AzCopy (not OSS) or a new utility to replace AZCopy.</p>
+<p>Alternatively the site storage could be changed to use a simple static web server AzureFunction like <a href="http://anthonychu.ca/post/azure-functions-static-file-server/">Anthony Chu&#8217;s</a>, Deployment then becomes identical to the backend, though you&#8217;d want a separate Function App as the deployment cadence will be distinct for each. There are obviously trade-offs compared to using blob storage, such as performance. One obvious question is will CDN caching will work?</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-358" class="share-twitter sd-button share-icon" href="/azureserverless/2017/08/12/deploying-to-azure-functions-from-npm-scripts/?share=twitter" target="_blank" title="Click to share on Twitter"><span>Twitter</span></a></li><li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-358" class="share-facebook sd-button share-icon" href="/azureserverless/2017/08/12/deploying-to-azure-functions-from-npm-scripts/?share=facebook" target="_blank" title="Click to share on Facebook"><span>Facebook</span></a></li><li class="share-email"><a rel="nofollow noopener noreferrer" data-shared="" class="share-email sd-button share-icon" href="/azureserverless/2017/08/12/deploying-to-azure-functions-from-npm-scripts/?share=email" target="_blank" title="Click to email this to a friend"><span>Email</span></a></li><li class="share-linkedin"><a rel="nofollow noopener noreferrer" data-shared="sharing-linkedin-358" class="share-linkedin sd-button share-icon" href="/azureserverless/2017/08/12/deploying-to-azure-functions-from-npm-scripts/?share=linkedin" target="_blank" title="Click to share on LinkedIn"><span>LinkedIn</span></a></li><li class="share-reddit"><a rel="nofollow noopener noreferrer" data-shared="" class="share-reddit sd-button share-icon" href="/azureserverless/2017/08/12/deploying-to-azure-functions-from-npm-scripts/?share=reddit" target="_blank" title="Click to share on Reddit"><span>Reddit</span></a></li><li class="share-end"></li></ul></div></div></div>		<p class="categories">Categories: <a href="/azureserverless/category/uncategorized/" rel="category tag">Uncategorized</a>		</p>
+<p class="tags">Tagged as: <a href="/azureserverless/tag/functions/" rel="tag">Functions</a></p>	<div class="writer">
+		<img alt='' src='http://0.gravatar.com/avatar/9cf3b2625e7daf7aa5d01542fbedb2c5?s=100&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/9cf3b2625e7daf7aa5d01542fbedb2c5?s=200&#038;d=mm&#038;r=g 2x' class='avatar avatar-100 photo' height='100' width='100' />		<h3>steve@opendirective.com</h3>
+			</div>
+	</section>
+</article>
+
+<nav class="postnav" role="navigation">
+	<div class="prev">
+		<span class="more-link"><a href="/azureserverless/2017/07/29/getting-started-with-azure-container-instances-on-bash-on-ubuntu-for-windows/" rel="prev">Getting started with Azure Container Instances on Bash on Ubuntu for Windows</a></span>	</div>
+	<div class="next">
+		<span class="more-link"><a href="/azureserverless/2017/08/18/all-about-function-app-settings-for-storing-secrets/" rel="next">All about Function App Settings for storing secrets</a></span>	</div>
+</nav>
+<section id="comments-container">
+	<h3 id="comments">
+1 reply		<a href="#respond" title="Leave a comment">&rsaquo;</a>
+	</h3>
+	<ol class="commentlist" id="singlecomments">
+		<li id="comment-5" class="pingback even thread-even depth-1">
+			<div class="comment-body">
+				Pingback: <a href='https://buildazure.com/2017/08/14/azure-weekly-aug-14-2017/' rel='external nofollow' class='url'>Azure Weekly: Aug 14, 2017 &#8211; Build Azure</a> 			</div>
+</li><!-- #comment-## -->
+	</ol>
+</section>
+<div class="postnav">
+	<div class="prev">
+			</div>
+	<div class="next">
+			</div>
+</div>
+
+		<div id="respond" class="comment-respond">
+							<h3 id="reply-title" class="comment-reply-title">Leave a Reply					<small><a rel="nofollow" id="cancel-comment-reply-link" href="/azureserverless/2017/08/12/deploying-to-azure-functions-from-npm-scripts/#respond" style="display:none;">Cancel reply</a></small>
+				</h3>
+						<form id="commentform" class="comment-form">
+				<iframe title="Comment Form" src="http://jetpack.wordpress.com/jetpack-comment/?blogid=119351739&#038;postid=358&#038;comment_registration=0&#038;require_name_email=1&#038;stc_enabled=1&#038;stb_enabled=1&#038;show_avatars=1&#038;avatar_default=mystery&#038;greeting=Leave+a+Reply&#038;greeting_reply=Leave+a+Reply+to+%25s&#038;color_scheme=light&#038;lang=en_GB&#038;jetpack_version=6.5&#038;show_cookie_consent=10&#038;has_cookie_consent=0&#038;sig=fb5abd039ab18f265394d228eacd72340edeb273#parent=%2F2017%2F08%2F12%2Fdeploying-to-azure-functions-from-npm-scripts%2F" style="width:100%; height: 430px; border:0;" name="jetpack_remote_comment" class="jetpack_remote_comment" id="jetpack_remote_comment" sandbox="allow-same-origin allow-top-navigation allow-scripts allow-forms allow-popups"></iframe>
+									<!--[if !IE]><!-->
+					<script>
+						document.addEventListener('DOMContentLoaded', function () {
+							var commentForms = document.getElementsByClassName('jetpack_remote_comment');
+							for (var i = 0; i < commentForms.length; i++) {
+								commentForms[i].allowTransparency = false;
+								commentForms[i].scrolling = 'no';
+							}
+						});
+					</script>
+					<!--<![endif]-->
+							</form>
+		</div>
+
+		
+		<input type="hidden" name="comment_parent" id="comment_parent" value="" />
+
+		<aside class="col-sidebar">
+<section id="mc4wp_form_widget-3" class="widget widget_mc4wp_form_widget"><div class="widget-wrap"><h3 class="widgettitle">Newsletter</h3><script>(function() {
+	if (!window.mc4wp) {
+		window.mc4wp = {
+			listeners: [],
+			forms    : {
+				on: function (event, callback) {
+					window.mc4wp.listeners.push({
+						event   : event,
+						callback: callback
+					});
+				}
+			}
+		}
+	}
+})();
+</script><!-- MailChimp for WordPress v4.2.5 - https://wordpress.org/plugins/mailchimp-for-wp/ --><form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-70" method="post" data-id="70" data-name="Subscribe" ><div class="mc4wp-form-fields"><p>
+	<label for="email">Join our newsletter for updates and extras:</label>
+	<input type="email" id="email" name="EMAIL" placeholder="Your email address" required />
+	<input type="submit" value="Sign up" />
+</p></div><label style="display: none !important;">Leave this field empty if you're human: <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off" /></label><input type="hidden" name="_mc4wp_timestamp" value="1537204104" /><input type="hidden" name="_mc4wp_form_id" value="70" /><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-1" /><div class="mc4wp-response"></div></form><!-- / MailChimp for WordPress Plugin --></div></section><section id="search-2" class="widget widget_search"><div class="widget-wrap"><form method="get" class="searchform animated" action="/azureserverless/">
+	<fieldset>
+		<input type="text" value="" name="s" class="searchfield" placeholder="Search..." />
+		<button class="searchsubmit">&#62464;</button>
+	</fieldset>
+</form>
+</div></section>		<section id="recent-posts-2" class="widget widget_recent_entries"><div class="widget-wrap">		<h3 class="widgettitle">Recent Posts</h3>		<ul>
+											<li>
+					<a href="/azureserverless/2017/08/22/watching-typescript-files-while-developing-local-functions/">Watching TypeScript files while developing local Functions</a>
+									</li>
+											<li>
+					<a href="/azureserverless/2017/08/20/why-use-asyncawait-for-your-javascript-azurefunctions/">Why use async/await for your JavaScript AzureFunctions?</a>
+									</li>
+											<li>
+					<a href="/azureserverless/2017/08/18/all-about-function-app-settings-for-storing-secrets/">All about Function App Settings for storing secrets</a>
+									</li>
+											<li>
+					<a href="/azureserverless/2017/08/12/deploying-to-azure-functions-from-npm-scripts/">Deploying to Azure Functions and Blob Storage from npm scripts</a>
+									</li>
+											<li>
+					<a href="/azureserverless/2017/07/29/getting-started-with-azure-container-instances-on-bash-on-ubuntu-for-windows/">Getting started with Azure Container Instances on Bash on Ubuntu for Windows</a>
+									</li>
+					</ul>
+		</div></section><section id="pages-2" class="widget widget_pages"><div class="widget-wrap"><h3 class="widgettitle">Pages</h3>		<ul>
+			<li class="page_item page-item-92"><a href="/azureserverless/azure-features-for-serverless/">Azure features for Serverless</a></li>
+<li class="page_item page-item-5"><a href="/azureserverless/blog/">Blog</a></li>
+<li class="page_item page-item-82"><a href="/azureserverless/get-the-newsletter/">Get the Newsletter</a></li>
+<li class="page_item page-item-94"><a href="/azureserverless/getting-started/">Getting Started with Functions and LogicApps</a></li>
+<li class="page_item page-item-7"><a href="/azureserverless/test/">Welcome to AzureServerless</a></li>
+<li class="page_item page-item-119"><a href="/azureserverless/what-is-serverless/">What is Serverless?</a></li>
+		</ul>
+		</div></section><section id="text-3" class="widget widget_text"><div class="widget-wrap">			<div class="textwidget">Artwork copyright @crpietschmann,  Functions logo by @crandycodes</div>
+		</div></section></aside>
+		<footer role="contentinfo" id="footer">
+			<a href="http://wordpress.org/" title="A Semantic Personal Publishing Platform" rel="generator">Proudly powered by WordPress</a>
+			<span class="sep"> | </span>
+			Theme: Kent by <a href="https://prothemedesign.com/" rel="designer">Pro Theme Design</a>.		</footer>
+	</div>
+</div>
+
+	<div style="display:none">
+	<div class="grofile-hash-map-9cf3b2625e7daf7aa5d01542fbedb2c5">
+	</div>
+	</div>
+<script>(function() {function addEventListener(element,event,handler) {
+	if(element.addEventListener) {
+		element.addEventListener(event,handler, false);
+	} else if(element.attachEvent){
+		element.attachEvent('on'+event,handler);
+	}
+}function maybePrefixUrlField() {
+	if(this.value.trim() !== '' && this.value.indexOf('http') !== 0) {
+		this.value = "http://" + this.value;
+	}
+}
+
+var urlFields = document.querySelectorAll('.mc4wp-form input[type="url"]');
+if( urlFields && urlFields.length > 0 ) {
+	for( var j=0; j < urlFields.length; j++ ) {
+		addEventListener(urlFields[j],'blur',maybePrefixUrlField);
+	}
+}/* test if browser supports date fields */
+var testInput = document.createElement('input');
+testInput.setAttribute('type', 'date');
+if( testInput.type !== 'date') {
+
+	/* add placeholder & pattern to all date fields */
+	var dateFields = document.querySelectorAll('.mc4wp-form input[type="date"]');
+	for(var i=0; i<dateFields.length; i++) {
+		if(!dateFields[i].placeholder) {
+			dateFields[i].placeholder = 'YYYY-MM-DD';
+		}
+		if(!dateFields[i].pattern) {
+			dateFields[i].pattern = '[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])';
+		}
+	}
+}
+
+})();</script>
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"\/2017\/08\/12\/deploying-to-azure-functions-from-npm-scripts\/":358};
+	</script>
+	<div id="sharing_email" style="display: none;">
+		<form action="/azureserverless/2017/08/12/deploying-to-azure-functions-from-npm-scripts/" method="post">
+			<label for="target_email">Send to Email Address</label>
+			<input type="email" name="target_email" id="target_email" value="" />
+
+			
+				<label for="source_name">Your Name</label>
+				<input type="text" name="source_name" id="source_name" value="" />
+
+				<label for="source_email">Your Email Address</label>
+				<input type="email" name="source_email" id="source_email" value="" />
+
+						<input type="text" id="jetpack-source_f_name" name="source_f_name" class="input" value="" size="25" autocomplete="off" title="This field is for validation and should not be changed" />
+			
+			<img style="float: right; display: none" class="loading" src="/azureserverless/wp-content/plugins/jetpack/modules/sharedaddy/images/loading.gif" alt="loading" width="16" height="16" />
+			<input type="submit" value="Send Email" class="sharing_send" />
+			<a rel="nofollow" href="#cancel" class="sharing_cancel">Cancel</a>
+
+			<div class="errors errors-1" style="display: none;">
+				Post was not sent - check your email addresses!			</div>
+
+			<div class="errors errors-2" style="display: none;">
+				Email check failed, please try again			</div>
+
+			<div class="errors errors-3" style="display: none;">
+				Sorry, your blog cannot share posts by email.			</div>
+		</form>
+	</div>
+<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201838'></script>
+<script type='text/javascript' src='https://secure.gravatar.com/js/gprofiles.js?ver=2018Sepaa'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/azureserverless/wp-content/plugins/jetpack/modules/wpgroho.js?ver=4.9.8'></script>
+<script type='text/javascript' src='/azureserverless/wp-includes/js/imagesloaded.min.js?ver=3.2.0'></script>
+<script type='text/javascript' src='/azureserverless/wp-includes/js/masonry.min.js?ver=3.3.2'></script>
+<script type='text/javascript' src='/azureserverless/wp-content/themes/kent/js/main.js?ver=1.1'></script>
+<script type='text/javascript' src='/azureserverless/wp-includes/js/comment-reply.min.js?ver=4.9.8'></script>
+<script type='text/javascript' src='/azureserverless/wp-includes/js/wp-embed.min.js?ver=4.9.8'></script>
+<script async="async" type='text/javascript' src='/azureserverless/wp-content/plugins/akismet/_inc/form.js?ver=4.0.8'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var mc4wp_forms_config = [];
+/* ]]> */
+</script>
+<script type='text/javascript' src='/azureserverless/wp-content/plugins/mailchimp-for-wp/assets/js/forms-api.min.js?ver=4.2.5'></script>
+<!--[if lte IE 9]>
+<script type='text/javascript' src='/wp-content/plugins/mailchimp-for-wp/assets/js/third-party/placeholders.min.js?ver=4.2.5'></script>
+<![endif]-->
+<script type='text/javascript'>
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/azureserverless/wp-content/plugins/jetpack/_inc/build/sharedaddy/sharing.min.js?ver=6.5'></script>
+<script type='text/javascript'>
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-twitter', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-facebook', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-linkedin', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomlinkedin', 'menubar=1,resizable=1,width=580,height=450' );
+				return false;
+			});
+</script>
+
+		<!--[if IE]>
+		<script type="text/javascript">
+			if ( 0 === window.location.hash.indexOf( '#comment-' ) ) {
+				// window.location.reload() doesn't respect the Hash in IE
+				window.location.hash = window.location.hash;
+			}
+		</script>
+		<![endif]-->
+		<script type="text/javascript">
+			(function () {
+				var comm_par_el = document.getElementById( 'comment_parent' ),
+					comm_par = ( comm_par_el && comm_par_el.value ) ? comm_par_el.value : '',
+					frame = document.getElementById( 'jetpack_remote_comment' ),
+					tellFrameNewParent;
+
+				tellFrameNewParent = function () {
+					if ( comm_par ) {
+						frame.src = "http://jetpack.wordpress.com/jetpack-comment/?blogid=119351739&postid=358&comment_registration=0&require_name_email=1&stc_enabled=1&stb_enabled=1&show_avatars=1&avatar_default=mystery&greeting=Leave+a+Reply&greeting_reply=Leave+a+Reply+to+%25s&color_scheme=light&lang=en_GB&jetpack_version=6.5&show_cookie_consent=10&has_cookie_consent=0&sig=fb5abd039ab18f265394d228eacd72340edeb273#parent=%2F2017%2F08%2F12%2Fdeploying-to-azure-functions-from-npm-scripts%2F" + '&replytocom=' + parseInt( comm_par, 10 ).toString();
+					} else {
+						frame.src = "http://jetpack.wordpress.com/jetpack-comment/?blogid=119351739&postid=358&comment_registration=0&require_name_email=1&stc_enabled=1&stb_enabled=1&show_avatars=1&avatar_default=mystery&greeting=Leave+a+Reply&greeting_reply=Leave+a+Reply+to+%25s&color_scheme=light&lang=en_GB&jetpack_version=6.5&show_cookie_consent=10&has_cookie_consent=0&sig=fb5abd039ab18f265394d228eacd72340edeb273#parent=%2F2017%2F08%2F12%2Fdeploying-to-azure-functions-from-npm-scripts%2F";
+					}
+				};
+
+				
+				if ( 'undefined' !== typeof addComment ) {
+					addComment._Jetpack_moveForm = addComment.moveForm;
+
+					addComment.moveForm = function ( commId, parentId, respondId, postId ) {
+						var returnValue = addComment._Jetpack_moveForm( commId, parentId, respondId, postId ),
+							cancelClick, cancel;
+
+						if ( false === returnValue ) {
+							cancel = document.getElementById( 'cancel-comment-reply-link' );
+							cancelClick = cancel.onclick;
+							cancel.onclick = function () {
+								var cancelReturn = cancelClick.call( this );
+								if ( false !== cancelReturn ) {
+									return cancelReturn;
+								}
+
+								if ( ! comm_par ) {
+									return cancelReturn;
+								}
+
+								comm_par = 0;
+
+								tellFrameNewParent();
+
+								return cancelReturn;
+							};
+						}
+
+						if ( comm_par == parentId ) {
+							return returnValue;
+						}
+
+						comm_par = parentId;
+
+						tellFrameNewParent();
+
+						return returnValue;
+					};
+				}
+
+				
+				// Do the post message bit after the dom has loaded.
+				document.addEventListener( 'DOMContentLoaded', function () {
+					var iframe_url = "http:\/\/jetpack.wordpress.com";
+					if ( window.postMessage ) {
+						if ( document.addEventListener ) {
+							window.addEventListener( 'message', function ( event ) {
+								var origin = event.origin.replace( /^http:\/\//i, 'https://' );
+								if ( iframe_url.replace( /^http:\/\//i, 'https://' ) !== origin ) {
+									return;
+								}
+								jQuery( frame ).height( event.data );
+							});
+						} else if ( document.attachEvent ) {
+							window.attachEvent( 'message', function ( event ) {
+								var origin = event.origin.replace( /^http:\/\//i, 'https://' );
+								if ( iframe_url.replace( /^http:\/\//i, 'https://' ) !== origin ) {
+									return;
+								}
+								jQuery( frame ).height( event.data );
+							});
+						}
+					}
+				})
+
+			})();
+		</script>
+
+		<script type='text/javascript' src='https://stats.wp.com/e-201838.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:6.5',blog:'119351739',post:'358',tz:'0',srv:'azureserverless.com'} ]);
+	_stq.push([ 'clickTrackerInit', '119351739', '358' ]);
+</script>
+
+</body>
+</html>
+
+<!--Generated by Endurance Page Cache-->

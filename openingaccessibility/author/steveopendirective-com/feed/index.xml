@@ -1,0 +1,694 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Steve &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/author/steveopendirective-com/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>At last — true grids in web browsers</title>
+		<link>/openingaccessibility/2017/03/at-last-true-grids-in-web-browsers/</link>
+		<comments>/openingaccessibility/2017/03/at-last-true-grids-in-web-browsers/#respond</comments>
+		<pubDate>Thu, 30 Mar 2017 10:26:12 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=718</guid>
+		<description><![CDATA[I&#8217;ve moved over to medium &#8211; here&#8217;s my first post &#8220;At last &#8212; True grids in web browsers&#8220;]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;ve moved over to medium &#8211; here&#8217;s my first post &#8220;<a href="https://medium.com/@stevealee/at-last-true-grids-in-web-browsers-fe38b83813ec">At last &#8212; True grids in web browsers</a>&#8220;</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2017/03/at-last-true-grids-in-web-browsers/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Using reactive streams on serverless with cyclejs, xstream and Azure Functions</title>
+		<link>/openingaccessibility/2016/10/exploring-reactive-streams-with-serverless-xstream-cyclejs-and-azure-functions/</link>
+		<comments>/openingaccessibility/2016/10/exploring-reactive-streams-with-serverless-xstream-cyclejs-and-azure-functions/#respond</comments>
+		<pubDate>Sat, 22 Oct 2016 22:00:26 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[web]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[Reactive Programming]]></category>
+		<category><![CDATA[serverless]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=699</guid>
+		<description><![CDATA[[ Update 2016-10-23 the code is now in the cyclejs community repo] During development of my latest SaaS product, Brian, I&#8217;ve settled on a couple of key architectural decisions. For the Frontend I&#8217;m using Reactive programming (RP) with streams and &#8230; <a href="/openingaccessibility/2016/10/exploring-reactive-streams-with-serverless-xstream-cyclejs-and-azure-functions/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>[ Update 2016-10-23 the code is now in the <a href="https://github.com/cyclejs-community/cycle-serverless">cyclejs community repo</a>]</p>
+<p>During development of my latest SaaS product, Brian, I&#8217;ve settled on a couple of key architectural decisions. For the Frontend I&#8217;m using Reactive programming (RP) with streams and for the backend I&#8217;ve decided on the &#8216;Serverless&#8217; (FaaS) approach. Specifically, I&#8217;m using  Andre Stalz&#8217;s <a href="http://staltz.com/xstream">xstream</a> with the incredibly light &#8216;framework&#8217; <a href="https://cycle.js.org/">cyclejs</a> (but cyclejs supports other streaming libs, including the excellent <a href="https://rxjs.codeplex.com/">RxJS</a>) . Microsoft&#8217;s <a href="https://azure.microsoft.com/en-us/services/functions/">Azure Functions</a> give a FaaS solution backed-up by many other options including BaaS &amp; PaaS should they be required. This post looks at using them together on the backend.</p>
+<div style="width: 285px" class="wp-caption alignleft"><img src="https://cycle.js.org/img/cyclejs_logo.svg" alt="Cyclejs" width="275" height="275" /><p class="wp-caption-text">Cyclejs</p></div>
+<div style="width: 287px" class="wp-caption alignright"><img src="http://stiller.co.il/blog/wp-content/uploads/2016/04/Azure-Functions-Logo.png" alt="Functions logo" width="277" height="278" /><p class="wp-caption-text">Functions logo</p></div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>I&#8217;m happy that the trade-offs and benefits with these approaches should meet my requirements. Namely, achieving  rapid development by focussing energy higher &#8216;up the stack&#8217;. I want to concentrate on innovation of user features and &#8216;business logic&#8217; and not boilerplate or DevOps. From my early explorations I think Serverless and cyclejs manage to hit sweet spots of benefit and learning curve. However, they are most definitely not silver bullets, having wrinkles all their own that take time and effort to learn and overcome.</p>
+<p>When I initially created Functions code using a traditional imperative style I rapidly found I missed the RP style I&#8217;d become familiar with when using CycleJS with RxJS. It&#8217;s a style that gets under your skin once you make the mental shift. Perhaps my background in real-time async communications predisposes me to seeing the benefits of asynchronous handling of streams. But whatever, I thought it would be fun to try it in the serverless context. At least both front and back ends would then be similar in architecture.</p>
+<p>You may wonder why on earth I would consider using RP in a FaaS context. After all, the  FaaS architecture is all about small functions which are run once triggered and then quickly end. Thus, it would seem there isn&#8217;t much scope for streams when there is single trigger input event plus perhaps another data source or two.  One often touted advantage of RP is that it&#8217;s pure functions are easier to test, but that&#8217;s also a recommend practice with FaaS so that&#8217;s not an obvious advantage for having RP as well as FaaS.</p>
+<p>One reason for wanting to use RP is that any non trivial functions are likely to have other asynchronous event sources, including SaaS requests and database updates over REST. Even so, there are other less tangible benefits of RP with cyclejs that I personally I found over imperative code style:</p>
+<ul>
+<li>Loose coupling through reactive observers</li>
+<li>Declarative style married to functional programming techniques</li>
+<li>Separation of input, output side effects from the &#8220;pure&#8221; business logic</li>
+</ul>
+<p>Together these engender a clean high-level way to describe program logic. Bugs also appear to be reduced and it also enables testing without excessive mocking due to the absence of side effects in the main code. Sometimes however, debugging can be more involved due to current tooling supporting imperative and not reactive. However, tooling is starting to appear as more turn to RP.</p>
+<p>So what are the differences found when running xstream and cyclejs on Azure Functions environment compared to the usual browser (and sometimes nodejs) contexts?Surprisingly few it turns out. Fortunately, Functions builds on Azure Web Apps which supports nodejs and express. Better, it&#8217;s node 6.x that is provided which includes all those key ES6 features that really help clean up RP code. Another plus is that the cycle HTTP driver works fine on node.</p>
+<p>In this implementation I&#8217;ve taken the approach of providing a cycle runtime in each Azure Function. Effectively, each Function is a component in the cycle sense of the word, though connections between components will have to be via HTTP, queues or other out of process couplings. This approach seems to be the a good choice as you can use Cyclejs or not for any individual function, depending on the complexity and preferences. As the Functions run time is open source there is scope to explore different and more deeply embedded approaches.</p>
+<p>So without further a-do here&#8217;s the Functions driver code.</p><pre class="crayon-plain-tag">const xs = require('xstream').default
+
+module.exports = function makeFunctionsDriver(context, dispwrap, inArgs) {
+
+    function driver(s$) {
+        s$.addListener({ next: (i) =&gt; { setTimeout(() =&gt; {  // next tick to allow other listenerns to be iterated
+                                            context.res = i 
+                                            if (dispwrap &amp;&amp;
+                                                typeof dispwrap.disposer === 'function') {
+                                                dispwrap.disposer()
+                                            }
+                                            context.done()
+                                            }, 1)
+                         },   
+                         error: () =&gt; {},
+                         complete: () =&gt; {}
+        })
+
+        return xs.createWithMemory({
+            start: listener =&gt; {
+                setTimeout(() =&gt; {listener.next({context, inArgs})}, 1)
+            },
+            stop: () =&gt; {},
+        })
+
+  
+    }
+
+    const logger = a =&gt; context.log(a)
+    return {driver, logger}
+}</pre><p>As with all drivers, the Function driver is there to handle useful side effects such as input and output. In this case it converts the Function inputs (&#8220;context&#8221; and an array of input bindings) into a source stream. It also sinks a stream containing the function&#8217;s output. This also acts as a signal that the function should complete (the driver calls context.done).  The sink also disposes of the streams created by run() for cleanup (this adds a little implementation complexity due to a forward declaration and JS&#8217;s lack of true pass-by-reference).</p>
+<p>It turns out that using console.log is not useful in Functions, rather the alternative context.log is used. Thus, we also provide a Log driver that uses this channel. This is also used with xstream&#8217;s debug operator, which fortunately accepts a function argument as well as a value. I also decided the FunctionsDriver factory would return the log function itself as well as the driver. In this way nearly all the FaaS platform dependencies are encapsulated in the driver. This makes it possible to write a version for AWS Lamda or other serverless frameworks.</p>
+<p>Here&#8217;s an example usage for a HTTP Function. It starts a 1 second ticker and on the 3rd tick makes a REST API request. It then returns the first item from the response in function output. The code demonstrates the use of all the driver features and the clarity of RP with cyclejs.</p><pre class="crayon-plain-tag">const xs = require('xstream').default
+const run = require('@cycle/xstream-run').run
+const makeHTTPDriver = require('@cycle/http').makeHTTPDriver
+const makeFunctionsDriver = require('./functionsDriver.js')
+
+module.exports = function (context, ...inArgs) {
+    const dispwrap = {}             // because JS doesn't do pass-by-ref
+    const {driver: functionsDriver, logger} = makeFunctionsDriver(context, dispwrap, inArgs)
+
+    const drivers = {
+        FaaS: functionsDriver,
+        HTTP: makeHTTPDriver(),
+        log: msg$ =&gt; { msg$.addListener({next: msg =&gt; logger(`${msg}`) }) }
+    }
+
+    dispwrap.disposer = run(main, drivers)
+   
+    function main(sources) {
+        const input$ = sources.FaaS
+            .map((s) =&gt; `context.req.originalUrl: ${s.context.req.originalUrl} /
+                         inArgs[0]: ${JSON.stringify(s.inArgs[0])}`)
+            
+        const ticks$ = xs.periodic(1000)
+            .map(t =&gt; (t + 1) * 100)
+        
+        const log$ = xs.merge(input$, ticks$)
+
+        const trigger$ = ticks$
+            .drop(2)
+            .debug((i) =&gt; logger(`trigger tick: ${i}`))
+ 
+        const request$ = trigger$
+            .map(() =&gt; ({
+                            url: 'http://jsonplaceholder.typicode.com/users/1',
+                            method: 'GET'
+                        }))
+
+        const response$ = sources.HTTP
+            .select()
+            .flatten()
+        const user1Data$ = response$.map(response =&gt; response.body)
+        const exit$ = user1Data$
+            .map(u =&gt; ({ status: 200, body: u}))
+
+        return {
+            FaaS: exit$,
+            log: log$,
+            HTTP: request$
+        }
+    }
+}</pre><p>One issue that needs to be ironed out is sometimes exceptions such as syntax errors get lost and not presented in the Functions Logs. That&#8217;s probably xstream not re throwing captured exceptions. For now the fix is to put try&#8230;catch(log) blocks around parts of the code to get visibility.</p>
+<p>What do you think. Does this approach work for you?</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2016/10/exploring-reactive-streams-with-serverless-xstream-cyclejs-and-azure-functions/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Is the web getting less webby and will serverless make it worse?</title>
+		<link>/openingaccessibility/2016/09/is-the-web-getting-less-webby/</link>
+		<comments>/openingaccessibility/2016/09/is-the-web-getting-less-webby/#respond</comments>
+		<pubDate>Tue, 13 Sep 2016 11:43:58 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[HTML]]></category>
+		<category><![CDATA[web a11y]]></category>
+		<category><![CDATA[web apps]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[serverless]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=691</guid>
+		<description><![CDATA[[Title inspired by a quote from Scott Hanselman on Serverless with Azure Functions &#8216;It&#8217;s as close to &#8220;cloudy&#8221; as The Cloud can get&#8217;] There&#8217;s some big changes happening in web land that are fuelled by rapid app framework developments and &#8230; <a href="/openingaccessibility/2016/09/is-the-web-getting-less-webby/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>[Title inspired by a quote from Scott Hanselman on <a href="http://www.hanselman.com/blog/WhatIsServerlessComputingExploringAzureFunctions.aspx">Serverless with Azure Functions</a> &#8216;It&#8217;s as close to &#8220;cloudy&#8221; as The Cloud can get&#8217;]</p>
+<p>There&#8217;s some big changes happening in web land that are fuelled by rapid app framework developments and advances in cloud land. In particular the system architectural client-server split is shifting. We currently see these architectures (and variations):</p>
+<ul>
+<li>Classic 3 tier with web server passing presentation to the web browser as linked pages of HTML etc</li>
+<li>Ajax-ified with some presentation elements being dynamically requested and updated by the browser or even generated client-side from received data.</li>
+<li>Single Page Applications where presentation and navigation are completely generated in the browser which directly accesses various 1st and 3rd party RESTful APIs (SaaS).</li>
+<li>The Opera Mini browser Opera Mini is very popular, especially in poorer countries. It is something of  an architectural oddity as it renders  on a display server and uses a thin-client style display protocol to the client app for data efficiency. This is effectively a final stage applied after the others in this list.</li>
+<li>GraphQL is becoming popular for API queries as it lets the client dictate the payload and simplifies queries that would require multiple RESTful API round trips</li>
+</ul>
+<p>SPAs bring web apps into parity with Native Mobile Apps (and even some Desktop apps). The main difference now being the specific client side SDKs used to bind to the messaging protocols such as REST over HTTP.</p>
+<p>On the server we see hosting being outsourced at progressively higher levels in the stack: the so called cloudy IaaS, PaaS, BaaS, FaaS and WaaS. In addition, microservices are being used to break up monolithic middle tiers. In the last year we have seen the rise of interest in so called Serverless (BaaS, FaaS and WaaS). This was initiated by the introduction of AWS Lambda, quickly followed by other providers including Azure Functions, Google Cloud Functions, OpenWhisk.</p>
+<p><a href="/openingaccessibility/wp-content/uploads/2016/09/14867685775_c7044f0e2e_z.jpg"><img class="aligncenter wp-image-694 size-medium" src="/openingaccessibility/wp-content/uploads/2016/09/14867685775_c7044f0e2e_z-300x300.jpg" alt="cute pompom spider" width="300" height="300" srcset="/openingaccessibility/wp-content/uploads/2016/09/14867685775_c7044f0e2e_z-300x300.jpg 300w, /openingaccessibility/wp-content/uploads/2016/09/14867685775_c7044f0e2e_z-150x150.jpg 150w, /openingaccessibility/wp-content/uploads/2016/09/14867685775_c7044f0e2e_z.jpg 640w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+<p>So, exiting times for developers! But are these architectural changes eroding core Webby principals, especially the very carefully developed inclusive design principles? What is the impact on web users?</p>
+<p>After 25 years the classic web architecture has, with the help of Web standards, become available to almost everyone regardless of their device capabilities or their accessibility needs. Well, that&#8217;s in theory. The reality is completely dependent on developers being aware of best practices and prioritising them. HTML presentation elements are rendered by a wide range of browsers on varied devices including desktop with mouse and keyboard input, portable touch enabled devices with sizes from watches to tablets, and even hybrids such as 2 in ones. In addition to device variability, the Web standards and best practices support human and context variability through carefully baked in accessibility.</p>
+<p>The move to micro (and nano FaaS) service architectures on the back end should have limited impact on this webbiness as they are internal details of the servers.  However, the protocols used between client and server are RESTful in the web world, or rather, RESTful communications are the lifeblood of the web. Newer developments like GraphQL start to move away from the web&#8217;s RESTful architecture by effectively using one part of HTTP as a transport (somewhat like SOAP). However, this largely a detail of interest to developers only as far as most web users are concerned.</p>
+<p>On the face of it the use of client-side generated presentation with AJAX or a SPA should make no difference to webbiness either. True, dynamic creation of the UI is open to developers playing fast and loose with the standards. And accessibility is often being the first casualty. But this is just as possible when content is generated on the server.</p>
+<p>A big difference between SPAs and HTML apps is that browser developers put enormous effort into ensuring bad HTML and CSS fail gracefully across supported devices. JavaScript, on the other hand, is NOT fail safe. An error means it crashes and the user probably gets a nasty surprise. Individual developers or client side JavaScript framework developers have to effectively duplicate the effort that browser vendors go to in order to get as rugged an UX. Thus the user experience may not be as  consistent or as accessible with a SPA.</p>
+<p>Another issue is that developers want to use the latest and greatest browser features, often in order to give a great UX. For example Service Workers allow developers to provide a great offline experience. As the rate of change accelerates the chances of a user having an old browser that doesn&#8217;t support a shiny new feature increases. This is much more exaggerated with features accessed through JavaScript code compared to HTML as the speed and focus is currently there. Even the JavaScript language itself is rapidly evolving witch new features developers are keen to use. So, unless there&#8217;s careful design to work with a range of devices users may be left stranded.</p>
+<p>An established technique to avoid these problems is Progressive Enhancement where a basic HTML experience is available and UX enhancements are layered on for users with browsers that support the latest CSS and JavaScript shininess. But, with SPAs there is no initial HTML rendering for less able browsers. Lately techniques such as serverside rendering and Universal (isomorphic) JavaScript restore this to a large extent. Interestingly, the drive for these techniques has been SEO (Google can&#8217;t spider a client side app)  and time to initial display content of, rather than PE concerns.</p>
+<p>In summary, then, the architectural shifts we are seeing do provide new ways to break the carefully designed universal nature of the web and exclude users of some devices or with some accessibility needs. However by carefully following inclusive design thinking at the system level these can be minimised. The shape of web app architectures may be changing but we can ensure the core principles remain in our minds as we develop.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2016/09/is-the-web-getting-less-webby/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>AWS, Azure or Firebase for a SPA browser app? Nope, it&#8217;s Kinvey</title>
+		<link>/openingaccessibility/2016/05/aws-azure-or-firebase-for-a-spa-browser-app/</link>
+		<comments>/openingaccessibility/2016/05/aws-azure-or-firebase-for-a-spa-browser-app/#respond</comments>
+		<pubDate>Fri, 27 May 2016 11:09:59 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[serverless]]></category>
+		<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[web]]></category>
+		<category><![CDATA[web apps]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=671</guid>
+		<description><![CDATA[[Update 2016/06/07:  I eventually found Azure to be lacking, though this did lead me to explore the excellent Auth0 for authentication. To be honest all three offerings are currently pretty much a bunch of &#8216;beta bits&#8217;, an apt phrase coined &#8230; <a href="/openingaccessibility/2016/05/aws-azure-or-firebase-for-a-spa-browser-app/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p><strong>[Update 2016/06/07:  I eventually found Azure to be lacking, though this did lead me to explore the excellent <a href="https://auth0.com/">Auth0 </a>for authentication. To be honest all three offerings are currently pretty much a bunch of &#8216;beta bits&#8217;, an apt phrase coined by  by Michael Facemire and Jeffrey S. Hammond  in their &#8220;<a href="https://www.forrester.com/report/The+Forrester+Wave+Mobile+Infrastructure+Services+Q3+2015/-/E-RES119902">Forrester Wave<img src="https://s.w.org/images/core/emoji/11/72x72/2122.png" alt="™" class="wp-smiley" style="height: 1em; max-height: 1em;" />: Mobile Infrastructure Services, Q3 2015</a>&#8220;. I&#8217;m now exploring <a href="http://www.kinvey.com/">Kinvey</a>, one of the services mentioned in that report. Kinvey are certainly responsive and tick most of the boxes. I just hope they can deliver as I&#8217;m seriously behind schedule]</strong></p>
+<p><strong>[Update 2016/06/08: After reviewing Kinvey and chatting with them I&#8217;ve decided it supplies just about all I need.  I&#8217;ve added them in to the comparison below for future reference. The one missing feature is a full CLI to enable scripted &#8220;from clean&#8221; setup and so CI / CD, but then I didn&#8217;t think of that when doing the original post. Another point I forgot was encryption of data in the client storage which they also have covered.]</strong></p>
+<p>My current work is the <a href="https://github.com/OpenDirective/brian">Brian project</a> for people with cognitive disabilities. This open source development is funded by the Prosperity For All EU FP7 project (part of GPII initiative). The plan is for it to become a self financing a service based on Gregg Vanderheiden&#8217;s Easy One Communicator and features from MAAVIS.</p>
+<p>After much thought about implementing Progressive Enhancement for a proper &#8216;web app&#8217;  verses usage scenarios requiring offline access I decided to start off making a so-called Single Page App (SPA) or &#8216;browser app&#8217; as I prefer to call them. SPAs require javascript for their functionality and tend to take advantage of all the latest features in the evergreen browsers. They treat the browser as a platform and are designed as part of a system architecture with custom client-server splits. This usually means consuming REST or other APIs directly in the client in order to access a broad range of services (often micro service based). These services may be part of the architecture being developed or from the many 3rd party offerings that add value through aggregation (or mashup).</p>
+<p>Those services that are part of the new system being developed might be implemented as a HTTP server, either self hosted or in the cloud (so called IaaS). However, these days it is possible to go &#8216;serverless&#8217; by using so called Backend as a Service (BaaS) cloud offerings for &#8216;mobile&#8217; apps (MBaaS). These go a step beyond Platform as a Service (PaaS) which lets you concentrate on you server software at the top of your backend stack.  They also added features that are critical for mobile situations; eg offline data sync, user authentication. I decided to go this route as I really did not want to get involved in DevOps or SysOps or whatever you want to call service configuration, maintenance and security. Another advantage of BaaS is you can easily scale up the backend should your service &#8216;go large&#8217;; you just need to pay more.</p>
+<p>The three main PaaS offerings that include some BaaS are Amazon Web Services (AWS), Microsoft Azure and Google Firebase. My initial thoughts were these big operators would have the best dev experience.</p>
+<ul>
+<li>Amazon AWS has been around the longest are easily the most popular IaaS. Not bad for a spin-off from Amazon&#8217;s own in house services. I discovered them via the excellent Serverless project early in my investigations.</li>
+<li>Azure has steadily added features since the early IaaS only offering days and with the recent introduction of Apps and Functions looks like a pretty reasonable BaaS. It has a strong enterprise positioning.</li>
+<li>Firebase was until very recently quite limited. They just rounded out the PaaS offering but adding authentication, storage and other features. Firebase is strong on metrics and pushing ads to users (now surprise there as is now Google / Alphabet). They often mention the most up-to-date requirements of SPA developers using modern JS practices.</li>
+<li>Kinvey is about 4 years old and started supporting indie developers (like me) but recently pivoted to be more enterprise focussed. Their founder and CEO Sravish Sridhar claims to have <a href="http://readwrite.com/2014/02/02/kinvey-sravish-sridhar-builders/">invented the term BaaS </a>and prove the model works. They have a rounded provision and fully support HTML5 and javascript in the browser.</li>
+</ul>
+<p>As an aside, the Serverless project simplifies the configuration of your backend. This is  especially important in a team environment. Though serverless is tied to parts of AWS, Azure may come.</p>
+<p>I tried AWS first. However after writing some client code and hitting many problems and confusions I finally decided enough was enough and I should look at others. The next big sticking point was username only sign in, most Brian users will not have email addresses. The following is a brief summary of my findings and thoughts based on my requirements.</p>
+<p>Disclaimer: this review is a result of reading around the subject, with the exception of AWS I have not tried working code, yet. I also looked at the free tiers but with an eye on the expansion options</p>
+<h2>Clear docs and examples for JavaScript mobile web app client</h2>
+<ul>
+<li>AWS: Quite a mess. iOS and Android are first class but javascript poorly linked and rather hard to find. To be fair, some components are beta. The main problem is lots bits and no clear complete examples</li>
+<li>Azure: Yes but slightly confusing messaging and so many features that are not relevant to browser apps. &#8220;Web Apps&#8221; focusses on the back end services while a &#8220;Mobile App&#8221; add an offline-capable OData v3 feed for data and client SDKs including JS. Apache Cordova (hybrid apps) is often mentioned whenever JS is but apart from a few dependencies on Cordova plugins, browsers are equally well supported.  An <a href="https://shellmonger.com/category/mobile-development/">excellent series of posts</a> from the from the Apps project lead</li>
+<li>Firebase: Excellent getting oriented and get started docs with good complete examples. Clean SDKs. All really easy to find.</li>
+<li>Kinvey: Hard to fault really: case studies,  developer guides, references, samples and code all easy to find and digest. No bloat or hype, just good information. They even have some whitepapers and ebooks introducing the wider topics and comparisions with other providors.</li>
+</ul>
+<p>All the JS client SDKs are open source projects</p>
+<h2>Support</h2>
+<p>You get what you pay for with support so I just tried pre sales via twitter and other free channels</p>
+<ul>
+<li>AWS: I tried issues on the client SDK projects with limit success</li>
+<li>Azure I got excellent direct help from the project lead.</li>
+<li>Google: Use Stack Overflow &#8211; no response yet</li>
+<li>Kinvey: Pretty much perfect. Initial Twitter contact from the CEO when I happened to mention Kinvey. Swiftly followed by voice discussion with JS lead. Forum is also active.</li>
+</ul>
+<h2>Static hosting for SPAs</h2>
+<p>SPAs only need static hosting for the HTML, JS, CSS and other assets, While developing you don&#8217;t want caches to get in the way. In production you want CDNs to give global fast access. HTTPS is a must have as is URL rewriting as SPA use pushState to simulate URLs and we need to stop the server throwing 404s</p>
+<ul>
+<li>AWS: S3 doesn&#8217;t provide HTTPS, cloud front does but only suitable for deployment</li>
+<li>Azure: All covered, Blob storage looks best or possibly web apps</li>
+<li>Firebase: all covered</li>
+<li>Kinvey: No. Perhaps the only missing feature</li>
+</ul>
+<p>There&#8217;s always GitPages, Surge and other services for cheap static hosting.</p>
+<h2>Simple sign-in with Username and Password</h2>
+<p>Brian users are elderly in residential environments and are most unlikely to have either email, SMS or accounts with other social services. Thus the commonplace and more secure authentication flows that require email or SMS cannot be used. Even a password may be too much for a person living with dementia.</p>
+<ul>
+<li>AWS: Explicit with Cognito User Pools, a new beta service.</li>
+<li>Azure: fairly straight forward example given using Auth0 a separate service</li>
+<li>Firebase: requires a custom Auth flow and identity server &#8211; perhaps works with Auth0</li>
+<li>Kinvey: Yes. Plus options for enterprise and social federated</li>
+</ul>
+<h2>Offline data sync for use config</h2>
+<p>This means no need to use REST APIs for data access. Just read/write locally and the system takes care of details as and when connectivity is available. Further, sync supports updates between devices. Should also optimise battery use and metered connection costs. I&#8217;m not particularly bothered if data is JSON, pairs or SQL.</p>
+<ul>
+<li>AWS: supposedly easy using Cognito Sync. I hit problems which basic set/get transaction which caused me to look at others.</li>
+<li>Azure: not yet but in progress and a fork on GitHub project. Will initially be for Cordova apps only.</li>
+<li>Firebase: yes. They mention all the important points.</li>
+<li>Kinvey: Yes. Again covers the bases plus works with all browser storage options. Very clean flexible SDK based on RxJS observables and providing a Fluid style API for queries. This is a big bonus for Brian which uses RxJS CycleJS</li>
+</ul>
+<h2>Storage for media files and URL access</h2>
+<p>Brian needs to display local images but the FileAPI URLs used to access local content are temporary. This almost certainly security related. Thus we unfortunately need to upload local files, store them an access with a private URL. Alternatively we create a Hybrid app to circumvent the sandboxing, but then we have to play the App Store dance and Ive no desire to do that.</p>
+<ul>
+<li>AWS: S3 and the Generate Web URL API for public and signed URLs</li>
+<li>Azure: Blob storage with public and private URLs</li>
+<li>Firebase: just released. Not clear how to get URL as operations seem to be upload / download only.</li>
+<li>Kinvey: yes, delegates to Google cloud storage. Still not clear how to provide private URLs</li>
+</ul>
+<h2>Server side code execution, AKA business logic</h2>
+<p>Rather than setting up a full server it should be possible to run &#8216;snippits&#8217; Obviously security, authentication and integration with other parts are all important.</p>
+<ul>
+<li>AWS: yes &#8211; Lambda</li>
+<li>Azure: yes functions &#8211; still beta and not yet fully integrated with Apps</li>
+<li>Firebase: no</li>
+<li>Kinvey: Yes. Restricted node environment on free tier, full node on paid tiers.</li>
+</ul>
+<h2>CLI to make config easy to manage and reproduce</h2>
+<p>All the systems have snazzy interactive web GUIs but as I discovered with SQL Server maintenance you *really* need to script you configuration to make it reproducible and to easily make bulk changes. This is especially important for CI /CD and allowing anyone to easily set up an open source project from scratch</p>
+<ul>
+<li>AWS: yes</li>
+<li>Azure: yes and not just Windows either</li>
+<li>Firebase yes.</li>
+<li>Kinvey: Only for business logic on free. Requires manual management and deployment of some config. Offers image cloning on other tiers</li>
+</ul>
+<h2>Features for metering, crash support</h2>
+<ul>
+<li>AWS: yes</li>
+<li>Azure: yes</li>
+<li>Firebase: naturally strong given Googles business model</li>
+<li>Kinvey: only with enterprise tier</li>
+</ul>
+<h2>Realtime messaging, data and push notifications</h2>
+<p>I&#8217;m not bothered by this right now but it might be useful. I didn&#8217;t spend any time looking at this</p>
+<ul>
+<li>AWS: push notifications</li>
+<li>Azure:  push notifications</li>
+<li>Firebase:  make a big thing of push etc.</li>
+<li>Kinvey: push notifications but not for JS clients (yet)</li>
+</ul>
+<h2>Collaboration opportunities</h2>
+<p>I&#8217;m developing the client in CycleJS and RxJS (switching  soon to xstream) and the small but growing community includes those working on another SPA using Firebase. It would be great to share effort with the <a href="https://github.com/sdebaun/sparks-cyclejs">sparks project</a>, especially as they really understand the technology a lot more than myself. If I don&#8217;t use Firebase it might still be possible to share concepts with them and maybe make a similar driver for the community to use with another provider.</p>
+<h2>Cost</h2>
+<p>I left the most important &#8217;till last. Brian is an open source project and I&#8217;m collaborating with various EU projects who are performing trials. So as a micro SME I&#8217;m very cost sensitive. At least until I get the self financing service going. Thus a free period or credits are vital.</p>
+<ul>
+<li>AWS: I year free access to almost everything, Looks cheap after.</li>
+<li>Azure: Somewhat confusing array of subscriptions that can run in parallel. Free month, F1 tier, MSDN and BizSpark. I&#8217;ve applied for the latter. Pricing a bit confusing and one page seemed out of date.</li>
+<li>Google: most parts are free but some appear to always be chargeable.</li>
+<li>Kinvey: Free developers tier good for all non enterprise .focused features, can have unlimited backends (called Apps).</li>
+</ul>
+<h2>Conclusion</h2>
+<p>Part of the reason for this post was for me to collect my thoughts and make a decision. So despite being very late with getting a MVP out the door, I&#8217;m going to use Kinvey, rather than spend more time trying to get AWS working or fight with the gaps in Azure&#8217;s provision. I&#8217;ll take the extended learning curve and present lack of offline sync on the chin. It looks like Kinvey has all my requirements covered except a full CLI so with any luck I can just get on with my app now! I&#8217;ll post my experience</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2016/05/aws-azure-or-firebase-for-a-spa-browser-app/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>&#8220;I don&#8217;t care about the OS, just give me my web Apps&#8221;</title>
+		<link>/openingaccessibility/2016/05/i-dont-care-about-the-os-just-give-me-my-web-apps/</link>
+		<comments>/openingaccessibility/2016/05/i-dont-care-about-the-os-just-give-me-my-web-apps/#respond</comments>
+		<pubDate>Tue, 10 May 2016 18:01:34 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[a11y]]></category>
+		<category><![CDATA[Apps]]></category>
+		<category><![CDATA[web]]></category>
+		<category><![CDATA[web apps]]></category>
+		<category><![CDATA[web a11y]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=668</guid>
+		<description><![CDATA[So I tweeted in jest to Bruce Lawson today in a conversation about Progressive Web Apps in the aftermath of the excellent WebProgressions one-day conference. And then I realised, I actually meant it! My point is that as a user &#8230; <a href="/openingaccessibility/2016/05/i-dont-care-about-the-os-just-give-me-my-web-apps/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>So I tweeted in jest to Bruce Lawson today in a conversation about Progressive Web Apps in the aftermath of the excellent <a href="https://webprogressions.org/">WebProgressions </a>one-day conference.</p>
+<p>And then I realised, I actually meant it!</p>
+<p>My point is that as a user of tech I want to get at the content or functionality I find useful or interesting when I want to. I want to do so whatever device I have in front of me of me or on me. I&#8217;m not interested in arbitrary platform distinctions or fan bouy love affairs. To be honest I find the main desktop OSs are ‘the same but different’. Ditto mobile OSs. And that’s OK. I&#8217;d even be happy if devices became commodity infrastructure. But the market isn&#8217;t quite like that.</p>
+<p>If I quickly want some info I&#8217;ll use the web. If I want to do something repeatedly and it&#8217;s convenient for me to let the service save info about me for *my* benefit, I&#8217;ll use an app. Furthermore,  as I want probably to get access to the same stuff on different devices that really means I want a web app. That&#8217;s the closest we&#8217;ve so far got to the &#8220;write once, run anywhere dream.</p>
+<p>Variety is good for choice and drives quality so I&#8217;m happy that there are competing browsers and OSs. Just as long as they seamlessly support the features I want. And these days that probably means they use basic features covered by a W3C standard.</p>
+<p>Does that mean I want my experience of the web sites and apps I access to be identical whatever? Absolutely not. I want variation that suites</p>
+<ul>
+<li>My interaction modes and environment. For example, desktop with keyboard and large screen or mobile with touch (but note these personal and technical modes are all blurring)</li>
+<li>Personalised access according to my preferences and accessibility requirements and environmental constraints (eg driving)</li>
+</ul>
+<p>Actually, those 2 are really just different facets of the same thing. Personalised Accessible User Experience or AUX</p>
+<p>I don&#8217;t want experience based on the suppliers development priorities or convenience. Nor on some marketing wish to push stuff at me for business benefits (especially Ads).  But, it turns out platform <strong>does</strong> matter as the accessible experiences are not equal.</p>
+<p>I want a user-centred AUX whatever the device. No more and no less.</p>
+<p>Having started taking Microsoft seriously again I do think they get much of this. Even if they are going to start charging for Windows 10 again. It looks like they are focussing on the cloud and services rather than just the Windows OS. With Edge, they are now engaging with web users and development community in very impressive and meaningful ways. They have made accessibility important at a high level. Continuum and devices like Surface Pro accept our desire to change our interaction modes during the day: and even encourage it.</p>
+<p>Just don&#8217;t expect them to open source Windows just yet!</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2016/05/i-dont-care-about-the-os-just-give-me-my-web-apps/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Free and easy HTTPS certificates with CDN with Kloudsec</title>
+		<link>/openingaccessibility/2016/03/free-and-easy-https-certificates-with-cdn/</link>
+		<comments>/openingaccessibility/2016/03/free-and-easy-https-certificates-with-cdn/#respond</comments>
+		<pubDate>Sat, 19 Mar 2016 17:11:54 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[devops]]></category>
+		<category><![CDATA[opensource]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=639</guid>
+		<description><![CDATA[HTTPS is a &#8216;must have&#8217; for any web service, SPA or progressive web application and so it is naturally high on my list of things to get to grips with. As a first step for the Brian project I&#8217;m creating &#8230; <a href="/openingaccessibility/2016/03/free-and-easy-https-certificates-with-cdn/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>HTTPS is a &#8216;must have&#8217; for any web service, SPA or progressive web application and so it is naturally high on my list of things to get to grips with. As a first step for the Brian project I&#8217;m creating a SPA (browser client side app) using web assets served up with GitHub pages (basically free hosting). It&#8217;s easy enough to set up the <a href="https://github.com/OpenDirective/brianLive">static pages</a> and a <a href="https://github.com/OpenDirective/brian/blob/master/scripts/deploy.sh">simple deploy script</a>. If you stick to the GitHub supplied URL (eg http://opendirective.github.io/brianLive/) you get CDN and HTTPS access</p>
+<p>However, if  you have a custom domain pointing at your Github Pages (eg  <a href="http://brian.opendirective.net/">brian.opendirective.net</a>) then a) You lose <code>HTTPS</code> support and b) You lose the <code>CDN</code> functionality if your custom domain is an apex domain (An apex domain is a domain without prefixes, such as <code>example.com</code>, not <code>www.example.com</code>)</p>
+<p>The thought of setting up HTTPS certificates used to fill me with dread. After reading around I was very disillusioned by the apparent complex tedious process. Assuming I understood it correctly.</p>
+<p><a href="/openingaccessibility/wp-content/uploads/2016/03/kloudsec.png" rel="attachment wp-att-649"><img class="aligncenter size-full wp-image-649" src="/openingaccessibility/wp-content/uploads/2016/03/kloudsec.png" alt="kloudsec" width="201" height="193" /></a>Recently however, <a href="https://letsencrypt.org/">LetsEncrypt</a> arrived on the scene, soothing stressed web developers with their streamlined process for creating free HTTPS certificates. Still, the process does include installing and operating a local client tool. I decided to wait a bit.</p>
+<p>Then Steve Goh (@nubela) of  <a href="https://kloudsec.com/">kloudsec</a> cold called me asking if I&#8217;d like to try the new version of their developer CDN service which supports GitHub Pages. I&#8217;m pleased he did. This new service provides GitHub custom domains a kloudsec CDN with HTTPS certificate provisioning and various plugins.</p>
+<p>As you can see from <a href="https://kloudsec.com/github-pages/">kloudsec.com/github-pages</a>. It&#8217;s a simple 3 step process. If you&#8217;ve already setup your GitHub pages then you&#8217;ll have done one step already. After registering with Kloudsec and setting up GitHub pages in your repository you&#8217;ll need to change your DNS settings.  This only requires adding 2 new records (and A and a TXT for verification of ownership), plus you&#8217;ll want to remove any CNAME you may have previously created for GitHub pages set up.</p>
+<p>It all goes very smoothly. The website dashboard is clear and you get progress emails. You&#8217;ll obviously need to wait an unknown time for DNS propagation but otherwise it&#8217;s a simple few click and edits before your GitHub pages are served as HTTPS. You can also turn on a redirect from HTTP to HTTPS as well.</p>
+<p>I hit a few rough edges which is not surprising given the Beta statement, but nothing I couldn&#8217;t easily resolve. The email and dashboard make it all pretty clear. I&#8217;m sure the process will be made even smoother.</p>
+<p>In summary, for zero cost except a few minutes work you get a CDN with North American, Europe and Asian access, speed optimisations, HTTPS serving with HTTPS certification and, automatic backup serving of your pages, anti hack features and a clear dashboard of performance. Other paid plugins are/ will be available and I sure the simple one-click install will make them really attractive. You can also download your certificate should you want to use with alternative hosting arrangements.</p>
+<p>The Kloudsec service is not just for GitHub pages but works with <a href="https://kloudsec.com/#/dashboard/website/new">any domain</a>.</p>
+<p>Highly recommended..</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2016/03/free-and-easy-https-certificates-with-cdn/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>More on portable npm scripts</title>
+		<link>/openingaccessibility/2016/03/more-on-portable-npm-scripts/</link>
+		<comments>/openingaccessibility/2016/03/more-on-portable-npm-scripts/#comments</comments>
+		<pubDate>Thu, 17 Mar 2016 15:46:55 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[web]]></category>
+		<category><![CDATA[Windows]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[nodejs]]></category>
+		<category><![CDATA[npm]]></category>
+		<category><![CDATA[Virtualisation]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=640</guid>
+		<description><![CDATA[Following on from my earlier post on the topic of writing portable npm scripts, here&#8217;s a few more useful tips. [UPDATE 2016/03/31: Bash for Windows was announced at Microsoft Build 2016. This exciting feature will allow running of Linux npm &#8230; <a href="/openingaccessibility/2016/03/more-on-portable-npm-scripts/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Following on from my earlier post on the topic of <a href="/openingaccessibility/2015/12/writing-portable-npm-build-scripts/">writing portable npm scripts</a>, here&#8217;s a few more useful tips.</p>
+<p>[UPDATE 2016/03/31: Bash for Windows was announced at Microsoft Build 2016. This exciting feature will allow running of Linux npm script builds with ease. See <a href="http://www.hanselman.com/blog/DevelopersCanRunBashShellAndUsermodeUbuntuLinuxBinariesOnWindows10.aspx">Scott Hanselman&#8217;s blog post</a>]</p>
+<p>[UPDATE: 2016/03/29:  The recently released <a href="https://blog.docker.com/2016/03/docker-for-mac-windows-beta/">Docker for Windows Beta</a> might be a good alternative to using a VM. It user Hyper-V.]</p>
+<p>[UPDATE: 2016/03/29:  This is a comprehensive article on <a href="http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/">using npm for build</a>]</p>
+<h1>Copying files</h1>
+<p>Use the <a href="https://www.npmjs.com/package/ncp">ncp </a>module to copy files. This goes nicely with mkdirp and rimraf  mentioned before.</p>
+<h1>Setting environment variables</h1>
+<p>It&#8217;s common to have scripts with a command line of the form</p><pre class="crayon-plain-tag">NODE_ENV=production webpack --config client/webpack.config.js</pre><p>This sets the environment variable NODE_ENV for the duration the command runs. In this case it is use to perform a production build with webpack.</p>
+<p>Such syntax works fine in bash etc on Linux / OS X but fails on windows where npm scripts always use CMD. One solution is to use the <a href="https://www.npmjs.com/package/cross-env">cross-env</a> npm module which uses a regx to find environment settings (and so is probably not fool-proof). Once installed you just prefix your command like so</p><pre class="crayon-plain-tag">cross-env NODE_ENV=production webpack --config client/webpack.config.js</pre><p></p>
+<h1>Running an extra bash process</h1>
+<p>I use the <a href="https://git-for-windows.github.io/">Git for Windows</a> bash shell for all my development CLI needs on Windows (It is also installed as part of the <a href="https://desktop.github.com/">GitHub Desktop for Windows</a>). This is a port of the mature MSYS / MinGW port of Linux build environments and works pretty well, though some of the commands are old versions.</p>
+<p>On Windows, npm ignores the current shell from which you run it and doesn&#8217;t pass the shell on to the sub processes as you would expect. However, you can easily run bash as the main command in a npm script (it&#8217;s an extra process but that hardly matters). This works as bash sets the path which is then inherited by the cmd subshell in which npm runs your package.json scripts. As a result it&#8217;s easy enough to create portable scripts or convert linux based scripts to also run on Windows. You just need to wrap the command in <pre class="crayon-plain-tag">bash -c "...."</pre> For example, the above env setting script can be recoded as follows</p><pre class="crayon-plain-tag">bash -c"NODE_ENV=production webpack --config client/webpack.config.js"</pre><p>The only issue i found is the need to carefully quote &#8221; characters. For example here&#8217;s a little script to prompt before deploying to GitHub pages (I&#8217;m showing the full package.json entry for clarity)</p><pre class="crayon-plain-tag">"deploy": "bash -c \"read -n1 -p\\\"Have you commited ready to deploy (yY) \\\"; echo; [[ $REPLY = [yY] ]] &amp;&amp; npm run _buildanddeploy || { echo \\\"You didn't answer yes, or deploy failed.\\\"; }",</pre><p></p>
+<h1>Using a Linux VM</h1>
+<p>I often use a Linux VM as part of my development. With Vagrent it&#8217;s easy to provision a headless VirtualBox (or other) VM that shares the host filespace and exposes a SSH terminal. Thus you can edit using Windows tools like VisualStudio Code yet run everything in the Linux VM. This lets you run local tests in the same VM as a CI or CD system (which will usually be Linux , unless you are using Azure). One easy configuration I&#8217;ve used is this <a href="https://github.com/GPII/qi-development-environments">Quality Infrastructure</a> from the GPII project.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2016/03/more-on-portable-npm-scripts/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Writing portable npm build scripts</title>
+		<link>/openingaccessibility/2015/12/writing-portable-npm-build-scripts/</link>
+		<comments>/openingaccessibility/2015/12/writing-portable-npm-build-scripts/#comments</comments>
+		<pubDate>Tue, 15 Dec 2015 23:09:28 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[Windows]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[nodejs]]></category>
+		<category><![CDATA[npm]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=624</guid>
+		<description><![CDATA[tl;dr; Developers need to install and build Javascript NPM modules on Windows as well as *nix. With a little care this is possible without using heavyweights tools like Grunt and Gulp . Modern HTML development usually includes a build and deploy process similar &#8230; <a href="/openingaccessibility/2015/12/writing-portable-npm-build-scripts/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p><strong>tl;dr; Developers need to <b>install and </b><b>build</b> Javascript NPM modules on Windows as well as *nix. With a little care this is possible without using heavyweights tools like Grunt and Gulp .</strong></p>
+<p>Modern HTML development usually includes a build and deploy process similar to those used in compiled development workflows. In this case, assets that end up deployed and accessed by end users are the result of a pipeline of operations such as transpiling, concatenation, minifying and zipping. In addition,  developers use these and others steps when developing, for example as part of test automation,  on check-in or as part of  continuous integration and deployment process. Perhaps somewhat surprisingly, the traditional build tools such as shell scripts, configure and Make (or Ant) are not commonplace. Rather, we often see newer JavaScript based tools like Grunt, Gulp or Broccoli being the &#8220;go-to&#8221; choice. Critically, these tools do have the advantage of largely working cross-platform on Linux/OS X and Windows.</p>
+<p><a href="/openingaccessibility/wp-content/uploads/2015/12/npmlogo.jpg" rel="attachment wp-att-634"><img class="aligncenter size-medium wp-image-634" src="/openingaccessibility/wp-content/uploads/2015/12/npmlogo-300x200.jpg" alt="npm logo" width="300" height="200" srcset="/openingaccessibility/wp-content/uploads/2015/12/npmlogo-300x200.jpg 300w, /openingaccessibility/wp-content/uploads/2015/12/npmlogo-768x512.jpg 768w, /openingaccessibility/wp-content/uploads/2015/12/npmlogo.jpg 1024w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+<p>An alternative build option is to use <a href="https://docs.npmjs.com/misc/scripts">NPM’s scripts feature</a> in the project or module package.json. You can use commands like ‘npm run test’ to invoke important build processes. This has the advantage of putting the scripts in the same place as the rest of your project configuration. Also, actions may be broken up into sub actions or invoked though life-cycle triggers (like &#8220;before publish&#8221;). Unfortunately though, while NPM tracks module dependencies, these are not used in the scripts to minimize the required build steps (as Make does). Perhaps that will come in time, but until then, either everything gets built every time or you’ll need to call a build tool like Make from scripts. One issue with While is while it is very effective it has a rather gnarly syntax and plenty of awkward features that you need to get to grips with. That said, common useful rules are simply implemented. Another tool, Webpack looks interesting for building as it manages dependencies and also works with modules rather than files, as Make does.</p>
+<p>Both Make and NPM scripts simply evoke the native command line shell to perform the actions for each build step and this raises an issue when you want to have your build work across platforms. The problem is that the shells have different syntax and command sets so you have to restrict npm scripts to a least common subset. Fortunately you can manage portability  with care. Evens  so, plenty of published modules exist that assume they are built on a *Nix Bash shell and so break on Windows. You might think you could get away with running one of the Bash shell systems for Windows (eg MSys, cygwin) but NPM always launches a Cmd shell (you can work around this by having your scripts run an extra bash shell, but that’s a bit hacky). More importantly using bash requires target build system configuration with yet another tool. We’d ideally like our build to work with just node (and thus npm) installed.</p>
+<p>So assuming we have to write NPM scripts that run on both Bash and Cmd what can you do to reduce problems?</p>
+<ul>
+<li>Separate commands in a single script with &amp;&amp; (&#8220;and if no error&#8221;) or || (&#8220;or if error&#8221;) instead of  the terminator (; or : ). Remember you can invoke subscripts with “npm run xxx”</li>
+<li>Modules like “concurrently” and “npm-run-all” add further task management options</li>
+<li>Operators &amp;&amp; || &amp; &lt; &gt; and | all work pretty much the same in cmd and bash and offer a lot of power</li>
+<li>Paths are a pain. While Windows system calls support the / separator it is also used for command options. Avoid as much as possible</li>
+<li>In npm scripts “node_modules/.bin” is on the path so any CLI command modules installed with &#8211;save or –save-dev will available to scripts when the package is installed. For example “rimraf”, “mkdirp” and “ncp”. This avoids tell devs to do global installs of tools which may conflict with other tools.</li>
+</ul>
+<p>Of course JavaScript itself is an ideal platform independent script tool so you could use <a href="http://www.ctomczyk.pl/why-i-switched-to-only-nodejs-npm-and-stopped-using-grunt/767/">nodejs to create build scripts</a> called from your NPM scripts. And after all, that is what Grunt and Gulp do by providing a full on framework for build services. The choice as always, is yours. A useful approach is to use the &#8220;<a href="https://www.npmjs.com/package/shelljs">Shelljs</a>&#8221; module that provides a unix style set of functions as an alternative to using the bash shell directly. In addition &#8220;Node-glob&#8221; provides wildcard expansions.</p>
+<p>As a final thought, modules are usually distributed in source form and some contain native module source that must be compiled using a toolchain of Python and C++. Fortunately this is getting easier on Windows as described in Microsoft&#8217;s new <a href="https://github.com/Microsoft/nodejs-guidelines">nodejs Guidelines for Windows</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2015/12/writing-portable-npm-build-scripts/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>Dealing with Windows text line endings in git</title>
+		<link>/openingaccessibility/2015/12/dealing-with-windows-text-line-endings-in-git/</link>
+		<comments>/openingaccessibility/2015/12/dealing-with-windows-text-line-endings-in-git/#respond</comments>
+		<pubDate>Thu, 03 Dec 2015 14:01:24 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[Windows]]></category>
+		<category><![CDATA[git]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=595</guid>
+		<description><![CDATA[Text line endings on Windows: Still painful after all these years Once upon a time, in the days of Microsoft MS-DOS development one of main pain points and source of bugs was the distinction between text and binary files. When &#8230; <a href="/openingaccessibility/2015/12/dealing-with-windows-text-line-endings-in-git/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<h1>Text line endings on Windows: Still painful after all these years</h1>
+<p>Once upon a time, in the days of Microsoft MS-DOS development one of main pain points and source of bugs was the distinction between text and binary files. When you opened a file you had to say if it was to be accessed in binary or text mode. In text mode the file content was translated when you read or wrote a string of text, meaning you had to know the file contents and use the correct mode. Presumably this was done to keep files smaller as the translation was 2 specific characters in memory mapped to 1 specific character in the file. Fortunately this translation on rad or write issue has mostly completely disappeared now those 2 characters are stored in files by Windows. But the legacy of those 2 pesky characters still causes pain whenever developers share files on multiple platforms such as Windows, Linux and OS X.</p>
+<div style="width: 605px" class="wp-caption alignnone"><img class="detail__media__img-highres js-detail-img js-detail-img-high" src="https://images.duckduckgo.com/iu/?u=http%3A%2F%2Flcjapan.com%2Fos%2Fms-dos.jpg&amp;f=1" alt="A MS-DOS start prompt on screen waiting for the user to type a command" width="595" height="446" /><p class="wp-caption-text">A legacy from MS-DOS days lurks in Windows</p></div>
+<h1>Shake your carriage</h1>
+<p>The characters in question are used to mark the end of each line of text (except if automatic text wrapping occurs). You don&#8217;t see them but they&#8217;re lurking there waiting to catch you out, especially when sharing files between OSs or when using version control.</p>
+<p>These 2 characters are technically the ASCII control characters for <a href="https://en.wikipedia.org/wiki/Carriage_return">Carriage Return</a> (CR) and <a href="https://en.wikipedia.org/wiki/Newline">Newline or Line Feed</a> (LF). Note that control characters are a special group that rather than being printed invoke some sort of action. They hark back to the days of Teletype printers where CR would make the print head scoot back to the start of the line (carriage being the mechanism carrying the print head) and LF would move the print head down a line with out effecting the horizontal position. Thus, whenever a new line needed to be started a CR+ LF pair would be sent to the Teletype.</p>
+<p>These character are represented in various ways in text files and programs, in ASCII or UNICODE:</p>
+<ul>
+<li>CR
+<ul>
+<li>0x0D hex</li>
+<li>&#8220;\r&#8221; in strings</li>
+<li>Ctrl M or ^M</li>
+</ul>
+</li>
+<li>LF
+<ul>
+<li>0x0A hex</li>
+<li>&#8220;\n&#8221; in strings</li>
+<li>Ctrl J or ^J</li>
+</ul>
+</li>
+</ul>
+<p>We&#8217;ve kept this ancient legacy so that the end of every text line (newline) is marked by these characters. Actually, that&#8217;s not exactly true. Rather, each OS uses a different set of characters and that is the root cause of the problem,</p>
+<ul>
+<li>Linux uses LF only</li>
+<li>Windows sticks with CRLF</li>
+<li>OS X for a while used CR only but now uses LF</li>
+</ul>
+<p>As a quick aside, you can discover a file&#8217;s line endings by using the &#8220;file&#8221; command that comes with Linux tools for Windows like &#8220;Cygwin&#8221; or &#8220;<a href="https://git-for-windows.github.io/">Git for Windows</a>&#8220;. If any line endings are not LF it will tell you. You can also use editors like venerable <a href="https://notepad-plus-plus.org/">notepad++</a> which also lets you change the line ending format.</p>
+<h1>Return to the future</h1>
+<p>Life gets complicated when you need to share text files between these OSs, either directly (eg via network access) or by copying files, perhaps via version control tools.  You can try to perform translation to the native format whenever you copy or have tools that support either end of line. The danger with the later approach is not processing all text files or ending up with files with mixed line endings. Mixed line endings will confuse tools that often only check the start of files to determine line ending format. In either case, you&#8217;ll likely to get strange effects in editors such as joined lines or funny characters (eg ^M).</p>
+<p>This problem surfaces quite often now with open source development where contributors can be using any tools on any OS. In addition to sharing files via version control, developers sometime access files share files between a VM and the host OS without checking out to each.</p>
+<p>So perhaps the best approach is to standardise on a single  format for all your files, namely LF.  Fortunately these days most Windows programs that developers use support the LF only style, whether they are Windows native or ports of Linux tools.  The notable exception is dear old notepad, which still insists on a CRLF pair to end each line (not doubt as it&#8217;s just a &#8220;souped up&#8221; edit control and Windows use CRLF natively).</p>
+<p>There are of course still issues and the ubiquitous git version control is one culprit you are almost certain to stumble across.</p>
+<h1>Make sure you git the right newlines</h1>
+<p>By default git assumes that your workspace files will use the OS native newline format for all text files. It will also try to auto detect text files. Internally however,  git uses LF only (usually) and translates on Windows during checkin and checkout. This is configured by the &#8220;core.eol&#8221; and &#8220;core.autocrlf&#8221; settings which default to &#8220;CRLF&#8221; and &#8220;true&#8221; on Git for Windows. These are hardcoded and not set in any of the usual git config files.</p>
+<p>On the face of it this is good as you get OS specific end of lines on each platform, but only if you always check out to the operating system you are working on. However, as noted above, developers often share files across OSs  so unless they standardise on a single format they&#8217;re likely to hit problems.</p>
+<p>If you want to use LF universally for your project you need to configure git appropriately. These days that is pretty easy using <a href="https://www.kernel.org/pub/software/scm/git/docs/gitattributes.html">gitattributes</a>, usually in a .gitattributes file at the root of your project working tree. This overrides any &#8211;global, &#8211;system or local config settings thereby ensuring a consistent experience in the project. You might possibly need to specify &#8211;local config settings as well as some .gitattribute options fallback to those.</p>
+<p>The catch, just as in those MS-DOS days, is that you must not translate anything if the file is not pure text but is some other &#8220;binary&#8221; format, eg non XML based word processor files. If you translate these files you corrupt them, &#8220;simples&#8221;. Accordingly, git tries to auto detect text files but you can also explicitly declare which files are to be treated as either text or binary.</p>
+<h1>Gitting practical</h1>
+<p>This leads to 2 approaches to using LF everywhere:</p>
+<ul>
+<li>Tell git to never translate anything</li>
+<li>Tell git to always convert to LF in your workspace</li>
+</ul>
+<h2>Never translate</h2>
+<p>The first option seems safe but you&#8217;ll have to ensure all text files you [potentially] wish to share only ever contain LFs. That means making sure editors and other tools never use a CRLF when creating the file or editing lines. Not easy when CRLF is still the native Windows line ending.</p>
+<p>Enter <a href="http://editorconfig.org/">EditorConfig</a> to the rescue! This is a standard configuration file supported by many editors and that specifies format options including line endings. Thus, developers get a consistent editing experience and files are created the same way whatever editor or IDE they use. Some editors support EditorConfig directly and others have plugins. For example, the <a href="https://visualstudiogallery.msdn.microsoft.com/c8bccfe2-650c-4b42-bc5c-845e21f96328">Visual Studio extension</a> supports most options including line endings, but currently the <a href="https://marketplace.visualstudio.com/items/chrisdias.vscodeEditorConfig">Visual Studio Code extension</a> only supports indent style so is no use here.</p>
+<p>The way to stop git translating anything is to use a .gitattributes entry of <strong>&#8220;* -text</strong>&#8220;. This simply says nothing should be treated as text. You can always override for specific filename patterns, for example &#8220;*.txt eol=lf&#8221;.</p>
+<p>The other thing you can do is to ensure your development workflow includes a check for  CRLF line endings. For example, you can check all files, including binary, using something like &#8220;<strong><span class="pln">grep </span><span class="pun">&#8211;</span><span class="pln">Url $</span><span class="str">&#8216;\x0D&#8217;</span></strong><span class="pln"><strong> *</strong>&#8221; in &#8220;Git for Windows&#8221;. This will return 0 if any matches, 1 otherwise.</span></p>
+<h2>Always LF</h2>
+<p>Alternatively, you may want to use the second option of having git translate line endings to LF in your workspace. But, bear in mind it only translates on checkout. Thus any CRLFs will remain in your workspace until you go though a complete checkin/checkout cycle.  Once again you&#8217;ll probably want to use EditorConfig to specify LF end of lines for all new writes.</p>
+<p>To get CRLFs translated you&#8217;ll need to force git to checkout your files over the existing copies as by default it doesn&#8217;t want to. Otherwise you can leave your workspace in an strange intermediate state that is different from what anyone will experience when they clone or checkout the code. This could potentially be a source of hard to track bugs (though most unlikely). If you use Continuous Integration in your workflow then any potential problems will be quickly found.</p>
+<p>To be fare, git gives a loud warning when you are in state when a checkout will change the line endings. However that error is slightly confusing.</p>
+<div id="attachment_618" style="width: 999px" class="wp-caption aligncenter"><a href="/openingaccessibility/wp-content/uploads/2015/12/Untitled1.png"><img class="size-full wp-image-618" src="/openingaccessibility/wp-content/uploads/2015/12/Untitled1.png" alt="Git warning when line endings are not yet translated." width="989" height="117" srcset="/openingaccessibility/wp-content/uploads/2015/12/Untitled1.png 989w, /openingaccessibility/wp-content/uploads/2015/12/Untitled1-300x35.png 300w" sizes="(max-width: 989px) 100vw, 989px" /></a><p class="wp-caption-text">Git warning when line endings are not yet translated.</p></div>
+<p>Git and editors may also complain about the mixed line endings issue described above.</p>
+<p>To configure git for this option use <strong>&#8220;* eol=lf&#8221;</strong> in .gitattributes. As this will force all files to be treated as text and so converted on checkin <strong>make sure you explicitly mark any binary files</strong> with lines like &#8220;*.png binary&#8221;. If you don&#8217;t then you checked in file may be corrupt and you may not notice for some time and be stuck with a hard to fix problem.</p>
+<p>Note when you first set this option you&#8217;ll probably get a load of warnings and all files will appear to change. See the notes on .gitattributes end-of-line conversion for the steps to overcome this.</p>
+<h1>Coming soon</h1>
+<p>A gitattributes option to support &#8220;* text=auto eol=lf&#8221; has <a href="http://git.661346.n2.nabble.com/EOL-conversion-on-checkout-for-text-files-only-td7628470.html">been discussed</a>. This would turn on auto textfile detection and then use LF end of lines for any text files. Currently the &#8220;eol=lf&#8221; options turns on text handling for all files and so you need to carefully declare all binary files.  That&#8217;s good practice any way, as no doubt git could incorrectly detect, but at least it would not be critical. We should push for this option.</p>
+<p>By the way, Editor Config should soon support a &#8220;end_of_line=native&#8221; option that will use whatever line ending makes sense according to the OS. That will play better with the default git behaviour but doesn&#8217;t help when files are shared without checkout such as in VMs.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2015/12/dealing-with-windows-text-line-endings-in-git/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Working with Windows native code from node.js</title>
+		<link>/openingaccessibility/2015/10/working-with-windows-native-code-from-node-js/</link>
+		<comments>/openingaccessibility/2015/10/working-with-windows-native-code-from-node-js/#comments</comments>
+		<pubDate>Mon, 19 Oct 2015 20:48:17 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[nodejs]]></category>
+		<category><![CDATA[web]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=581</guid>
+		<description><![CDATA[[UPDATE 02 Feb 2016: While this post discusses Win32 access, here&#8217;s an interesting option for UWP access from JXCore that should eventually work with nodejs when the Microsoft PR for Chakra is merged.] While the node.js ecosystem provides an amazing &#8230; <a href="/openingaccessibility/2015/10/working-with-windows-native-code-from-node-js/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>[UPDATE 02 Feb 2016: While this post discusses Win32 access, here&#8217;s an interesting option for <a href="http://jxcore.com/universal-windows-platform-uwp-samples-using-jxcore/">UWP access from JXCore</a> that should eventually work with nodejs when the Microsoft PR for Chakra is merged.]</p>
+<p>While the <a href="https://nodejs.org/en/">node.js</a> ecosystem provides an amazing number of modules covering almost every imaginable use, sometimes you want to work with existing code created in other languages and tool chains. For example, you may have an existing C++ library or perhaps you want to call operating systems APIs not yet available in <a href="https://www.npmjs.com/">npm</a> or elsewhere.</p>
+<p>When integrating between different language infrastructures you have a choice of which side of the divide to write the required glue code. Glue that provides data <a href="https://en.wikipedia.org/wiki/Marshalling_%28computer_science%29">marshalling</a>, function calling and event processing. If you want to access code with a C style calling convention then it relatively easy to add code on the C side as node is itself created in C++. This is easily enough done by  creating <a href="https://nodejs.org/api/addons.html">C/C++ addons</a> but often involves reams of boilerplate code. However, if you do choose that option then you&#8217;re going to want to use a tool like <a href="https://github.com/nodejs/nan">nan</a> to make your life tolerable. As the nan readme explains:</p>
+<blockquote><p>Thanks to the crazy changes in V8 (and some in Node core), keeping native addons compiling happily across versions, particularly 0.10 to 0.12 to 4.0, is a minor nightmare. The goal of this project is to store all logic necessary to develop native Node.js add-ons without having to inspect <code>NODE_MODULE_VERSION</code> and get yourself into a macro-tangle.</p></blockquote>
+<p>If you want to work on the Javascript side of the divide then <a href="https://github.com/TooTallNate/ref">ref</a> by <a href="https://twitter.com/TooTallNate">@TooTallNate</a> provides all the facilities you need for marshalling to/from the C world. It does this by extending node&#8217;s <a href="https://nodejs.org/api/buffer.html">Buffer class</a> to provide a type system and facilities for:</p>
+<blockquote>
+<ul>
+<li>Getting the memory address of a Buffer</li>
+<li>Checking the endianness of the processor</li>
+<li>Checking if a Buffer represents the NULL pointer</li>
+<li>Reading and writing &#8220;pointers&#8221; with Buffers</li>
+<li>Reading and writing C Strings (NULL-terminated)</li>
+<li>Reading and writing JavaScript Object references</li>
+<li>Reading and writing <strong>int64_t</strong> and <strong>uint64_t</strong> values</li>
+<li>A &#8220;type&#8221; convention to define the contents of a Buffer</li>
+</ul>
+</blockquote>
+<p>Further related  <a href="https://github.com/search?utf8=%E2%9C%93&amp;q=user%3ATooTallNate+ref&amp;type=Repositories&amp;ref=searchresults">ref modules</a> support javascript representations of other C/C++ types including arrays, structures and unions.</p>
+<p>Building on ref&#8217;s facilities is <a href="https://github.com/node-ffi/node-ffi">node-fii</a> which provides a foreign function interface (ffi) for loading and calling functions exported by dynamic libraries (dlls on Windows). It is also possible to call functions in the current process, ideal for functions in static libraries.</p>
+<p>While this eliminates large amounts of C boilerplate, it does have a significant calling overhead. Accordingly you are unlikely to want to use it for functions called in a tight loop or otherwise time sensitive applications.</p>
+<p>Here&#8217;s a simple example from the lib-ffi documentation for wrapping <a href="https://sourceware.org/newlib/libm.html#floor">libm&#8217;s ceil()</a> function which takes a double parameter and returns a double result and also the static <a href="http://www.cplusplus.com/reference/cstdlib/atoi/">atoi()</a> which takes a string and returns an int.</p>
+<div class="highlight highlight-source-js">
+<pre class="crayon-plain-tag">var ffi = require('ffi');
+
+var libm = ffi.Library('libm', {
+  'ceil': [ 'double', [ 'double' ] ]
+});
+libm.ceil(1.5); // 2
+
+// You can also access just functions in the current process by passing a null
+var current = ffi.Library(null, {
+  'atoi': [ 'int', [ 'string' ] ]
+});
+current.atoi('1234'); // 1234</pre>
+</div>
+<p>A more complex example can be seen is some code I wrote for the <a href="http://gpii.net/">GPII</a> system for automatic personalisation from preferences. This is perhaps a slightly unusual application of Node.js as it runs on a Windows device in order to launch and configure various Windows&#8217; settings and assistive technology programmes.</p>
+<p>The actual code provides a function GetDisplayResolution() that calls the Windows API <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd162611(v=vs.85).aspx">EnumDisplaySettings()</a> which returns into the fairly complex <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd183565(v=vs.85).aspx">DEVICEMODE</a> structure. Note that the DEVMODE structure includes nested unions of structures and while the ref modules support these I decided to  flattened out the declaration (after testing my assumptions about packing and padding).</p>
+<div class="highlight highlight-source-js">
+<pre class="crayon-plain-tag">var ffi = require(&quot;ffi&quot;);
+var ref = require(&quot;ref&quot;);
+var Struct = require(&quot;ref-struct&quot;);
+var arrayType = require(&quot;ref-array&quot;);
+
+/**
+* A map between Windows and C types.
+* https://msdn.microsoft.com/en-us/library/windows/desktop/aa383751%28v=vs.85%29.aspx
+*/
+windows.types = {
+    &quot;BOOL&quot;:   &quot;int&quot;,
+    &quot;INT&quot;:    &quot;int&quot;,
+    &quot;UINT&quot;:   &quot;uint&quot;,
+    &quot;ULONG&quot;:  &quot;ulong&quot;,
+    &quot;DWORD&quot;:  &quot;ulong&quot;,
+    &quot;HKL&quot;:    &quot;void*&quot;,
+    &quot;ULONG_PTR&quot;: &quot;ulong&quot;,
+    &quot;LONG&quot;:   &quot;long&quot;,
+    &quot;HANDLE&quot;: &quot;uint32&quot;,
+    &quot;WORD&quot;:   &quot;uint16&quot;,
+    &quot;TCHAR&quot;:  &quot;uint16&quot;  // assuming unicode. (ASCII is char, UNICODE is WCHAR -&amp;gt; wchar_t -&amp;gt; unsigned short === UINT16 === uint16
+};
+
+var t = windows.types;
+// https://msdn.microsoft.com/en-us/library/windows/desktop/dd183565(v=vs.85).aspx
+
+var CCHDEVICENAME = 32;
+var CCHFORMNAME = 32;
+
+windows.DEVMODEW = new Struct([
+    [arrayType(t.TCHAR, CCHDEVICENAME), &quot;dmDeviceName&quot;],
+    [t.WORD, &quot;dmSpecVersion&quot;],
+    [t.WORD, &quot;dmDriverVersion&quot;],
+    [t.WORD, &quot;dmSize&quot;],
+    [t.WORD, &quot;dmDriverExtra&quot;],
+    [t.DWORD, &quot;dmFields&quot;],
+    //union {   // TODO there is a ref-union npm module - but this technique is OK for now
+    //  struct {
+    [&quot;short&quot;, &quot;dmOrientation&quot;],
+    [&quot;short&quot;, &quot;dmPaperSize&quot;],
+    [&quot;short&quot;, &quot;dmPaperLength&quot;],
+    [&quot;short&quot;, &quot;dmPaperWidth&quot;],
+    [&quot;short&quot;, &quot;dmScale&quot;],
+    [&quot;short&quot;, &quot;dmCopies&quot;],
+    [&quot;short&quot;, &quot;dmDefaultSource&quot;],
+    [&quot;short&quot;, &quot;dmPrintQuality&quot;],
+    //  };
+    //  struct {
+    //      POINTL dmPosition;
+    //      DWORD dmDisplayOrientation;
+    //      DWORD dmDisplayFixedOutput;
+    //  };
+    //};
+    [&quot;short&quot;, &quot;dmColor&quot;],
+    [&quot;short&quot;, &quot;dmDuplex&quot;],
+    [&quot;short&quot;, &quot;dmYResolution&quot;],
+    [&quot;short&quot;, &quot;dmTTOption&quot;],
+    [&quot;short&quot;, &quot;dmCollate&quot;],
+    [arrayType(t.TCHAR, CCHFORMNAME), &quot;dmFormName&quot;],
+    [t.WORD, &quot;dmLogPixels&quot;],
+    [t.DWORD, &quot;dmBitsPerPel&quot;],
+    [t.DWORD, &quot;dmPelsWidth&quot;],
+    [t.DWORD, &quot;dmPelsHeight&quot;],
+    //union {
+        [t.DWORD,&quot;dmDisplayFlags&quot;],
+    //  DWORD dmNup;
+    //};
+    [t.DWORD, &quot;dmDisplayFrequency&quot;],
+    //#if (WINVER &amp;gt;= 0x0400)
+    [t.DWORD, &quot;dmICMMethod&quot;],
+    [t.DWORD, &quot;dmICMIntent&quot;],
+    [t.DWORD, &quot;dmMediaType&quot;],
+    [t.DWORD, &quot;dmDitherType&quot;],
+    [t.DWORD, &quot;dmReserved1&quot;],
+    [t.DWORD, &quot;dmReserved2&quot;],
+    //#if (WINVER &amp;gt;= 0x0500) || (_WIN32_WINNT &amp;gt;= 0x0400)
+    [t.DWORD, &quot;dmPanningWidth&quot;],
+    [t.DWORD, &quot;dmPanningHeight&quot;]
+    //#endif
+    //#endif
+]);
+
+windows.user32 = ffi.Library(&quot;user32&quot;, {
+    // https://msdn.microsoft.com/en-us/library/windows/desktop/dd162611(v=vs.85).aspx
+    // LPCWSTR, DWORD, DEVMODE*
+    &quot;EnumDisplaySettingsW&quot;: [
+        t.BOOL, [&quot;pointer&quot;, t.DWORD, &quot;pointer&quot;]
+    ]
+});
+
+/**
+ *  Gets the current screen resolution
+ *
+ * @return {Object) The width and height of the screen.
+ */
+windows.getScreenResolution = function () {
+    var dm = new windows.DEVMODEW();
+    dm.ref().fill(0);
+    dm.dmSize = windows.DEVMODEW.size;
+
+    if (c.FALSE != windows.user32.EnumDisplaySettingsW(ref.NULL, c.ENUM_CURRENT_SETTINGS, dm.ref()))
+    {
+        // note for unknown reason on win 10 the returned dmSize is 188 not expected 220
+        return { width: dm.dmPelsWidth, height: dm.dmPelsHeight };
+    }
+    return { width: 0, height: 0 };
+
+}</pre>
+</div>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2015/10/working-with-windows-native-code-from-node-js/feed/</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+		</item>
+	</channel>
+</rss>

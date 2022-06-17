@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+
+	>
+<channel>
+	<title>Comments on: Azure options for serving static web content</title>
+	<atom:link href="/azureserverless/2017/01/17/azure-options-for-serving-static-web-content/feed/" rel="self" type="application/rss+xml" />
+	<link>/azureserverless/2017/01/17/azure-options-for-serving-static-web-content/</link>
+	<description>Using Microsoft Azure in a Serverless mode</description>
+	<lastBuildDate>Tue, 12 Sep 2017 00:24:54 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>By: steve@opendirective.com</title>
+		<link>/azureserverless/2017/01/17/azure-options-for-serving-static-web-content/#comment-2</link>
+		<dc:creator><![CDATA[steve@opendirective.com]]></dc:creator>
+		<pubDate>Mon, 30 Jan 2017 15:33:27 +0000</pubDate>
+		<guid isPermaLink="false">/azureserverless/?p=205#comment-2</guid>
+		<description><![CDATA[:)]]></description>
+		<content:encoded><![CDATA[<p>🙂</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: krishna.kishore bhavaraju</title>
+		<link>/azureserverless/2017/01/17/azure-options-for-serving-static-web-content/#comment-1</link>
+		<dc:creator><![CDATA[krishna.kishore bhavaraju]]></dc:creator>
+		<pubDate>Mon, 30 Jan 2017 10:56:21 +0000</pubDate>
+		<guid isPermaLink="false">/azureserverless/?p=205#comment-1</guid>
+		<description><![CDATA[Eagerly waiting for next post Steve!]]></description>
+		<content:encoded><![CDATA[<p>Eagerly waiting for next post Steve!</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

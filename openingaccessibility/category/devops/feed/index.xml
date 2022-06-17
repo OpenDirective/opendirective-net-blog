@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>devops &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/category/devops/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Free and easy HTTPS certificates with CDN with Kloudsec</title>
+		<link>/openingaccessibility/2016/03/free-and-easy-https-certificates-with-cdn/</link>
+		<comments>/openingaccessibility/2016/03/free-and-easy-https-certificates-with-cdn/#respond</comments>
+		<pubDate>Sat, 19 Mar 2016 17:11:54 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[devops]]></category>
+		<category><![CDATA[opensource]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=639</guid>
+		<description><![CDATA[HTTPS is a &#8216;must have&#8217; for any web service, SPA or progressive web application and so it is naturally high on my list of things to get to grips with. As a first step for the Brian project I&#8217;m creating &#8230; <a href="/openingaccessibility/2016/03/free-and-easy-https-certificates-with-cdn/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>HTTPS is a &#8216;must have&#8217; for any web service, SPA or progressive web application and so it is naturally high on my list of things to get to grips with. As a first step for the Brian project I&#8217;m creating a SPA (browser client side app) using web assets served up with GitHub pages (basically free hosting). It&#8217;s easy enough to set up the <a href="https://github.com/OpenDirective/brianLive">static pages</a> and a <a href="https://github.com/OpenDirective/brian/blob/master/scripts/deploy.sh">simple deploy script</a>. If you stick to the GitHub supplied URL (eg http://opendirective.github.io/brianLive/) you get CDN and HTTPS access</p>
+<p>However, if  you have a custom domain pointing at your Github Pages (eg  <a href="http://brian.opendirective.net/">brian.opendirective.net</a>) then a) You lose <code>HTTPS</code> support and b) You lose the <code>CDN</code> functionality if your custom domain is an apex domain (An apex domain is a domain without prefixes, such as <code>example.com</code>, not <code>www.example.com</code>)</p>
+<p>The thought of setting up HTTPS certificates used to fill me with dread. After reading around I was very disillusioned by the apparent complex tedious process. Assuming I understood it correctly.</p>
+<p><a href="/openingaccessibility/wp-content/uploads/2016/03/kloudsec.png" rel="attachment wp-att-649"><img class="aligncenter size-full wp-image-649" src="/openingaccessibility/wp-content/uploads/2016/03/kloudsec.png" alt="kloudsec" width="201" height="193" /></a>Recently however, <a href="https://letsencrypt.org/">LetsEncrypt</a> arrived on the scene, soothing stressed web developers with their streamlined process for creating free HTTPS certificates. Still, the process does include installing and operating a local client tool. I decided to wait a bit.</p>
+<p>Then Steve Goh (@nubela) of  <a href="https://kloudsec.com/">kloudsec</a> cold called me asking if I&#8217;d like to try the new version of their developer CDN service which supports GitHub Pages. I&#8217;m pleased he did. This new service provides GitHub custom domains a kloudsec CDN with HTTPS certificate provisioning and various plugins.</p>
+<p>As you can see from <a href="https://kloudsec.com/github-pages/">kloudsec.com/github-pages</a>. It&#8217;s a simple 3 step process. If you&#8217;ve already setup your GitHub pages then you&#8217;ll have done one step already. After registering with Kloudsec and setting up GitHub pages in your repository you&#8217;ll need to change your DNS settings.  This only requires adding 2 new records (and A and a TXT for verification of ownership), plus you&#8217;ll want to remove any CNAME you may have previously created for GitHub pages set up.</p>
+<p>It all goes very smoothly. The website dashboard is clear and you get progress emails. You&#8217;ll obviously need to wait an unknown time for DNS propagation but otherwise it&#8217;s a simple few click and edits before your GitHub pages are served as HTTPS. You can also turn on a redirect from HTTP to HTTPS as well.</p>
+<p>I hit a few rough edges which is not surprising given the Beta statement, but nothing I couldn&#8217;t easily resolve. The email and dashboard make it all pretty clear. I&#8217;m sure the process will be made even smoother.</p>
+<p>In summary, for zero cost except a few minutes work you get a CDN with North American, Europe and Asian access, speed optimisations, HTTPS serving with HTTPS certification and, automatic backup serving of your pages, anti hack features and a clear dashboard of performance. Other paid plugins are/ will be available and I sure the simple one-click install will make them really attractive. You can also download your certificate should you want to use with alternative hosting arrangements.</p>
+<p>The Kloudsec service is not just for GitHub pages but works with <a href="https://kloudsec.com/#/dashboard/website/new">any domain</a>.</p>
+<p>Highly recommended..</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2016/03/free-and-easy-https-certificates-with-cdn/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

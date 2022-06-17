@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Windows &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/category/windows/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>More on portable npm scripts</title>
+		<link>/openingaccessibility/2016/03/more-on-portable-npm-scripts/</link>
+		<comments>/openingaccessibility/2016/03/more-on-portable-npm-scripts/#comments</comments>
+		<pubDate>Thu, 17 Mar 2016 15:46:55 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[web]]></category>
+		<category><![CDATA[Windows]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[nodejs]]></category>
+		<category><![CDATA[npm]]></category>
+		<category><![CDATA[Virtualisation]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=640</guid>
+		<description><![CDATA[Following on from my earlier post on the topic of writing portable npm scripts, here&#8217;s a few more useful tips. [UPDATE 2016/03/31: Bash for Windows was announced at Microsoft Build 2016. This exciting feature will allow running of Linux npm &#8230; <a href="/openingaccessibility/2016/03/more-on-portable-npm-scripts/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Following on from my earlier post on the topic of <a href="/openingaccessibility/2015/12/writing-portable-npm-build-scripts/">writing portable npm scripts</a>, here&#8217;s a few more useful tips.</p>
+<p>[UPDATE 2016/03/31: Bash for Windows was announced at Microsoft Build 2016. This exciting feature will allow running of Linux npm script builds with ease. See <a href="http://www.hanselman.com/blog/DevelopersCanRunBashShellAndUsermodeUbuntuLinuxBinariesOnWindows10.aspx">Scott Hanselman&#8217;s blog post</a>]</p>
+<p>[UPDATE: 2016/03/29:  The recently released <a href="https://blog.docker.com/2016/03/docker-for-mac-windows-beta/">Docker for Windows Beta</a> might be a good alternative to using a VM. It user Hyper-V.]</p>
+<p>[UPDATE: 2016/03/29:  This is a comprehensive article on <a href="http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/">using npm for build</a>]</p>
+<h1>Copying files</h1>
+<p>Use the <a href="https://www.npmjs.com/package/ncp">ncp </a>module to copy files. This goes nicely with mkdirp and rimraf  mentioned before.</p>
+<h1>Setting environment variables</h1>
+<p>It&#8217;s common to have scripts with a command line of the form</p><pre class="crayon-plain-tag">NODE_ENV=production webpack --config client/webpack.config.js</pre><p>This sets the environment variable NODE_ENV for the duration the command runs. In this case it is use to perform a production build with webpack.</p>
+<p>Such syntax works fine in bash etc on Linux / OS X but fails on windows where npm scripts always use CMD. One solution is to use the <a href="https://www.npmjs.com/package/cross-env">cross-env</a> npm module which uses a regx to find environment settings (and so is probably not fool-proof). Once installed you just prefix your command like so</p><pre class="crayon-plain-tag">cross-env NODE_ENV=production webpack --config client/webpack.config.js</pre><p></p>
+<h1>Running an extra bash process</h1>
+<p>I use the <a href="https://git-for-windows.github.io/">Git for Windows</a> bash shell for all my development CLI needs on Windows (It is also installed as part of the <a href="https://desktop.github.com/">GitHub Desktop for Windows</a>). This is a port of the mature MSYS / MinGW port of Linux build environments and works pretty well, though some of the commands are old versions.</p>
+<p>On Windows, npm ignores the current shell from which you run it and doesn&#8217;t pass the shell on to the sub processes as you would expect. However, you can easily run bash as the main command in a npm script (it&#8217;s an extra process but that hardly matters). This works as bash sets the path which is then inherited by the cmd subshell in which npm runs your package.json scripts. As a result it&#8217;s easy enough to create portable scripts or convert linux based scripts to also run on Windows. You just need to wrap the command in <pre class="crayon-plain-tag">bash -c "...."</pre> For example, the above env setting script can be recoded as follows</p><pre class="crayon-plain-tag">bash -c"NODE_ENV=production webpack --config client/webpack.config.js"</pre><p>The only issue i found is the need to carefully quote &#8221; characters. For example here&#8217;s a little script to prompt before deploying to GitHub pages (I&#8217;m showing the full package.json entry for clarity)</p><pre class="crayon-plain-tag">"deploy": "bash -c \"read -n1 -p\\\"Have you commited ready to deploy (yY) \\\"; echo; [[ $REPLY = [yY] ]] &amp;&amp; npm run _buildanddeploy || { echo \\\"You didn't answer yes, or deploy failed.\\\"; }",</pre><p></p>
+<h1>Using a Linux VM</h1>
+<p>I often use a Linux VM as part of my development. With Vagrent it&#8217;s easy to provision a headless VirtualBox (or other) VM that shares the host filespace and exposes a SSH terminal. Thus you can edit using Windows tools like VisualStudio Code yet run everything in the Linux VM. This lets you run local tests in the same VM as a CI or CD system (which will usually be Linux , unless you are using Azure). One easy configuration I&#8217;ve used is this <a href="https://github.com/GPII/qi-development-environments">Quality Infrastructure</a> from the GPII project.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2016/03/more-on-portable-npm-scripts/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Writing portable npm build scripts</title>
+		<link>/openingaccessibility/2015/12/writing-portable-npm-build-scripts/</link>
+		<comments>/openingaccessibility/2015/12/writing-portable-npm-build-scripts/#comments</comments>
+		<pubDate>Tue, 15 Dec 2015 23:09:28 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[Windows]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[nodejs]]></category>
+		<category><![CDATA[npm]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=624</guid>
+		<description><![CDATA[tl;dr; Developers need to install and build Javascript NPM modules on Windows as well as *nix. With a little care this is possible without using heavyweights tools like Grunt and Gulp . Modern HTML development usually includes a build and deploy process similar &#8230; <a href="/openingaccessibility/2015/12/writing-portable-npm-build-scripts/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p><strong>tl;dr; Developers need to <b>install and </b><b>build</b> Javascript NPM modules on Windows as well as *nix. With a little care this is possible without using heavyweights tools like Grunt and Gulp .</strong></p>
+<p>Modern HTML development usually includes a build and deploy process similar to those used in compiled development workflows. In this case, assets that end up deployed and accessed by end users are the result of a pipeline of operations such as transpiling, concatenation, minifying and zipping. In addition,  developers use these and others steps when developing, for example as part of test automation,  on check-in or as part of  continuous integration and deployment process. Perhaps somewhat surprisingly, the traditional build tools such as shell scripts, configure and Make (or Ant) are not commonplace. Rather, we often see newer JavaScript based tools like Grunt, Gulp or Broccoli being the &#8220;go-to&#8221; choice. Critically, these tools do have the advantage of largely working cross-platform on Linux/OS X and Windows.</p>
+<p><a href="/openingaccessibility/wp-content/uploads/2015/12/npmlogo.jpg" rel="attachment wp-att-634"><img class="aligncenter size-medium wp-image-634" src="/openingaccessibility/wp-content/uploads/2015/12/npmlogo-300x200.jpg" alt="npm logo" width="300" height="200" srcset="/openingaccessibility/wp-content/uploads/2015/12/npmlogo-300x200.jpg 300w, /openingaccessibility/wp-content/uploads/2015/12/npmlogo-768x512.jpg 768w, /openingaccessibility/wp-content/uploads/2015/12/npmlogo.jpg 1024w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+<p>An alternative build option is to use <a href="https://docs.npmjs.com/misc/scripts">NPM’s scripts feature</a> in the project or module package.json. You can use commands like ‘npm run test’ to invoke important build processes. This has the advantage of putting the scripts in the same place as the rest of your project configuration. Also, actions may be broken up into sub actions or invoked though life-cycle triggers (like &#8220;before publish&#8221;). Unfortunately though, while NPM tracks module dependencies, these are not used in the scripts to minimize the required build steps (as Make does). Perhaps that will come in time, but until then, either everything gets built every time or you’ll need to call a build tool like Make from scripts. One issue with While is while it is very effective it has a rather gnarly syntax and plenty of awkward features that you need to get to grips with. That said, common useful rules are simply implemented. Another tool, Webpack looks interesting for building as it manages dependencies and also works with modules rather than files, as Make does.</p>
+<p>Both Make and NPM scripts simply evoke the native command line shell to perform the actions for each build step and this raises an issue when you want to have your build work across platforms. The problem is that the shells have different syntax and command sets so you have to restrict npm scripts to a least common subset. Fortunately you can manage portability  with care. Evens  so, plenty of published modules exist that assume they are built on a *Nix Bash shell and so break on Windows. You might think you could get away with running one of the Bash shell systems for Windows (eg MSys, cygwin) but NPM always launches a Cmd shell (you can work around this by having your scripts run an extra bash shell, but that’s a bit hacky). More importantly using bash requires target build system configuration with yet another tool. We’d ideally like our build to work with just node (and thus npm) installed.</p>
+<p>So assuming we have to write NPM scripts that run on both Bash and Cmd what can you do to reduce problems?</p>
+<ul>
+<li>Separate commands in a single script with &amp;&amp; (&#8220;and if no error&#8221;) or || (&#8220;or if error&#8221;) instead of  the terminator (; or : ). Remember you can invoke subscripts with “npm run xxx”</li>
+<li>Modules like “concurrently” and “npm-run-all” add further task management options</li>
+<li>Operators &amp;&amp; || &amp; &lt; &gt; and | all work pretty much the same in cmd and bash and offer a lot of power</li>
+<li>Paths are a pain. While Windows system calls support the / separator it is also used for command options. Avoid as much as possible</li>
+<li>In npm scripts “node_modules/.bin” is on the path so any CLI command modules installed with &#8211;save or –save-dev will available to scripts when the package is installed. For example “rimraf”, “mkdirp” and “ncp”. This avoids tell devs to do global installs of tools which may conflict with other tools.</li>
+</ul>
+<p>Of course JavaScript itself is an ideal platform independent script tool so you could use <a href="http://www.ctomczyk.pl/why-i-switched-to-only-nodejs-npm-and-stopped-using-grunt/767/">nodejs to create build scripts</a> called from your NPM scripts. And after all, that is what Grunt and Gulp do by providing a full on framework for build services. The choice as always, is yours. A useful approach is to use the &#8220;<a href="https://www.npmjs.com/package/shelljs">Shelljs</a>&#8221; module that provides a unix style set of functions as an alternative to using the bash shell directly. In addition &#8220;Node-glob&#8221; provides wildcard expansions.</p>
+<p>As a final thought, modules are usually distributed in source form and some contain native module source that must be compiled using a toolchain of Python and C++. Fortunately this is getting easier on Windows as described in Microsoft&#8217;s new <a href="https://github.com/Microsoft/nodejs-guidelines">nodejs Guidelines for Windows</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2015/12/writing-portable-npm-build-scripts/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>Dealing with Windows text line endings in git</title>
+		<link>/openingaccessibility/2015/12/dealing-with-windows-text-line-endings-in-git/</link>
+		<comments>/openingaccessibility/2015/12/dealing-with-windows-text-line-endings-in-git/#respond</comments>
+		<pubDate>Thu, 03 Dec 2015 14:01:24 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[Windows]]></category>
+		<category><![CDATA[git]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=595</guid>
+		<description><![CDATA[Text line endings on Windows: Still painful after all these years Once upon a time, in the days of Microsoft MS-DOS development one of main pain points and source of bugs was the distinction between text and binary files. When &#8230; <a href="/openingaccessibility/2015/12/dealing-with-windows-text-line-endings-in-git/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<h1>Text line endings on Windows: Still painful after all these years</h1>
+<p>Once upon a time, in the days of Microsoft MS-DOS development one of main pain points and source of bugs was the distinction between text and binary files. When you opened a file you had to say if it was to be accessed in binary or text mode. In text mode the file content was translated when you read or wrote a string of text, meaning you had to know the file contents and use the correct mode. Presumably this was done to keep files smaller as the translation was 2 specific characters in memory mapped to 1 specific character in the file. Fortunately this translation on rad or write issue has mostly completely disappeared now those 2 characters are stored in files by Windows. But the legacy of those 2 pesky characters still causes pain whenever developers share files on multiple platforms such as Windows, Linux and OS X.</p>
+<div style="width: 605px" class="wp-caption alignnone"><img class="detail__media__img-highres js-detail-img js-detail-img-high" src="https://images.duckduckgo.com/iu/?u=http%3A%2F%2Flcjapan.com%2Fos%2Fms-dos.jpg&amp;f=1" alt="A MS-DOS start prompt on screen waiting for the user to type a command" width="595" height="446" /><p class="wp-caption-text">A legacy from MS-DOS days lurks in Windows</p></div>
+<h1>Shake your carriage</h1>
+<p>The characters in question are used to mark the end of each line of text (except if automatic text wrapping occurs). You don&#8217;t see them but they&#8217;re lurking there waiting to catch you out, especially when sharing files between OSs or when using version control.</p>
+<p>These 2 characters are technically the ASCII control characters for <a href="https://en.wikipedia.org/wiki/Carriage_return">Carriage Return</a> (CR) and <a href="https://en.wikipedia.org/wiki/Newline">Newline or Line Feed</a> (LF). Note that control characters are a special group that rather than being printed invoke some sort of action. They hark back to the days of Teletype printers where CR would make the print head scoot back to the start of the line (carriage being the mechanism carrying the print head) and LF would move the print head down a line with out effecting the horizontal position. Thus, whenever a new line needed to be started a CR+ LF pair would be sent to the Teletype.</p>
+<p>These character are represented in various ways in text files and programs, in ASCII or UNICODE:</p>
+<ul>
+<li>CR
+<ul>
+<li>0x0D hex</li>
+<li>&#8220;\r&#8221; in strings</li>
+<li>Ctrl M or ^M</li>
+</ul>
+</li>
+<li>LF
+<ul>
+<li>0x0A hex</li>
+<li>&#8220;\n&#8221; in strings</li>
+<li>Ctrl J or ^J</li>
+</ul>
+</li>
+</ul>
+<p>We&#8217;ve kept this ancient legacy so that the end of every text line (newline) is marked by these characters. Actually, that&#8217;s not exactly true. Rather, each OS uses a different set of characters and that is the root cause of the problem,</p>
+<ul>
+<li>Linux uses LF only</li>
+<li>Windows sticks with CRLF</li>
+<li>OS X for a while used CR only but now uses LF</li>
+</ul>
+<p>As a quick aside, you can discover a file&#8217;s line endings by using the &#8220;file&#8221; command that comes with Linux tools for Windows like &#8220;Cygwin&#8221; or &#8220;<a href="https://git-for-windows.github.io/">Git for Windows</a>&#8220;. If any line endings are not LF it will tell you. You can also use editors like venerable <a href="https://notepad-plus-plus.org/">notepad++</a> which also lets you change the line ending format.</p>
+<h1>Return to the future</h1>
+<p>Life gets complicated when you need to share text files between these OSs, either directly (eg via network access) or by copying files, perhaps via version control tools.  You can try to perform translation to the native format whenever you copy or have tools that support either end of line. The danger with the later approach is not processing all text files or ending up with files with mixed line endings. Mixed line endings will confuse tools that often only check the start of files to determine line ending format. In either case, you&#8217;ll likely to get strange effects in editors such as joined lines or funny characters (eg ^M).</p>
+<p>This problem surfaces quite often now with open source development where contributors can be using any tools on any OS. In addition to sharing files via version control, developers sometime access files share files between a VM and the host OS without checking out to each.</p>
+<p>So perhaps the best approach is to standardise on a single  format for all your files, namely LF.  Fortunately these days most Windows programs that developers use support the LF only style, whether they are Windows native or ports of Linux tools.  The notable exception is dear old notepad, which still insists on a CRLF pair to end each line (not doubt as it&#8217;s just a &#8220;souped up&#8221; edit control and Windows use CRLF natively).</p>
+<p>There are of course still issues and the ubiquitous git version control is one culprit you are almost certain to stumble across.</p>
+<h1>Make sure you git the right newlines</h1>
+<p>By default git assumes that your workspace files will use the OS native newline format for all text files. It will also try to auto detect text files. Internally however,  git uses LF only (usually) and translates on Windows during checkin and checkout. This is configured by the &#8220;core.eol&#8221; and &#8220;core.autocrlf&#8221; settings which default to &#8220;CRLF&#8221; and &#8220;true&#8221; on Git for Windows. These are hardcoded and not set in any of the usual git config files.</p>
+<p>On the face of it this is good as you get OS specific end of lines on each platform, but only if you always check out to the operating system you are working on. However, as noted above, developers often share files across OSs  so unless they standardise on a single format they&#8217;re likely to hit problems.</p>
+<p>If you want to use LF universally for your project you need to configure git appropriately. These days that is pretty easy using <a href="https://www.kernel.org/pub/software/scm/git/docs/gitattributes.html">gitattributes</a>, usually in a .gitattributes file at the root of your project working tree. This overrides any &#8211;global, &#8211;system or local config settings thereby ensuring a consistent experience in the project. You might possibly need to specify &#8211;local config settings as well as some .gitattribute options fallback to those.</p>
+<p>The catch, just as in those MS-DOS days, is that you must not translate anything if the file is not pure text but is some other &#8220;binary&#8221; format, eg non XML based word processor files. If you translate these files you corrupt them, &#8220;simples&#8221;. Accordingly, git tries to auto detect text files but you can also explicitly declare which files are to be treated as either text or binary.</p>
+<h1>Gitting practical</h1>
+<p>This leads to 2 approaches to using LF everywhere:</p>
+<ul>
+<li>Tell git to never translate anything</li>
+<li>Tell git to always convert to LF in your workspace</li>
+</ul>
+<h2>Never translate</h2>
+<p>The first option seems safe but you&#8217;ll have to ensure all text files you [potentially] wish to share only ever contain LFs. That means making sure editors and other tools never use a CRLF when creating the file or editing lines. Not easy when CRLF is still the native Windows line ending.</p>
+<p>Enter <a href="http://editorconfig.org/">EditorConfig</a> to the rescue! This is a standard configuration file supported by many editors and that specifies format options including line endings. Thus, developers get a consistent editing experience and files are created the same way whatever editor or IDE they use. Some editors support EditorConfig directly and others have plugins. For example, the <a href="https://visualstudiogallery.msdn.microsoft.com/c8bccfe2-650c-4b42-bc5c-845e21f96328">Visual Studio extension</a> supports most options including line endings, but currently the <a href="https://marketplace.visualstudio.com/items/chrisdias.vscodeEditorConfig">Visual Studio Code extension</a> only supports indent style so is no use here.</p>
+<p>The way to stop git translating anything is to use a .gitattributes entry of <strong>&#8220;* -text</strong>&#8220;. This simply says nothing should be treated as text. You can always override for specific filename patterns, for example &#8220;*.txt eol=lf&#8221;.</p>
+<p>The other thing you can do is to ensure your development workflow includes a check for  CRLF line endings. For example, you can check all files, including binary, using something like &#8220;<strong><span class="pln">grep </span><span class="pun">&#8211;</span><span class="pln">Url $</span><span class="str">&#8216;\x0D&#8217;</span></strong><span class="pln"><strong> *</strong>&#8221; in &#8220;Git for Windows&#8221;. This will return 0 if any matches, 1 otherwise.</span></p>
+<h2>Always LF</h2>
+<p>Alternatively, you may want to use the second option of having git translate line endings to LF in your workspace. But, bear in mind it only translates on checkout. Thus any CRLFs will remain in your workspace until you go though a complete checkin/checkout cycle.  Once again you&#8217;ll probably want to use EditorConfig to specify LF end of lines for all new writes.</p>
+<p>To get CRLFs translated you&#8217;ll need to force git to checkout your files over the existing copies as by default it doesn&#8217;t want to. Otherwise you can leave your workspace in an strange intermediate state that is different from what anyone will experience when they clone or checkout the code. This could potentially be a source of hard to track bugs (though most unlikely). If you use Continuous Integration in your workflow then any potential problems will be quickly found.</p>
+<p>To be fare, git gives a loud warning when you are in state when a checkout will change the line endings. However that error is slightly confusing.</p>
+<div id="attachment_618" style="width: 999px" class="wp-caption aligncenter"><a href="/openingaccessibility/wp-content/uploads/2015/12/Untitled1.png"><img class="size-full wp-image-618" src="/openingaccessibility/wp-content/uploads/2015/12/Untitled1.png" alt="Git warning when line endings are not yet translated." width="989" height="117" srcset="/openingaccessibility/wp-content/uploads/2015/12/Untitled1.png 989w, /openingaccessibility/wp-content/uploads/2015/12/Untitled1-300x35.png 300w" sizes="(max-width: 989px) 100vw, 989px" /></a><p class="wp-caption-text">Git warning when line endings are not yet translated.</p></div>
+<p>Git and editors may also complain about the mixed line endings issue described above.</p>
+<p>To configure git for this option use <strong>&#8220;* eol=lf&#8221;</strong> in .gitattributes. As this will force all files to be treated as text and so converted on checkin <strong>make sure you explicitly mark any binary files</strong> with lines like &#8220;*.png binary&#8221;. If you don&#8217;t then you checked in file may be corrupt and you may not notice for some time and be stuck with a hard to fix problem.</p>
+<p>Note when you first set this option you&#8217;ll probably get a load of warnings and all files will appear to change. See the notes on .gitattributes end-of-line conversion for the steps to overcome this.</p>
+<h1>Coming soon</h1>
+<p>A gitattributes option to support &#8220;* text=auto eol=lf&#8221; has <a href="http://git.661346.n2.nabble.com/EOL-conversion-on-checkout-for-text-files-only-td7628470.html">been discussed</a>. This would turn on auto textfile detection and then use LF end of lines for any text files. Currently the &#8220;eol=lf&#8221; options turns on text handling for all files and so you need to carefully declare all binary files.  That&#8217;s good practice any way, as no doubt git could incorrectly detect, but at least it would not be critical. We should push for this option.</p>
+<p>By the way, Editor Config should soon support a &#8220;end_of_line=native&#8221; option that will use whatever line ending makes sense according to the OS. That will play better with the default git behaviour but doesn&#8217;t help when files are shared without checkout such as in VMs.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2015/12/dealing-with-windows-text-line-endings-in-git/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>On Recovering Windows 8.1 when it goes wrong</title>
+		<link>/openingaccessibility/2015/05/on-recovering-windows-8-1when-it-goes-wrong/</link>
+		<comments>/openingaccessibility/2015/05/on-recovering-windows-8-1when-it-goes-wrong/#respond</comments>
+		<pubDate>Mon, 18 May 2015 21:27:20 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Win8]]></category>
+		<category><![CDATA[Windows]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=535</guid>
+		<description><![CDATA[tl;dr; After a double disaster with my workhorse Windows 8.1 laptop I&#8217;ve been exploring the easy ways to create a usable backup image of my system when set up to my liking. The Windows Recovery Environment (Windows RE) turns out &#8230; <a href="/openingaccessibility/2015/05/on-recovering-windows-8-1when-it-goes-wrong/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<h1>tl;dr;</h1>
+<p>After a double disaster with my workhorse Windows 8.1 laptop I&#8217;ve been exploring the easy ways to create a usable backup image of my system when set up to my liking. The Windows Recovery Environment (<strong>Windows RE</strong>) turns out to be well thought out but a couple of confusing bits of UI and mass of conflicting advice on the interweb leads to obfuscation. The following is my experience. Jump to the end for the solution of creating a custom image for system Refresh.</p>
+<h1>Blue Screens of Death are still a thing</h1>
+<p>I was unlucky enough to have 2 consecutive failures. The first was Windows update installing an Alps driver for my Dell XPS12 trackpad. The resulting service caused a Blue Screen of Death and required a length &#8216;binary chop&#8217; process on the services to identify the cause so I could uninstall it (Basically the steps are: get into Safe Mode, run msconfig,  check Hide all Microsoft  Services on services tab and disable half the services, reboot and add or remove services before rebooting, rinse and repeat &#8217;till you have figured out what is causing the problem).</p>
+<p>Without any custom recovery setup my only solution was a clean install of Windows 8.1 (from a MSDN ISO) followed by resinstalling all my desktop apps, followed by restoration of File History backup for my docs/data from my NAS. Annoyingly I had forgot to backup a few hidden files in my user root when setting up File History. Anyway, the result was a nice fast PC booting.</p>
+<p>Oh, but then after a reboot I suddenly got stuck in a non recoverable BSoD loop (CRITICAL_SERVICE_FAILURE). So I had to do it all again. I&#8217;m pretty sure the cause was using Glary Utilities to clean up and not the hardware. But I ran the Dell tests and Seagate&#8217;s own SSD tests just in case it was a hardware issue (all fine).</p>
+<h1>Being sensible and creating a recovery image</h1>
+<p>So this time I decided to create an image to facilitate easy restoration. While there are classic solutions like trusty old clonezilla I felt the Windows solution should be usable. While reading around indicated I might be able to create a partition on the system disk I wanted to create a boot able USB stick (the XPS12 has no optical drive) in case I got the non booting BSoD loop again..</p>
+<p>While Windows RE supports options for both both <strong>Refresh</strong> (leaves your docs/data) and <strong>Reset</strong> (full factory reset)  both required me to supply recovery media (I think the install image on USB should have worked, but I went for a full reset anyway). My plan was to create a custom image that can be used in this case to reinstall all apps and programs.</p>
+<h1>Partition or image?</h1>
+<p>Now this is where the trail gets a bit muddy. While the desktop Control Panel recovery tool can create a backup drive, the useful sounding check box &#8220;Copy the recovery partition from the PC to the recovery drive&#8221; is disabled, even on a system created from a Windows install image. Firstly it appears &#8216;partition&#8217; actually means image, though an OEM may have put a custom recovery image on a partition (and you can do the same).</p>
+<p>The solution to the disabled checkbox appears to be to provide an <strong>Install.wim</strong> windows system image and configure windows to use it with <strong>reagentc</strong>. Then if I understand it the created recovery drive will contain the Windows RE and the Install.wim and so enable you to boot and recover from the drive. However I have not yet tested this.</p>
+<p>Now it turns out you can create a custom wim image from a snapshot of your system and leave this on your system disk when it can be used for a Refresh. Several people claim you can also rename the custom image as Install.wim and then register it so you can create a recovery drive (and possibly use it for a full Reset).</p>
+<p>Now the tool used to create and register a custom image is <strong>recimg</strong> but it&#8217;s help has a big disclaimer that only documents and apps will be preserved during a Refresh, not desktop programs. This turns out to be the second confusing information. It would no doubt be true for the default Install.wim, assuming that actually worked out of the box. The recimg help also states it can only be used for a Refresh not a Reset but I don&#8217;t know if that is true after it is renamed to Image.wim. I&#8217;ve yet to try it.</p>
+<p>Once you create a <strong>CustomImage.wim</strong> you can then run Refresh from the Windows RE which will use the new . Of course that assumes you can get your PC to boot, which I wasn&#8217;t able to. To cover that I&#8217;ve copied my CustomImage.wim to an external drive in the hope I can use it later if required. As mentioned above you can create a recovery drive from your custom image, but the need to rename (or copy) and register it your newly created CustomImage.wim as Install.wim to enable the checkbox.</p>
+<p>In the end my plan was to create a CustomImage.wim after installing Office and my dev tools. This weighed in at a hefty  30 GB so I removed it from my SSD as soon as I had made a copy. I didn&#8217;t have a device suitable for a recovery drive.</p>
+<p>[Update 2015-05-24: Warning the recovery drive utility does a FAT format so your drive will be limited to 32GB &#8211; which really restricts it&#8217;s application, infact makes it useless for me. Also the drive I purchased (Elite) appears as a local drive rather than portable so is not seen by the utility]</p>
+<h1>Creating a custom image for Refresh</h1>
+<ul>
+<li>Get system to a clean, updated and stable state</li>
+<li>Open a Command Prompt</li>
+<li>Run &#8216;mkdir c:\RefreshImage&#8217;</li>
+<li>Run &#8216;recimg -CreateImage C:\RefreshImage&#8217;</li>
+<li>You will now have a C:\RefreshImage\CustomImage.wim</li>
+<li>Run &#8216;reagentc /info&#8217; to check the custom image is registered</li>
+</ul>
+<h1>Creating a Recovery Drive with you custom image</h1>
+<ul>
+<li>Open a Command Prompt</li>
+<li>copy (or rename) CustomImage.wim to Install.wim</li>
+<li>Run &#8216;reagenc /SetOSImage /Path C:\RefreshImage\Install.wim /Index 1&#8217;</li>
+<li>Run &#8216;reagentc /info&#8217; to check the recovery image is registered</li>
+<li>In control panel select &#8216;Create a recovery drive&#8217; and check &#8216;Copy Recovery partition.</li>
+</ul>
+<p>If you want to know more Steven Synofsky wrote a post on how the <a href="http://blogs.msdn.com/b/b8/archive/2012/01/04/refresh-and-reset-your-pc.aspx">Windows RE system works</a> for Reset and Refresh.</p>
+<p>(Note Microsoft also provide tools for OEMs to create custom recovery images, tools and menus but they are more complex to use).</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2015/05/on-recovering-windows-8-1when-it-goes-wrong/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>I&#8217;m liking Microsoft again</title>
+		<link>/openingaccessibility/2015/05/im-liking-microsoft-again/</link>
+		<comments>/openingaccessibility/2015/05/im-liking-microsoft-again/#respond</comments>
+		<pubDate>Mon, 04 May 2015 13:07:58 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[a11y]]></category>
+		<category><![CDATA[web]]></category>
+		<category><![CDATA[Windows]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=518</guid>
+		<description><![CDATA[After watching the key notes and selected sessions from Microsoft #Build2015 over on Channel 9 I&#8217;m definitely liking Microsoft again. This new found affection is form largely from the perspective of a HTML developer and to some extent as an &#8230; <a href="/openingaccessibility/2015/05/im-liking-microsoft-again/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>After watching the key notes and selected sessions from <a href="http://channel9.msdn.com/Events/Build/2015">Microsoft #Build2015 over on Channel 9</a> I&#8217;m definitely liking Microsoft again. This new found affection is form largely from the perspective of a HTML developer and to some extent as an accessibility practitioner. To be honest this is a welcome pleasant surprise.</p>
+<p><img class="alignnone" src="https://tse1.mm.bing.net/th?&amp;id=JN.EDqULxX2GYmt%2bs%2be97A0pg&amp;w=300&amp;h=300&amp;c=0&amp;pid=1.9&amp;rs=0&amp;p=0" alt="OSI logo with WIndows Logo superimposed on it." width="260" height="180" /><img class="alignnone" src="https://pbs.twimg.com/profile_images/438453169706635264/2qK0GYg6_400x400.png" alt="Microsoft Enable logo" width="195" height="195" /></p>
+<p><img class="alignnone" src="http://i.telegraph.co.uk/multimedia/archive/03286/microsoftedge_3286133b.jpg" alt="Microsoft Edge browser logo" width="264" height="165" /><img class="alignnone" src="http://www.wp7.nl/wp-content/uploads/2013/07/visual_studio_tile.png" alt="Visual Studio logo" width="184" height="184" /></p>
+<p>When I Started Windows 3.0 development back in the day (and with liberal help from Charles&#8217; Petzold&#8217;s excellent book), I soon figured Microsoft treated developers well, even courting them with shiny tech to explore and great communications (like MSDN magazine and then later with huge stacks of CDs).</p>
+<p>This was the early phase of Microsoft corporate culture when they were still very much developer led. Admittedly, some of their products&#8217; usability suffered from this bias and quite rightly they changed structure. Later, I moved on from embedded development using MASM, and MS Visual C for PC deployments an eventually to MS Windows powered financial products. As a result of tweaking the UK SKU of MS Money I even managed to work for Microsoft on some MSN back end code as a &#8216;contractor&#8217; in Red West B, but that&#8217;s another story.</p>
+<p>I started to focus on the intersection of web accessibility, where Microsoft had a limited user story, and open source, where they were largely seen as the face of the proprietary corporate enemy. That view was not helped by <a href="http://en.wikipedia.org/wiki/Open_Letter_to_Hobbyists">Bill Gates&#8217; famous open letter to hobbyists</a> which wound a lot of people up at the time and later. Boy have things changed!</p>
+<p>Even though I really enjoyed working on Linux and the excellent accessibility features of Gnome 2 and Mozilla Firefox, I must admit I did keep using and developing on/for Windows. I created a number of small Windows based Assistive Technologies, including the popular <a href="http://fullmeasure.co.uk/powertalk/">PowerTalk</a> that automatically narrates PowerPoint presentations as you operate them. Powertalk uses Python to access the Office Object Model and drive SAPI speech syntheses. By the way, SAPI is one of many excellent technologies with powerful accessibility uses from the Microsoft Research stable. Another is Kinect.</p>
+<p>Microsoft then entered what I see as the dark Balmer years and I largely moved away as user or developer. Even though my then business partner and strong Open Source community leader, Ross Gardler, was strongly not anti Microsoft. Actually, I eventual found out why Ross held that view as he left to joined <a href="https://msopentech.com/">Microsoft Open Tech</a>. At one point we did look at Windows 8 HTML hybrid development (WinJS + perhaps Cordova) but in those early times we hit issues that I could not easily figure out from the historically excellent MSDN documentation. Mind you, I had not yet found <a href="http://blogs.msdn.com/b/microsoft_press/archive/2014/04/08/free-ebook-programming-windows-store-apps-with-html-css-and-javascript-second-edition.aspx">Kraig Brochshmidt&#8217;s excellent free ebook</a> &#8211; a &#8220;must read&#8221; for any HTML development on Windows.</p>
+<p>I must admit that at the time I felt that the move to Microsoft was going to be important for both Ross and Microsoft. After my experience from Build2015 I feel that&#8217;s reasonably well validated. Here&#8217;s why</p>
+<ul>
+<li>The clear overall impression from Build was that Microsoft have now adjusted their culture so they now <strong>embrace and engage</strong> open source communities. Those of you aware of  the more popular old criticisms of Microsoft will  know why I highlighted that :). In the process Microsoft have rediscovered a friendship with developers.  The dual C words of Community and Conversation seem to have almost become mantras, at least in the session I watched. Sure,they are doing this for business survival reasons, but it still rocks.</li>
+<li>New developer tooling, including the excellent new <a href="https://code.visualstudio.com//">Visual Studio Code</a>, show energy in supporting popular open source tools and workflows used by those outside of the Microsoft way. This is especially true in the web and HTML app space as I saw demos of nodejs, Bower, Gulp, Cordova, Angular, backbone and more. Plus Microsoft&#8217;s own  <a href="https://dev.windows.com/en-us/develop/winjs">WinJS framework</a> works with Angular and other frameworks. And, oh did I, <strong>really</strong> see those Angular devs in a Build presentation!?</li>
+<li><a href="http://www.microsoft.com/en-us/windows/browser-for-doing">Edge</a> is so obviously the new browser on the block from a standards point of view. If you recall why Mozilla Firefox was started you realise that is a most welcome result. We&#8217;ve recently been seeing Microsoft engage with W3C and other groups to great effect. Even if sometimes they want to push things in different directions to others, for example ORTC rather than webRTC, they are taking an active part, unlike some others whom I won&#8217;t mention. Also the the F12 tooling has some great innovative features, including the ability to attach to embedded webviews. This &#8216;joining in&#8217; even includes key bindings &#8211; as I honestly heard the presenter saying &#8220;why be different to others for no good reason?&#8221;.</li>
+<li>The new developer paths to and from Android and iOS are also impressive. As is the support of hosted apps and win32 apps in the appstore. Microsoft are obviously keen to get everyone on their Windows/Azure platforms.</li>
+</ul>
+<p>The other reason I find I&#8217;m liking Microsoft again is their approach to supporting the plethora of devices, form factors and input modes that we now face. Universal Apps, the flexible input platform and Continuum act together to provide the basics for a smooth cross platform (device) and accessible experience for users.</p>
+<p>For example plugging a keyboard into my Android ASUS transformer tablet just didn&#8217;t work well enough so I gave up. Windows controls support mouse, touch, keyboard and even pen and games controller. With Continuum you can plug a mouse, keyboard and HDMI monitor into a suitable phone and get a near desktop experience.</p>
+<p>The flip side of this flexibility is a boost in accessibility. The previously mentioned paths between other developer platforms, including their own, strengthen this considerably. My strong impression is that Microsoft have the best, if not unique, story here and it will only get better.</p>
+<p>Definitely not your mom&#8217;s Microsoft. I&#8217;m looking forward to watching this unfold&#8230;</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2015/05/im-liking-microsoft-again/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>On Converting a VM from VMWare to VIrtualBox</title>
+		<link>/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/</link>
+		<comments>/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comments</comments>
+		<pubDate>Tue, 29 Jul 2014 12:34:07 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[opensource]]></category>
+		<category><![CDATA[Win8]]></category>
+		<category><![CDATA[Windows]]></category>
+		<category><![CDATA[Virtualisation]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=419</guid>
+		<description><![CDATA[In short, don&#8217;t! It&#8217;s way too much hassle. It&#8217;s so much easier to create a new identical VM in VirtualBox and set it to use the same virtual disk file (.vmdk). I  expect this applies when moving VMs in the &#8230; <a href="/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>In short, don&#8217;t! It&#8217;s way too much hassle.</p>
+<p>It&#8217;s so much easier to create a new identical VM in VirtualBox and set it to use the same virtual disk file (.vmdk). I  expect this applies when moving VMs in the opposite direction too.</p>
+<p>Hopefully this note will save others a lot of wasted time discovering this after following various dead ends when googling for the answer. The bottom line is that while it should be possible to export from VMWare to the standard OVF format and import into VirtualBox, differences in interpretation of the format between the two make it difficult if not impossible (I gave up).</p>
+<p>I&#8217;ve been using the VMWare Player for creating and managing my VMs on a Windows host for some time after my business partner experienced trashed VMs with our then preferred VirtualBox. However Since using windows 8.1 i found the mouse was offset when using an external monitor with my laptop, something which quickly made it unusable. Otherwise, to be fair, VMWare Player is fast and trouble free.</p>
+<p>So I decided to switch back to VirtualBox and the wisdom on the web is to export and import via OVF using VMWare&#8217;s OVFTool.</p>
+<p>1st problem, I had used VMWare Player&#8217;s default option to split the virtual disk file up. This actually make little sense if you have a file system that supports large files, and probably negatively affects performance. This can be resolved using VMWare&#8217;s vmware-vdiskmanager utility. Except this is now only available in the full VMWare Workstation. There is a trial version but guess what, it can&#8217;t be installed along side VMWarePlayer. So I had to installed and use it on another PC (and no, I didn&#8217;t it on a VM <img src="https://s.w.org/images/core/emoji/11/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /> ).</p>
+<p>Exporting using OVTool takes ages and then the &#8220;Import Appliance&#8221; operation fails. The first problem is a disagreement on the SCSI disk driver. VirtualBox treats the SAS as a separate type to SCSI, whereas VMWare makes it a subtype.. Even if you comment the SCSI and disk sections out of the .ofv file before import, another error occurs with checking the hash of the virtual disk in the .mf file. I suspect &#8220;Import Appliance&#8221; should only be used with  &#8220;Export Appliance&#8221; to move VirtuaBox VMs between hosts.</p>
+<p>So to summarise, the easiest solution for transferring a VM to VirtualBox to is to create a new VM in VirtuaBox, but without a disk. Make it as close as possible to the original VMWare VM. Then add a SAS driver and attach the existing .vdmk virtual disk (or a copy of it).  You&#8217;ll need to install the VirtualBox support drivers if it&#8217;s a Windows VM.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/feed/</wfw:commentRss>
+		<slash:comments>14</slash:comments>
+		</item>
+		<item>
+		<title>Free international SAPI voices from Microsoft</title>
+		<link>/openingaccessibility/2014/02/free-international-sapi-voices-from-microsoft/</link>
+		<comments>/openingaccessibility/2014/02/free-international-sapi-voices-from-microsoft/#respond</comments>
+		<pubDate>Fri, 28 Feb 2014 14:28:09 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[Assistve Technology]]></category>
+		<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Windows]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=329</guid>
+		<description><![CDATA[Either this is a well kept secret of I&#8217;ve been asleep, but I&#8217;ve only just found Microsoft provide easy access to the SAPI voices provided with other language versions of Windows. The following is the case in my Windows 8.1 Pro &#8230; <a href="/openingaccessibility/2014/02/free-international-sapi-voices-from-microsoft/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Either this is a well kept secret of I&#8217;ve been asleep, but I&#8217;ve only just found Microsoft provide easy access to the SAPI voices provided with other language versions of Windows. The following is the case in my Windows 8.1 Pro but your mileage may vary as they say.</p>
+<p>There don&#8217;t appear to be voices for every language, for example while I got German, I didn&#8217;t get one for Greek. There are several provided for Spanish.</p>
+<p>In order to get the extra voices you simple go to Control-&gt;Panel-&gt;Language and add a  language. When you double click on the new language you get (after a pause) an option to download and install a &#8216;Language pack&#8217;. This install takes forever, but eventually the new SAPI voices then appear in the Windows TTS options as usual.</p>
+<p>Additionally the language at the top of the list selects the system used for Windows text and is also reported to programs. You will need to log out or reboot for a change to take effect. We use this in the latest Maavis installer to provide internationalisation support for the Cloud4All project.</p>
+<p>Microsoft have done an excellent job with internationalisation &#8211; it&#8217;s a very clean user experience.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2014/02/free-international-sapi-voices-from-microsoft/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Adding a sleep button to Dell XPS 12 convertable ultrabook</title>
+		<link>/openingaccessibility/2014/02/adding-a-sleep-button-to-dell-xps-12-convertable/</link>
+		<comments>/openingaccessibility/2014/02/adding-a-sleep-button-to-dell-xps-12-convertable/#comments</comments>
+		<pubDate>Tue, 18 Feb 2014 11:24:15 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[Windows]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=324</guid>
+		<description><![CDATA[I&#8217;m really happy with the Dell XPS 12 convertable ultrabook I&#8217;m now using as my workhorse machine, even after seeing the lighter Lenovo Yoga at the recent Presperity4All project kick-off meeting. One thing has been annoying me,though, and that is the lack of &#8230; <a href="/openingaccessibility/2014/02/adding-a-sleep-button-to-dell-xps-12-convertable/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;m really happy with the <a href="http://www.dell.com/uk/p/xps-12-9q33/pd">Dell XPS 12</a> convertable ultrabook I&#8217;m now using as my workhorse machine, even after seeing the lighter <a href="http://shop.lenovo.com/gb/en/laptops/ideapad/yoga/yoga-13/">Lenovo Yoga</a> at the recent Presperity4All project kick-off meeting. One thing has been annoying me,though, and that is the lack of flexibility in sleep modes.</p>
+<p><img alt="XPS 12" src="http://i.dell.com/sites/imagecontent/products/PublishingImages/products/xps/12-l221x/images/laptop-xps-12-mag-pdp-965-module-1.jpg" /></p>
+<p>Specifically the problem is wanting slightly different power behaviour between laptop and tablet modes, something the stock Windows 8 options do not allow for. When in Laptop mode I want the power button to instigate hibernate as shutting the lid will put it into sleep mode. However that means when in tablet mode there is no way to enter sleep mode, something you really need when transporting the device to avoid accidental touch events causing mayhem.</p>
+<p>It&#8217;s easy to add a shortcut to enter sleep mode and put it on the Start Screen and Desktop taskbar. However, as I found a few &#8220;gotchas&#8221; I&#8217;ve outlined the steps here. The main problem is that if you have enabled hibernate as I have the usual sleep method hibernates rather than sleeps. The usual method is to use &#8220;rundll32.exe powrprof.dll,SetSuspendState 0,1,0&#8221;. The solution is to use Mark Russinovich&#8217;s venerable <strong>PsShutdown.exe </strong>from his SysInternals collection.</p>
+<p>The steps are:</p>
+<ol>
+<li>Install <strong>PsShutdown.exe</strong>, available from Microsoft as part of the <a href="http://technet.microsoft.com/en-us/sysinternals/bb896649.aspx">PSTools</a> or <a href="http://technet.microsoft.com/en-us/sysinternals/bb842062">SysInternals</a> suites.</li>
+<li>Create a shortcut in <strong>%ProgramData%\Microsoft\Windows\Start Menu\Programs</strong> named Sleep. This location allows it to be added to the start screen and desktop task bar.</li>
+<li>Set Target: to <strong>&#8220;&lt;Somewhere&gt;\psshutdown.exe&#8221; -d -t 0</strong> (ie suspend in 0 seconds) and Run: to <strong>minimised.</strong></li>
+<li>Set the icon to something you like. I used the red power icon in %SystemRoot%\system32\SHELL32.dll.</li>
+<li>Search for Sleep eg press Windows key and type &#8220;Sleep&#8221;.</li>
+<li>Right click on your Sleep icon in the results list and select &#8220;Pin to Start&#8221; and &#8220;Pin to Taskbar.</li>
+</ol>
+<p>That&#8217;s it. I found you need to press the Windows button on the screen bezel to exit sleep.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2014/02/adding-a-sleep-button-to-dell-xps-12-convertable/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+	</channel>
+</rss>

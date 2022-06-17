@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>age &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/category/age/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Revo Pixis RS internet/DAB/FM radio review</title>
+		<link>/openingaccessibility/2013/11/revo-pixis-internetdabfm-clock-radio-review/</link>
+		<comments>/openingaccessibility/2013/11/revo-pixis-internetdabfm-clock-radio-review/#comments</comments>
+		<pubDate>Sat, 30 Nov 2013 14:27:41 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[a11y]]></category>
+		<category><![CDATA[age]]></category>
+		<category><![CDATA[Audio]]></category>
+		<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=303</guid>
+		<description><![CDATA[I just received a shiny new Rivo Pixis RS digital radio direct from Revo and after using it for a short while I felt it definitely deserved a review. What follows is my initial impressions after setting it up and using &#8230; <a href="/openingaccessibility/2013/11/revo-pixis-internetdabfm-clock-radio-review/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I just received a shiny new <a href="http://revo.co.uk/shop/pixis-ir/">Rivo Pixis RS</a> digital radio direct from Revo and after using it for a short while I felt it definitely deserved a review. What follows is my initial impressions after setting it up and using for a short period.</p>
+<div id="attachment_304" style="width: 310px" class="wp-caption aligncenter"><a href="/openingaccessibility/wp-content/uploads/2013/11/RevoRSLoRes.png"><img class="size-medium wp-image-304" alt="Revo Pixis RS Radio - (source Revo website)" src="/openingaccessibility/wp-content/uploads/2013/11/RevoRSLoRes-300x225.png" width="300" height="225" srcset="/openingaccessibility/wp-content/uploads/2013/11/RevoRSLoRes-300x225.png 300w, /openingaccessibility/wp-content/uploads/2013/11/RevoRSLoRes.png 625w" sizes="(max-width: 300px) 100vw, 300px" /></a><p class="wp-caption-text">Revo Pixis RS Radio &#8211; (source Revo website)</p></div>
+<p>When my old Pure Tempus DAB clock radio joined our other broken Pure radios I needed a replacement and was very reluctant to buy another Pure due to very real quality concerns. My requirements are actually simple, but it&#8217;s seemingly very hard to find a device that matches them. My wife and I have tried several brands and models over the recent years, all falling short in one way or another.</p>
+<ul>
+<li>Great sound &#8211; as a wannabe sound engineer / musician this matters a lot, even given DAB and Internet radio limitations. Both speech and music are required</li>
+<li>Clear clock-display with sleep option &#8211; as an young older person my eyesight ain&#8217;t what it was</li>
+<li>Low light levels &#8211; I want to sleep at night and some clock radios give you a sun tan at night</li>
+<li>Easy use with customisable internet feeds and podcast selection</li>
+<li>Reliability &#8211; after so many early failures I want something that goes on and on, yet can be updated with patches</li>
+</ul>
+<p>I&#8217;ve been aware of Revo for a few years and  liked the look and specification of the Pixis on &#8216;web&#8217;. Having Internet radio means I can listen to remote stations like KPLU along with those essential tech podcasts like FLOSS Weekly. Meanwhile, my wife can catch up on The Archers (hmm, maybe not such a positive after all). So I though the extra cost of the RS was worth it. Trouble was it was out of stock at all the usual suspects like Amazon so I called Rivo. The really friendly, helpful and knowledgeable person I spoke to reassured me it would meet my requirements and stated the Pixis RSs had just arrived at the warehouse and would soon be going out to the retailers. I grabbed one there and then, over the phone, and it arrived next day by UPS.</p>
+<p>The Pixis is a complete doddle to set up with a serviceable wizard,In use is equally easy to operate. I&#8217;m pleased to say it meets all my requirements with ease, though the reliability and update ability have yet to be proven (note though, the external build quality is excellent).</p>
+<p>The sound is great with a good driver and <a href="http://en.wikipedia.org/wiki/Bass_reflex">bass reflex</a> cabinet; I had to reduce the bass a tad as the default was a bit over the top for my taste. The clock is clear with the backlight level auto adjusted to room conditions and it can be reduced further, or even switched completely off in standby.  Even better most of my podcasts and internet stations of choice were already listed in the extensive Pixis lists.  Further the layout and navigation are both excellent. <strong>If your clock radio requirements match mine above then you need look no further the Pixis RS </strong>(and I guess the similar Pixis). It is the best design and implementation of a digital radio I have ever come across<strong>. </strong></p>
+<p>That said, as usual, I have a few observations and thoughts that I&#8217;d like to pass on to Revo in the hope they are useful in improving and already great product.</p>
+<p>Some time back I imagined what a good internet radio and associated web selection service would be like. This was before I have seen any consumer products, or perhaps before they existed. We eventually purchased a Logitech squeeze radio but this *really* sucks. The radio user experience is complex, buggy and just plain horrid, plus the service often goes down with no explanation. The Pixis however comes *really* close to my imagined ideal. OK, so having Open Source server software like Squeeze to play with is nice, but actually it&#8217;s not really needed, if ,as with the Pixis, interoperability standards like U<a href="http://en.wikipedia.org/wiki/Universal_Plug_and_Play">PnP </a>are supported for media streaming.</p>
+<p>So what improvements would I like to see? Well very few.</p>
+<ul>
+<li>A bigger clock. It is small. Why not use the entire screen?</li>
+<li>An option to turn off the backlight when listening, or at least when sleep is active.</li>
+<li>Finer volume control at lower levels &#8211; the steps are slightly too course. Perhaps a different non-linear law like the old volume &#8216;pots&#8217;?</li>
+<li>A top level favourites mode that aggregates all the others. It&#8217;s OK to have favourites for each mode, (though both internet station and podcasts is fiddly) and find station by media makes sense. However, for favourites your don&#8217;t care which media they are on, you just want to access them.</li>
+<li>Bigger sleep UI buttons. When your are half asleep and want to extend sleep it&#8217;s a bit too small.</li>
+<li>Sleep to remember the previous time used &#8211; shouldn&#8217;t need to set it every time.</li>
+<li>Search through podcast lists. It&#8217;s great having podcasts listed under each station but the BBC R4 lists is very long and a search would be really useful.</li>
+</ul>
+<p>That&#8217;s all I have on my wish list. Even after a very brief time using the Pixis RS I&#8217;m stuck by it&#8217;s great design.. However, as accessibility and ageing are my area of interest I&#8217;ll add a couple more comments.</p>
+<p>Older users, including those with age related visual and dexterity problems, or even those with dementia, would benefit from a slightly modified UI to have larger text and buttons and possibly a slightly simplified navigation. Spoken feedback would help too. That said, the Revo is great in this respect, the main issue is the small text in lists.</p>
+<p>In addition, unlike radios with real buttons, touch screens are not accessible to people who are blind or have low vision. However, being software based, it should be easy to add speech synthesis and auditory touch browsing, as in Apple&#8217;s iOS VoiceOver or Android Eyes-Free facilities, both of which are built into mobile phones. This would increase Revo&#8217;s potential market considerably.</p>
+<p>So in summary the Revo is an near-perfect radio for my use as a clock radio and my experience with Revo people has also been exceptionally pleasant. I&#8217;d love to have more contact with them.</p>
+<p>[UPDATE: 2013/11/30] with media streaming the Pixis is listed as &#8216;Unknown Device&#8217; in Windows Media Player Streaming options device list. Otherwise streaming from PC just works. I&#8217;ve been advised by Revo that this will be fixed</p>
+<p>[UPDATE 2013/12/01] After a couple of nights use one considerable weakness has become apparent when using the Pixis as clock radio; the clock display is not shown unless the Pixis is turned &#8216;off&#8217;. Well, it is, but it&#8217;s very small in top left corner. To be fair the Pixis is not advertised as a clock radio, but it would be ideal as one if a solution is found. 2 potential solutions occur; a top level icon to manually display the clock or a setting to give time display priority so it automatically displayed, perhaps after a timeout. A work around is to simply turn it off to read the time: it picks up from where it was  when turned back on.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2013/11/revo-pixis-internetdabfm-clock-radio-review/feed/</wfw:commentRss>
+		<slash:comments>8</slash:comments>
+		</item>
+	</channel>
+</rss>

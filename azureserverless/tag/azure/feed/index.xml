@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+>
+
+<channel>
+	<title>Azure &#8211; AzureServerless</title>
+	<atom:link href="/azureserverless/tag/azure/feed/" rel="self" type="application/rss+xml" />
+	<link>/azureserverless/</link>
+	<description>Using Microsoft Azure in a Serverless mode</description>
+	<lastBuildDate>Tue, 05 Sep 2017 08:46:08 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+
+<image>
+	<url>/azureserverless/wp-content/uploads/2016/11/cropped-Functions-32x32.png</url>
+	<title>Azure &#8211; AzureServerless</title>
+	<link>/azureserverless/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">119351739</site>	<item>
+		<title>Azure options for serving static web content</title>
+		<link>/azureserverless/2017/01/17/azure-options-for-serving-static-web-content/</link>
+		<comments>/azureserverless/2017/01/17/azure-options-for-serving-static-web-content/#comments</comments>
+		<pubDate>Tue, 17 Jan 2017 17:38:21 +0000</pubDate>
+		<dc:creator><![CDATA[steve@opendirective.com]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Azure]]></category>
+
+		<guid isPermaLink="false">/azureserverless/?p=205</guid>
+		<description><![CDATA[A common requirement for logic implemented in Azure Functions is to provide a UI created in web content (HTML, CSS, JavaScript). Or to put it another way, you may have a Single Page App (SPA) with it&#8217;s backend built using Functions or other BaaS and 3rd party APIs. This content is usually purely static [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>A common requirement for logic implemented in Azure Functions is to provide a UI created in web content (HTML, CSS, JavaScript). Or to put it another way, you may have a Single Page App (SPA) with it&#8217;s backend built using Functions or other BaaS and 3rd party APIs. This content is usually purely static and does not need to be created by the web server. The server just stream files, giving each a unique URL. Or perhaps you have a purely static site for your blog or other non dynamic content; these are becoming increasingly popular again.</p>
+<p>Azure provides a number of ways to host purely static web content and this post gives a quick recap of what&#8217;s on offer. We&#8217;ll ignore installing and managing a server in a VM or container and stick to PaaS-upwards services.</p>
+<h2>App Service Web Apps</h2>
+<p>This is the &#8216;pukka&#8217; web server option with all the configuration, deployment, scaling and monitoring options you&#8217;d expect from PaaS. <a href="https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-overview">Web Apps</a> make managing servers relatively easy, with a choice of languages suitable for a traditional 3 tier achitecture. However, a simple static server is the least complex configuration available. You just copy your files up to the Web App file space which is then handled by a IIS static server.</p>
+<p>Content can be managed from the Portal, via FTP, with version control integration, Visual Studio or the Azure CLI. You can also explore and manage files through the Kudo console or REST API.</p>
+<p>As this is powered by a full server you have access to routing features like default document handling and redirection and can add dynamic content as you like.</p>
+<p>There is a free shared price tier, though you&#8217;ll need to move up to Basic to get multiple deployment slots (eg stage and live), which you can simply swap for instantanious updating.</p>
+<h2>Blob Storage</h2>
+<p>Blog storage is very flexible and is ideal for the efficent <a href="https://msdn.microsoft.com/en-gb/library/dn589776.aspx">Static Content Hosting Pattern</a>. Blobs may be any type of content and the <a href="https://docs.microsoft.com/en-us/azure/storage/storage-manage-access-to-resources">blob storage</a> is accessed and managed via a REST API. Any blobs that are given anonymous access are publicly available without authentication. Access is then though HTTP GET with the blob URL strings (paths) organised into containers without any nesting. For example:</p><pre class="crayon-plain-tag">https://myaccount.blob.core.windows.net/mycontainer/myblob</pre><p>Content can be uploaded via the portal, The REST API, <a href="https://buildazure.com/2015/12/03/azure-storage-explorer/"><span style="color: #00739e;">Azure Storage Explorer</span></a> or Visual Studio. Autoscaling is available. There&#8217;s no facility for default document handling (/ =&gt; /index,html)</p>
+<p>Blob storage is very cheap indeed, and is calculated based on storage and bandwidth.</p>
+<h2>Functions</h2>
+<p><strong>[Update: 15 Mar 2017] The new Function App Proxies feature offers even more flexibility in specifying URLs (but avoid / for now). In addition, C# Functions can happily stream static content. Antony Chu brings these two points together in his post on <a href="http://anthonychu.ca/post/azure-functions-static-file-server/">Serving Static Files from Azure Functions</a>. Also, currently the Nodejs file share is inefficient when accessing many small files so may have an impact.</strong></p>
+<p>By default HTTP triggered Function URLS are of the form</p><pre class="crayon-plain-tag">https://yourapp.azurewebsites.net/api/yourfunction</pre><p>However, you can specify methods (HTTP verbs) and routing in <a href="https://docs.microsoft.com/en-gb/azure/azure-functions/functions-bindings-http-webhook">function.json</a> and the &#8216;api&#8217; segment can be altered or removed in the function app&#8217;s host.json.</p>
+<p>The flexible Azure Functions with a HTTP return type can return HTML and other text based resources very easily. Just put them in the body and set the content-type header. You can also return Octect encoded binary content (eg images) as Functions support Buffers. But, with nodejs this is less efficient than a server because streams are not supported. Rather, the resources will be have to be placed in a memory buffer in res.body.</p>
+<p>You have access to the Function App VM&#8217;s file system so can upload static content like images (though space will be limited). As Functions are built on App Service, content is managed in the same ways as Apps and there is the AzureFunctions CLI. Autoscaling is a basic feature of functions, but so is a cold start delay.</p>
+<p>If you want to go crazy, you could probably use a something like nodejs module like &#8216;serve-static&#8217;, &#8216;connect&#8217; or even &#8216;express&#8217; to have the flexibility of middleware. This would require mocking the node HTTP module objects that pass requests in and out. However state oriented middleware will be useless in Functions and given the previously mentioned lack of streaming only a few of the available options will much use.</p>
+<p>Functions used this way with nodejs are really more suitable for APIs when compute or side effects such as DB updates are of more interest than streaming data. Here&#8217;s an example &#8211; <a href="https://github.com/yvele/azure-function-express">azure-function-express</a>.</p>
+<p>Cost are also very low and you have a choice of pure Pay as you Access or a Web App costing.</p>
+<h2>What&#8217;s missing?</h2>
+<p>You may have spotted that in the above we ignored at least 2 features that are very important in many real situations. Namely: HTTPS access with a custom domain, and access control through authorisation. These are topics for another post.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>/azureserverless/2017/01/17/azure-options-for-serving-static-web-content/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">205</post-id>	</item>
+		<item>
+		<title>Serverless Schmerverless: what do we mean by &#8220;serverless&#8221;?</title>
+		<link>/azureserverless/2017/01/15/serverless-schmerverless-what-do-we-mean-by-serverless/</link>
+		<comments>/azureserverless/2017/01/15/serverless-schmerverless-what-do-we-mean-by-serverless/#respond</comments>
+		<pubDate>Sun, 15 Jan 2017 15:30:56 +0000</pubDate>
+		<dc:creator><![CDATA[steve@opendirective.com]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Azure]]></category>
+		<category><![CDATA[serverless]]></category>
+
+		<guid isPermaLink="false">/azureserverless/?p=197</guid>
+		<description><![CDATA[[Update 25 Jan 17: I just had to add the image from Swardley] The debate about the name &#8220;serverless has calmed down a tad but may never completely go away. However, we need to move on and so I thought I should state what we have in mind here at [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>[Update 25 Jan 17: I just had to add the image from Swardley]</p>
+<p>The debate about the name &#8220;serverless has calmed down a tad but may never completely go away. However, we need to move on and so I thought I should state what we have in mind here at Azure Serverless. The main reason for doing so, is that rather than just hoping &#8220;the entire silly thing will go away&#8221; it will help shape what we post about here.</p>
+<p><img class="media-image" src="https://pbs.twimg.com/media/C2-UdKtWQAAK_Yi.jpg:large" alt="" data-height="1005" data-width="2047" /><a class="account-group js-account-group js-action-profile js-user-profile-link js-nav" href="https://twitter.com/swardley" data-user-id="8592732"><strong class="fullname js-action-profile-name show-popup-with-id" data-aria-label-part="">swardley</strong> ‏<span class="username js-action-profile-name" data-aria-label-part=""><s>@</s><b>swardley</b></span></a><small class="time"></small> -The entire history of the PaaS vs Serverless debate, in one simple graphic</p>
+<p>&nbsp;</p>
+<p>Firstly, lets say one thing: did anyone ever complain about &#8220;Wireless&#8221; involving lots of wires? Both in the user&#8217;s radio receiver and the transmitters, studios etc&#8230;. Of course not, it&#8217;s a matter of point of view. With Serverless, as with Wireless, from the user perspective, we are largey free of the need to manage or otherwise worry about the pesky thing in question <img src="https://s.w.org/images/core/emoji/11/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Move along please there&#8217;s nothing to see here&#8230;.</p>
+<p>When we categorise developer and deployment infrastructure we soon realise there is a graduated contimuum, with certain points on the spectum being identified and named. But, those terms end up getting used for a broad subspectrum of closely related concepts and they don&#8217;t always cleanly apply to a specific implementation. What&#8217;s important is the specific features provided and how they help us get stuff out to users.</p>
+<p>Thus our &#8216;hosting&#8217; continuum stretches from self hosted boxes in the office, though remotely installing our favourite applications on 3rd party managed hardware and software, to fully managed apps where we supply a little config or perhaps some macros if we feel brave.</p>
+<p>Not suprisingly it&#8217;s the same when we look at the skills required by those creating and managing software used by people. At one end we have pure jobbing developers who never see their code in production, to full time SysOps who never produce any code but a very skilled in setting parameters etc.</p>
+<p>When exploring development and deployment environments deployed to the the cloud we have a range of choices in how much we outsource to others, including the nice Microsoft folks providing the Microsoft Azure services.</p>
+<p>We can work with a bare machine (aka IaaS eg Azure Virtual machines), or have the Operating System and other platform software such as node.js  managed for us (aka PaaS eg Azure Web Apps). Going further along the continum we can simply provide code fragmets that run in a managed context (#FaaS, Azure Functions). Then, there is Azure Logic Apps (Workflow as a service WaaS) which abstracts code away to configuration (almost SaaS).</p>
+<p>From another angle we have various services like SQL databases managed for us. Plus data or object storage. In addition to use from backend code, a client app running in a webbrowser or a mobile app can use these services. Additionally in this context, we have access to useful services for managing APIs or notifications (BaaS, eg Azure API Apps). Often both the back end service and client libraries are made available for our use.</p>
+<p>Oh, then there&#8217;s the provisioning facitilies provided for scaling out our running software horizontaly and vertically. We can mange that ourselves at one end of the scale. Or have autoscaling at the other. Fortunately, with cut offs in the advent of misuse.</p>
+<p>Containers are yet another aspect and depending on your perspect might be little more than an abstraction away from bare VMs (IaaS++) to somehing more akin to PaaS if you use and extend pre existing images.</p>
+<p>So given this rich ecosystem, what <strong>do we</strong> mean by &#8220;Serverless&#8221;? Well it&#8217;s certainly well into the managed end of the spectrum. Definitely Azure Functions (FaaS) and LogiApps (WaaS)Certainly, the App Services PaaS level service will be covered. Given AzureFunctions is an open source framework running on WebJobs we may include that layer as well. And also, other Azure BaaS services like Storage (Queues, Blobs) and databases (SQL, DocumentDB) which are important in many a solution. Ditto Authenticon services. And since LogicApps has connectors to SaaS we might include some of these.</p>
+<p>Regardless of Swardley&#8217;s image above, we may also include the more managed aspects of  containers (Azure Container Servers, ACS).</p>
+<p>To be honest we may post on pretty much anything that gets us nearer to working on useful solutions and not having to rummage around the lower reaches of the stack, either as Devs or SysOps (OK, DevOps).</p>
+<p>Given this is such a fast evolving space we would not want to be too constrained so as to exlude newer technologies that are certain to appear. Thus, the previous paragraph is our working defintion for our posts and tweets. Enjoy!</p>
+<p>PS Apologies if for you, Serverless === FaaS. You&#8217;ll need a narrow band filter for our content.</p>
+]]></content:encoded>
+			<wfw:commentRss>/azureserverless/2017/01/15/serverless-schmerverless-what-do-we-mean-by-serverless/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">197</post-id>	</item>
+	</channel>
+</rss>

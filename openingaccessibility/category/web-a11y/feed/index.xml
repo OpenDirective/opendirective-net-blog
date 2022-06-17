@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>web a11y &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/category/web-a11y/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Is the web getting less webby and will serverless make it worse?</title>
+		<link>/openingaccessibility/2016/09/is-the-web-getting-less-webby/</link>
+		<comments>/openingaccessibility/2016/09/is-the-web-getting-less-webby/#respond</comments>
+		<pubDate>Tue, 13 Sep 2016 11:43:58 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[HTML]]></category>
+		<category><![CDATA[web a11y]]></category>
+		<category><![CDATA[web apps]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[serverless]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=691</guid>
+		<description><![CDATA[[Title inspired by a quote from Scott Hanselman on Serverless with Azure Functions &#8216;It&#8217;s as close to &#8220;cloudy&#8221; as The Cloud can get&#8217;] There&#8217;s some big changes happening in web land that are fuelled by rapid app framework developments and &#8230; <a href="/openingaccessibility/2016/09/is-the-web-getting-less-webby/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>[Title inspired by a quote from Scott Hanselman on <a href="http://www.hanselman.com/blog/WhatIsServerlessComputingExploringAzureFunctions.aspx">Serverless with Azure Functions</a> &#8216;It&#8217;s as close to &#8220;cloudy&#8221; as The Cloud can get&#8217;]</p>
+<p>There&#8217;s some big changes happening in web land that are fuelled by rapid app framework developments and advances in cloud land. In particular the system architectural client-server split is shifting. We currently see these architectures (and variations):</p>
+<ul>
+<li>Classic 3 tier with web server passing presentation to the web browser as linked pages of HTML etc</li>
+<li>Ajax-ified with some presentation elements being dynamically requested and updated by the browser or even generated client-side from received data.</li>
+<li>Single Page Applications where presentation and navigation are completely generated in the browser which directly accesses various 1st and 3rd party RESTful APIs (SaaS).</li>
+<li>The Opera Mini browser Opera Mini is very popular, especially in poorer countries. It is something of  an architectural oddity as it renders  on a display server and uses a thin-client style display protocol to the client app for data efficiency. This is effectively a final stage applied after the others in this list.</li>
+<li>GraphQL is becoming popular for API queries as it lets the client dictate the payload and simplifies queries that would require multiple RESTful API round trips</li>
+</ul>
+<p>SPAs bring web apps into parity with Native Mobile Apps (and even some Desktop apps). The main difference now being the specific client side SDKs used to bind to the messaging protocols such as REST over HTTP.</p>
+<p>On the server we see hosting being outsourced at progressively higher levels in the stack: the so called cloudy IaaS, PaaS, BaaS, FaaS and WaaS. In addition, microservices are being used to break up monolithic middle tiers. In the last year we have seen the rise of interest in so called Serverless (BaaS, FaaS and WaaS). This was initiated by the introduction of AWS Lambda, quickly followed by other providers including Azure Functions, Google Cloud Functions, OpenWhisk.</p>
+<p><a href="/openingaccessibility/wp-content/uploads/2016/09/14867685775_c7044f0e2e_z.jpg"><img class="aligncenter wp-image-694 size-medium" src="/openingaccessibility/wp-content/uploads/2016/09/14867685775_c7044f0e2e_z-300x300.jpg" alt="cute pompom spider" width="300" height="300" srcset="/openingaccessibility/wp-content/uploads/2016/09/14867685775_c7044f0e2e_z-300x300.jpg 300w, /openingaccessibility/wp-content/uploads/2016/09/14867685775_c7044f0e2e_z-150x150.jpg 150w, /openingaccessibility/wp-content/uploads/2016/09/14867685775_c7044f0e2e_z.jpg 640w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+<p>So, exiting times for developers! But are these architectural changes eroding core Webby principals, especially the very carefully developed inclusive design principles? What is the impact on web users?</p>
+<p>After 25 years the classic web architecture has, with the help of Web standards, become available to almost everyone regardless of their device capabilities or their accessibility needs. Well, that&#8217;s in theory. The reality is completely dependent on developers being aware of best practices and prioritising them. HTML presentation elements are rendered by a wide range of browsers on varied devices including desktop with mouse and keyboard input, portable touch enabled devices with sizes from watches to tablets, and even hybrids such as 2 in ones. In addition to device variability, the Web standards and best practices support human and context variability through carefully baked in accessibility.</p>
+<p>The move to micro (and nano FaaS) service architectures on the back end should have limited impact on this webbiness as they are internal details of the servers.  However, the protocols used between client and server are RESTful in the web world, or rather, RESTful communications are the lifeblood of the web. Newer developments like GraphQL start to move away from the web&#8217;s RESTful architecture by effectively using one part of HTTP as a transport (somewhat like SOAP). However, this largely a detail of interest to developers only as far as most web users are concerned.</p>
+<p>On the face of it the use of client-side generated presentation with AJAX or a SPA should make no difference to webbiness either. True, dynamic creation of the UI is open to developers playing fast and loose with the standards. And accessibility is often being the first casualty. But this is just as possible when content is generated on the server.</p>
+<p>A big difference between SPAs and HTML apps is that browser developers put enormous effort into ensuring bad HTML and CSS fail gracefully across supported devices. JavaScript, on the other hand, is NOT fail safe. An error means it crashes and the user probably gets a nasty surprise. Individual developers or client side JavaScript framework developers have to effectively duplicate the effort that browser vendors go to in order to get as rugged an UX. Thus the user experience may not be as  consistent or as accessible with a SPA.</p>
+<p>Another issue is that developers want to use the latest and greatest browser features, often in order to give a great UX. For example Service Workers allow developers to provide a great offline experience. As the rate of change accelerates the chances of a user having an old browser that doesn&#8217;t support a shiny new feature increases. This is much more exaggerated with features accessed through JavaScript code compared to HTML as the speed and focus is currently there. Even the JavaScript language itself is rapidly evolving witch new features developers are keen to use. So, unless there&#8217;s careful design to work with a range of devices users may be left stranded.</p>
+<p>An established technique to avoid these problems is Progressive Enhancement where a basic HTML experience is available and UX enhancements are layered on for users with browsers that support the latest CSS and JavaScript shininess. But, with SPAs there is no initial HTML rendering for less able browsers. Lately techniques such as serverside rendering and Universal (isomorphic) JavaScript restore this to a large extent. Interestingly, the drive for these techniques has been SEO (Google can&#8217;t spider a client side app)  and time to initial display content of, rather than PE concerns.</p>
+<p>In summary, then, the architectural shifts we are seeing do provide new ways to break the carefully designed universal nature of the web and exclude users of some devices or with some accessibility needs. However by carefully following inclusive design thinking at the system level these can be minimised. The shape of web app architectures may be changing but we can ensure the core principles remain in our minds as we develop.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2016/09/is-the-web-getting-less-webby/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>What programming experience should a good programmer have?</title>
+		<link>/openingaccessibility/2013/10/what-programming-experience-should-a-good-programmer-have/</link>
+		<comments>/openingaccessibility/2013/10/what-programming-experience-should-a-good-programmer-have/#respond</comments>
+		<pubDate>Fri, 04 Oct 2013 16:35:28 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[opensource]]></category>
+		<category><![CDATA[web a11y]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=268</guid>
+		<description><![CDATA[I was recently asked Which languages [and tools] do you consider a competent/experienced and useful programmer would have ability to programme in these days. Especially for personal computers, tablets and/or smart phones. That&#8217;s an interesting question and I gave it &#8230; <a href="/openingaccessibility/2013/10/what-programming-experience-should-a-good-programmer-have/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I was recently asked</p>
+<blockquote>
+<div>Which languages [and tools] do you consider a competent/experienced and useful programmer would have ability to programme in these days. Especially for personal computers, tablets and/or smart phones.</div>
+</blockquote>
+<p>That&#8217;s an interesting question and I gave it some thought, before replying. It&#8217;s not just languages that are important, though they do influence how programmers think about solving a problem. The architecture they are used in is also very  important eg event driven, single thread or threaded. Plus, as the question indicates, so are tool chain and workflow experience. Team development experience and deep and prolonged use of at least one language solving real design issues are the hallmarks of a good developer.</p>
+<p>I think the specific problem domain is less important but some do require specific skills &#8211; eg Real time telemetries. However certain experiences are all very desirable eg UI,  various client-server splits and database. Some platforms require specific languages, eg iOS needs Objective-C but good skills are transferable so a decent developer can take a running start, especially if experience in C or Java.</p>
+<p>Another requirement is knowledge of the platform APIs or frameworks which can be very large and take a time to become well experienced in. Again a good developer will soon learn his way around as needed. Indeed someone said</p>
+<blockquote><p>The key to being a good developer is to be able to find your answer as quickly as possible, without learning anything else.</p></blockquote>
+<p>That said, a good, solid grounding is irreplaceable.</p>
+<p>So here&#8217;s an attempt at listing some key languages, tools and skills in demand today:</p>
+<ul>
+<li>Without a doubt web technologies and especially the triad of HTML(5), CSS and Javascript. This covers web apps, mobile apps, and now server too (node).</li>
+<li>Not a language, but an appreciation of the REST architectural style is vital.</li>
+<li>Modular, object-oriented, and block structured compiled languages like Java, C++ (C at a pinch). This covers native mobile apps, Desktop OS systems programming and also server side</li>
+<li>Python is also an excellent alternative to Java / C++ even though is not strictly compiled.</li>
+</ul>
+<p>Closely following these core competencies are:</p>
+<ul>
+<li>Server side languages for web app such as PHP, Ruby, Java, Javascript (node) or .NET/C# (or perhaps Python) as web apps almost always require some server-side support.</li>
+<li>SQL, though noSQL use is also valuable</li>
+<li>Shell scripting experience with bash or cmd can be very useful, especially for build but deep knowledge is often more a system administrators bag</li>
+</ul>
+<p>Of course I think every programmer would benefit from a good understanding of Assembler <img src="https://s.w.org/images/core/emoji/11/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p>In terms of generic tool chains supporting team work</p>
+<ul>
+<li>Version control, especially distributed like git</li>
+<li>Issue/bug tracker</li>
+<li>A good IDE or equivalent tools eg Eclipse, VisualStudio, browser debug tools</li>
+<li>Build tools</li>
+</ul>
+<p>These are closely followed by the equally important</p>
+<ul>
+<li>Unit testing tools</li>
+<li>Continuous integration tools</li>
+<li>Accessibility test tools and assistive technology</li>
+</ul>
+<p>Finally, and perhaps most important &#8211; any solid opensource community experience is a major plus.</p>
+<p>So what do you think? Have I missed anything critical? I&#8217;m not interested in &#8216;me too&#8217; language nominations or raw DOM verses jQuery flames. I&#8217;m after what core experience a &#8216;competent/experienced and useful programmer&#8217; could be expected to have?</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2013/10/what-programming-experience-should-a-good-programmer-have/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>BBC publish draft mobile accessibility guidelines to address developer &#8216;assumptions&#8217;</title>
+		<link>/openingaccessibility/2013/06/bbc-publish-draft-mobile-accessibility-guidelines-to-address-developer-assumptions/</link>
+		<comments>/openingaccessibility/2013/06/bbc-publish-draft-mobile-accessibility-guidelines-to-address-developer-assumptions/#respond</comments>
+		<pubDate>Wed, 19 Jun 2013 10:10:03 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[mobile a11y]]></category>
+		<category><![CDATA[opena11y]]></category>
+		<category><![CDATA[web a11y]]></category>
+		<category><![CDATA[Win8]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=179</guid>
+		<description><![CDATA[Whilst guidelines for web accessibility have been in existence for several years and are slowly evolving, until now there has been a lack of best practices targeted specifically at the additional complications of mobile accessibility (web or native). This is &#8230; <a href="/openingaccessibility/2013/06/bbc-publish-draft-mobile-accessibility-guidelines-to-address-developer-assumptions/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Whilst guidelines for web accessibility have been in existence for several years and are slowly evolving, until now there has been a lack of best practices targeted specifically at the additional complications of mobile accessibility (web or native). This is especially important now mobile use is so predominant and I believe is globally in the majority due to so many people outside the affluent West having phones and not computers.</p>
+<p>Yesterday Henny Swan finally made an exciting official tweet:</p>
+<blockquote><p>Introducing the Draft BBC Mobile Accessibility Standards and Guidelines:<a href="http://t.co/5brg5IDZoD" target="_blank" rel="nofollow">bbc.co.uk/blogs/internet…</a><a title="Mobile" href="https://hootsuite.com/dashboard#">#Mobile</a><a title="Development" href="https://hootsuite.com/dashboard#">#Development</a><a title="Design" href="https://hootsuite.com/dashboard#">#Design</a><a title="BBC" href="https://hootsuite.com/dashboard#">#BBC</a></p></blockquote>
+<p>Henny also <a href="http://www.iheni.com/draft-bbc-mobile-accessibility-guidelines/">blogged</a> and Gareth Ford Williams followed up with more details on LinkedIn</p>
+<blockquote><p>Just to let you all know the Draft BBC Mobile Accessibility Guidelines were published today. You can find them on the Future Media Standards and Guidelines site at:<a href="http://www.linkedin.com/redir/redirect?url=http%3A%2F%2Fwww%2Ebbc%2Eco%2Euk%2Fguidelines%2Ffuturemedia%2Faccessibility%2Fmobile_access%2Eshtml&amp;urlhash=MY3u" target="_blank">http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile_access.shtml</a></p>
+<p>A blog post about them is here: <a href="http://www.linkedin.com/redir/redirect?url=http%3A%2F%2Fwww%2Ebbc%2Eco%2Euk%2Fblogs%2Finternet%2Fposts%2FAccessibility-Mobile-Apps&amp;urlhash=FT_l" target="_blank">http://www.bbc.co.uk/blogs/internet/posts/Accessibility-Mobile-Apps</a></p>
+<p>The guidelines are in accessible PDF and Word format at the moment but should be in a much more digestible and usable format soon so watch this space.<br />
+These standards have been developed over the last 18 months and have been developed and tested using the following mobile projects: BBC Olympics, BBC Sport, BBC iPlayer, BBC iPlayer Radio and BBC Weather.</p>
+<p>We are asking for feedback to identify areas of focus for the the further development of the guidelines and any comments, would be greatly welcome.</p>
+<p>Best Regards,</p>
+<p>Gareth Ford Williams<br />
+Head of Accessibility, BBC Future Media</p></blockquote>
+<p>This is an excellent start and should help raise awareness of the issues amongst commissioners, designers and developers and so improve the accessibility quality of apps and mobile tech in general.</p>
+<div id="attachment_193" style="width: 310px" class="wp-caption aligncenter"><a href="/openingaccessibility/wp-content/uploads/2013/06/mobilea11y.jpg"><img class="size-medium wp-image-193" alt="User viewing mobile screen with a magnifying glass" src="/openingaccessibility/wp-content/uploads/2013/06/mobilea11y-300x211.jpg" width="300" height="211" srcset="/openingaccessibility/wp-content/uploads/2013/06/mobilea11y-300x211.jpg 300w, /openingaccessibility/wp-content/uploads/2013/06/mobilea11y.jpg 480w" sizes="(max-width: 300px) 100vw, 300px" /></a><p class="wp-caption-text">Image by Hajime NAKANO http://www.flickr.com/photos/jetalone/</p></div>
+<p style="text-align: center;">So just what exactly are the extra accessibility issues introduced by mobile tech? Well I like to think that accessibility boils down to this simple design mantra:</p>
+<blockquote><p>Don&#8217;t make assumptions about how users will access your content or app.</p></blockquote>
+<p>Obviously any engineering or craft activity has to make some assumptions or nothing useful would ever be created. However the assumptions can and should be minimised within meaningful constraints if we want to avoid excluding users (and so reducing market).</p>
+<p>For example, it&#8217;s a good idea to not assume that all users will be using a mouse and can easily interpret visual-only cues. These assumptions were initially thought of in the context of users with disabilities, though some folks (myself included) pointed out they effect a much wider usage. For example, many users prefer to use only a keyboard for speed of access and  a search engine &#8220;spider robot&#8221; is effectively a blind user.  In fact a few years ago there was a hot debate over if accessibility should be primarily for people with disabilities or of general utility. Fortunately, this soon blew over and accessibility efforts are now concentrated on improving accessibility for all users and use cases.</p>
+<p>With the rapid rise in mobile technologies (and I include all portable formats in that definition) it soon became clear that &#8220;contextual disability&#8221; also occurs and needs to be specifically addressed. For example in bright light conditions the screen becomes hard  to read, if not impossible. thus, adaptations usually designed for people with low vision or blindness are potentially usefully for all users in certain common circumstances. Another example is that when driving a car verbal interactions are much more appropriate so hands and eyes can be used for safe navigation.</p>
+<p>Another design assumption has become apparent with the very wide variation in screen size and resolution  across devices (eg Apple&#8217;s retina displays).  In the early days of the web this was not an issue as screen size was a small range and as text was the content the browser was free to reflow to any screen size/resolution. However as I found when trying to make my first ever website with graphics look good on both 19&#8243; and 13&#8243; monitors, it isn&#8217;t that easy to accommodate variations. In fact given the state of browsers and HTML then I gave up.</p>
+<p>Now we have a name for handling variation in screen resolution on the web; &#8216;<a href="http://en.wikipedia.org/wiki/Responsive_web_design">Responsive design</a>&#8216;. With this a few core techniques allow the user experience to be adjusted according to screen size. At this point in time however, the technology such as CSS media queries is still a little immature, certainly when compared to some native solutions I have used. However this is a hot topic with solutions like <a href="http://dev.w3.org/csswg/css-grid/">CSS Grid Layout</a> looking very interesting. We can expect rapid improvements.</p>
+<p>In addition to screen size variation, the almost ubiquitous use of touch technology on mobile devices provides a new challenge for designers wishing to target multiple devices. Leading the charge are web apps and widgets which offer a path to creating solutions that can run on devices ranging from small screen mobile with touch to traditional desktop with large monitor, keyboard and mouse. In this space the W3C and others are working on <a href="http://www.w3.org/2010/webevents/">new specifications for handling different input modes</a> in unified ways.</p>
+<p>Windows 8 appears to be targeting this world of portable and desktop devices and their different interaction modes. At the moment it&#8217;s somewhat schizophrenic with both the Windows Store Apps and traditional Windows 7 style desktop sides being quite separate. However I think we can expect Microsoft to learn and develop the user experience rapidly. What is of special interest is that Windows Store apps can be created using the key W3C specified open technologies (actually, this may be the preferred technology). This allows portable solutions to be more easily developed. Add the fact that Microsoft now play an active part in web standardisation efforts, we can expect improvements in the device and accessibility support in both Windows and web solutions.</p>
+<p>A final assumption is more an issue of device and operating system manufacturers not supporting interaction methods available on desktop and that are commonly used by people with disabilities. In particular people with physical disabilities who use simple switch devices to interact have had little access to mobile devices. On the desktop, switches are nowadays connected as USB devices (often simulating games controllers) but very few mobile devices have USB sockets. Bluetooth is a viable alternative and for example Komodo OpenLab&#8217;s <a href="http://komodoopenlab.com/tecla/">Tecla</a> switch access device uses this approach to provide switch control of Android and iOS devices. An exciting development here is that iOS 7 includes switch controlled scanning and so we can hope Android and Windows will take note and follow.</p>
+<p>In some ways it&#8217;s reassuring that mainstream developers are hitting and addressing many of the issues that the accessibility community has be working on for some time. We can expect faster and more innovative solutions. As long as accessibility remains firmly on the agenda and the accessibility community keeps up the highly effective work to help ensure vendors keep their eye on the ball..</p>
+<p>Along with the <a href="http://www.w3.org/Mobile/">W3C Mobile web Initiative</a>,  the BBC draft guidelines have an important part to play as we collectively figure out how to remove damaging assumptions and create usable and accessible solutions that are available on a wide range of platform formats. As the authors point out, these are a starting point and they welcome the discussion on how to move forward.</p>
+<p>As a footnote, the <a href="http://www.cloud4all.info/">Cloud4All</a> EU project is exploring automatic personalisation of devices according to a users accessibility preferences profile. This will act as a way to help remove the sensitivity to designer assumptions by applying the best available adjustments. An important part of this work is context awareness.</p>
+<p>[Update 2013-06-20] in addition to the W3C Web Events working group the <a href="http://www.w3.org/WAI/IndieUI/">IndieUI</a> and <a href="http://www.w3.org/2012/pointerevents/">Pointer Events</a> working groups are also working on combined input modes.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2013/06/bbc-publish-draft-mobile-accessibility-guidelines-to-address-developer-assumptions/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

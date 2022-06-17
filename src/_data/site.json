@@ -1,0 +1,13 @@
+{
+  "showThemeCredit": true,
+  "name": "OpenDirective Blog",
+  "shortDesc": "Steve posts on his work at OpenDirective on Open Web Development, Accessibility and Music Technology.",
+  "url": "https://opendirective.net",
+  "authorEmail": "steve@opendirective.com",
+  "authorHandle": "@SteveALee",
+  "authorName": "Steve Lee",
+  "enableThirdPartyComments": false,
+  "maxPostsPerPage": 5,
+  "xxxpaymentPointer": "$ilp.uphold.com/MggmnFEyQqhk",
+  "faviconPath": "/images/favicon.png"
+}

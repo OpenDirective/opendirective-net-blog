@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+
+	>
+<channel>
+	<title>Comments on: Azure App Service &#038; Azure Functions SKU Comparison Matrix, plus Application Insights</title>
+	<atom:link href="/azureserverless/2017/03/27/azure-app-service-azure-functions-sku-comparison-matrix-plus-application-insights/feed/" rel="self" type="application/rss+xml" />
+	<link>/azureserverless/2017/03/27/azure-app-service-azure-functions-sku-comparison-matrix-plus-application-insights/</link>
+	<description>Using Microsoft Azure in a Serverless mode</description>
+	<lastBuildDate>Tue, 12 Sep 2017 00:24:54 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+</channel>
+</rss>

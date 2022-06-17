@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>mobile a11y &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/category/mobile-a11y/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>BBC publish draft mobile accessibility guidelines to address developer &#8216;assumptions&#8217;</title>
+		<link>/openingaccessibility/2013/06/bbc-publish-draft-mobile-accessibility-guidelines-to-address-developer-assumptions/</link>
+		<comments>/openingaccessibility/2013/06/bbc-publish-draft-mobile-accessibility-guidelines-to-address-developer-assumptions/#respond</comments>
+		<pubDate>Wed, 19 Jun 2013 10:10:03 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[mobile a11y]]></category>
+		<category><![CDATA[opena11y]]></category>
+		<category><![CDATA[web a11y]]></category>
+		<category><![CDATA[Win8]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=179</guid>
+		<description><![CDATA[Whilst guidelines for web accessibility have been in existence for several years and are slowly evolving, until now there has been a lack of best practices targeted specifically at the additional complications of mobile accessibility (web or native). This is &#8230; <a href="/openingaccessibility/2013/06/bbc-publish-draft-mobile-accessibility-guidelines-to-address-developer-assumptions/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Whilst guidelines for web accessibility have been in existence for several years and are slowly evolving, until now there has been a lack of best practices targeted specifically at the additional complications of mobile accessibility (web or native). This is especially important now mobile use is so predominant and I believe is globally in the majority due to so many people outside the affluent West having phones and not computers.</p>
+<p>Yesterday Henny Swan finally made an exciting official tweet:</p>
+<blockquote><p>Introducing the Draft BBC Mobile Accessibility Standards and Guidelines:<a href="http://t.co/5brg5IDZoD" target="_blank" rel="nofollow">bbc.co.uk/blogs/internet…</a><a title="Mobile" href="https://hootsuite.com/dashboard#">#Mobile</a><a title="Development" href="https://hootsuite.com/dashboard#">#Development</a><a title="Design" href="https://hootsuite.com/dashboard#">#Design</a><a title="BBC" href="https://hootsuite.com/dashboard#">#BBC</a></p></blockquote>
+<p>Henny also <a href="http://www.iheni.com/draft-bbc-mobile-accessibility-guidelines/">blogged</a> and Gareth Ford Williams followed up with more details on LinkedIn</p>
+<blockquote><p>Just to let you all know the Draft BBC Mobile Accessibility Guidelines were published today. You can find them on the Future Media Standards and Guidelines site at:<a href="http://www.linkedin.com/redir/redirect?url=http%3A%2F%2Fwww%2Ebbc%2Eco%2Euk%2Fguidelines%2Ffuturemedia%2Faccessibility%2Fmobile_access%2Eshtml&amp;urlhash=MY3u" target="_blank">http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile_access.shtml</a></p>
+<p>A blog post about them is here: <a href="http://www.linkedin.com/redir/redirect?url=http%3A%2F%2Fwww%2Ebbc%2Eco%2Euk%2Fblogs%2Finternet%2Fposts%2FAccessibility-Mobile-Apps&amp;urlhash=FT_l" target="_blank">http://www.bbc.co.uk/blogs/internet/posts/Accessibility-Mobile-Apps</a></p>
+<p>The guidelines are in accessible PDF and Word format at the moment but should be in a much more digestible and usable format soon so watch this space.<br />
+These standards have been developed over the last 18 months and have been developed and tested using the following mobile projects: BBC Olympics, BBC Sport, BBC iPlayer, BBC iPlayer Radio and BBC Weather.</p>
+<p>We are asking for feedback to identify areas of focus for the the further development of the guidelines and any comments, would be greatly welcome.</p>
+<p>Best Regards,</p>
+<p>Gareth Ford Williams<br />
+Head of Accessibility, BBC Future Media</p></blockquote>
+<p>This is an excellent start and should help raise awareness of the issues amongst commissioners, designers and developers and so improve the accessibility quality of apps and mobile tech in general.</p>
+<div id="attachment_193" style="width: 310px" class="wp-caption aligncenter"><a href="/openingaccessibility/wp-content/uploads/2013/06/mobilea11y.jpg"><img class="size-medium wp-image-193" alt="User viewing mobile screen with a magnifying glass" src="/openingaccessibility/wp-content/uploads/2013/06/mobilea11y-300x211.jpg" width="300" height="211" srcset="/openingaccessibility/wp-content/uploads/2013/06/mobilea11y-300x211.jpg 300w, /openingaccessibility/wp-content/uploads/2013/06/mobilea11y.jpg 480w" sizes="(max-width: 300px) 100vw, 300px" /></a><p class="wp-caption-text">Image by Hajime NAKANO http://www.flickr.com/photos/jetalone/</p></div>
+<p style="text-align: center;">So just what exactly are the extra accessibility issues introduced by mobile tech? Well I like to think that accessibility boils down to this simple design mantra:</p>
+<blockquote><p>Don&#8217;t make assumptions about how users will access your content or app.</p></blockquote>
+<p>Obviously any engineering or craft activity has to make some assumptions or nothing useful would ever be created. However the assumptions can and should be minimised within meaningful constraints if we want to avoid excluding users (and so reducing market).</p>
+<p>For example, it&#8217;s a good idea to not assume that all users will be using a mouse and can easily interpret visual-only cues. These assumptions were initially thought of in the context of users with disabilities, though some folks (myself included) pointed out they effect a much wider usage. For example, many users prefer to use only a keyboard for speed of access and  a search engine &#8220;spider robot&#8221; is effectively a blind user.  In fact a few years ago there was a hot debate over if accessibility should be primarily for people with disabilities or of general utility. Fortunately, this soon blew over and accessibility efforts are now concentrated on improving accessibility for all users and use cases.</p>
+<p>With the rapid rise in mobile technologies (and I include all portable formats in that definition) it soon became clear that &#8220;contextual disability&#8221; also occurs and needs to be specifically addressed. For example in bright light conditions the screen becomes hard  to read, if not impossible. thus, adaptations usually designed for people with low vision or blindness are potentially usefully for all users in certain common circumstances. Another example is that when driving a car verbal interactions are much more appropriate so hands and eyes can be used for safe navigation.</p>
+<p>Another design assumption has become apparent with the very wide variation in screen size and resolution  across devices (eg Apple&#8217;s retina displays).  In the early days of the web this was not an issue as screen size was a small range and as text was the content the browser was free to reflow to any screen size/resolution. However as I found when trying to make my first ever website with graphics look good on both 19&#8243; and 13&#8243; monitors, it isn&#8217;t that easy to accommodate variations. In fact given the state of browsers and HTML then I gave up.</p>
+<p>Now we have a name for handling variation in screen resolution on the web; &#8216;<a href="http://en.wikipedia.org/wiki/Responsive_web_design">Responsive design</a>&#8216;. With this a few core techniques allow the user experience to be adjusted according to screen size. At this point in time however, the technology such as CSS media queries is still a little immature, certainly when compared to some native solutions I have used. However this is a hot topic with solutions like <a href="http://dev.w3.org/csswg/css-grid/">CSS Grid Layout</a> looking very interesting. We can expect rapid improvements.</p>
+<p>In addition to screen size variation, the almost ubiquitous use of touch technology on mobile devices provides a new challenge for designers wishing to target multiple devices. Leading the charge are web apps and widgets which offer a path to creating solutions that can run on devices ranging from small screen mobile with touch to traditional desktop with large monitor, keyboard and mouse. In this space the W3C and others are working on <a href="http://www.w3.org/2010/webevents/">new specifications for handling different input modes</a> in unified ways.</p>
+<p>Windows 8 appears to be targeting this world of portable and desktop devices and their different interaction modes. At the moment it&#8217;s somewhat schizophrenic with both the Windows Store Apps and traditional Windows 7 style desktop sides being quite separate. However I think we can expect Microsoft to learn and develop the user experience rapidly. What is of special interest is that Windows Store apps can be created using the key W3C specified open technologies (actually, this may be the preferred technology). This allows portable solutions to be more easily developed. Add the fact that Microsoft now play an active part in web standardisation efforts, we can expect improvements in the device and accessibility support in both Windows and web solutions.</p>
+<p>A final assumption is more an issue of device and operating system manufacturers not supporting interaction methods available on desktop and that are commonly used by people with disabilities. In particular people with physical disabilities who use simple switch devices to interact have had little access to mobile devices. On the desktop, switches are nowadays connected as USB devices (often simulating games controllers) but very few mobile devices have USB sockets. Bluetooth is a viable alternative and for example Komodo OpenLab&#8217;s <a href="http://komodoopenlab.com/tecla/">Tecla</a> switch access device uses this approach to provide switch control of Android and iOS devices. An exciting development here is that iOS 7 includes switch controlled scanning and so we can hope Android and Windows will take note and follow.</p>
+<p>In some ways it&#8217;s reassuring that mainstream developers are hitting and addressing many of the issues that the accessibility community has be working on for some time. We can expect faster and more innovative solutions. As long as accessibility remains firmly on the agenda and the accessibility community keeps up the highly effective work to help ensure vendors keep their eye on the ball..</p>
+<p>Along with the <a href="http://www.w3.org/Mobile/">W3C Mobile web Initiative</a>,  the BBC draft guidelines have an important part to play as we collectively figure out how to remove damaging assumptions and create usable and accessible solutions that are available on a wide range of platform formats. As the authors point out, these are a starting point and they welcome the discussion on how to move forward.</p>
+<p>As a footnote, the <a href="http://www.cloud4all.info/">Cloud4All</a> EU project is exploring automatic personalisation of devices according to a users accessibility preferences profile. This will act as a way to help remove the sensitivity to designer assumptions by applying the best available adjustments. An important part of this work is context awareness.</p>
+<p>[Update 2013-06-20] in addition to the W3C Web Events working group the <a href="http://www.w3.org/WAI/IndieUI/">IndieUI</a> and <a href="http://www.w3.org/2012/pointerevents/">Pointer Events</a> working groups are also working on combined input modes.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2013/06/bbc-publish-draft-mobile-accessibility-guidelines-to-address-developer-assumptions/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

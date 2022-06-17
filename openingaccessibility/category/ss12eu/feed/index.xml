@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>ss12eu &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/category/ss12eu/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>SS12 EU Student assistive technology competition a success at AAATE conference</title>
+		<link>/openingaccessibility/2013/09/ss12-eu-student-assistive-technology-competition-a-success-at-aaate-conference/</link>
+		<comments>/openingaccessibility/2013/09/ss12-eu-student-assistive-technology-competition-a-success-at-aaate-conference/#respond</comments>
+		<pubDate>Sat, 21 Sep 2013 12:42:33 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[Assistve Technology]]></category>
+		<category><![CDATA[opensource]]></category>
+		<category><![CDATA[ss12eu]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=242</guid>
+		<description><![CDATA[[Updated 23/09/2013 &#8211; added posters, code and photograph] The second SS12 EU assistive technology (AT) competition held as part of the  AAATE 2013 conference culminated in the announcement of the winning student team as part of the closing session. As with the previous SS12 EU during ICCHP, &#8230; <a href="/openingaccessibility/2013/09/ss12-eu-student-assistive-technology-competition-a-success-at-aaate-conference/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p><strong>[Updated 23/09/2013 &#8211; added posters, code and photograph]</strong></p>
+<p>The second <a href="http://ss12.info/Europe/">SS12 EU</a> assistive technology (AT) competition held as part of the  <a href="http://www.aaate2013.eu/">AAATE 2013</a> conference culminated in the announcement of the winning student team as part of the closing session. As with the previous SS12 EU during <a href="http://www.icchp.org/">ICCHP</a>, and indeed previous events run in the United States of America, the students presented interesting and well executed assistive technology ideas. The winners hard work was rewarded with a trophy, certificates and a Nexus 7 tablet for each team member.</p>
+<p style="text-align: center;"><a href="/openingaccessibility/wp-content/uploads/2013/09/SS12.jpg"><img class="size-full wp-image-247  aligncenter" alt="SS12" src="/openingaccessibility/wp-content/uploads/2013/09/SS12.jpg" width="150" height="81" /></a></p>
+<p>The five teams of 2 or 3 students each presented the AT projects they had chosen to work on during the last semester (or in one case holiday). They are in no particular order:</p>
+<ul>
+<li><a href="http://www.univ-paris8.fr/">Université Paris 8</a> a smartphone sign language communicator for interactions with hearing people. <a href="/openingaccessibility/wp-content/uploads/2013/09/Poster_Frankreich_AAATE.pdf">Frankreich team poster</a>.</li>
+<li><a href="http://www.muni.cz/">Masaryk University</a> with a email extension for sending sign language video messages. <a href="/openingaccessibility/wp-content/uploads/2013/09/Poster_Masaryk_AAATE.pdf">Masaryk team poster</a>.</li>
+<li><a href="http://www.tuke.sk/tuke/university">Technical University of Košice</a> with a smartphone photographic text to speech device for the visually impared.  <a href="/openingaccessibility/wp-content/uploads/2013/09/Poster_Kosice_2_AAATE.pdf">Kosice team poster</a>. <a href="https://sourceforge.net/projects/lynxsightmobile/">LynxSight code</a>.</li>
+<li><a href="http://www.dundee.ac.uk/">University of Dundee</a> &#8211; with a photo sharing system for older people and their relatives. <a href="/openingaccessibility/wp-content/uploads/2013/09/Poster_Dundee_2_AAATE.pdf">Dundee team poster</a>. <a href="https://github.com/Phreakerr/KithandKin">Kith and Kin code.</a></li>
+<li><a href="http://www.jku.at/content">Johannes Kepler University Linz</a> with touch tablet Braille keyboard. <a href="/openingaccessibility/wp-content/uploads/2013/09/Poster_JKU_AAATE.pdf">JKU team poster</a>. <a href="https://github.com/jkuiis/SS12_JKU_2013_BrailleKeyboard">Braille Keyboard code.</a></li>
+</ul>
+<p><strong>And the winner is &#8230;&#8230; Johannes Kepler University </strong>with their Touch Braille keyboard.</p>
+<div id="attachment_253" style="width: 310px" class="wp-caption aligncenter"><a href="/openingaccessibility/wp-content/uploads/2013/09/SS122013.jpg"><img class="size-medium wp-image-253" alt="The SS12 teams and judges (Sean is behind camera)" src="/openingaccessibility/wp-content/uploads/2013/09/SS122013-300x225.jpg" width="300" height="225" srcset="/openingaccessibility/wp-content/uploads/2013/09/SS122013-300x225.jpg 300w, /openingaccessibility/wp-content/uploads/2013/09/SS122013.jpg 1024w" sizes="(max-width: 300px) 100vw, 300px" /></a><p class="wp-caption-text">The SS12 teams and judges (Sean is behind camera)</p></div>
+<p>The award presentation was part of a week of activity designed to enable the students to learn as much as possible about Assitive Technology research, products and services. These activities include introductions to a wide range of topics from the SS12 EU team as well as access to conference all sessions. <a href="http://www.linkedin.com/profile/view?id=18438577">Stanley Lam</a> described the history and aims of <a href="http://www.projectpossibility.org/">Project:Possibility</a>, the originators of SS12.  <a href="http://www.linkedin.com/profile/view?id=82677648">Sean Goggin</a>, chair of Project:Possibility, introduced the seminal <a href="http://www.csun.edu/cod/conference/">CSUN conference</a>, from the perspective of a member of the conference organising team.  <a href="http://www.linkedin.com/profile/view?id=113095174">Neel Shearer</a> discussed working in a commercial environment.  I gave a high level introduction to open development and it&#8217;s application to AT.</p>
+<p style="text-align: center;"><a href="/openingaccessibility/wp-content/uploads/2013/09/ProjPoss.jpg"><img class="aligncenter  wp-image-246" alt="Project:Possibility" src="/openingaccessibility/wp-content/uploads/2013/09/ProjPoss.jpg" width="266" height="130" /></a></p>
+<p>Critically, the students were given registration to the AAATE conference, one of the premier conferences for those working the field.  They also placed posters describing their projects. Of course, the social activities in a selection of Vilamoura (Portugese Algarve) restaurants and bars were an important highlight for all. Naturally, the students and others involved in SS12 had T-shirts to clearly identify them as a group. Ensuring all this activity ran smoothly, <a href="http://www.linkedin.com/profile/view?id=3844402">Andrea Petz</a> was kept fully occupied.</p>
+<div id="attachment_248" style="width: 220px" class="wp-caption aligncenter"><a href="/openingaccessibility/wp-content/uploads/2013/09/AAATE.jpg"><img class=" wp-image-248" alt="AAATE" src="/openingaccessibility/wp-content/uploads/2013/09/AAATE-300x286.jpg" width="210" height="200" srcset="/openingaccessibility/wp-content/uploads/2013/09/AAATE-300x286.jpg 300w, /openingaccessibility/wp-content/uploads/2013/09/AAATE.jpg 494w" sizes="(max-width: 210px) 100vw, 210px" /></a><p class="wp-caption-text">AAATE logo</p></div>
+<p>The AAATE conference forms an important part of <a href="http://www.aaate.net/">AAATE</a>&#8216;s mission to advance AT quality and uptake. This activity meshes well with that of Project:Possibility, namely to introduce computer science students to the worlds of AT and accessibility. In the EU the SS12 organisers, led by <a href="http://www.linkedin.com/profile/view?id=28345939">Klaus Meissenburger</a>, are also keen to embed AT modules into more university computing courses.</p>
+<p>Finally we raise a big &#8220;thank you&#8221; to our <a href="http://ss12.info/Europe/">sponsors</a> for enabling us to run such a great event this year.</p>
+<p>We&#8217;re looking forward to even more student teams and increased impact on AT awareness next year at ICCHP 2014. we hope you can join us. If you would like to enter a student team next year then keep an eye on the <a href="http://www.aaate.net/ProjectPossibility">AAATE Project:Possibility page</a> and the <a href="http://www.icchp.org/call/projectpossibility">ICCHP SS12 page</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2013/09/ss12-eu-student-assistive-technology-competition-a-success-at-aaate-conference/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

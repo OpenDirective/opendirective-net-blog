@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: ZTE Open &#8211; upgrading to Firefox OS 1.2</title>
+	<atom:link href="/openingaccessibility/2014/04/zte-open-upgrading-to-firefox-os-1-2/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility/2014/04/zte-open-upgrading-to-firefox-os-1-2/</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Tue, 24 Jul 2018 09:34:38 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>By: Steve</title>
+		<link>/openingaccessibility/2014/04/zte-open-upgrading-to-firefox-os-1-2/#comment-13315</link>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+		<pubDate>Sun, 04 May 2014 16:05:09 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=351#comment-13315</guid>
+		<description><![CDATA[Shukri, from what I can work out 1.1 fastboot is suppose to work after ZTE fixed and updated an earlier broken release (same version number). However, I could not get it to function but rather found another way to upload the img files - see my next post - /openingaccessibility/2014/04/success-firefox-os-1-4-built-and-running-on-zte-open. If you really want fastboot you might be able to rebuild the boot.img to replace the broken one, I&#039;ve come across a couple of post that do this: 
+http://www.gizbeat.com/4223/how-to-build-firefox-os-1-3-2/
+http://blog.chellinsky.net/putting-firefox-os-v1-4-on-a-zte-open/]]></description>
+		<content:encoded><![CDATA[<p>Shukri, from what I can work out 1.1 fastboot is suppose to work after ZTE fixed and updated an earlier broken release (same version number). However, I could not get it to function but rather found another way to upload the img files &#8211; see my next post &#8211; <a href="/openingaccessibility/2014/04/success-firefox-os-1-4-built-and-running-on-zte-open" rel="nofollow">/openingaccessibility/2014/04/success-firefox-os-1-4-built-and-running-on-zte-open</a>. If you really want fastboot you might be able to rebuild the boot.img to replace the broken one, I&#8217;ve come across a couple of post that do this:<br />
+<a href="http://www.gizbeat.com/4223/how-to-build-firefox-os-1-3-2/" rel="nofollow">http://www.gizbeat.com/4223/how-to-build-firefox-os-1-3-2/</a><br />
+<a href="http://blog.chellinsky.net/putting-firefox-os-v1-4-on-a-zte-open/" rel="nofollow">http://blog.chellinsky.net/putting-firefox-os-v1-4-on-a-zte-open/</a></p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Shukri</title>
+		<link>/openingaccessibility/2014/04/zte-open-upgrading-to-firefox-os-1-2/#comment-13311</link>
+		<dc:creator><![CDATA[Shukri]]></dc:creator>
+		<pubDate>Sun, 04 May 2014 14:35:04 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=351#comment-13311</guid>
+		<description><![CDATA[Hi, I have the US version of ZTE Open and updated to (first) V1.0 and then V1.1 on their official site. However, now that I wanted to update to V1.2, I can&#039;t use fastboot anymore. I tried going into the site you mention, only adb devices work, but fastboot devices doesn&#039;t and I can&#039;t restart the phone using fastboot. Any help?]]></description>
+		<content:encoded><![CDATA[<p>Hi, I have the US version of ZTE Open and updated to (first) V1.0 and then V1.1 on their official site. However, now that I wanted to update to V1.2, I can&#8217;t use fastboot anymore. I tried going into the site you mention, only adb devices work, but fastboot devices doesn&#8217;t and I can&#8217;t restart the phone using fastboot. Any help?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Success! Firefox OS 1.4 built and running on ZTE Open &#124; Opening Accessibility</title>
+		<link>/openingaccessibility/2014/04/zte-open-upgrading-to-firefox-os-1-2/#comment-12520</link>
+		<dc:creator><![CDATA[Success! Firefox OS 1.4 built and running on ZTE Open &#124; Opening Accessibility]]></dc:creator>
+		<pubDate>Sun, 13 Apr 2014 14:45:21 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=351#comment-12520</guid>
+		<description><![CDATA[[&#8230;] &#8592; ZTE Open &#8211; upgrading to Firefox OS 1.2 [&#8230;]]]></description>
+		<content:encoded><![CDATA[<p>[&#8230;] &larr; ZTE Open &#8211; upgrading to Firefox OS 1.2 [&#8230;]</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: ZTE Open – upgrading to Firefox OS 1.2 &#124; Opening Accessibility &#124; SmartphonesSmartphones</title>
+		<link>/openingaccessibility/2014/04/zte-open-upgrading-to-firefox-os-1-2/#comment-12409</link>
+		<dc:creator><![CDATA[ZTE Open – upgrading to Firefox OS 1.2 &#124; Opening Accessibility &#124; SmartphonesSmartphones]]></dc:creator>
+		<pubDate>Fri, 11 Apr 2014 01:26:41 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=351#comment-12409</guid>
+		<description><![CDATA[[&#8230;] Here is the original post: ZTE Open – upgrading to Firefox OS 1.2 &#124; Opening Accessibility [&#8230;]]]></description>
+		<content:encoded><![CDATA[<p>[&#8230;] Here is the original post: ZTE Open – upgrading to Firefox OS 1.2 | Opening Accessibility [&#8230;]</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

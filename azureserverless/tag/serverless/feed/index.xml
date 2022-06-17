@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+>
+
+<channel>
+	<title>serverless &#8211; AzureServerless</title>
+	<atom:link href="/azureserverless/tag/serverless/feed/" rel="self" type="application/rss+xml" />
+	<link>/azureserverless/</link>
+	<description>Using Microsoft Azure in a Serverless mode</description>
+	<lastBuildDate>Tue, 05 Sep 2017 08:46:08 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+
+<image>
+	<url>/azureserverless/wp-content/uploads/2016/11/cropped-Functions-32x32.png</url>
+	<title>serverless &#8211; AzureServerless</title>
+	<link>/azureserverless/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">119351739</site>	<item>
+		<title>Using Serverless Azure Functions with Auth0 and Google APIs</title>
+		<link>/azureserverless/2017/03/15/using-serverless-azure-functions-with-auth0-and-google-apis/</link>
+		<comments>/azureserverless/2017/03/15/using-serverless-azure-functions-with-auth0-and-google-apis/#respond</comments>
+		<pubDate>Wed, 15 Mar 2017 12:12:31 +0000</pubDate>
+		<dc:creator><![CDATA[steve@opendirective.com]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[auth0]]></category>
+		<category><![CDATA[Functions]]></category>
+		<category><![CDATA[serverless]]></category>
+
+		<guid isPermaLink="false">/azureserverless/?p=230</guid>
+		<description><![CDATA[[Update 08 April 2017: The Auth0 post Navigating RS256 and JWKS describes RS256 in more detail, including an endpoint for accessing your Auth0 Public key] This post covers the following user story and appears as a guest post on the Auth0 blog. As a user, I want to log into [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>[Update 08 April 2017: The Auth0 post <a title="Published: April 03, 2017" href="https://auth0.com/blog/navigating-rs256-and-jwks/">Navigating RS256 and JWKS</a> describes RS256 in more detail, including an endpoint for accessing your Auth0 Public key]</p>
+<p>This post covers the following user story and appears as a <a href="https://auth0.com/blog/using-serverless-azure-functions-with-auth0-and-google-apis/">guest post on the Auth0 blog</a>.</p>
+<blockquote><p>As a user, I want to log into the app with my Google account so I get a list of my Google Photos albums.</p></blockquote>
+<p>The backend stack is Nodejs on Azure Functions calling Auth0 and the Google Photos Api via the request module. The client side is a plain old HTML + JavaScript app using the Auth0 Lock for user login in.</p>
+<p>NB &#8211; for clarity I left out code to check the API access token from Auth0. Normally you would check the user claims to see if is allowed to use the Function at all.</p>
+<p>The code is available as <a href="https://gitlab.com/azureserverless/auth0idp/">GitLab project auth0idp</a>.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>/azureserverless/2017/03/15/using-serverless-azure-functions-with-auth0-and-google-apis/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">230</post-id>	</item>
+		<item>
+		<title>Using reactive streams on serverless with cyclejs, xstream and Azure Functions</title>
+		<link>/azureserverless/2017/02/25/using-reactive-streams-on-serverless-with-cyclejs-xstream-and-azure-functions/</link>
+		<comments>/azureserverless/2017/02/25/using-reactive-streams-on-serverless-with-cyclejs-xstream-and-azure-functions/#respond</comments>
+		<pubDate>Sat, 25 Feb 2017 11:18:31 +0000</pubDate>
+		<dc:creator><![CDATA[steve@opendirective.com]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[reactive]]></category>
+		<category><![CDATA[serverless]]></category>
+
+		<guid isPermaLink="false">/azureserverless/?p=222</guid>
+		<description><![CDATA[This post originally appeared on my accessibility blog &#8211; Opening Accessibility] [ Update 2016-10-23 the code is now in the cyclejs community repo] During development of my latest SaaS product, Brian, I&#8217;ve settled on a couple of key architectural decisions. For the Frontend I&#8217;m using Reactive programming (RP) with streams [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>This post originally appeared on my accessibility blog &#8211; <a href="http://opendirective.net/blog/2016/10/exploring-reactive-streams-with-serverless-xstream-cyclejs-and-azure-functions/">Opening Accessibility</a>]</p>
+<p>[ Update 2016-10-23 the code is now in the <a href="https://github.com/cyclejs-community/cycle-serverless">cyclejs community repo</a>]</p>
+<p>During development of my latest SaaS product, Brian, I&#8217;ve settled on a couple of key architectural decisions. For the Frontend I&#8217;m using Reactive programming (RP) with streams and for the backend I&#8217;ve decided on the &#8216;Serverless&#8217; (FaaS) approach. Specifically, I&#8217;m using  Andre Stalz&#8217;s <a href="http://staltz.com/xstream">xstream</a> with the incredibly light &#8216;framework&#8217; <a href="https://cycle.js.org/">cyclejs</a> (but cyclejs supports other streaming libs, including the excellent <a href="https://rxjs.codeplex.com/">RxJS</a>) . Microsoft&#8217;s <a href="https://azure.microsoft.com/en-us/services/functions/">Azure Functions</a> give a FaaS solution backed-up by many other options including BaaS &amp; PaaS should they be required. This post looks at using them together on the backend.</p>
+<div style="width: 285px" class="wp-caption alignleft"><img src="https://cycle.js.org/img/cyclejs_logo.svg" alt="Cyclejs logo" width="275" height="275" /><p class="wp-caption-text">Cyclejs</p></div>
+<div style="width: 287px" class="wp-caption alignleft"><img src="http://stiller.co.il/blog/wp-content/uploads/2016/04/Azure-Functions-Logo.png" alt="Azure Functions logo" width="277" height="278" /><p class="wp-caption-text">Azure Functions</p></div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>I&#8217;m happy that the trade-offs and benefits with these approaches should meet my requirements. Namely, achieving  rapid development by focussing energy higher &#8216;up the stack&#8217;. I want to concentrate on innovation of user features and &#8216;business logic&#8217; and not boilerplate or DevOps. From my early explorations I think Serverless and cyclejs manage to hit sweet spots of benefit and learning curve. However, they are most definitely not silver bullets, having wrinkles all their own that take time and effort to learn and overcome.</p>
+<p>When I initially created Functions code using a traditional imperative style I rapidly found I missed the RP style I&#8217;d become familiar with when using CycleJS with RxJS. It&#8217;s a style that gets under your skin once you make the mental shift. Perhaps my background in real-time async communications predisposes me to seeing the benefits of asynchronous handling of streams. But whatever, I thought it would be fun to try it in the serverless context. At least both front and back ends would then be similar in architecture.</p>
+<p>You may wonder why on earth I would consider using RP in a FaaS context. After all, the  FaaS architecture is all about small functions which are run once triggered and then quickly end. Thus, it would seem there isn&#8217;t much scope for streams when there is single trigger input event plus perhaps another data source or two.  One often touted advantage of RP is that it&#8217;s pure functions are easier to test, but that&#8217;s also a recommend practice with FaaS so that&#8217;s not an obvious advantage for having RP as well as FaaS.</p>
+<p>One reason for wanting to use RP is that any non trivial functions are likely to have other asynchronous event sources, including SaaS requests and database updates over REST. Even so, there are other less tangible benefits of RP with cyclejs that I personally I found over imperative code style:</p>
+<ul>
+<li>Loose coupling through reactive observers</li>
+<li>Declarative style married to functional programming techniques</li>
+<li>Separation of input, output side effects from the &#8220;pure&#8221; business logic</li>
+</ul>
+<p>Together these engender a clean high-level way to describe program logic. Bugs also appear to be reduced and it also enables testing without excessive mocking due to the absence of side effects in the main code. Sometimes however, debugging can be more involved due to current tooling supporting imperative and not reactive. However, tooling is starting to appear as more turn to RP.</p>
+<p>So what are the differences found when running xstream and cyclejs on Azure Functions environment compared to the usual browser (and sometimes nodejs) contexts?Surprisingly few it turns out. Fortunately, Functions builds on Azure Web Apps which supports nodejs and express. Better, it&#8217;s node 6.x that is provided which includes all those key ES6 features that really help clean up RP code. Another plus is that the cycle HTTP driver works fine on node.</p>
+<p>In this implementation I&#8217;ve taken the approach of providing a cycle runtime in each Azure Function. Effectively, each Function is a component in the cycle sense of the word, though connections between components will have to be via HTTP, queues or other out of process couplings. This approach seems to be the a good choice as you can use Cyclejs or not for any individual function, depending on the complexity and preferences. As the Functions run time is open source there is scope to explore different and more deeply embedded approaches.</p>
+<p>So without further a-do here&#8217;s the Functions driver code.</p><pre class="crayon-plain-tag">const xs = require('xstream').default
+
+module.exports = function makeFunctionsDriver(context, dispwrap, inArgs) {
+
+    function driver(s$) {
+        s$.addListener({ next: (i) =&gt; { setTimeout(() =&gt; {  // next tick to allow other listenerns to be iterated
+                                            context.res = i 
+                                            if (dispwrap &amp;&amp;
+                                                typeof dispwrap.disposer === 'function') {
+                                                dispwrap.disposer()
+                                            }
+                                            context.done()
+                                            }, 1)
+                         },   
+                         error: () =&gt; {},
+                         complete: () =&gt; {}
+        })
+
+        return xs.createWithMemory({
+            start: listener =&gt; {
+                setTimeout(() =&gt; {listener.next({context, inArgs})}, 1)
+            },
+            stop: () =&gt; {},
+        })
+
+  
+    }
+
+    const logger = a =&gt; context.log(a)
+    return {driver, logger}
+}</pre><p>As with all drivers, the Function driver is there to handle useful side effects such as input and output. In this case it converts the Function inputs (&#8220;context&#8221; and an array of input bindings) into a source stream. It also sinks a stream containing the function&#8217;s output. This also acts as a signal that the function should complete (the driver calls context.done).  The sink also disposes of the streams created by run() for cleanup (this adds a little implementation complexity due to a forward declaration and JS&#8217;s lack of true pass-by-reference).</p>
+<p>It turns out that using console.log is not useful in Functions, rather the alternative context.log is used. Thus, we also provide a Log driver that uses this channel. This is also used with xstream&#8217;s debug operator, which fortunately accepts a function argument as well as a value. I also decided the FunctionsDriver factory would return the log function itself as well as the driver. In this way nearly all the FaaS platform dependencies are encapsulated in the driver. This makes it possible to write a version for AWS Lamda or other serverless frameworks.</p>
+<p>Here&#8217;s an example usage for a HTTP Function. It starts a 1 second ticker and on the 3rd tick makes a REST API request. It then returns the first item from the response in function output. The code demonstrates the use of all the driver features and the clarity of RP with cyclejs.</p><pre class="crayon-plain-tag">const xs = require('xstream').default
+const run = require('@cycle/xstream-run').run
+const makeHTTPDriver = require('@cycle/http').makeHTTPDriver
+const makeFunctionsDriver = require('./functionsDriver.js')
+
+module.exports = function (context, ...inArgs) {
+    const dispwrap = {}             // because JS doesn't do pass-by-ref
+    const {driver: functionsDriver, logger} = makeFunctionsDriver(context, dispwrap, inArgs)
+
+    const drivers = {
+        FaaS: functionsDriver,
+        HTTP: makeHTTPDriver(),
+        log: msg$ =&gt; { msg$.addListener({next: msg =&gt; logger(`${msg}`) }) }
+    }
+
+    dispwrap.disposer = run(main, drivers)
+   
+    function main(sources) {
+        const input$ = sources.FaaS
+            .map((s) =&gt; `context.req.originalUrl: ${s.context.req.originalUrl} /
+                         inArgs[0]: ${JSON.stringify(s.inArgs[0])}`)
+            
+        const ticks$ = xs.periodic(1000)
+            .map(t =&gt; (t + 1) * 100)
+        
+        const log$ = xs.merge(input$, ticks$)
+
+        const trigger$ = ticks$
+            .drop(2)
+            .debug((i) =&gt; logger(`trigger tick: ${i}`))
+ 
+        const request$ = trigger$
+            .map(() =&gt; ({
+                            url: 'http://jsonplaceholder.typicode.com/users/1',
+                            method: 'GET'
+                        }))
+
+        const response$ = sources.HTTP
+            .select()
+            .flatten()
+        const user1Data$ = response$.map(response =&gt; response.body)
+        const exit$ = user1Data$
+            .map(u =&gt; ({ status: 200, body: u}))
+
+        return {
+            FaaS: exit$,
+            log: log$,
+            HTTP: request$
+        }
+    }
+}</pre><p>One issue that needs to be ironed out is sometimes exceptions such as syntax errors get lost and not presented in the Functions Logs. That&#8217;s probably xstream not re throwing captured exceptions. For now the fix is to put try&#8230;catch(log) blocks around parts of the code to get visibility.</p>
+<p>What do you think. Does this approach work for you?</p>
+]]></content:encoded>
+			<wfw:commentRss>/azureserverless/2017/02/25/using-reactive-streams-on-serverless-with-cyclejs-xstream-and-azure-functions/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">222</post-id>	</item>
+		<item>
+		<title>Serverless Schmerverless: what do we mean by &#8220;serverless&#8221;?</title>
+		<link>/azureserverless/2017/01/15/serverless-schmerverless-what-do-we-mean-by-serverless/</link>
+		<comments>/azureserverless/2017/01/15/serverless-schmerverless-what-do-we-mean-by-serverless/#respond</comments>
+		<pubDate>Sun, 15 Jan 2017 15:30:56 +0000</pubDate>
+		<dc:creator><![CDATA[steve@opendirective.com]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Azure]]></category>
+		<category><![CDATA[serverless]]></category>
+
+		<guid isPermaLink="false">/azureserverless/?p=197</guid>
+		<description><![CDATA[[Update 25 Jan 17: I just had to add the image from Swardley] The debate about the name &#8220;serverless has calmed down a tad but may never completely go away. However, we need to move on and so I thought I should state what we have in mind here at [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>[Update 25 Jan 17: I just had to add the image from Swardley]</p>
+<p>The debate about the name &#8220;serverless has calmed down a tad but may never completely go away. However, we need to move on and so I thought I should state what we have in mind here at Azure Serverless. The main reason for doing so, is that rather than just hoping &#8220;the entire silly thing will go away&#8221; it will help shape what we post about here.</p>
+<p><img class="media-image" src="https://pbs.twimg.com/media/C2-UdKtWQAAK_Yi.jpg:large" alt="" data-height="1005" data-width="2047" /><a class="account-group js-account-group js-action-profile js-user-profile-link js-nav" href="https://twitter.com/swardley" data-user-id="8592732"><strong class="fullname js-action-profile-name show-popup-with-id" data-aria-label-part="">swardley</strong> ‏<span class="username js-action-profile-name" data-aria-label-part=""><s>@</s><b>swardley</b></span></a><small class="time"></small> -The entire history of the PaaS vs Serverless debate, in one simple graphic</p>
+<p>&nbsp;</p>
+<p>Firstly, lets say one thing: did anyone ever complain about &#8220;Wireless&#8221; involving lots of wires? Both in the user&#8217;s radio receiver and the transmitters, studios etc&#8230;. Of course not, it&#8217;s a matter of point of view. With Serverless, as with Wireless, from the user perspective, we are largey free of the need to manage or otherwise worry about the pesky thing in question <img src="https://s.w.org/images/core/emoji/11/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Move along please there&#8217;s nothing to see here&#8230;.</p>
+<p>When we categorise developer and deployment infrastructure we soon realise there is a graduated contimuum, with certain points on the spectum being identified and named. But, those terms end up getting used for a broad subspectrum of closely related concepts and they don&#8217;t always cleanly apply to a specific implementation. What&#8217;s important is the specific features provided and how they help us get stuff out to users.</p>
+<p>Thus our &#8216;hosting&#8217; continuum stretches from self hosted boxes in the office, though remotely installing our favourite applications on 3rd party managed hardware and software, to fully managed apps where we supply a little config or perhaps some macros if we feel brave.</p>
+<p>Not suprisingly it&#8217;s the same when we look at the skills required by those creating and managing software used by people. At one end we have pure jobbing developers who never see their code in production, to full time SysOps who never produce any code but a very skilled in setting parameters etc.</p>
+<p>When exploring development and deployment environments deployed to the the cloud we have a range of choices in how much we outsource to others, including the nice Microsoft folks providing the Microsoft Azure services.</p>
+<p>We can work with a bare machine (aka IaaS eg Azure Virtual machines), or have the Operating System and other platform software such as node.js  managed for us (aka PaaS eg Azure Web Apps). Going further along the continum we can simply provide code fragmets that run in a managed context (#FaaS, Azure Functions). Then, there is Azure Logic Apps (Workflow as a service WaaS) which abstracts code away to configuration (almost SaaS).</p>
+<p>From another angle we have various services like SQL databases managed for us. Plus data or object storage. In addition to use from backend code, a client app running in a webbrowser or a mobile app can use these services. Additionally in this context, we have access to useful services for managing APIs or notifications (BaaS, eg Azure API Apps). Often both the back end service and client libraries are made available for our use.</p>
+<p>Oh, then there&#8217;s the provisioning facitilies provided for scaling out our running software horizontaly and vertically. We can mange that ourselves at one end of the scale. Or have autoscaling at the other. Fortunately, with cut offs in the advent of misuse.</p>
+<p>Containers are yet another aspect and depending on your perspect might be little more than an abstraction away from bare VMs (IaaS++) to somehing more akin to PaaS if you use and extend pre existing images.</p>
+<p>So given this rich ecosystem, what <strong>do we</strong> mean by &#8220;Serverless&#8221;? Well it&#8217;s certainly well into the managed end of the spectrum. Definitely Azure Functions (FaaS) and LogiApps (WaaS)Certainly, the App Services PaaS level service will be covered. Given AzureFunctions is an open source framework running on WebJobs we may include that layer as well. And also, other Azure BaaS services like Storage (Queues, Blobs) and databases (SQL, DocumentDB) which are important in many a solution. Ditto Authenticon services. And since LogicApps has connectors to SaaS we might include some of these.</p>
+<p>Regardless of Swardley&#8217;s image above, we may also include the more managed aspects of  containers (Azure Container Servers, ACS).</p>
+<p>To be honest we may post on pretty much anything that gets us nearer to working on useful solutions and not having to rummage around the lower reaches of the stack, either as Devs or SysOps (OK, DevOps).</p>
+<p>Given this is such a fast evolving space we would not want to be too constrained so as to exlude newer technologies that are certain to appear. Thus, the previous paragraph is our working defintion for our posts and tweets. Enjoy!</p>
+<p>PS Apologies if for you, Serverless === FaaS. You&#8217;ll need a narrow band filter for our content.</p>
+]]></content:encoded>
+			<wfw:commentRss>/azureserverless/2017/01/15/serverless-schmerverless-what-do-we-mean-by-serverless/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">197</post-id>	</item>
+	</channel>
+</rss>

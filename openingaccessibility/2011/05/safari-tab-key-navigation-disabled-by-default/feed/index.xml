@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Safari tab key navigation disabled by default</title>
+	<atom:link href="/openingaccessibility/2011/05/safari-tab-key-navigation-disabled-by-default/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility/2011/05/safari-tab-key-navigation-disabled-by-default/</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Tue, 24 Jul 2018 09:34:38 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>By: Yingying</title>
+		<link>/openingaccessibility/2011/05/safari-tab-key-navigation-disabled-by-default/#comment-108</link>
+		<dc:creator><![CDATA[Yingying]]></dc:creator>
+		<pubDate>Wed, 14 Sep 2011 18:32:32 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=23#comment-108</guid>
+		<description><![CDATA[Thanks for the article. I didn&#039;t realized the Safari disabled tabs before I saw your article. Although with mouse, a lot of users use Tab key very often. I think we do need to pay attention to this for the websites.]]></description>
+		<content:encoded><![CDATA[<p>Thanks for the article. I didn&#8217;t realized the Safari disabled tabs before I saw your article. Although with mouse, a lot of users use Tab key very often. I think we do need to pay attention to this for the websites.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: stevelee</title>
+		<link>/openingaccessibility/2011/05/safari-tab-key-navigation-disabled-by-default/#comment-48</link>
+		<dc:creator><![CDATA[stevelee]]></dc:creator>
+		<pubDate>Tue, 26 Jul 2011 08:50:28 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=23#comment-48</guid>
+		<description><![CDATA[Thanks for that Matt - I see you are right and that&#039;s an improvement. 
+
+It&#039;s a shame that Alt+tab no longer switches between Windows in Lion - but then it never worked quite the same as Windows and Linux, which was annoying.]]></description>
+		<content:encoded><![CDATA[<p>Thanks for that Matt &#8211; I see you are right and that&#8217;s an improvement. </p>
+<p>It&#8217;s a shame that Alt+tab no longer switches between Windows in Lion &#8211; but then it never worked quite the same as Windows and Linux, which was annoying.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Matt</title>
+		<link>/openingaccessibility/2011/05/safari-tab-key-navigation-disabled-by-default/#comment-47</link>
+		<dc:creator><![CDATA[Matt]]></dc:creator>
+		<pubDate>Tue, 26 Jul 2011 05:29:49 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=23#comment-47</guid>
+		<description><![CDATA[Safari now uses the key combo option+tab to visit all links on a page...]]></description>
+		<content:encoded><![CDATA[<p>Safari now uses the key combo option+tab to visit all links on a page&#8230;</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: stevelee</title>
+		<link>/openingaccessibility/2011/05/safari-tab-key-navigation-disabled-by-default/#comment-24</link>
+		<dc:creator><![CDATA[stevelee]]></dc:creator>
+		<pubDate>Thu, 16 Jun 2011 07:59:59 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=23#comment-24</guid>
+		<description><![CDATA[And there&#039;s always Firefox]]></description>
+		<content:encoded><![CDATA[<p>And there&#8217;s always Firefox</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Paul</title>
+		<link>/openingaccessibility/2011/05/safari-tab-key-navigation-disabled-by-default/#comment-23</link>
+		<dc:creator><![CDATA[Paul]]></dc:creator>
+		<pubDate>Wed, 15 Jun 2011 19:36:27 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=23#comment-23</guid>
+		<description><![CDATA[Thanks for the article. That&#039;s one of the things that Safari frustrated me with and consequently caused me to stop using the browser. I&#039;m kinda over Google Chrome so i might have a reason to switch back.]]></description>
+		<content:encoded><![CDATA[<p>Thanks for the article. That&#8217;s one of the things that Safari frustrated me with and consequently caused me to stop using the browser. I&#8217;m kinda over Google Chrome so i might have a reason to switch back.</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

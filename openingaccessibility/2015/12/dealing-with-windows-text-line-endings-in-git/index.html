@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<title>Dealing with Windows text line endings in git | Opening Accessibility</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="stylesheet" type="text/css" media="all" href="/openingaccessibility/wp-content/themes/accessible/style.css" />
+<link rel="pingback" href="/openingaccessibility/xmlrpc.php" />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Opening Accessibility &raquo; Feed" href="/openingaccessibility/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Opening Accessibility &raquo; Comments Feed" href="/openingaccessibility/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Opening Accessibility &raquo; Dealing with Windows text line endings in git Comments Feed" href="/openingaccessibility/2015/12/dealing-with-windows-text-line-endings-in-git/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.8"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='crayon-css'  href='/openingaccessibility/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<script type='text/javascript' src='/openingaccessibility/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='/openingaccessibility/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/openingaccessibility/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta'></script>
+<link rel='https://api.w.org/' href='/openingaccessibility/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/openingaccessibility/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="/openingaccessibility/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Working with Windows native code from node.js' href='/openingaccessibility/2015/10/working-with-windows-native-code-from-node-js/' />
+<link rel='next' title='Writing portable npm build scripts' href='/openingaccessibility/2015/12/writing-portable-npm-build-scripts/' />
+<meta name="generator" content="WordPress 4.9.8" />
+<link rel="canonical" href="/openingaccessibility/2015/12/dealing-with-windows-text-line-endings-in-git/" />
+<link rel='shortlink' href='/openingaccessibility/?p=595' />
+<link rel="alternate" type="application/json+oembed" href="/openingaccessibility/wp-json/oembed/1.0/embed?url=%2F2015%2F12%2Fdealing-with-windows-text-line-endings-in-git%2F" />
+<link rel="alternate" type="text/xml+oembed" href="/openingaccessibility/wp-json/oembed/1.0/embed?url=%2F2015%2F12%2Fdealing-with-windows-text-line-endings-in-git%2F&#038;format=xml" />
+
+<!-- Bad Behavior 2.2.22 run time: 5.174 ms -->
+</head>
+
+<body class="post-template-default single single-post postid-595 single-format-standard">
+<div id="wrapper" class="hfeed">
+	<div id="header">
+		<div id="masthead">
+			<div id="branding" role="banner">
+								<div id="site-title">
+					<span>
+						<a href="/openingaccessibility/" title="Opening Accessibility" rel="home">Opening Accessibility</a>
+					</span>
+				</div>
+				<div id="site-description">Where open source joins accessibility</div>
+
+										<img src="/openingaccessibility/wp-content/uploads/2013/02/copy-cropped-Lapland-gateway.jpg" width="940" height="198" alt="" />
+								</div><!-- #branding -->
+
+			<div id="access" role="navigation">
+			  				<div class="skip-link screen-reader-text"><a href="#content" title="Skip to content">Skip to content</a></div>
+								<div class="menu"><ul>
+<li ><a href="/openingaccessibility/">Home</a></li><li class="page_item page-item-8"><a href="/openingaccessibility/about/">About</a></li>
+</ul></div>
+			</div><!-- #access -->
+		</div><!-- #masthead -->
+	</div><!-- #header -->
+
+	<div id="main">
+
+		<div id="container">
+			<div id="content" role="main">
+
+			
+
+				<div id="nav-above" class="navigation">
+					<div class="nav-previous"><a href="/openingaccessibility/2015/10/working-with-windows-native-code-from-node-js/" rel="prev"><span class="meta-nav">&larr;</span> Working with Windows native code from node.js</a></div>
+					<div class="nav-next"><a href="/openingaccessibility/2015/12/writing-portable-npm-build-scripts/" rel="next">Writing portable npm build scripts <span class="meta-nav">&rarr;</span></a></div>
+				</div><!-- #nav-above -->
+
+				<div id="post-595" class="post-595 post type-post status-publish format-standard hentry category-development category-windows tag-git">
+					<h1 class="entry-title">Dealing with Windows text line endings in git</h1>
+
+					<div class="entry-meta">
+						<span class="meta-prep meta-prep-author">Posted on</span> <a href="/openingaccessibility/2015/12/dealing-with-windows-text-line-endings-in-git/" title="2:01 pm" rel="bookmark"><span class="entry-date">December 3, 2015</span></a> <span class="meta-sep">by</span> <span class="author vcard"><a class="url fn n" href="/openingaccessibility/author/steveopendirective-com/" title="View all posts by Steve">Steve</a></span>					</div><!-- .entry-meta -->
+
+					<div class="entry-content">
+						<h1>Text line endings on Windows: Still painful after all these years</h1>
+<p>Once upon a time, in the days of Microsoft MS-DOS development one of main pain points and source of bugs was the distinction between text and binary files. When you opened a file you had to say if it was to be accessed in binary or text mode. In text mode the file content was translated when you read or wrote a string of text, meaning you had to know the file contents and use the correct mode. Presumably this was done to keep files smaller as the translation was 2 specific characters in memory mapped to 1 specific character in the file. Fortunately this translation on rad or write issue has mostly completely disappeared now those 2 characters are stored in files by Windows. But the legacy of those 2 pesky characters still causes pain whenever developers share files on multiple platforms such as Windows, Linux and OS X.</p>
+<div style="width: 605px" class="wp-caption alignnone"><img class="detail__media__img-highres js-detail-img js-detail-img-high" src="https://images.duckduckgo.com/iu/?u=http%3A%2F%2Flcjapan.com%2Fos%2Fms-dos.jpg&amp;f=1" alt="A MS-DOS start prompt on screen waiting for the user to type a command" width="595" height="446" /><p class="wp-caption-text">A legacy from MS-DOS days lurks in Windows</p></div>
+<h1>Shake your carriage</h1>
+<p>The characters in question are used to mark the end of each line of text (except if automatic text wrapping occurs). You don&#8217;t see them but they&#8217;re lurking there waiting to catch you out, especially when sharing files between OSs or when using version control.</p>
+<p>These 2 characters are technically the ASCII control characters for <a href="https://en.wikipedia.org/wiki/Carriage_return">Carriage Return</a> (CR) and <a href="https://en.wikipedia.org/wiki/Newline">Newline or Line Feed</a> (LF). Note that control characters are a special group that rather than being printed invoke some sort of action. They hark back to the days of Teletype printers where CR would make the print head scoot back to the start of the line (carriage being the mechanism carrying the print head) and LF would move the print head down a line with out effecting the horizontal position. Thus, whenever a new line needed to be started a CR+ LF pair would be sent to the Teletype.</p>
+<p>These character are represented in various ways in text files and programs, in ASCII or UNICODE:</p>
+<ul>
+<li>CR
+<ul>
+<li>0x0D hex</li>
+<li>&#8220;\r&#8221; in strings</li>
+<li>Ctrl M or ^M</li>
+</ul>
+</li>
+<li>LF
+<ul>
+<li>0x0A hex</li>
+<li>&#8220;\n&#8221; in strings</li>
+<li>Ctrl J or ^J</li>
+</ul>
+</li>
+</ul>
+<p>We&#8217;ve kept this ancient legacy so that the end of every text line (newline) is marked by these characters. Actually, that&#8217;s not exactly true. Rather, each OS uses a different set of characters and that is the root cause of the problem,</p>
+<ul>
+<li>Linux uses LF only</li>
+<li>Windows sticks with CRLF</li>
+<li>OS X for a while used CR only but now uses LF</li>
+</ul>
+<p>As a quick aside, you can discover a file&#8217;s line endings by using the &#8220;file&#8221; command that comes with Linux tools for Windows like &#8220;Cygwin&#8221; or &#8220;<a href="https://git-for-windows.github.io/">Git for Windows</a>&#8220;. If any line endings are not LF it will tell you. You can also use editors like venerable <a href="https://notepad-plus-plus.org/">notepad++</a> which also lets you change the line ending format.</p>
+<h1>Return to the future</h1>
+<p>Life gets complicated when you need to share text files between these OSs, either directly (eg via network access) or by copying files, perhaps via version control tools.  You can try to perform translation to the native format whenever you copy or have tools that support either end of line. The danger with the later approach is not processing all text files or ending up with files with mixed line endings. Mixed line endings will confuse tools that often only check the start of files to determine line ending format. In either case, you&#8217;ll likely to get strange effects in editors such as joined lines or funny characters (eg ^M).</p>
+<p>This problem surfaces quite often now with open source development where contributors can be using any tools on any OS. In addition to sharing files via version control, developers sometime access files share files between a VM and the host OS without checking out to each.</p>
+<p>So perhaps the best approach is to standardise on a single  format for all your files, namely LF.  Fortunately these days most Windows programs that developers use support the LF only style, whether they are Windows native or ports of Linux tools.  The notable exception is dear old notepad, which still insists on a CRLF pair to end each line (not doubt as it&#8217;s just a &#8220;souped up&#8221; edit control and Windows use CRLF natively).</p>
+<p>There are of course still issues and the ubiquitous git version control is one culprit you are almost certain to stumble across.</p>
+<h1>Make sure you git the right newlines</h1>
+<p>By default git assumes that your workspace files will use the OS native newline format for all text files. It will also try to auto detect text files. Internally however,  git uses LF only (usually) and translates on Windows during checkin and checkout. This is configured by the &#8220;core.eol&#8221; and &#8220;core.autocrlf&#8221; settings which default to &#8220;CRLF&#8221; and &#8220;true&#8221; on Git for Windows. These are hardcoded and not set in any of the usual git config files.</p>
+<p>On the face of it this is good as you get OS specific end of lines on each platform, but only if you always check out to the operating system you are working on. However, as noted above, developers often share files across OSs  so unless they standardise on a single format they&#8217;re likely to hit problems.</p>
+<p>If you want to use LF universally for your project you need to configure git appropriately. These days that is pretty easy using <a href="https://www.kernel.org/pub/software/scm/git/docs/gitattributes.html">gitattributes</a>, usually in a .gitattributes file at the root of your project working tree. This overrides any &#8211;global, &#8211;system or local config settings thereby ensuring a consistent experience in the project. You might possibly need to specify &#8211;local config settings as well as some .gitattribute options fallback to those.</p>
+<p>The catch, just as in those MS-DOS days, is that you must not translate anything if the file is not pure text but is some other &#8220;binary&#8221; format, eg non XML based word processor files. If you translate these files you corrupt them, &#8220;simples&#8221;. Accordingly, git tries to auto detect text files but you can also explicitly declare which files are to be treated as either text or binary.</p>
+<h1>Gitting practical</h1>
+<p>This leads to 2 approaches to using LF everywhere:</p>
+<ul>
+<li>Tell git to never translate anything</li>
+<li>Tell git to always convert to LF in your workspace</li>
+</ul>
+<h2>Never translate</h2>
+<p>The first option seems safe but you&#8217;ll have to ensure all text files you [potentially] wish to share only ever contain LFs. That means making sure editors and other tools never use a CRLF when creating the file or editing lines. Not easy when CRLF is still the native Windows line ending.</p>
+<p>Enter <a href="http://editorconfig.org/">EditorConfig</a> to the rescue! This is a standard configuration file supported by many editors and that specifies format options including line endings. Thus, developers get a consistent editing experience and files are created the same way whatever editor or IDE they use. Some editors support EditorConfig directly and others have plugins. For example, the <a href="https://visualstudiogallery.msdn.microsoft.com/c8bccfe2-650c-4b42-bc5c-845e21f96328">Visual Studio extension</a> supports most options including line endings, but currently the <a href="https://marketplace.visualstudio.com/items/chrisdias.vscodeEditorConfig">Visual Studio Code extension</a> only supports indent style so is no use here.</p>
+<p>The way to stop git translating anything is to use a .gitattributes entry of <strong>&#8220;* -text</strong>&#8220;. This simply says nothing should be treated as text. You can always override for specific filename patterns, for example &#8220;*.txt eol=lf&#8221;.</p>
+<p>The other thing you can do is to ensure your development workflow includes a check for  CRLF line endings. For example, you can check all files, including binary, using something like &#8220;<strong><span class="pln">grep </span><span class="pun">&#8211;</span><span class="pln">Url $</span><span class="str">&#8216;\x0D&#8217;</span></strong><span class="pln"><strong> *</strong>&#8221; in &#8220;Git for Windows&#8221;. This will return 0 if any matches, 1 otherwise.</span></p>
+<h2>Always LF</h2>
+<p>Alternatively, you may want to use the second option of having git translate line endings to LF in your workspace. But, bear in mind it only translates on checkout. Thus any CRLFs will remain in your workspace until you go though a complete checkin/checkout cycle.  Once again you&#8217;ll probably want to use EditorConfig to specify LF end of lines for all new writes.</p>
+<p>To get CRLFs translated you&#8217;ll need to force git to checkout your files over the existing copies as by default it doesn&#8217;t want to. Otherwise you can leave your workspace in an strange intermediate state that is different from what anyone will experience when they clone or checkout the code. This could potentially be a source of hard to track bugs (though most unlikely). If you use Continuous Integration in your workflow then any potential problems will be quickly found.</p>
+<p>To be fare, git gives a loud warning when you are in state when a checkout will change the line endings. However that error is slightly confusing.</p>
+<div id="attachment_618" style="width: 999px" class="wp-caption aligncenter"><a href="/openingaccessibility/wp-content/uploads/2015/12/Untitled1.png"><img class="size-full wp-image-618" src="/openingaccessibility/wp-content/uploads/2015/12/Untitled1.png" alt="Git warning when line endings are not yet translated." width="989" height="117" srcset="/openingaccessibility/wp-content/uploads/2015/12/Untitled1.png 989w, /openingaccessibility/wp-content/uploads/2015/12/Untitled1-300x35.png 300w" sizes="(max-width: 989px) 100vw, 989px" /></a><p class="wp-caption-text">Git warning when line endings are not yet translated.</p></div>
+<p>Git and editors may also complain about the mixed line endings issue described above.</p>
+<p>To configure git for this option use <strong>&#8220;* eol=lf&#8221;</strong> in .gitattributes. As this will force all files to be treated as text and so converted on checkin <strong>make sure you explicitly mark any binary files</strong> with lines like &#8220;*.png binary&#8221;. If you don&#8217;t then you checked in file may be corrupt and you may not notice for some time and be stuck with a hard to fix problem.</p>
+<p>Note when you first set this option you&#8217;ll probably get a load of warnings and all files will appear to change. See the notes on .gitattributes end-of-line conversion for the steps to overcome this.</p>
+<h1>Coming soon</h1>
+<p>A gitattributes option to support &#8220;* text=auto eol=lf&#8221; has <a href="http://git.661346.n2.nabble.com/EOL-conversion-on-checkout-for-text-files-only-td7628470.html">been discussed</a>. This would turn on auto textfile detection and then use LF end of lines for any text files. Currently the &#8220;eol=lf&#8221; options turns on text handling for all files and so you need to carefully declare all binary files.  That&#8217;s good practice any way, as no doubt git could incorrectly detect, but at least it would not be critical. We should push for this option.</p>
+<p>By the way, Editor Config should soon support a &#8220;end_of_line=native&#8221; option that will use whatever line ending makes sense according to the OS. That will play better with the default git behaviour but doesn&#8217;t help when files are shared without checkout such as in VMs.</p>
+											</div><!-- .entry-content -->
+
+
+					<div class="entry-utility">
+						This entry was posted in <a href="/openingaccessibility/category/development/" rel="category tag">development</a>, <a href="/openingaccessibility/category/windows/" rel="category tag">Windows</a> and tagged <a href="/openingaccessibility/tag/git/" rel="tag">git</a>. Bookmark the <a href="/openingaccessibility/2015/12/dealing-with-windows-text-line-endings-in-git/" title="Permalink to Dealing with Windows text line endings in git" rel="bookmark">permalink</a>.											</div><!-- .entry-utility -->
+				</div><!-- #post-## -->
+
+				<div id="nav-below" class="navigation">
+					<div class="nav-previous"><a href="/openingaccessibility/2015/10/working-with-windows-native-code-from-node-js/" rel="prev"><span class="meta-nav">&larr;</span> Working with Windows native code from node.js</a></div>
+					<div class="nav-next"><a href="/openingaccessibility/2015/12/writing-portable-npm-build-scripts/" rel="next">Writing portable npm build scripts <span class="meta-nav">&rarr;</span></a></div>
+				</div><!-- #nav-below -->
+
+				<a href="#wrapper" class="skip-content screen-reader-text">Skip to top</a><h2 class="screen-reader-text">Comments</h2>
+			<div id="comments">
+
+
+
+	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/openingaccessibility/2015/12/dealing-with-windows-text-line-endings-in-git/#respond" style="display:none;">Cancel reply</a></small></h3>			<form action="/openingaccessibility/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+				<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" value="" size="30" maxlength="200" /></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='595' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="7e678257c3" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="22"/></p>			</form>
+			</div><!-- #respond -->
+	
+</div><!-- #comments -->
+
+
+			</div><!-- #content -->
+		</div><!-- #container -->
+
+<h2 class="screen-reader-text">More informations</h2>
+		<div id="primary" class="widget-area" role="complementary">
+			<ul class="xoxo">
+
+<li id="search-2" class="widget-container widget_search"><form role="search" method="get" id="searchform" class="searchform" action="/openingaccessibility/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s" />
+					<input type="submit" id="searchsubmit" value="Search" />
+				</div>
+			</form></li>		<li id="recent-posts-2" class="widget-container widget_recent_entries">		<h3 class="widget-title">Recent Posts</h3>		<ul>
+											<li>
+					<a href="/openingaccessibility/2017/03/at-last-true-grids-in-web-browsers/">At last — true grids in web browsers</a>
+									</li>
+											<li>
+					<a href="/openingaccessibility/2016/10/exploring-reactive-streams-with-serverless-xstream-cyclejs-and-azure-functions/">Using reactive streams on serverless with cyclejs, xstream and Azure Functions</a>
+									</li>
+											<li>
+					<a href="/openingaccessibility/2016/09/is-the-web-getting-less-webby/">Is the web getting less webby and will serverless make it worse?</a>
+									</li>
+											<li>
+					<a href="/openingaccessibility/2016/05/aws-azure-or-firebase-for-a-spa-browser-app/">AWS, Azure or Firebase for a SPA browser app? Nope, it&#8217;s Kinvey</a>
+									</li>
+											<li>
+					<a href="/openingaccessibility/2016/05/i-dont-care-about-the-os-just-give-me-my-web-apps/">&#8220;I don&#8217;t care about the OS, just give me my web Apps&#8221;</a>
+									</li>
+					</ul>
+		</li><li id="categories-2" class="widget-container widget_categories"><h3 class="widget-title">Categories</h3><form action="/openingaccessibility" method="get"><label class="screen-reader-text" for="cat">Categories</label><select  name='cat' id='cat' class='postform' >
+	<option value='-1'>Select Category</option>
+	<option class="level-0" value="5">a11y&nbsp;&nbsp;(12)</option>
+	<option class="level-0" value="32">age&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="16">Android&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="23">Apps&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="27">Assistve Technology&nbsp;&nbsp;(5)</option>
+	<option class="level-0" value="31">Audio&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="19">bass&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="20">dementia&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="28">development&nbsp;&nbsp;(12)</option>
+	<option class="level-0" value="53">devops&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="21">HTML&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="38">mobile&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="25">mobile a11y&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="18">music&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="3">opena11y&nbsp;&nbsp;(5)</option>
+	<option class="level-0" value="4">opensource&nbsp;&nbsp;(11)</option>
+	<option class="level-0" value="30">OS X&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="6">personal&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="34">PHP&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="55">serverless&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="29">ss12eu&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="1">Uncategorized&nbsp;&nbsp;(15)</option>
+	<option class="level-0" value="17">Video&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="9">web&nbsp;&nbsp;(10)</option>
+	<option class="level-0" value="26">web a11y&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="54">web apps&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="22">Win8&nbsp;&nbsp;(4)</option>
+	<option class="level-0" value="35">Windows&nbsp;&nbsp;(8)</option>
+	<option class="level-0" value="33">WordPress&nbsp;&nbsp;(1)</option>
+</select>
+</form>
+<script type='text/javascript'>
+/* <![CDATA[ */
+(function() {
+	var dropdown = document.getElementById( "cat" );
+	function onCatChange() {
+		if ( dropdown.options[ dropdown.selectedIndex ].value > 0 ) {
+			dropdown.parentNode.submit();
+		}
+	}
+	dropdown.onchange = onCatChange;
+})();
+/* ]]> */
+</script>
+
+</li><li id="linkcat-2" class="widget-container widget_links"><h3 class="widget-title">CMS Accessibility Blogs</h3>
+	<ul class='xoxo blogroll'>
+<li><a href="http://accessible.sprungmarker.de/" title="Home for Sylvia Egger&#8217;s Twenty Ten child theme and other musings">Accessibile Twitter</a></li>
+<li><a href="http://groups.drupal.org/accessibility">Drupal Accessibility group</a></li>
+<li><a href="http://make.wordpress.org/accessibility/" title="What it says on the tin &#8211; improving WP a11y">WordPress accessibility</a></li>
+
+	</ul>
+</li>
+<li id="linkcat-24" class="widget-container widget_links"><h3 class="widget-title">Web Accessibility Blogs</h3>
+	<ul class='xoxo blogroll'>
+<li><a href="http://www.456bereastreet.com/" title="Roger Johansson is one of the most active and knowledgeable accessibility bloggers.">456 Berea Street</a></li>
+<li><a href="https://medium.com/@dennisl/" title="Dennis E. Lembree&#8217;s blog (the man behind EasyChirp and @webaxe)">Dennis Lembrée</a></li>
+<li><a href="http://www.iheni.com/" title="Mobile and web accessibility goodness">Henny Swan</a></li>
+<li><a href="http://juicystudio.com/" title="Gez Lemon provides some of the most influential research and writing in the accessibility field, particularly on the technical aspects of accessibility and assistive technologies">Juicy Studio</a></li>
+<li><a href="http://blog.paciellogroup.com/" title="Blog from the leading supplier of commercial accessibility services and posts by the mighty Steve Faulkner">The Paciello Group</a></li>
+<li><a href="http://webaim.org/blog/" title="Jarrad and the crew at webAIM produce some of the best introductory and advanced articles on web accessibility">WebAIM</a></li>
+<li><a href="http://www.webaxe.org/" title="The Blog and podcast on Web Accessibility">WebAxe</a></li>
+
+	</ul>
+</li>
+<li id="meta-2" class="widget-container widget_meta"><h3 class="widget-title">Meta</h3>			<ul>
+						<li><a href="/openingaccessibility/wp-login.php">Log in</a></li>
+			<li><a href="/openingaccessibility/feed/">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="/openingaccessibility/comments/feed/">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>			</ul>
+			</li>			</ul>
+		</div><!-- #primary .widget-area -->
+
+	</div><!-- #main -->
+
+	<div id="footer" role="contentinfo">
+		<div id="colophon">
+
+<h2 class="screen-reader-text">More informations</h2>
+
+			<div id="site-info">
+				<a href="/openingaccessibility/" title="Opening Accessibility" rel="home">
+					Opening Accessibility				</a>
+			</div><!-- #site-info -->
+
+			<div id="site-generator">
+				<a href="#wrapper" class="skip-bottom screen-reader-text">Skip to top</a>				<a href="https://wordpress.org/" title="Semantic Personal Publishing Platform">Proudly powered by WordPress.</a>
+			</div><!-- #site-generator -->
+
+		</div><!-- #colophon -->
+	</div><!-- #footer -->
+
+</div><!-- #wrapper -->
+
+<script type='text/javascript' src='/openingaccessibility/wp-includes/js/comment-reply.min.js?ver=4.9.8'></script>
+<script type='text/javascript' src='/openingaccessibility/wp-includes/js/wp-embed.min.js?ver=4.9.8'></script>
+<script async="async" type='text/javascript' src='/openingaccessibility/wp-content/plugins/akismet/_inc/form.js?ver=4.0.8'></script>
+</body>
+</html>

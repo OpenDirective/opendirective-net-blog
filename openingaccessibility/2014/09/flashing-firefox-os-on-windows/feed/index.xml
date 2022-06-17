@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Flashing Mozilla Firefox OS Flame Phone on Windows</title>
+	<atom:link href="/openingaccessibility/2014/09/flashing-firefox-os-on-windows/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility/2014/09/flashing-firefox-os-on-windows/</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Tue, 24 Jul 2018 09:34:38 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>By: Steve</title>
+		<link>/openingaccessibility/2014/09/flashing-firefox-os-on-windows/#comment-32068</link>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+		<pubDate>Fri, 21 Aug 2015 12:58:58 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=443#comment-32068</guid>
+		<description><![CDATA[Sorry to hear that. Did you try running the bat from a commandline prompt? That way you&#039;ll see any errors.
+
+I&#039;m no longer working on this so can only suggest you contact the Firefox OS community for advise.
+
+Good luck]]></description>
+		<content:encoded><![CDATA[<p>Sorry to hear that. Did you try running the bat from a commandline prompt? That way you&#8217;ll see any errors.</p>
+<p>I&#8217;m no longer working on this so can only suggest you contact the Firefox OS community for advise.</p>
+<p>Good luck</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: ziad</title>
+		<link>/openingaccessibility/2014/09/flashing-firefox-os-on-windows/#comment-32064</link>
+		<dc:creator><![CDATA[ziad]]></dc:creator>
+		<pubDate>Fri, 21 Aug 2015 10:01:52 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=443#comment-32064</guid>
+		<description><![CDATA[Hello, 
+I found your zip file worked on windows  couple of month ago, but now it when I clicked flash.bat  , it gets open &#038; then get closed itself within seconds. I have also tired updating the latest b2g-XX.XX.en-US.android-arm.tar.gz and gaia.zip. Now, it&#039;s not working for me, please help]]></description>
+		<content:encoded><![CDATA[<p>Hello,<br />
+I found your zip file worked on windows  couple of month ago, but now it when I clicked flash.bat  , it gets open &amp; then get closed itself within seconds. I have also tired updating the latest b2g-XX.XX.en-US.android-arm.tar.gz and gaia.zip. Now, it&#8217;s not working for me, please help</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Steve</title>
+		<link>/openingaccessibility/2014/09/flashing-firefox-os-on-windows/#comment-20405</link>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+		<pubDate>Tue, 30 Sep 2014 10:16:09 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=443#comment-20405</guid>
+		<description><![CDATA[&gt; First chat is not a ‘d’ (for directory) means it consumes other file encodings like symbolic links, block device etc. as well? (c.f. http://bashshell.net/file-permissions-and-attributes/understanding-linux-file-types/)
+
+Oops a bug. However I doubt the others crop up often in Tar archives :)
+
+&gt; Hm, I wonder, what would happen, if there are strange characters in between
+
+Well . matches just about everything.
+
+&gt; NF is a built-in variable whose value is the number of fields
+
+Aha - thanks.]]></description>
+		<content:encoded><![CDATA[<p>> First chat is not a ‘d’ (for directory) means it consumes other file encodings like symbolic links, block device etc. as well? (c.f. <a href="http://bashshell.net/file-permissions-and-attributes/understanding-linux-file-types/" rel="nofollow">http://bashshell.net/file-permissions-and-attributes/understanding-linux-file-types/</a>)</p>
+<p>Oops a bug. However I doubt the others crop up often in Tar archives 🙂</p>
+<p>> Hm, I wonder, what would happen, if there are strange characters in between</p>
+<p>Well . matches just about everything.</p>
+<p>> NF is a built-in variable whose value is the number of fields</p>
+<p>Aha &#8211; thanks.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: André Jaenisch</title>
+		<link>/openingaccessibility/2014/09/flashing-firefox-os-on-windows/#comment-20401</link>
+		<dc:creator><![CDATA[André Jaenisch]]></dc:creator>
+		<pubDate>Tue, 30 Sep 2014 09:26:39 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=443#comment-20401</guid>
+		<description><![CDATA[First chat is not a &#039;d&#039; (for directory) means it consumes other file encodings like symbolic links, block device etc. as well? (c.f. http://bashshell.net/file-permissions-and-attributes/understanding-linux-file-types/)
+
+Hm, I wonder, what would happen, if there are strange characters in between … but that becomes academic :)
+
+Asterisk is explained here: https://www.gnu.org/software/gawk/manual/html_node/Regexp-Operators.html#index-asterisk-_0028_002a_0029_002c-_002a-operator_002c-as-regexp-operator
+
+&lt;q&gt;NF is a built-in variable whose value is the number of fields in the current record.&lt;/q&gt;
+Source: https://www.gnu.org/software/gawk/manual/html_node/Fields.html]]></description>
+		<content:encoded><![CDATA[<p>First chat is not a &#8216;d&#8217; (for directory) means it consumes other file encodings like symbolic links, block device etc. as well? (c.f. <a href="http://bashshell.net/file-permissions-and-attributes/understanding-linux-file-types/" rel="nofollow">http://bashshell.net/file-permissions-and-attributes/understanding-linux-file-types/</a>)</p>
+<p>Hm, I wonder, what would happen, if there are strange characters in between … but that becomes academic 🙂</p>
+<p>Asterisk is explained here: <a href="https://www.gnu.org/software/gawk/manual/html_node/Regexp-Operators.html#index-asterisk-_0028_002a_0029_002c-_002a-operator_002c-as-regexp-operator" rel="nofollow">https://www.gnu.org/software/gawk/manual/html_node/Regexp-Operators.html#index-asterisk-_0028_002a_0029_002c-_002a-operator_002c-as-regexp-operator</a></p>
+<p><q>NF is a built-in variable whose value is the number of fields in the current record.</q><br />
+Source: <a href="https://www.gnu.org/software/gawk/manual/html_node/Fields.html" rel="nofollow">https://www.gnu.org/software/gawk/manual/html_node/Fields.html</a></p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Steve</title>
+		<link>/openingaccessibility/2014/09/flashing-firefox-os-on-windows/#comment-20367</link>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+		<pubDate>Mon, 29 Sep 2014 18:21:47 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=443#comment-20367</guid>
+		<description><![CDATA[I read &quot;The original version of awk was written in 1977&quot;! So it&#039;s a punk language :)]]></description>
+		<content:encoded><![CDATA[<p>I read &#8220;The original version of awk was written in 1977&#8221;! So it&#8217;s a punk language 🙂</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Steve</title>
+		<link>/openingaccessibility/2014/09/flashing-firefox-os-on-windows/#comment-20366</link>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+		<pubDate>Mon, 29 Sep 2014 18:15:19 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=443#comment-20366</guid>
+		<description><![CDATA[Yes you are right! Awk is brilliant if you need to work on columns and rows. It&#039;s a little bit like SQL in that it&#039;s not a procedural approach. That line is a complete awk program - many are that small. They are of the form of multiple
+
+  Pattern { action }
+
+which are applied to each line (row) so when pattern matches action is performed. $ is used to reference columns from $1 to $NF (last - I&#039;ve no idea why NF). 
+
+~ means match regex. A = would be an exact match. !~ is doesn&#039;t match.
+
+Thus it boils  down to - when the the 1st column ($1) matches 1st char is not a &#039;d&#039; ([^d]) and last is a &#039;x&#039;(x$) then print &quot;/system&quot;/&lt;filename in last column&gt;.
+
+See https://www.gnu.org/software/gawk/manual/gawk.html
+
+Note in regex [] set letters are literal so [^d] is &quot;not d&quot; and not &#039;digit&#039;.
+
+You might be right - restricting .* could be better  but I think $ sorts it out as it as * is maximal match in awk (I hope) ;)
+
+Hth.]]></description>
+		<content:encoded><![CDATA[<p>Yes you are right! Awk is brilliant if you need to work on columns and rows. It&#8217;s a little bit like SQL in that it&#8217;s not a procedural approach. That line is a complete awk program &#8211; many are that small. They are of the form of multiple</p>
+<p>  Pattern { action }</p>
+<p>which are applied to each line (row) so when pattern matches action is performed. $ is used to reference columns from $1 to $NF (last &#8211; I&#8217;ve no idea why NF). </p>
+<p>~ means match regex. A = would be an exact match. !~ is doesn&#8217;t match.</p>
+<p>Thus it boils  down to &#8211; when the the 1st column ($1) matches 1st char is not a &#8216;d&#8217; ([^d]) and last is a &#8216;x'(x$) then print &#8220;/system&#8221;/<filename in last column>.</p>
+<p>See <a href="https://www.gnu.org/software/gawk/manual/gawk.html" rel="nofollow">https://www.gnu.org/software/gawk/manual/gawk.html</a></p>
+<p>Note in regex [] set letters are literal so [^d] is &#8220;not d&#8221; and not &#8216;digit&#8217;.</p>
+<p>You might be right &#8211; restricting .* could be better  but I think $ sorts it out as it as * is maximal match in awk (I hope) 😉</p>
+<p>Hth.</filename></p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Monday Sparks: Sony Xperia SP, Übersetzung, Flashen &#124; Firefox OS und Ich</title>
+		<link>/openingaccessibility/2014/09/flashing-firefox-os-on-windows/#comment-20365</link>
+		<dc:creator><![CDATA[Monday Sparks: Sony Xperia SP, Übersetzung, Flashen &#124; Firefox OS und Ich]]></dc:creator>
+		<pubDate>Mon, 29 Sep 2014 17:21:43 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=443#comment-20365</guid>
+		<description><![CDATA[[&#8230;] Mozilla Firefox OS Flame unter Windows flashen (englisch) 26.09. [&#8230;]]]></description>
+		<content:encoded><![CDATA[<p>[&#8230;] Mozilla Firefox OS Flame unter Windows flashen (englisch) 26.09. [&#8230;]</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: André Jaenisch</title>
+		<link>/openingaccessibility/2014/09/flashing-firefox-os-on-windows/#comment-20364</link>
+		<dc:creator><![CDATA[André Jaenisch]]></dc:creator>
+		<pubDate>Mon, 29 Sep 2014 17:14:31 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=443#comment-20364</guid>
+		<description><![CDATA[Hello, Steve,
+
+thanks for permitting my comment.
+
+Could you break the awk command down? I&#039;m familiar to RegEx, but awk is ... well awkward to me.
+
+From what I understand, &lt;code&gt;awk &#039;$1 ~ /^[^d].*x$/ {print &quot;/system/&quot; $NF}&#039;&lt;/code&gt; splits the line at whitespace, fetches the first field (the line with e.g. &lt;code&gt;drwxrwxrwx&lt;/code&gt; displaying the permission flags for user/group/others), looks for something beginning (^) with no digit ([^d]), followed by an arbitrary set (.*) of characters (why not restricting?) ending on x (x$) and then prints the match after a &quot;/string/&quot;.
+
+Am I right?
+What does ~ do here?
+
+Regards,
+
+
+André]]></description>
+		<content:encoded><![CDATA[<p>Hello, Steve,</p>
+<p>thanks for permitting my comment.</p>
+<p>Could you break the awk command down? I&#8217;m familiar to RegEx, but awk is &#8230; well awkward to me.</p>
+<p>From what I understand, <code>awk '$1 ~ /^[^d].*x$/ {print "/system/" $NF}'</code> splits the line at whitespace, fetches the first field (the line with e.g. <code>drwxrwxrwx</code> displaying the permission flags for user/group/others), looks for something beginning (^) with no digit ([^d]), followed by an arbitrary set (.*) of characters (why not restricting?) ending on x (x$) and then prints the match after a &#8220;/string/&#8221;.</p>
+<p>Am I right?<br />
+What does ~ do here?</p>
+<p>Regards,</p>
+<p>André</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Steve</title>
+		<link>/openingaccessibility/2014/09/flashing-firefox-os-on-windows/#comment-20362</link>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+		<pubDate>Mon, 29 Sep 2014 16:34:32 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=443#comment-20362</guid>
+		<description><![CDATA[André Thank you for taking the time to comment. 2 points here.
+1) It&#039;s not all files - just those marked executable in the .tar.gz archive (that&#039;s what awk is doing)
+2) I did adb shell ls -l to see what they were set to on the device when flashed from linux and I got 777
+I agree it seems a bit rash.]]></description>
+		<content:encoded><![CDATA[<p>André Thank you for taking the time to comment. 2 points here.<br />
+1) It&#8217;s not all files &#8211; just those marked executable in the .tar.gz archive (that&#8217;s what awk is doing)<br />
+2) I did adb shell ls -l to see what they were set to on the device when flashed from linux and I got 777<br />
+I agree it seems a bit rash.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: André Jaenisch</title>
+		<link>/openingaccessibility/2014/09/flashing-firefox-os-on-windows/#comment-20361</link>
+		<dc:creator><![CDATA[André Jaenisch]]></dc:creator>
+		<pubDate>Mon, 29 Sep 2014 16:28:39 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=443#comment-20361</guid>
+		<description><![CDATA[Hello,
+
+just a N.B. from just another GNU/Linux user: Are you sure you want to set the rwx-Flag (read, write, execute) for all files for everyone?
+
+It may be considered a security risk.
+
+Regards,
+
+
+André]]></description>
+		<content:encoded><![CDATA[<p>Hello,</p>
+<p>just a N.B. from just another GNU/Linux user: Are you sure you want to set the rwx-Flag (read, write, execute) for all files for everyone?</p>
+<p>It may be considered a security risk.</p>
+<p>Regards,</p>
+<p>André</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

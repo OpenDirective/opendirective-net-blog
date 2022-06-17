@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Writing portable npm build scripts</title>
+	<atom:link href="/openingaccessibility/2015/12/writing-portable-npm-build-scripts/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility/2015/12/writing-portable-npm-build-scripts/</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Tue, 24 Jul 2018 09:34:38 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>By: Steve</title>
+		<link>/openingaccessibility/2015/12/writing-portable-npm-build-scripts/#comment-40983</link>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+		<pubDate>Sun, 02 Apr 2017 17:56:09 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=624#comment-40983</guid>
+		<description><![CDATA[Very true! Thanks for the comments.]]></description>
+		<content:encoded><![CDATA[<p>Very true! Thanks for the comments.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: thorn0</title>
+		<link>/openingaccessibility/2015/12/writing-portable-npm-build-scripts/#comment-40982</link>
+		<dc:creator><![CDATA[thorn0]]></dc:creator>
+		<pubDate>Sun, 02 Apr 2017 17:21:57 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=624#comment-40982</guid>
+		<description><![CDATA[&quot;Operators &#038;&#038; &#124;&#124; &#038;  and &#124; all work pretty much the same in cmd and bash and offer a lot of power&quot;
+
+An important note: the &#038; operators doesn&#039;t work the same.]]></description>
+		<content:encoded><![CDATA[<p>&#8220;Operators &amp;&amp; || &amp;  and | all work pretty much the same in cmd and bash and offer a lot of power&#8221;</p>
+<p>An important note: the &amp; operators doesn&#8217;t work the same.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: More on portable npm scripts &#124; Opening Accessibility</title>
+		<link>/openingaccessibility/2015/12/writing-portable-npm-build-scripts/#comment-37584</link>
+		<dc:creator><![CDATA[More on portable npm scripts &#124; Opening Accessibility]]></dc:creator>
+		<pubDate>Thu, 17 Mar 2016 15:47:01 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=624#comment-37584</guid>
+		<description><![CDATA[[&#8230;] &#8592; Writing portable npm build scripts [&#8230;]]]></description>
+		<content:encoded><![CDATA[<p>[&#8230;] &larr; Writing portable npm build scripts [&#8230;]</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+>
+
+<channel>
+	<title>TypeScript &#8211; AzureServerless</title>
+	<atom:link href="/azureserverless/tag/typescript/feed/" rel="self" type="application/rss+xml" />
+	<link>/azureserverless/</link>
+	<description>Using Microsoft Azure in a Serverless mode</description>
+	<lastBuildDate>Tue, 05 Sep 2017 08:46:08 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+
+<image>
+	<url>/azureserverless/wp-content/uploads/2016/11/cropped-Functions-32x32.png</url>
+	<title>TypeScript &#8211; AzureServerless</title>
+	<link>/azureserverless/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">119351739</site>	<item>
+		<title>Watching TypeScript files while developing local Functions</title>
+		<link>/azureserverless/2017/08/22/watching-typescript-files-while-developing-local-functions/</link>
+		<comments>/azureserverless/2017/08/22/watching-typescript-files-while-developing-local-functions/#comments</comments>
+		<pubDate>Tue, 22 Aug 2017 09:15:08 +0000</pubDate>
+		<dc:creator><![CDATA[steve@opendirective.com]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Functions]]></category>
+		<category><![CDATA[TypeScript]]></category>
+
+		<guid isPermaLink="false">/azureserverless/?p=400</guid>
+		<description><![CDATA[[UPDATE 2017/09/04] Thanks to @LindyDonna for pointing out the hosts.json option to added extra directories to the host watch list. We no longer need to use Remy Sharp&#8217;s nodemon to restart the host. For front end development we&#8217;ve become used to automatic rebuild and run as TypeScript source files are [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>[UPDATE 2017/09/04] Thanks to <a href="http://twitter.com/lindydonna">@LindyDonna</a> for pointing out the <code>hosts.json</code> option to added extra directories to the host watch list. We no longer need to use Remy Sharp&#8217;s <code>nodemon</code> to restart the host.</p>
+<p>For front end development we&#8217;ve become used to automatic rebuild and run as TypeScript source files are edited. Webpack, for example, can be configured to watch files, transpile and reload into the dev server. That&#8217;s fast and efficient and hot module reloading makes things even smoother. A key to the speed is that only those files that change are processed, just like the old days with <code>make</code> for compiled languages (and unlike gulp, grunt etc).</p>
+<p>The Azure Function Core Tools host will fortunately monitor files and reload as required when a function app is running in the host. It only processes JavaScript files and there are no hooks to allow adding transpilation from TypeScript (see note below). But that&#8217;s not a real problem as the TypeScript compiler has a <code>--watch</code> option which will recompile and update the .js files, which then cause the host to reload them. We just need to run tsc and the function host as parallel tasks and <code>npm-run-all</code> handles that for us.</p>
+<p>By default the host only watches the files that contain function entry points, not any other files they include. That&#8217;s a problem if like me you have refactored so modules are shared between the Functions. However there is a handy <code>watchDirectories</code> option in <code>host.json</code> that lets you add extra directory trees to be monitored.</p>
+<p>My build process is to have the source in <code>functionApp\src</code> and build is in 2 steps into <code>functionApp\build</code> ;</p>
+<ul>
+<li>Copy all the .json files.</li>
+<li>Compile with tsc. The <code>tsconfig.json</code> uses the <code>outDir</code> option to compile <code>**/*.ts</code>.</li>
+</ul>
+<p>Modules shared between functions are in <code>_modules</code> folder. All the required dev config files and node_modules are in <code>functionApp</code>. See <a href="https://github.com/OpenDirective/brian/tree/master/functionApp">this example</a> for full details.</p>
+<p>Here&#8217;s a fragment of <code>package.json</code> that implements the watch, along with the build and start host scripts.</p><pre class="crayon-plain-tag">scripts: {
+    "build:func": "ncp functionApp/src functionApp/build --filter \\w\\.json &amp;&amp; tsc -p functionApp",
+    "start:funchost": "cd functionApp/build &amp;&amp; func host start --debug vscode &amp;&amp; cd ../..",
+    "watch:func": "npm-run-all -p \"build:func -- --watch\" start:funchost"
+}</pre><p>The very handy <code>npm-run all</code> lets us run both the build and Function host in parallel. As <code>tsc --watch</code> compiles all files before it watches them the host will reload all files after starting (I guess we could add a delay to stop this, but that is hacky and fragile)</p>
+<p>The <code>hosts.json</code> entry is as follows:</p><pre class="crayon-plain-tag">{
+    "watchDirectories": ["_modules"]
+}</pre><p>Here&#8217;s full details of the <a href="https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json">available <code>host.json</code> </a>options.</p>
+<p><strong>Footnote:</strong></p>
+<p>As an aside, I do plan to try changing the Core Tools to run <code>.ts</code> as well as <code>.js</code> files and then launch with <code>ts-node</code> which will set node to transpile and load the resulting  <code>.js</code> as part of <code>require('./module.ts')</code> handling. That will allow the processing of individual files as they change.</p>
+]]></content:encoded>
+			<wfw:commentRss>/azureserverless/2017/08/22/watching-typescript-files-while-developing-local-functions/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">400</post-id>	</item>
+		<item>
+		<title>Why use async/await for your JavaScript AzureFunctions?</title>
+		<link>/azureserverless/2017/08/20/why-use-asyncawait-for-your-javascript-azurefunctions/</link>
+		<comments>/azureserverless/2017/08/20/why-use-asyncawait-for-your-javascript-azurefunctions/#comments</comments>
+		<pubDate>Sun, 20 Aug 2017 12:45:02 +0000</pubDate>
+		<dc:creator><![CDATA[steve@opendirective.com]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Functions]]></category>
+		<category><![CDATA[TypeScript]]></category>
+
+		<guid isPermaLink="false">/azureserverless/?p=409</guid>
+		<description><![CDATA[I just reworked my previously posted code access a google photos album list to use async/await and think it gives a good account of itself. It&#8217;s not a massive change but I think easier to read and less  boiler plate. As Azure Functions only support nodejs 6.5.0, I switched to [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>I just reworked my previously posted code access a google photos album list to use async/await and think it gives a good account of itself. It&#8217;s not a massive change but I think easier to read and less  boiler plate.</p>
+<p>As Azure Functions only support nodejs 6.5.0, I switched to typescript in order to use async/await but I want to use it any way. More versions of node will be supported (it&#8217;s work in progresss) so you will be able to use async/await without typescript&#8217;s extra transpilation step.</p><pre class="crayon-plain-tag">function getPhotoAlbumsList( context, req ) {
+    getAdminAccessToken()
+        .then(({ object: { access_token } }) =&gt; {
+            const userId = req.user.sub
+            return getUserProfile(access_token, userId)
+        })
+        .then(({ object }) =&gt; {
+            const google_access_token = object.identities[0].access_token
+            return getPhotoAlbums(google_access_token)
+        })
+        .then(({ object: { feed: { entry } } }) =&gt; {
+            const titles = entry.map((ent: any) =&gt; ent.title.$t)
+            return {
+                status: 200,
+                body: JSON.stringify(titles),
+                headers: { 'Content-Type': 'application/json' }
+            }
+        })
+        .catch(err =&gt; {
+            return {
+                status: 400,
+                body: err.message
+            }
+        })
+        .then(res =&gt; {
+            context.done(null, res)
+        })
+}</pre><p>&nbsp;</p><pre class="crayon-plain-tag">async function getPhotoAlbumsList( context: HttpContext, req: Auth0FunctionRequest): Promise&lt;void&gt; {
+    try {
+        const { access_token: admin_access_token } = await getAdminAccessToken()
+        const userId = req.user.sub
+        const { identities } = await getUserProfile(admin_access_token, userId)
+        const google_access_token = identities[0].access_token
+        const titles = await getGooglePhotoAlbumList(google_access_token)
+        const titlesText = JSON.stringify(titles)
+        context.done(null, {
+            status: 200,
+            body: titlesText,
+            headers: { 'Content-Type': 'application/json' }
+        })
+    } catch (err) {
+        context.done(null, {
+            status: 400,
+            body: err.message
+        })
+    }
+}</pre><p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>/azureserverless/2017/08/20/why-use-asyncawait-for-your-javascript-azurefunctions/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">409</post-id>	</item>
+		<item>
+		<title>Using TypeScript in Azure Functions (and with Visual Studio Code)</title>
+		<link>/azureserverless/2017/07/16/using-typescript-in-azure-functions/</link>
+		<comments>/azureserverless/2017/07/16/using-typescript-in-azure-functions/#comments</comments>
+		<pubDate>Sun, 16 Jul 2017 10:00:51 +0000</pubDate>
+		<dc:creator><![CDATA[steve@opendirective.com]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Functions]]></category>
+		<category><![CDATA[TypeScript]]></category>
+
+		<guid isPermaLink="false">/azureserverless/?p=321</guid>
+		<description><![CDATA[I really like TypeScript and now use it in most projects that call for JavaScript, whether it&#8217;s for frontend code in a web browser or backend code run by Node.js. The pros and cons of TypeScript compared to JavaScript are well documented but for me the clincher is the excellent [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>I really like TypeScript and now use it in most projects that call for JavaScript, whether it&#8217;s for frontend code in a web browser or backend code run by Node.js. The pros and cons of TypeScript compared to JavaScript are well documented but for me the clincher is the excellent <a href="https://code.visualstudio.com/docs/editor/intellisense">IntelliSense</a> in Visual Studio Code (and other dev environments). While it&#8217;s early days for TypeScript support in Azure Functions it is relatively easy to use and provides a fantastic local development experience.</p>
+<p>In the context of Azure functions, another advantage of TypeScript is that we can escape the limitations of Node 6.5.0 currently supported by Functions and use newer JavaScript features such as <a href="https://blog.mariusschulz.com/2016/12/23/typescript-2-1-object-rest-and-spread">object rest and spread</a> (perfect for use in functional style code). The TypeScript &#8216;compiler&#8217; transpiles down to a specified earlier &#8216;version&#8217; of JavaScript as well as stripping out the type information.</p>
+<p>Use of TypeScript in Functions requires both running the tsc transpiler and accessing the Typings that describe the Functions&#8217; run-time environment types, for example, the &#8216;context&#8217; parameter and HTTP return code names.</p>
+<h2>Transpiling to Javascript</h2>
+<p>The are 2 approaches to transpiling TypeScript with Functions:</p>
+<p>1) Run the TypeScript compiler as part of the local build process and deploy the generated JavaScript to Azure Functions as usual. <span style="display: inline !important; float: none; background-color: transparent; color: #333333; cursor: text; font-family: Georgia,'Times New Roman','Bitstream Charter',Times,serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; line-height: 24px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;">It doesn&#8217;t matter if extra files like the TS source and map are also uploaded as they will be ignored by the Functions runtime.</span> Note that it&#8217;s not clear from Node.js documentation exactly what features of Javascript a given version of Node.js supports. Thus, a little trial and error could be required in setting the tsc &#8216;target&#8217; and &#8216;lib&#8217; options.</p>
+<p>2) Use ts-node and deploy the .ts files to the cloud FunctionApp. ts-node will intercept run time calls to require() and run the TypeScript compiler to create the JavaScript. The problem with this is that Node.js Functions cold start time is already very slow and this will just make it worse. I&#8217;ve not tried this at all so the interactions with Function Web UI and run time have not been tested. In fact, the web UI makes assumptions about files so there are bound to be issues.</p>
+<p>The tsc config for use on the development environment is pretty straight forward (see tsconfig.json below). We simply compile the index.ts in each function directory. You can easily add other TypeScript modules and libraries. These can per function, or more likely, <span style="display: inline !important; float: none; background-color: transparent; color: #333333; cursor: text; font-family: Georgia,'Times New Roman','Bitstream Charter',Times,serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; line-height: 24px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;">be shared by all the Functions in the Function App taking advantage of </span>the way modules are resolved by searching &#8216;node_modules&#8217; up the directory structure.</p>
+<p>In addition to setting the tsconfig.json for Node.js and the version we are using, we also configure it to get any helper injected functions from &#8216;tslib&#8217;. These small helper functions are by default in-lined in the generated JavaScript but if there are a lot of them using a shared copy creates less code (though that is unlikely to be a big issue).</p>
+<h2>Azure Functions&#8217; run-time Typings</h2>
+<p>The Functions&#8217; run-time Typings are available in the unofficial npm package <a href="https://github.com/ https://github.com/christopheranderson/azure-functions-typescript">azure-functions-typescript</a>. The package is installed as a dependency and required types imported in the TS source (see example below). A sample Function <a href="https://github.com/christopheranderson/azure-functions-typescript/tree/master/samples">is also provided</a> in this package which you can use as a template for your own TypeScript Functions.</p>
+<p>Note that currently, this package uses an old version of Typescript and the now depreciated Typings npm package. That should not matter for consuming the typings but you might want to look at the <a href="https://github.com/christopheranderson/azure-functions-typescript/pull/7/files">u<span style="background-color: transparent;">pdated </span>sample Function in this PR</a>.</p>
+<h2>Local Development with VSCode</h2>
+<p>Local development of TypeScript functions on Node.js is a fantastic experience with <a href="https://code.visualstudio.com/">Visual Studio Code</a> in combination with <a href="https://github.com/Azure/azure-functions-cli">Azure Functions Core Tools</a>. This local development capability is unique to Azure Functions amongst the Serverless providers.  Currently however, this is limited to Windows development (but not Unbuntu on Windows) due to a limitation of the core tools. This restriction is being worked on right now.</p>
+<p>You can easily run the tsc compilation and use the debugger. You can set breakpoints and watches in the TypeScript source files when mapfiles are generated and seen by the debugger. Any npm scripts defined in the &#8216;package.json&#8217; can be run from the command line as usual (including in code&#8217;s integrated terminal) or executed directly in code using it&#8217;s task runner features. You can also debug the generated JavaScript used by the Functions runtime. This is described in the Azure Functions Documentation on <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local">Local Development</a> and the code <a href="https://code.visualstudio.com/docs/editor/debugging">debugging documentation</a>.</p>
+<div id="attachment_328" style="width: 666px" class="wp-caption aligncenter"><img class="size-large wp-image-328" src="/azureserverless/wp-content/uploads/2017/07/Screenshot-28-1024x576.png" alt="" width="656" height="369" srcset="/azureserverless/wp-content/uploads/2017/07/Screenshot-28-1024x576.png 1024w, /azureserverless/wp-content/uploads/2017/07/Screenshot-28-300x169.png 300w, /azureserverless/wp-content/uploads/2017/07/Screenshot-28-768x432.png 768w" sizes="(max-width: 656px) 100vw, 656px" /><p class="wp-caption-text">Code stopped at a breakpoint in a local TypeScript Function</p></div>
+<p>Remember to use node 6.5.0 locally to match the Functions runtime and avoid any surprises. You might want to use <a href="https://github.com/coreybutler/nvm-windows">nvm-windows</a> to manage Node.js versions and easily switch between them.</p>
+<p>You may get excited to see that Azure Functions Core Tools offers TypeScript as a language option when interactively creating a function. Currently however, it only creates a faux TypeScript function with the input parameters typed as &#8216;any&#8217;. It does nothing to run tsc and does not include the Typings (yet). You&#8217;ll want to install the azure-functions-typescript package and set up the build as described above.</p>
+<h2>Deploying and Live Debugging</h2>
+<p>Once you have the transpiled JavaScript you can deploy it using any of the usual methods that Azure Functions or the Core Tools provide, possibly as part of a build or CI / CD process. You might want to use the <a href="https://github.com/christopheranderson/azure-functions-webpack-sample">webpack bundler</a> package to create a single JavaScript file including both your Functions and required packages from node_modules, thus speeding up cold starts.</p>
+<p>However, when it comes to editing or debugging in the Functions cloud Web UI you only have access to the Javascript not the TypeScript source. It might be possible to upload the TypeScript source with map files and figure out how to get the web UI to us it in errors and the editor (see improvements below). Hopefully the functions team will do this soon.</p>
+<p>That said, the range of code transformations that tsc performs are limited, especially if you get the TS config options for &#8216;target&#8217; and &#8216;lib&#8217; properly matching the version of NodeJs being used. Thus, debugging the JavaScript is not so difficult to manage, manually mapping back to the TypeScript source.</p>
+<p>Of course, live debugging is a general weakness of Serverless in and micro services and you&#8217;ll no doubt be using logging and/or App Insights to track what&#8217;s going on :).</p>
+<h2>Details</h2>
+<p>Here&#8217;s an outline of the process you could follow.</p>
+<ul>
+<li>Create a function with Azure Functions Core Tools and use something like the following files (for an HTTPTrigger example)</li>
+<li>Test and debug the function locally with VSCode, possibly connected to live Azure resources such as queues (so cool)</li>
+<li>Deploy and test.</li>
+</ul>
+<p>package.json</p><pre class="crayon-plain-tag">{
+  "name": "ts-functions",
+  "main": "index.js",
+  "scripts": {
+    "dev": "func host start --debug vscode",
+    "publish": "func azure functionapp publish HttpTriggerTS", 
+    "build": "tsc",
+    "watch": "tsc -w"
+  },
+  "dependencies": {
+    "azure-functions-typescript": "../../azure-functions-typescript/",
+    "tslib": "^1.7.1"
+  },
+  "devDependencies": {
+    "typescript": "^2.4.1"
+  }
+}</pre><p>tsconfig.json</p><pre class="crayon-plain-tag">{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es2015",
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": true,
+        "strict": true,
+        "importHelpers": true
+    },
+    "include": [
+        "**/index.ts"
+    ]
+}</pre><p>&lt;Function&gt;/index.ts</p><pre class="crayon-plain-tag">import {HttpContext, IFunctionRequest, HttpStatusCodes} from 'azure-functions-typescript'
+
+export = function index(context: HttpContext, req: IFunctionRequest): void {
+    context.log("TypeScript HTTP trigger function processed a request.");
+
+    if (req.query.name || (req.body &amp;&amp; req.body.name)) {
+        context.res = {
+            // status: 200, /* Defaults to 200 */
+            body: {
+                message: `Hello there ${(req.query.name || req.body.name)}`
+            }
+        };
+    } else {
+        context.res = {
+            status: HttpStatusCodes.BadRequest,
+            body: "Please pass a name on the query string or in the request body"
+        };
+    }
+    context.done();
+};</pre><p>[UPDATE: 2017-08-20] NB the export format <code>export =</code> is important. It sets the commonjs <code>module.exports</code> variable to be the function. The is especially important when using the &#8216;azure-functions-pack&#8217; to bundle the code for fast upload and cold starts. If you don&#8217;t use this form then function run time will not find the Function entry point, giveing a 500 error form Azure or a more specific error in local development.</p>
+<h2>Ideas for Improvements</h2>
+<p>A minor disadvantage with this simplistic setup is that the generated Function &#8216;index.js&#8217; and map are located in the same folder as the &#8216;index.ts&#8217;. This means the Function runtime will  correctly locate &#8216;index.js&#8217; but makes it more complex to not check in the generated files into version control. An improvement would be to config TS to place the outputs in a separate folder (say dist) and configure the Functions runtime to access the &#8216;index.js&#8217; from there.</p>
+<p>Another possible improvement is to extend the types so that expected query items such as &#8216;req.query.name&#8217; are known.</p>
+]]></content:encoded>
+			<wfw:commentRss>/azureserverless/2017/07/16/using-typescript-in-azure-functions/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">321</post-id>	</item>
+	</channel>
+</rss>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>AAC &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/tag/aac/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Symbols for AAC using SVG and a RESTful web API</title>
+		<link>/openingaccessibility/2015/03/mulberry-symbols-for-aac-svg-and-apis/</link>
+		<comments>/openingaccessibility/2015/03/mulberry-symbols-for-aac-svg-and-apis/#comments</comments>
+		<pubDate>Sun, 29 Mar 2015 18:09:43 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[a11y]]></category>
+		<category><![CDATA[Apps]]></category>
+		<category><![CDATA[Assistve Technology]]></category>
+		<category><![CDATA[AAC]]></category>
+		<category><![CDATA[Symbols]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=490</guid>
+		<description><![CDATA[A good few years ago I hooked up with Garry Paxton who needed some development support for a charity website.  He had created straight-street.com to provide Speech and Language Therapists access to a new and freely available symbol set. Symbols &#8230; <a href="/openingaccessibility/2015/03/mulberry-symbols-for-aac-svg-and-apis/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>A good few years ago I hooked up with Garry Paxton who needed some development support for a charity website.  He had created <a href="http://straight-street.com/">straight-street.com</a> to provide Speech and Language Therapists access to a new and freely available symbol set. Symbols such as this Mulberry symbol set are vitally important for people with communication difficulties &#8211; such as an <a href="http://www.communicationmatters.org.uk/">inability to speak</a>. But often, like much in the AT world, proprietary symbols are expensive and so can be out of reach of many who would really benefit form them.</p>
+<p>While this work was carried out a few years ago I felt it should be documented and will hopefully inspire others to innovate.</p>
+<p><a href="http://straight-street.com/media/symbols/EN/svg/communication_aid.svg"><img class="alignnone" src="http://straight-street.com/media/symbols/EN/svg/communication_aid.svg" alt="Communication device" width="205" height="205" /></a><a href="http://straight-street.com/media/symbols/EN/svg/communication_board.svg"><img class="alignnone" src="http://straight-street.com/media/symbols/EN/svg/communication_board.svg" alt="Communication chart" width="207" height="207" /></a><img class="alignnone" src="http://straight-street.com/media/symbols/EN/svg/hello.svg" alt="Man waving hello" width="191" height="191" /></p>
+<h1>Open symbols</h1>
+<p>Garry&#8217;s goals for the symbols and website included</p>
+<ul>
+<li><strong>Provide an alternative symbol set</strong> for older users as available sets were largely aimed at children. This required extra &#8216;adult&#8217; symbols and a more appropriate style.</li>
+<li><strong>Promote innovation in symbol availability and use</strong> by allowing symbols to be freely used, shared, modified and accessed on the web. All symbols sets at the time had proprietary licences and often required a licence per use on a single PC. This was felt to be a serious barrier to users getting free access to critical communication aids they need. Personally I think that the majority of symbol set owners were behind the times as far as the technical possibilities were concerned and so users were missing out.</li>
+<li><strong>Demonstrate how symbols can be accessed</strong> in modern web apps through an API. This included providing an API to access symbols, a basic test App and also a protoype symbol chart maker app.</li>
+<li><strong>Provide a strong design workflow</strong> for the symbols so they have consistent style (even though permissive licence allows for derived works).</li>
+<li><strong>Encourage community</strong> suggestions for and review of symbols.</li>
+<li><strong>Allow easy access</strong> to entire symbols set or just a sub set based on criteria such as topic (eg &#8216;food&#8217;)</li>
+</ul>
+<p>I think most of these goals were reached by Garry and the team, despite being a little ahead of the curve technically. API usage and general SVG support were nowhere as well developed as they are now. Perhaps most importantly this was disruptive as far as symbol set owners and developers who used them were concerned. We see several web uses of symbols (eg hover over words on <a href="http://www.communicationmatters.org.uk/">commmunicationmatters.org.uk</a>) and a few free or otherwise better licensed symbol sets have become available. Currently the Mulberry symbols are used in many apps (native and web), though some people appear to be abusing the very permissive <a href="http://creativecommons.org/licenses/by-sa/2.0/uk/">CC BY-AT licence</a>. Unfortunately Garry&#8217;s charity funding dried up and so it was closed at the point the current 3,000 odd symbols were finished. <strong>Note to anyone interested in picking up on this &#8211; Garry would love to see the symbol development work resume.</strong></p>
+<blockquote><p>To see a fairly random selection of symbols go to  <a href="http://straight-street.com/gallery.php">straight-street.com</a> and click on &#8220;Search&#8221;. You can mouse over the symbols to get a larger preview.</p></blockquote>
+<h1>SVG</h1>
+<p>I loved the symbols and Garry&#8217;s aims  in terms of open accessibility so I quickly offered to help fix the website problems. I made several suggestions, in particular using SVG as an alternative to the  WMF (Windows meta format). WMF made sense for use in installed apps as most users had Windows PC programs that only support WMF. It&#8217;s scalable but rather crude, requiring considerable hand editing of exports from Adobe Designer (used to create the symbols). In addition, due to security problems Microsoft pulled the explorer support for showing thumb nails, thus reducing their general utility.</p>
+<p>I was well aware of the advantages of SVG as a mature scalable format and open standard. I hoped it would soon &#8216;break&#8217; into mainstream, something that is only just happening now, some 5 years on, largely I suspect as a result of the need for responsive images.</p>
+<p>Seeing I was promoting SVG to Garry as the web-friendly format for use on the web I needed to prove it could be easily used in webs apps for symbols. This proved to be basically the case though the test app is a little more complex then expected.</p>
+<div style="width: 152px" class="wp-caption alignleft"><a href="http://straight-street.com/media/symbols/EN/svg/baker_1b.svg"><img class="" src="http://straight-street.com/media/symbols/EN/svg/baker_1b.svg" alt="Man wearing bakers clothing and a loaf of bread" width="142" height="142" /></a><p class="wp-caption-text">Baker</p></div>
+<div style="width: 48px" class="wp-caption alignleft"><a href="http://straight-street.com/media/symbols/EN/svg/briefcase_2.svg"><img src="http://straight-street.com/media/symbols/EN/svg/briefcase_2.svg" alt="Briefcase" width="38" height="38" /></a><p class="wp-caption-text">Briefcase</p></div>
+<div style="width: 309px" class="wp-caption alignleft"><a href="http://straight-street.com/media/symbols/EN/svg/bath_animal_,_to.svg"><img class="" src="http://straight-street.com/media/symbols/EN/svg/bath_animal_,_to.svg" alt="person bathing a dog in a tub with a sponge" width="299" height="299" /></a><p class="wp-caption-text">bath_animal_,_to</p></div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Fortunately, that has now changed with improved SVG support in browsers. The biggest breakthrough is the support of SVG files in &lt;img&gt; tags &#8211; hurrah! To prove the point, you should be able to see above various the in differing sizes using an &lt;img&gt; tag (and you can click on them for a larger scaled image). These were added to WordPress using the &#8220;embed from URL&#8221; option without any special effort. Now symbols can easily be displayed in web apps without using awkward markup such as <span class="pl-s">&lt;object type=&#8221;image/svg+xml&#8221; data=&#8221;URL<span class="pl-pds">&#8220;</span></span><span class="pl-s">&gt; and feature testing code</span>.</p>
+<p>As an aside, for the straight-street.com site we didn&#8217;t use SVG. Rather we used 2 sizes of png (originally giff) for thumbnail and preview images. Plus the user can download zips of all the symbols in WMF, SVG and a size of png. All rather messy.</p>
+<h1>API</h1>
+<p>For the API design I researched best practice but found little solid wisdom available at that time. Still, I&#8217;m reasonably happy with the design, though no doubt it could be done much better now, especially as we have a good body of experience and examples (though I must say &#8220;both good and bad&#8221;). At the time, having just read <a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">Roy Fielding&#8217;s dissertation</a> I was keen to use a self describing discoverable REST style returning JSON with further URLs embedded.  This is perhaps closer to the <a href="https://sites.google.com/site/restframework/hypermedia-controls">hypermedia controls</a> approach rather that the alternative <a href="http://apiux.com/2013/04/09/rest-metadata-formats/">metadata formats</a> which seem to be currently slugging it out for dominance (and interestingly I see Microsoft have standardised on <a href="https://github.com/swagger-api/swagger-spec/blob/master/versions/1.2.md">Swagger Metadata</a> for Azure as most popular metadata). For our API we only require GET, at least as the API stands, which makes life much simpler in terms of API design and implementation.</p>
+<blockquote><p>Here&#8217;s an example request to get all symbols with name or tag containing &#8216;sweet&#8217;</p>
+<p><a href="http://straight-street.com/api/symbols/EN/sweet?appid=SSApiUsage">http://straight-street.com/api/symbols/EN/sweet</a> &#8211;</p>
+<p>The API&#8217;s home page <a href="http://straight-street.com/api">straight-street.com/api</a> provides details usage information. And a small interactive test applications is provided at <a href="http://straight-street.com/api/test.html">straight-street.com/api/test.html</a></p></blockquote>
+<p>For implementation I initially used Python which was a joy to write (as always) but as our free hosting only provided CGI is was REALLY slow. I therefore reimplemented it in PHP using a rather obscure light weight MVC framework for routing (<a href="http://doophp.com/">DooPHP</a>). This is reasonably fast. When it comes to a rewrite I&#8217;d no doubt use node.js + hapi or perhaps Python&#8217;s  Flask. In addition <a href="http://json-schema.org/latest/json-schema-hypermedia.html">JSON Hyper-Schema</a> looks like a good spec and tools to use.</p>
+<h1>Conclusion</h1>
+<p>Despite being a little ahead of the accessibility and web curve I think we managed a very reasonable first product implementation. Web support has moved on so far and fast that I&#8217;ve no doubt the web site, api and samples apps could be easily recreated and be in much better shape.</p>
+<p>We&#8217;d love for symbol users to get access to these symbols in a wide range of innovative on-line and web apps. We&#8217;d also like to see many more symbols being added to make this a comprehensive set with excellent utility. Perhaps most importantly we&#8217;d love to see a community grow around these symbols to ensure sustainability.</p>
+<p>We&#8217;ve put the Mulberry symbols, the API source and website source on GitHub in the <a href="https://github.com/straight-street">straight-street organisation</a>. I don&#8217;t really recommend looking at the website code &#8211; it has a strange history <img src="https://s.w.org/images/core/emoji/11/72x72/1f609.png" alt="😉" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p>If this resonates with you at all and you have access to funding and/or development time then please do talk to us.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2015/03/mulberry-symbols-for-aac-svg-and-apis/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+	</channel>
+</rss>

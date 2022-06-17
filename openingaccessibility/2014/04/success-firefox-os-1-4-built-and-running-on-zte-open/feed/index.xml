@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Success! Firefox OS 1.4 built and running on ZTE Open</title>
+	<atom:link href="/openingaccessibility/2014/04/success-firefox-os-1-4-built-and-running-on-zte-open/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility/2014/04/success-firefox-os-1-4-built-and-running-on-zte-open/</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Tue, 24 Jul 2018 09:34:38 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>By: Steve</title>
+		<link>/openingaccessibility/2014/04/success-firefox-os-1-4-built-and-running-on-zte-open/#comment-28685</link>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+		<pubDate>Tue, 31 Mar 2015 11:08:10 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=362#comment-28685</guid>
+		<description><![CDATA[Excellent!]]></description>
+		<content:encoded><![CDATA[<p>Excellent!</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Pascal</title>
+		<link>/openingaccessibility/2014/04/success-firefox-os-1-4-built-and-running-on-zte-open/#comment-28678</link>
+		<dc:creator><![CDATA[Pascal]]></dc:creator>
+		<pubDate>Mon, 30 Mar 2015 23:45:13 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=362#comment-28678</guid>
+		<description><![CDATA[Thank you very much! This did the trick indeed. And saved my night :)]]></description>
+		<content:encoded><![CDATA[<p>Thank you very much! This did the trick indeed. And saved my night 🙂</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Florian</title>
+		<link>/openingaccessibility/2014/04/success-firefox-os-1-4-built-and-running-on-zte-open/#comment-27803</link>
+		<dc:creator><![CDATA[Florian]]></dc:creator>
+		<pubDate>Sun, 01 Mar 2015 22:10:12 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=362#comment-27803</guid>
+		<description><![CDATA[Hi all, i&#039;ve had the same problem. 
+
+cp: cannot stat ‘../../../backup-flame/system/lib/modules/ath6kl-3.5/ath6kl_sdio.ko’: No such file or directory
+Failed to pull ath6kl_sdio.ko. Giving up.
+
+The file seems to be missing, so the build backup won&#039;t be able to find it. My solution was to simply comment out the matching line in
+device/t2m/flame/extract-files.sh
+line 186:
+#copy_files &quot;$COMMON_WIFI_VOLANS&quot; &quot;system/lib/modules/ath6kl-3.5&quot; &quot;wifi&quot;
+
+So build backup won&#039;t look for the file.
+Afterwards build works fine. I don&#039;t think this file is actually neccessary as wifi works with my build too. ;)]]></description>
+		<content:encoded><![CDATA[<p>Hi all, i&#8217;ve had the same problem. </p>
+<p>cp: cannot stat ‘../../../backup-flame/system/lib/modules/ath6kl-3.5/ath6kl_sdio.ko’: No such file or directory<br />
+Failed to pull ath6kl_sdio.ko. Giving up.</p>
+<p>The file seems to be missing, so the build backup won&#8217;t be able to find it. My solution was to simply comment out the matching line in<br />
+device/t2m/flame/extract-files.sh<br />
+line 186:<br />
+#copy_files &#8220;$COMMON_WIFI_VOLANS&#8221; &#8220;system/lib/modules/ath6kl-3.5&#8221; &#8220;wifi&#8221;</p>
+<p>So build backup won&#8217;t look for the file.<br />
+Afterwards build works fine. I don&#8217;t think this file is actually neccessary as wifi works with my build too. 😉</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Steve</title>
+		<link>/openingaccessibility/2014/04/success-firefox-os-1-4-built-and-running-on-zte-open/#comment-26560</link>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+		<pubDate>Thu, 22 Jan 2015 16:26:31 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=362#comment-26560</guid>
+		<description><![CDATA[Actually I&#039;m confused, the link to &quot;the FirefoxOS 1.2 provided by ZTE&quot; does seem to work. To build 2.1 just change &#039;BRANCH=v1.4&#039; to BRANCH=v2.1&quot; in the build instructions. Note how ever at some point the mozilla builds change to use Android Lollipop and not KitKat as provided by ZTE - so won&#039;t work.]]></description>
+		<content:encoded><![CDATA[<p>Actually I&#8217;m confused, the link to &#8220;the FirefoxOS 1.2 provided by ZTE&#8221; does seem to work. To build 2.1 just change &#8216;BRANCH=v1.4&#8217; to BRANCH=v2.1&#8243; in the build instructions. Note how ever at some point the mozilla builds change to use Android Lollipop and not KitKat as provided by ZTE &#8211; so won&#8217;t work.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Steve</title>
+		<link>/openingaccessibility/2014/04/success-firefox-os-1-4-built-and-running-on-zte-open/#comment-26558</link>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+		<pubDate>Thu, 22 Jan 2015 16:16:57 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=362#comment-26558</guid>
+		<description><![CDATA[Sorry Zak, I had a good search but no luck. I can only suggest you contact ZTE]]></description>
+		<content:encoded><![CDATA[<p>Sorry Zak, I had a good search but no luck. I can only suggest you contact ZTE</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Zack May</title>
+		<link>/openingaccessibility/2014/04/success-firefox-os-1-4-built-and-running-on-zte-open/#comment-26522</link>
+		<dc:creator><![CDATA[Zack May]]></dc:creator>
+		<pubDate>Thu, 22 Jan 2015 02:48:33 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=362#comment-26522</guid>
+		<description><![CDATA[Hi i recently bought a ZTE open a while back and i&#039;m having a hard time upgrading to the new OS versions like 1.4 or the lastest 2.1. say i was hoping if you could share the build for the 1.4 because i try clicking on the link you provided and it doesn&#039;t seem to work. say would you do a tutorial on upgrading to 2.1? please and thank you so much!]]></description>
+		<content:encoded><![CDATA[<p>Hi i recently bought a ZTE open a while back and i&#8217;m having a hard time upgrading to the new OS versions like 1.4 or the lastest 2.1. say i was hoping if you could share the build for the 1.4 because i try clicking on the link you provided and it doesn&#8217;t seem to work. say would you do a tutorial on upgrading to 2.1? please and thank you so much!</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Zack May</title>
+		<link>/openingaccessibility/2014/04/success-firefox-os-1-4-built-and-running-on-zte-open/#comment-26513</link>
+		<dc:creator><![CDATA[Zack May]]></dc:creator>
+		<pubDate>Wed, 21 Jan 2015 19:41:13 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=362#comment-26513</guid>
+		<description><![CDATA[Hi I&#039;m interested in updating the ZTE open I bought a while back and I was wondering if by chance you could probably email me the build you had used in the tutorial? Please? Its no longer accessible by conventional means:(]]></description>
+		<content:encoded><![CDATA[<p>Hi I&#8217;m interested in updating the ZTE open I bought a while back and I was wondering if by chance you could probably email me the build you had used in the tutorial? Please? Its no longer accessible by conventional means:(</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Steve</title>
+		<link>/openingaccessibility/2014/04/success-firefox-os-1-4-built-and-running-on-zte-open/#comment-19864</link>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+		<pubDate>Thu, 18 Sep 2014 14:49:56 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=362#comment-19864</guid>
+		<description><![CDATA[Sorry. No. I&#039;m no clear why you want to use flame builds for the ZTE. Don&#039;t mix them. Try #B2G on IRC for support]]></description>
+		<content:encoded><![CDATA[<p>Sorry. No. I&#8217;m no clear why you want to use flame builds for the ZTE. Don&#8217;t mix them. Try #B2G on IRC for support</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Chunyan</title>
+		<link>/openingaccessibility/2014/04/success-firefox-os-1-4-built-and-running-on-zte-open/#comment-19755</link>
+		<dc:creator><![CDATA[Chunyan]]></dc:creator>
+		<pubDate>Tue, 16 Sep 2014 13:15:32 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=362#comment-19755</guid>
+		<description><![CDATA[I am getting the same error when building for ZTE Open C using Flame reference and a manifest associated with ZTE Open C.  Did you find out a solution?  Thanks.]]></description>
+		<content:encoded><![CDATA[<p>I am getting the same error when building for ZTE Open C using Flame reference and a manifest associated with ZTE Open C.  Did you find out a solution?  Thanks.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Steve</title>
+		<link>/openingaccessibility/2014/04/success-firefox-os-1-4-built-and-running-on-zte-open/#comment-19589</link>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+		<pubDate>Sat, 13 Sep 2014 15:01:56 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=362#comment-19589</guid>
+		<description><![CDATA[My understanding is the Open C is much better supported by the ZTE. You don;t say what file you can&#039;t find but try the &lt;a href=&quot;http://www.ztedevices.com/support/smart_phone/46d40c52-bed4-4cdc-9df9-01719cdf0a70.html?type=software&quot; rel=&quot;nofollow&quot;&gt;ZTE support pages&lt;/a&gt;, &lt;a href=&quot;http://en.comebuy.com/developer-firefox-os-open-c.html://&quot; rel=&quot;nofollow&quot;&gt;this one&lt;/a&gt; or &lt;a href=&quot;https://developer.mozilla.org/en-US/Firefox_OS/Developer_phone_guide/ZTE_OPEN_C&quot; rel=&quot;nofollow&quot;&gt;MDN page&lt;/a&gt;]]></description>
+		<content:encoded><![CDATA[<p>My understanding is the Open C is much better supported by the ZTE. You don;t say what file you can&#8217;t find but try the <a href="http://www.ztedevices.com/support/smart_phone/46d40c52-bed4-4cdc-9df9-01719cdf0a70.html?type=software" rel="nofollow">ZTE support pages</a>, <a href="http://en.comebuy.com/developer-firefox-os-open-c.html://" rel="nofollow">this one</a> or <a href="https://developer.mozilla.org/en-US/Firefox_OS/Developer_phone_guide/ZTE_OPEN_C" rel="nofollow">MDN page</a></p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+
+	>
+<channel>
+	<title>Comments for AzureServerless</title>
+	<atom:link href="/azureserverless/comments/feed/" rel="self" type="application/rss+xml" />
+	<link>/azureserverless/</link>
+	<description>Using Microsoft Azure in a Serverless mode</description>
+	<lastBuildDate>Tue, 12 Sep 2017 00:24:54 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Comment on Why use async/await for your JavaScript AzureFunctions? by Azure Weekly: Aug 28, 2017 &#8211; Build Azure</title>
+		<link>/azureserverless/2017/08/20/why-use-asyncawait-for-your-javascript-azurefunctions/#comment-8</link>
+		<dc:creator><![CDATA[Azure Weekly: Aug 28, 2017 &#8211; Build Azure]]></dc:creator>
+		<pubDate>Tue, 12 Sep 2017 00:24:54 +0000</pubDate>
+		<guid isPermaLink="false">/azureserverless/?p=409#comment-8</guid>
+		<description><![CDATA[[&#8230;] Why use async/await for your JavaScript AzureFunctions? by steve@opendirective.com [&#8230;]]]></description>
+		<content:encoded><![CDATA[<p>[&#8230;] Why use async/await for your JavaScript AzureFunctions? by <a href="mailto:steve@opendirective.com">steve@opendirective.com</a> [&#8230;]</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Watching TypeScript files while developing local Functions by Azure Weekly: Aug 28, 2017 &#8211; Build Azure</title>
+		<link>/azureserverless/2017/08/22/watching-typescript-files-while-developing-local-functions/#comment-7</link>
+		<dc:creator><![CDATA[Azure Weekly: Aug 28, 2017 &#8211; Build Azure]]></dc:creator>
+		<pubDate>Mon, 28 Aug 2017 08:00:50 +0000</pubDate>
+		<guid isPermaLink="false">/azureserverless/?p=400#comment-7</guid>
+		<description><![CDATA[[&#8230;] Watching TypeScript files while developing local Functions by steve@opendirective.com [&#8230;]]]></description>
+		<content:encoded><![CDATA[<p>[&#8230;] Watching TypeScript files while developing local Functions by <a href="mailto:steve@opendirective.com">steve@opendirective.com</a> [&#8230;]</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on All about Function App Settings for storing secrets by Azure Weekly: Aug 21, 2017 &#8211; Build Azure</title>
+		<link>/azureserverless/2017/08/18/all-about-function-app-settings-for-storing-secrets/#comment-6</link>
+		<dc:creator><![CDATA[Azure Weekly: Aug 21, 2017 &#8211; Build Azure]]></dc:creator>
+		<pubDate>Mon, 21 Aug 2017 08:01:05 +0000</pubDate>
+		<guid isPermaLink="false">/azureserverless/?p=357#comment-6</guid>
+		<description><![CDATA[[&#8230;] All about Function App Settings for storing secrets by steve@opendirective.com [&#8230;]]]></description>
+		<content:encoded><![CDATA[<p>[&#8230;] All about Function App Settings for storing secrets by <a href="mailto:steve@opendirective.com">steve@opendirective.com</a> [&#8230;]</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Deploying to Azure Functions and Blob Storage from npm scripts by Azure Weekly: Aug 14, 2017 &#8211; Build Azure</title>
+		<link>/azureserverless/2017/08/12/deploying-to-azure-functions-from-npm-scripts/#comment-5</link>
+		<dc:creator><![CDATA[Azure Weekly: Aug 14, 2017 &#8211; Build Azure]]></dc:creator>
+		<pubDate>Mon, 14 Aug 2017 08:01:31 +0000</pubDate>
+		<guid isPermaLink="false">/azureserverless/?p=358#comment-5</guid>
+		<description><![CDATA[[&#8230;] Deploying to Azure Functions from npm scripts by steve@opendirective.com [&#8230;]]]></description>
+		<content:encoded><![CDATA[<p>[&#8230;] Deploying to Azure Functions from npm scripts by <a href="mailto:steve@opendirective.com">steve@opendirective.com</a> [&#8230;]</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Getting started with Azure Container Instances on Bash on Ubuntu for Windows by Azure Weekly: July 31, 2017 &#8211; Build Azure</title>
+		<link>/azureserverless/2017/07/29/getting-started-with-azure-container-instances-on-bash-on-ubuntu-for-windows/#comment-4</link>
+		<dc:creator><![CDATA[Azure Weekly: July 31, 2017 &#8211; Build Azure]]></dc:creator>
+		<pubDate>Mon, 31 Jul 2017 08:01:04 +0000</pubDate>
+		<guid isPermaLink="false">/azureserverless/?p=341#comment-4</guid>
+		<description><![CDATA[[&#8230;] Getting started with Azure Container Instances on Bash on Ubuntu for Windows by AzureServerless [&#8230;]]]></description>
+		<content:encoded><![CDATA[<p>[&#8230;] Getting started with Azure Container Instances on Bash on Ubuntu for Windows by AzureServerless [&#8230;]</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Using TypeScript in Azure Functions (and with Visual Studio Code) by Azure Weekly: July 24, 2017 – Build Azure</title>
+		<link>/azureserverless/2017/07/16/using-typescript-in-azure-functions/#comment-3</link>
+		<dc:creator><![CDATA[Azure Weekly: July 24, 2017 – Build Azure]]></dc:creator>
+		<pubDate>Mon, 24 Jul 2017 08:01:50 +0000</pubDate>
+		<guid isPermaLink="false">/azureserverless/?p=321#comment-3</guid>
+		<description><![CDATA[[&#8230;] Using TypeScript in Azure Functions via AzureServerless [&#8230;]]]></description>
+		<content:encoded><![CDATA[<p>[&#8230;] Using TypeScript in Azure Functions via AzureServerless [&#8230;]</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Azure options for serving static web content by steve@opendirective.com</title>
+		<link>/azureserverless/2017/01/17/azure-options-for-serving-static-web-content/#comment-2</link>
+		<dc:creator><![CDATA[steve@opendirective.com]]></dc:creator>
+		<pubDate>Mon, 30 Jan 2017 15:33:27 +0000</pubDate>
+		<guid isPermaLink="false">/azureserverless/?p=205#comment-2</guid>
+		<description><![CDATA[:)]]></description>
+		<content:encoded><![CDATA[<p>🙂</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Azure options for serving static web content by krishna.kishore bhavaraju</title>
+		<link>/azureserverless/2017/01/17/azure-options-for-serving-static-web-content/#comment-1</link>
+		<dc:creator><![CDATA[krishna.kishore bhavaraju]]></dc:creator>
+		<pubDate>Mon, 30 Jan 2017 10:56:21 +0000</pubDate>
+		<guid isPermaLink="false">/azureserverless/?p=205#comment-1</guid>
+		<description><![CDATA[Eagerly waiting for next post Steve!]]></description>
+		<content:encoded><![CDATA[<p>Eagerly waiting for next post Steve!</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

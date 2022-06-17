@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>nodejs &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/tag/nodejs/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>More on portable npm scripts</title>
+		<link>/openingaccessibility/2016/03/more-on-portable-npm-scripts/</link>
+		<comments>/openingaccessibility/2016/03/more-on-portable-npm-scripts/#comments</comments>
+		<pubDate>Thu, 17 Mar 2016 15:46:55 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[web]]></category>
+		<category><![CDATA[Windows]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[nodejs]]></category>
+		<category><![CDATA[npm]]></category>
+		<category><![CDATA[Virtualisation]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=640</guid>
+		<description><![CDATA[Following on from my earlier post on the topic of writing portable npm scripts, here&#8217;s a few more useful tips. [UPDATE 2016/03/31: Bash for Windows was announced at Microsoft Build 2016. This exciting feature will allow running of Linux npm &#8230; <a href="/openingaccessibility/2016/03/more-on-portable-npm-scripts/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Following on from my earlier post on the topic of <a href="/openingaccessibility/2015/12/writing-portable-npm-build-scripts/">writing portable npm scripts</a>, here&#8217;s a few more useful tips.</p>
+<p>[UPDATE 2016/03/31: Bash for Windows was announced at Microsoft Build 2016. This exciting feature will allow running of Linux npm script builds with ease. See <a href="http://www.hanselman.com/blog/DevelopersCanRunBashShellAndUsermodeUbuntuLinuxBinariesOnWindows10.aspx">Scott Hanselman&#8217;s blog post</a>]</p>
+<p>[UPDATE: 2016/03/29:  The recently released <a href="https://blog.docker.com/2016/03/docker-for-mac-windows-beta/">Docker for Windows Beta</a> might be a good alternative to using a VM. It user Hyper-V.]</p>
+<p>[UPDATE: 2016/03/29:  This is a comprehensive article on <a href="http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/">using npm for build</a>]</p>
+<h1>Copying files</h1>
+<p>Use the <a href="https://www.npmjs.com/package/ncp">ncp </a>module to copy files. This goes nicely with mkdirp and rimraf  mentioned before.</p>
+<h1>Setting environment variables</h1>
+<p>It&#8217;s common to have scripts with a command line of the form</p><pre class="crayon-plain-tag">NODE_ENV=production webpack --config client/webpack.config.js</pre><p>This sets the environment variable NODE_ENV for the duration the command runs. In this case it is use to perform a production build with webpack.</p>
+<p>Such syntax works fine in bash etc on Linux / OS X but fails on windows where npm scripts always use CMD. One solution is to use the <a href="https://www.npmjs.com/package/cross-env">cross-env</a> npm module which uses a regx to find environment settings (and so is probably not fool-proof). Once installed you just prefix your command like so</p><pre class="crayon-plain-tag">cross-env NODE_ENV=production webpack --config client/webpack.config.js</pre><p></p>
+<h1>Running an extra bash process</h1>
+<p>I use the <a href="https://git-for-windows.github.io/">Git for Windows</a> bash shell for all my development CLI needs on Windows (It is also installed as part of the <a href="https://desktop.github.com/">GitHub Desktop for Windows</a>). This is a port of the mature MSYS / MinGW port of Linux build environments and works pretty well, though some of the commands are old versions.</p>
+<p>On Windows, npm ignores the current shell from which you run it and doesn&#8217;t pass the shell on to the sub processes as you would expect. However, you can easily run bash as the main command in a npm script (it&#8217;s an extra process but that hardly matters). This works as bash sets the path which is then inherited by the cmd subshell in which npm runs your package.json scripts. As a result it&#8217;s easy enough to create portable scripts or convert linux based scripts to also run on Windows. You just need to wrap the command in <pre class="crayon-plain-tag">bash -c "...."</pre> For example, the above env setting script can be recoded as follows</p><pre class="crayon-plain-tag">bash -c"NODE_ENV=production webpack --config client/webpack.config.js"</pre><p>The only issue i found is the need to carefully quote &#8221; characters. For example here&#8217;s a little script to prompt before deploying to GitHub pages (I&#8217;m showing the full package.json entry for clarity)</p><pre class="crayon-plain-tag">"deploy": "bash -c \"read -n1 -p\\\"Have you commited ready to deploy (yY) \\\"; echo; [[ $REPLY = [yY] ]] &amp;&amp; npm run _buildanddeploy || { echo \\\"You didn't answer yes, or deploy failed.\\\"; }",</pre><p></p>
+<h1>Using a Linux VM</h1>
+<p>I often use a Linux VM as part of my development. With Vagrent it&#8217;s easy to provision a headless VirtualBox (or other) VM that shares the host filespace and exposes a SSH terminal. Thus you can edit using Windows tools like VisualStudio Code yet run everything in the Linux VM. This lets you run local tests in the same VM as a CI or CD system (which will usually be Linux , unless you are using Azure). One easy configuration I&#8217;ve used is this <a href="https://github.com/GPII/qi-development-environments">Quality Infrastructure</a> from the GPII project.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2016/03/more-on-portable-npm-scripts/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Writing portable npm build scripts</title>
+		<link>/openingaccessibility/2015/12/writing-portable-npm-build-scripts/</link>
+		<comments>/openingaccessibility/2015/12/writing-portable-npm-build-scripts/#comments</comments>
+		<pubDate>Tue, 15 Dec 2015 23:09:28 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[Windows]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[nodejs]]></category>
+		<category><![CDATA[npm]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=624</guid>
+		<description><![CDATA[tl;dr; Developers need to install and build Javascript NPM modules on Windows as well as *nix. With a little care this is possible without using heavyweights tools like Grunt and Gulp . Modern HTML development usually includes a build and deploy process similar &#8230; <a href="/openingaccessibility/2015/12/writing-portable-npm-build-scripts/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p><strong>tl;dr; Developers need to <b>install and </b><b>build</b> Javascript NPM modules on Windows as well as *nix. With a little care this is possible without using heavyweights tools like Grunt and Gulp .</strong></p>
+<p>Modern HTML development usually includes a build and deploy process similar to those used in compiled development workflows. In this case, assets that end up deployed and accessed by end users are the result of a pipeline of operations such as transpiling, concatenation, minifying and zipping. In addition,  developers use these and others steps when developing, for example as part of test automation,  on check-in or as part of  continuous integration and deployment process. Perhaps somewhat surprisingly, the traditional build tools such as shell scripts, configure and Make (or Ant) are not commonplace. Rather, we often see newer JavaScript based tools like Grunt, Gulp or Broccoli being the &#8220;go-to&#8221; choice. Critically, these tools do have the advantage of largely working cross-platform on Linux/OS X and Windows.</p>
+<p><a href="/openingaccessibility/wp-content/uploads/2015/12/npmlogo.jpg" rel="attachment wp-att-634"><img class="aligncenter size-medium wp-image-634" src="/openingaccessibility/wp-content/uploads/2015/12/npmlogo-300x200.jpg" alt="npm logo" width="300" height="200" srcset="/openingaccessibility/wp-content/uploads/2015/12/npmlogo-300x200.jpg 300w, /openingaccessibility/wp-content/uploads/2015/12/npmlogo-768x512.jpg 768w, /openingaccessibility/wp-content/uploads/2015/12/npmlogo.jpg 1024w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+<p>An alternative build option is to use <a href="https://docs.npmjs.com/misc/scripts">NPM’s scripts feature</a> in the project or module package.json. You can use commands like ‘npm run test’ to invoke important build processes. This has the advantage of putting the scripts in the same place as the rest of your project configuration. Also, actions may be broken up into sub actions or invoked though life-cycle triggers (like &#8220;before publish&#8221;). Unfortunately though, while NPM tracks module dependencies, these are not used in the scripts to minimize the required build steps (as Make does). Perhaps that will come in time, but until then, either everything gets built every time or you’ll need to call a build tool like Make from scripts. One issue with While is while it is very effective it has a rather gnarly syntax and plenty of awkward features that you need to get to grips with. That said, common useful rules are simply implemented. Another tool, Webpack looks interesting for building as it manages dependencies and also works with modules rather than files, as Make does.</p>
+<p>Both Make and NPM scripts simply evoke the native command line shell to perform the actions for each build step and this raises an issue when you want to have your build work across platforms. The problem is that the shells have different syntax and command sets so you have to restrict npm scripts to a least common subset. Fortunately you can manage portability  with care. Evens  so, plenty of published modules exist that assume they are built on a *Nix Bash shell and so break on Windows. You might think you could get away with running one of the Bash shell systems for Windows (eg MSys, cygwin) but NPM always launches a Cmd shell (you can work around this by having your scripts run an extra bash shell, but that’s a bit hacky). More importantly using bash requires target build system configuration with yet another tool. We’d ideally like our build to work with just node (and thus npm) installed.</p>
+<p>So assuming we have to write NPM scripts that run on both Bash and Cmd what can you do to reduce problems?</p>
+<ul>
+<li>Separate commands in a single script with &amp;&amp; (&#8220;and if no error&#8221;) or || (&#8220;or if error&#8221;) instead of  the terminator (; or : ). Remember you can invoke subscripts with “npm run xxx”</li>
+<li>Modules like “concurrently” and “npm-run-all” add further task management options</li>
+<li>Operators &amp;&amp; || &amp; &lt; &gt; and | all work pretty much the same in cmd and bash and offer a lot of power</li>
+<li>Paths are a pain. While Windows system calls support the / separator it is also used for command options. Avoid as much as possible</li>
+<li>In npm scripts “node_modules/.bin” is on the path so any CLI command modules installed with &#8211;save or –save-dev will available to scripts when the package is installed. For example “rimraf”, “mkdirp” and “ncp”. This avoids tell devs to do global installs of tools which may conflict with other tools.</li>
+</ul>
+<p>Of course JavaScript itself is an ideal platform independent script tool so you could use <a href="http://www.ctomczyk.pl/why-i-switched-to-only-nodejs-npm-and-stopped-using-grunt/767/">nodejs to create build scripts</a> called from your NPM scripts. And after all, that is what Grunt and Gulp do by providing a full on framework for build services. The choice as always, is yours. A useful approach is to use the &#8220;<a href="https://www.npmjs.com/package/shelljs">Shelljs</a>&#8221; module that provides a unix style set of functions as an alternative to using the bash shell directly. In addition &#8220;Node-glob&#8221; provides wildcard expansions.</p>
+<p>As a final thought, modules are usually distributed in source form and some contain native module source that must be compiled using a toolchain of Python and C++. Fortunately this is getting easier on Windows as described in Microsoft&#8217;s new <a href="https://github.com/Microsoft/nodejs-guidelines">nodejs Guidelines for Windows</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2015/12/writing-portable-npm-build-scripts/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>Working with Windows native code from node.js</title>
+		<link>/openingaccessibility/2015/10/working-with-windows-native-code-from-node-js/</link>
+		<comments>/openingaccessibility/2015/10/working-with-windows-native-code-from-node-js/#comments</comments>
+		<pubDate>Mon, 19 Oct 2015 20:48:17 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[nodejs]]></category>
+		<category><![CDATA[web]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=581</guid>
+		<description><![CDATA[[UPDATE 02 Feb 2016: While this post discusses Win32 access, here&#8217;s an interesting option for UWP access from JXCore that should eventually work with nodejs when the Microsoft PR for Chakra is merged.] While the node.js ecosystem provides an amazing &#8230; <a href="/openingaccessibility/2015/10/working-with-windows-native-code-from-node-js/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>[UPDATE 02 Feb 2016: While this post discusses Win32 access, here&#8217;s an interesting option for <a href="http://jxcore.com/universal-windows-platform-uwp-samples-using-jxcore/">UWP access from JXCore</a> that should eventually work with nodejs when the Microsoft PR for Chakra is merged.]</p>
+<p>While the <a href="https://nodejs.org/en/">node.js</a> ecosystem provides an amazing number of modules covering almost every imaginable use, sometimes you want to work with existing code created in other languages and tool chains. For example, you may have an existing C++ library or perhaps you want to call operating systems APIs not yet available in <a href="https://www.npmjs.com/">npm</a> or elsewhere.</p>
+<p>When integrating between different language infrastructures you have a choice of which side of the divide to write the required glue code. Glue that provides data <a href="https://en.wikipedia.org/wiki/Marshalling_%28computer_science%29">marshalling</a>, function calling and event processing. If you want to access code with a C style calling convention then it relatively easy to add code on the C side as node is itself created in C++. This is easily enough done by  creating <a href="https://nodejs.org/api/addons.html">C/C++ addons</a> but often involves reams of boilerplate code. However, if you do choose that option then you&#8217;re going to want to use a tool like <a href="https://github.com/nodejs/nan">nan</a> to make your life tolerable. As the nan readme explains:</p>
+<blockquote><p>Thanks to the crazy changes in V8 (and some in Node core), keeping native addons compiling happily across versions, particularly 0.10 to 0.12 to 4.0, is a minor nightmare. The goal of this project is to store all logic necessary to develop native Node.js add-ons without having to inspect <code>NODE_MODULE_VERSION</code> and get yourself into a macro-tangle.</p></blockquote>
+<p>If you want to work on the Javascript side of the divide then <a href="https://github.com/TooTallNate/ref">ref</a> by <a href="https://twitter.com/TooTallNate">@TooTallNate</a> provides all the facilities you need for marshalling to/from the C world. It does this by extending node&#8217;s <a href="https://nodejs.org/api/buffer.html">Buffer class</a> to provide a type system and facilities for:</p>
+<blockquote>
+<ul>
+<li>Getting the memory address of a Buffer</li>
+<li>Checking the endianness of the processor</li>
+<li>Checking if a Buffer represents the NULL pointer</li>
+<li>Reading and writing &#8220;pointers&#8221; with Buffers</li>
+<li>Reading and writing C Strings (NULL-terminated)</li>
+<li>Reading and writing JavaScript Object references</li>
+<li>Reading and writing <strong>int64_t</strong> and <strong>uint64_t</strong> values</li>
+<li>A &#8220;type&#8221; convention to define the contents of a Buffer</li>
+</ul>
+</blockquote>
+<p>Further related  <a href="https://github.com/search?utf8=%E2%9C%93&amp;q=user%3ATooTallNate+ref&amp;type=Repositories&amp;ref=searchresults">ref modules</a> support javascript representations of other C/C++ types including arrays, structures and unions.</p>
+<p>Building on ref&#8217;s facilities is <a href="https://github.com/node-ffi/node-ffi">node-fii</a> which provides a foreign function interface (ffi) for loading and calling functions exported by dynamic libraries (dlls on Windows). It is also possible to call functions in the current process, ideal for functions in static libraries.</p>
+<p>While this eliminates large amounts of C boilerplate, it does have a significant calling overhead. Accordingly you are unlikely to want to use it for functions called in a tight loop or otherwise time sensitive applications.</p>
+<p>Here&#8217;s a simple example from the lib-ffi documentation for wrapping <a href="https://sourceware.org/newlib/libm.html#floor">libm&#8217;s ceil()</a> function which takes a double parameter and returns a double result and also the static <a href="http://www.cplusplus.com/reference/cstdlib/atoi/">atoi()</a> which takes a string and returns an int.</p>
+<div class="highlight highlight-source-js">
+<pre class="crayon-plain-tag">var ffi = require('ffi');
+
+var libm = ffi.Library('libm', {
+  'ceil': [ 'double', [ 'double' ] ]
+});
+libm.ceil(1.5); // 2
+
+// You can also access just functions in the current process by passing a null
+var current = ffi.Library(null, {
+  'atoi': [ 'int', [ 'string' ] ]
+});
+current.atoi('1234'); // 1234</pre>
+</div>
+<p>A more complex example can be seen is some code I wrote for the <a href="http://gpii.net/">GPII</a> system for automatic personalisation from preferences. This is perhaps a slightly unusual application of Node.js as it runs on a Windows device in order to launch and configure various Windows&#8217; settings and assistive technology programmes.</p>
+<p>The actual code provides a function GetDisplayResolution() that calls the Windows API <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd162611(v=vs.85).aspx">EnumDisplaySettings()</a> which returns into the fairly complex <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd183565(v=vs.85).aspx">DEVICEMODE</a> structure. Note that the DEVMODE structure includes nested unions of structures and while the ref modules support these I decided to  flattened out the declaration (after testing my assumptions about packing and padding).</p>
+<div class="highlight highlight-source-js">
+<pre class="crayon-plain-tag">var ffi = require(&quot;ffi&quot;);
+var ref = require(&quot;ref&quot;);
+var Struct = require(&quot;ref-struct&quot;);
+var arrayType = require(&quot;ref-array&quot;);
+
+/**
+* A map between Windows and C types.
+* https://msdn.microsoft.com/en-us/library/windows/desktop/aa383751%28v=vs.85%29.aspx
+*/
+windows.types = {
+    &quot;BOOL&quot;:   &quot;int&quot;,
+    &quot;INT&quot;:    &quot;int&quot;,
+    &quot;UINT&quot;:   &quot;uint&quot;,
+    &quot;ULONG&quot;:  &quot;ulong&quot;,
+    &quot;DWORD&quot;:  &quot;ulong&quot;,
+    &quot;HKL&quot;:    &quot;void*&quot;,
+    &quot;ULONG_PTR&quot;: &quot;ulong&quot;,
+    &quot;LONG&quot;:   &quot;long&quot;,
+    &quot;HANDLE&quot;: &quot;uint32&quot;,
+    &quot;WORD&quot;:   &quot;uint16&quot;,
+    &quot;TCHAR&quot;:  &quot;uint16&quot;  // assuming unicode. (ASCII is char, UNICODE is WCHAR -&amp;gt; wchar_t -&amp;gt; unsigned short === UINT16 === uint16
+};
+
+var t = windows.types;
+// https://msdn.microsoft.com/en-us/library/windows/desktop/dd183565(v=vs.85).aspx
+
+var CCHDEVICENAME = 32;
+var CCHFORMNAME = 32;
+
+windows.DEVMODEW = new Struct([
+    [arrayType(t.TCHAR, CCHDEVICENAME), &quot;dmDeviceName&quot;],
+    [t.WORD, &quot;dmSpecVersion&quot;],
+    [t.WORD, &quot;dmDriverVersion&quot;],
+    [t.WORD, &quot;dmSize&quot;],
+    [t.WORD, &quot;dmDriverExtra&quot;],
+    [t.DWORD, &quot;dmFields&quot;],
+    //union {   // TODO there is a ref-union npm module - but this technique is OK for now
+    //  struct {
+    [&quot;short&quot;, &quot;dmOrientation&quot;],
+    [&quot;short&quot;, &quot;dmPaperSize&quot;],
+    [&quot;short&quot;, &quot;dmPaperLength&quot;],
+    [&quot;short&quot;, &quot;dmPaperWidth&quot;],
+    [&quot;short&quot;, &quot;dmScale&quot;],
+    [&quot;short&quot;, &quot;dmCopies&quot;],
+    [&quot;short&quot;, &quot;dmDefaultSource&quot;],
+    [&quot;short&quot;, &quot;dmPrintQuality&quot;],
+    //  };
+    //  struct {
+    //      POINTL dmPosition;
+    //      DWORD dmDisplayOrientation;
+    //      DWORD dmDisplayFixedOutput;
+    //  };
+    //};
+    [&quot;short&quot;, &quot;dmColor&quot;],
+    [&quot;short&quot;, &quot;dmDuplex&quot;],
+    [&quot;short&quot;, &quot;dmYResolution&quot;],
+    [&quot;short&quot;, &quot;dmTTOption&quot;],
+    [&quot;short&quot;, &quot;dmCollate&quot;],
+    [arrayType(t.TCHAR, CCHFORMNAME), &quot;dmFormName&quot;],
+    [t.WORD, &quot;dmLogPixels&quot;],
+    [t.DWORD, &quot;dmBitsPerPel&quot;],
+    [t.DWORD, &quot;dmPelsWidth&quot;],
+    [t.DWORD, &quot;dmPelsHeight&quot;],
+    //union {
+        [t.DWORD,&quot;dmDisplayFlags&quot;],
+    //  DWORD dmNup;
+    //};
+    [t.DWORD, &quot;dmDisplayFrequency&quot;],
+    //#if (WINVER &amp;gt;= 0x0400)
+    [t.DWORD, &quot;dmICMMethod&quot;],
+    [t.DWORD, &quot;dmICMIntent&quot;],
+    [t.DWORD, &quot;dmMediaType&quot;],
+    [t.DWORD, &quot;dmDitherType&quot;],
+    [t.DWORD, &quot;dmReserved1&quot;],
+    [t.DWORD, &quot;dmReserved2&quot;],
+    //#if (WINVER &amp;gt;= 0x0500) || (_WIN32_WINNT &amp;gt;= 0x0400)
+    [t.DWORD, &quot;dmPanningWidth&quot;],
+    [t.DWORD, &quot;dmPanningHeight&quot;]
+    //#endif
+    //#endif
+]);
+
+windows.user32 = ffi.Library(&quot;user32&quot;, {
+    // https://msdn.microsoft.com/en-us/library/windows/desktop/dd162611(v=vs.85).aspx
+    // LPCWSTR, DWORD, DEVMODE*
+    &quot;EnumDisplaySettingsW&quot;: [
+        t.BOOL, [&quot;pointer&quot;, t.DWORD, &quot;pointer&quot;]
+    ]
+});
+
+/**
+ *  Gets the current screen resolution
+ *
+ * @return {Object) The width and height of the screen.
+ */
+windows.getScreenResolution = function () {
+    var dm = new windows.DEVMODEW();
+    dm.ref().fill(0);
+    dm.dmSize = windows.DEVMODEW.size;
+
+    if (c.FALSE != windows.user32.EnumDisplaySettingsW(ref.NULL, c.ENUM_CURRENT_SETTINGS, dm.ref()))
+    {
+        // note for unknown reason on win 10 the returned dmSize is 188 not expected 220
+        return { width: dm.dmPelsWidth, height: dm.dmPelsHeight };
+    }
+    return { width: 0, height: 0 };
+
+}</pre>
+</div>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2015/10/working-with-windows-native-code-from-node-js/feed/</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+		</item>
+	</channel>
+</rss>

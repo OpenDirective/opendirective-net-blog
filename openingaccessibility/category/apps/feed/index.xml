@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Apps &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/category/apps/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>&#8220;I don&#8217;t care about the OS, just give me my web Apps&#8221;</title>
+		<link>/openingaccessibility/2016/05/i-dont-care-about-the-os-just-give-me-my-web-apps/</link>
+		<comments>/openingaccessibility/2016/05/i-dont-care-about-the-os-just-give-me-my-web-apps/#respond</comments>
+		<pubDate>Tue, 10 May 2016 18:01:34 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[a11y]]></category>
+		<category><![CDATA[Apps]]></category>
+		<category><![CDATA[web]]></category>
+		<category><![CDATA[web apps]]></category>
+		<category><![CDATA[web a11y]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=668</guid>
+		<description><![CDATA[So I tweeted in jest to Bruce Lawson today in a conversation about Progressive Web Apps in the aftermath of the excellent WebProgressions one-day conference. And then I realised, I actually meant it! My point is that as a user &#8230; <a href="/openingaccessibility/2016/05/i-dont-care-about-the-os-just-give-me-my-web-apps/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>So I tweeted in jest to Bruce Lawson today in a conversation about Progressive Web Apps in the aftermath of the excellent <a href="https://webprogressions.org/">WebProgressions </a>one-day conference.</p>
+<p>And then I realised, I actually meant it!</p>
+<p>My point is that as a user of tech I want to get at the content or functionality I find useful or interesting when I want to. I want to do so whatever device I have in front of me of me or on me. I&#8217;m not interested in arbitrary platform distinctions or fan bouy love affairs. To be honest I find the main desktop OSs are ‘the same but different’. Ditto mobile OSs. And that’s OK. I&#8217;d even be happy if devices became commodity infrastructure. But the market isn&#8217;t quite like that.</p>
+<p>If I quickly want some info I&#8217;ll use the web. If I want to do something repeatedly and it&#8217;s convenient for me to let the service save info about me for *my* benefit, I&#8217;ll use an app. Furthermore,  as I want probably to get access to the same stuff on different devices that really means I want a web app. That&#8217;s the closest we&#8217;ve so far got to the &#8220;write once, run anywhere dream.</p>
+<p>Variety is good for choice and drives quality so I&#8217;m happy that there are competing browsers and OSs. Just as long as they seamlessly support the features I want. And these days that probably means they use basic features covered by a W3C standard.</p>
+<p>Does that mean I want my experience of the web sites and apps I access to be identical whatever? Absolutely not. I want variation that suites</p>
+<ul>
+<li>My interaction modes and environment. For example, desktop with keyboard and large screen or mobile with touch (but note these personal and technical modes are all blurring)</li>
+<li>Personalised access according to my preferences and accessibility requirements and environmental constraints (eg driving)</li>
+</ul>
+<p>Actually, those 2 are really just different facets of the same thing. Personalised Accessible User Experience or AUX</p>
+<p>I don&#8217;t want experience based on the suppliers development priorities or convenience. Nor on some marketing wish to push stuff at me for business benefits (especially Ads).  But, it turns out platform <strong>does</strong> matter as the accessible experiences are not equal.</p>
+<p>I want a user-centred AUX whatever the device. No more and no less.</p>
+<p>Having started taking Microsoft seriously again I do think they get much of this. Even if they are going to start charging for Windows 10 again. It looks like they are focussing on the cloud and services rather than just the Windows OS. With Edge, they are now engaging with web users and development community in very impressive and meaningful ways. They have made accessibility important at a high level. Continuum and devices like Surface Pro accept our desire to change our interaction modes during the day: and even encourage it.</p>
+<p>Just don&#8217;t expect them to open source Windows just yet!</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2016/05/i-dont-care-about-the-os-just-give-me-my-web-apps/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Symbols for AAC using SVG and a RESTful web API</title>
+		<link>/openingaccessibility/2015/03/mulberry-symbols-for-aac-svg-and-apis/</link>
+		<comments>/openingaccessibility/2015/03/mulberry-symbols-for-aac-svg-and-apis/#comments</comments>
+		<pubDate>Sun, 29 Mar 2015 18:09:43 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[a11y]]></category>
+		<category><![CDATA[Apps]]></category>
+		<category><![CDATA[Assistve Technology]]></category>
+		<category><![CDATA[AAC]]></category>
+		<category><![CDATA[Symbols]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=490</guid>
+		<description><![CDATA[A good few years ago I hooked up with Garry Paxton who needed some development support for a charity website.  He had created straight-street.com to provide Speech and Language Therapists access to a new and freely available symbol set. Symbols &#8230; <a href="/openingaccessibility/2015/03/mulberry-symbols-for-aac-svg-and-apis/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>A good few years ago I hooked up with Garry Paxton who needed some development support for a charity website.  He had created <a href="http://straight-street.com/">straight-street.com</a> to provide Speech and Language Therapists access to a new and freely available symbol set. Symbols such as this Mulberry symbol set are vitally important for people with communication difficulties &#8211; such as an <a href="http://www.communicationmatters.org.uk/">inability to speak</a>. But often, like much in the AT world, proprietary symbols are expensive and so can be out of reach of many who would really benefit form them.</p>
+<p>While this work was carried out a few years ago I felt it should be documented and will hopefully inspire others to innovate.</p>
+<p><a href="http://straight-street.com/media/symbols/EN/svg/communication_aid.svg"><img class="alignnone" src="http://straight-street.com/media/symbols/EN/svg/communication_aid.svg" alt="Communication device" width="205" height="205" /></a><a href="http://straight-street.com/media/symbols/EN/svg/communication_board.svg"><img class="alignnone" src="http://straight-street.com/media/symbols/EN/svg/communication_board.svg" alt="Communication chart" width="207" height="207" /></a><img class="alignnone" src="http://straight-street.com/media/symbols/EN/svg/hello.svg" alt="Man waving hello" width="191" height="191" /></p>
+<h1>Open symbols</h1>
+<p>Garry&#8217;s goals for the symbols and website included</p>
+<ul>
+<li><strong>Provide an alternative symbol set</strong> for older users as available sets were largely aimed at children. This required extra &#8216;adult&#8217; symbols and a more appropriate style.</li>
+<li><strong>Promote innovation in symbol availability and use</strong> by allowing symbols to be freely used, shared, modified and accessed on the web. All symbols sets at the time had proprietary licences and often required a licence per use on a single PC. This was felt to be a serious barrier to users getting free access to critical communication aids they need. Personally I think that the majority of symbol set owners were behind the times as far as the technical possibilities were concerned and so users were missing out.</li>
+<li><strong>Demonstrate how symbols can be accessed</strong> in modern web apps through an API. This included providing an API to access symbols, a basic test App and also a protoype symbol chart maker app.</li>
+<li><strong>Provide a strong design workflow</strong> for the symbols so they have consistent style (even though permissive licence allows for derived works).</li>
+<li><strong>Encourage community</strong> suggestions for and review of symbols.</li>
+<li><strong>Allow easy access</strong> to entire symbols set or just a sub set based on criteria such as topic (eg &#8216;food&#8217;)</li>
+</ul>
+<p>I think most of these goals were reached by Garry and the team, despite being a little ahead of the curve technically. API usage and general SVG support were nowhere as well developed as they are now. Perhaps most importantly this was disruptive as far as symbol set owners and developers who used them were concerned. We see several web uses of symbols (eg hover over words on <a href="http://www.communicationmatters.org.uk/">commmunicationmatters.org.uk</a>) and a few free or otherwise better licensed symbol sets have become available. Currently the Mulberry symbols are used in many apps (native and web), though some people appear to be abusing the very permissive <a href="http://creativecommons.org/licenses/by-sa/2.0/uk/">CC BY-AT licence</a>. Unfortunately Garry&#8217;s charity funding dried up and so it was closed at the point the current 3,000 odd symbols were finished. <strong>Note to anyone interested in picking up on this &#8211; Garry would love to see the symbol development work resume.</strong></p>
+<blockquote><p>To see a fairly random selection of symbols go to  <a href="http://straight-street.com/gallery.php">straight-street.com</a> and click on &#8220;Search&#8221;. You can mouse over the symbols to get a larger preview.</p></blockquote>
+<h1>SVG</h1>
+<p>I loved the symbols and Garry&#8217;s aims  in terms of open accessibility so I quickly offered to help fix the website problems. I made several suggestions, in particular using SVG as an alternative to the  WMF (Windows meta format). WMF made sense for use in installed apps as most users had Windows PC programs that only support WMF. It&#8217;s scalable but rather crude, requiring considerable hand editing of exports from Adobe Designer (used to create the symbols). In addition, due to security problems Microsoft pulled the explorer support for showing thumb nails, thus reducing their general utility.</p>
+<p>I was well aware of the advantages of SVG as a mature scalable format and open standard. I hoped it would soon &#8216;break&#8217; into mainstream, something that is only just happening now, some 5 years on, largely I suspect as a result of the need for responsive images.</p>
+<p>Seeing I was promoting SVG to Garry as the web-friendly format for use on the web I needed to prove it could be easily used in webs apps for symbols. This proved to be basically the case though the test app is a little more complex then expected.</p>
+<div style="width: 152px" class="wp-caption alignleft"><a href="http://straight-street.com/media/symbols/EN/svg/baker_1b.svg"><img class="" src="http://straight-street.com/media/symbols/EN/svg/baker_1b.svg" alt="Man wearing bakers clothing and a loaf of bread" width="142" height="142" /></a><p class="wp-caption-text">Baker</p></div>
+<div style="width: 48px" class="wp-caption alignleft"><a href="http://straight-street.com/media/symbols/EN/svg/briefcase_2.svg"><img src="http://straight-street.com/media/symbols/EN/svg/briefcase_2.svg" alt="Briefcase" width="38" height="38" /></a><p class="wp-caption-text">Briefcase</p></div>
+<div style="width: 309px" class="wp-caption alignleft"><a href="http://straight-street.com/media/symbols/EN/svg/bath_animal_,_to.svg"><img class="" src="http://straight-street.com/media/symbols/EN/svg/bath_animal_,_to.svg" alt="person bathing a dog in a tub with a sponge" width="299" height="299" /></a><p class="wp-caption-text">bath_animal_,_to</p></div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Fortunately, that has now changed with improved SVG support in browsers. The biggest breakthrough is the support of SVG files in &lt;img&gt; tags &#8211; hurrah! To prove the point, you should be able to see above various the in differing sizes using an &lt;img&gt; tag (and you can click on them for a larger scaled image). These were added to WordPress using the &#8220;embed from URL&#8221; option without any special effort. Now symbols can easily be displayed in web apps without using awkward markup such as <span class="pl-s">&lt;object type=&#8221;image/svg+xml&#8221; data=&#8221;URL<span class="pl-pds">&#8220;</span></span><span class="pl-s">&gt; and feature testing code</span>.</p>
+<p>As an aside, for the straight-street.com site we didn&#8217;t use SVG. Rather we used 2 sizes of png (originally giff) for thumbnail and preview images. Plus the user can download zips of all the symbols in WMF, SVG and a size of png. All rather messy.</p>
+<h1>API</h1>
+<p>For the API design I researched best practice but found little solid wisdom available at that time. Still, I&#8217;m reasonably happy with the design, though no doubt it could be done much better now, especially as we have a good body of experience and examples (though I must say &#8220;both good and bad&#8221;). At the time, having just read <a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">Roy Fielding&#8217;s dissertation</a> I was keen to use a self describing discoverable REST style returning JSON with further URLs embedded.  This is perhaps closer to the <a href="https://sites.google.com/site/restframework/hypermedia-controls">hypermedia controls</a> approach rather that the alternative <a href="http://apiux.com/2013/04/09/rest-metadata-formats/">metadata formats</a> which seem to be currently slugging it out for dominance (and interestingly I see Microsoft have standardised on <a href="https://github.com/swagger-api/swagger-spec/blob/master/versions/1.2.md">Swagger Metadata</a> for Azure as most popular metadata). For our API we only require GET, at least as the API stands, which makes life much simpler in terms of API design and implementation.</p>
+<blockquote><p>Here&#8217;s an example request to get all symbols with name or tag containing &#8216;sweet&#8217;</p>
+<p><a href="http://straight-street.com/api/symbols/EN/sweet?appid=SSApiUsage">http://straight-street.com/api/symbols/EN/sweet</a> &#8211;</p>
+<p>The API&#8217;s home page <a href="http://straight-street.com/api">straight-street.com/api</a> provides details usage information. And a small interactive test applications is provided at <a href="http://straight-street.com/api/test.html">straight-street.com/api/test.html</a></p></blockquote>
+<p>For implementation I initially used Python which was a joy to write (as always) but as our free hosting only provided CGI is was REALLY slow. I therefore reimplemented it in PHP using a rather obscure light weight MVC framework for routing (<a href="http://doophp.com/">DooPHP</a>). This is reasonably fast. When it comes to a rewrite I&#8217;d no doubt use node.js + hapi or perhaps Python&#8217;s  Flask. In addition <a href="http://json-schema.org/latest/json-schema-hypermedia.html">JSON Hyper-Schema</a> looks like a good spec and tools to use.</p>
+<h1>Conclusion</h1>
+<p>Despite being a little ahead of the accessibility and web curve I think we managed a very reasonable first product implementation. Web support has moved on so far and fast that I&#8217;ve no doubt the web site, api and samples apps could be easily recreated and be in much better shape.</p>
+<p>We&#8217;d love for symbol users to get access to these symbols in a wide range of innovative on-line and web apps. We&#8217;d also like to see many more symbols being added to make this a comprehensive set with excellent utility. Perhaps most importantly we&#8217;d love to see a community grow around these symbols to ensure sustainability.</p>
+<p>We&#8217;ve put the Mulberry symbols, the API source and website source on GitHub in the <a href="https://github.com/straight-street">straight-street organisation</a>. I don&#8217;t really recommend looking at the website code &#8211; it has a strange history <img src="https://s.w.org/images/core/emoji/11/72x72/1f609.png" alt="😉" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p>If this resonates with you at all and you have access to funding and/or development time then please do talk to us.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2015/03/mulberry-symbols-for-aac-svg-and-apis/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>Accessing local resources from a Win8 app HTML web context</title>
+		<link>/openingaccessibility/2013/06/accessing-local-resources-from-win8-app-web-context/</link>
+		<comments>/openingaccessibility/2013/06/accessing-local-resources-from-win8-app-web-context/#comments</comments>
+		<pubDate>Tue, 04 Jun 2013 21:03:32 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[Apps]]></category>
+		<category><![CDATA[HTML]]></category>
+		<category><![CDATA[Win8]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=154</guid>
+		<description><![CDATA[Javascript Windows 8 App Store apps (AKA Modern apps AKA Metro apps) are strongly sandboxed and one of the effects of this is that access to local resources is tightly restricted to a small set of clearly de-marked locations. Furthermore, &#8230; <a href="/openingaccessibility/2013/06/accessing-local-resources-from-win8-app-web-context/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Javascript Windows 8 App Store apps (AKA Modern apps AKA Metro apps) are strongly sandboxed and one of the effects of this is that access to local resources is tightly restricted to a small set of clearly de-marked locations. Furthermore, HTML in an iFrame running in a so-called &#8220;web context&#8221; has further restrictions compared to the &#8220;local context&#8221; of HTML for the native app. Media resources in local library locations such as &#8220;My Pictures&#8221; are not easily accessible from the web context but it can be achieved. I&#8217;m documenting the solution here as I worked hard to solve it and could not find any documentation at the time.</p>
+<h1>A little background</h1>
+<p>Having built a few HTML spikes of <a href="http://maaivs.fullmeasure.co.uk/">Maavis</a> features we satisfied ourselves that it is now perfectly feasible to replace the old <a href="http://en.wikipedia.org/wiki/XUL">XUL</a> version with a mixture of HTML5, W3C widgets and a thin native code wrapper to provide access to platform features not yet available in the browser sandbox. Going for HTML has many advantages, including portability now, good future deployment options, and a potentially large community, something that is vital for a successful open development project.</p>
+<p>And then, the Windows 8 release landed and we decide to seriously look at it as the first platform we targeted. I won&#8217;t go into all the reasons for this but it&#8217;s interesting to note that the simplified touch interface style that is a key feature of the Maavis UI has now appeared in consumer platforms, including Windows 8.</p>
+<p>So we spent an OpenDirective week off-site hacking and exploring how we might implement features in HTML running in a Windows App Store app native wrapper. In other words we want the core application to be HTML code that will run on other platforms without change (AKA a hybrid app). I picked access to local image files which would be pretty straight forward, or so I thought.</p>
+<p>At this point I became painfully aware that the <a href="http://msdn.microsoft.com/en-US/windows/default.aspx">MSDN documentation</a>, my preferred first port of call, was early release and the quality was simply not what I was used to from previous experience. I spent many years delving into Win32 program and system development from the days of Windows 3.1 (well actually &#8220;Windows for Work Groups&#8221;) until Vista arrived. This had accustomed me to the excellent API documentation and articles that formed part of Microsoft&#8217;s formidable developer evangelism efforts. MSDN magazine, then later a handful of CDs, and then a huge raft of DVDs, contained all tools and information you could ever want as a developer. As time passed <a href="http://www.codeproject.com/">Code Project</a> became a &#8220;go to&#8221;community resource and it&#8217;s good to still see it is still going strong (don&#8217;t miss their <a href="http://www.windowsazure.com/en-us/">Azure </a>competition).</p>
+<p>At this point in time, however, while APIs were clearly defined by the objects, methods and properties, critical conceptual information providing context and defining the models just wasn&#8217;t there. Sure you can often work out the map of the forest from a study of all the trees but that leaves a lot of unknown &#8216;there be dragons&#8217; areas, even after much trial and error. A couple of 3rd party blog posts gave vital clues but still with many gaps, caused largely by their being written for the preview releases of Windows 8. Plus heavy weight solutions like having a local webserver exclude running on Windows RT, and the background processing possibilities are restricted in App Store Apps.</p>
+<p>I have since found the &#8220;must read&#8221; free ebook: <a href="http://blogs.msdn.com/b/microsoft_press/archive/2012/10/29/free-ebook-programming-windows-8-apps-with-html-css-and-javascript.aspx">Programming Windows 8 Apps with HTML, CSS, and JavaScript</a> which fills in many of the knowledge gaps (hint, at 70MB,  don&#8217;t  try to email the MOBI to your kindle, you&#8217;ll have to sideload it). Also, Microsoft have now provided many great on-line developer resources. Now the developers friend <a href="http://stackoverflow.com/">Stack Overflow</a> has good Windows 8 discussions.</p>
+<h1>A solution</h1>
+<p>To reiterate, the problem to be solved is to display an image in HTML in a web context iFrame where the image is a file in the &#8220;My Pictures&#8221; library on the local file system.</p>
+<p>We need a URI referencing the image for src attribute of an image tag/element and while it could theoretically be defined declaratively in the HTML or set programatically by setting the src attribute, I&#8217;ll stick to the latter as that is more much flexible in terms of possible solutions, as well see.</p>
+<p>WinRT provides a set of URI protocols for accessing resources in various locations (the protocol is the <strong>http:</strong> part of a web URI). However, the restrictions we hit in the App web context are:</p>
+<ul>
+<li>The <strong>file:</strong> protocol is completely blocked. This is the usual way to access local resources from HTML.</li>
+<li>There is no protocol for accessing the libraries like My Pictures. <strong>ms-appx: </strong>and <strong>ms-appx-web</strong> access content in the app package, while <strong>ms-appdata</strong>: looks in the app data storage area.</li>
+<li>While files in library locations can be programmatically accessed from the local context and accessed by dynamically created <strong>blob:</strong> URLs to be referenced in the HTML, such references are blocked from within the web context. This is no doubt due to cross domain restriction requirements.</li>
+</ul>
+<p>But wait, the solution could be to use a local context iframe containing the image element that is nested inside the web context HTML. The nested local context will then be able to use the blob URI in an image element src attribute to access the image file. Result.</p>
+<p>Except, that isn&#8217;t allowed either. Sigh.</p>
+<p>But wait, the WinRT MSApp method <a href="http://msdn.microsoft.com/en-us/library/windows/apps/hh465759.aspx">addPublicLocalApplicationUri</a> looks very interesting. It &#8220;exposes the provided local context URIs to arbitrary untrusted web content&#8221;. In other words we might be able to use it to allow a local context iframe to be embedded in a web context iframe.</p>
+<p>And you know what? It works. In fact I subsequently found this solution is described at the end of a long runtime error message in Visual Studio that is easy to over look</p>
+<blockquote><p><a href="msdn.microsoft.com/query/dev11.query?appId=Dev11IDEF1&amp;l=EN-US&amp;k=k(VS.WebClient.Help.APPHOST9605);k(DevLang-jscript);k(DevLang-dhtml);k(DevLang-javascript)&amp;rd=true">APPHOST9605</a>: Can&#8217;t navigate to &lt;ms-appx:///nestedLocalContext.html&gt; from &lt;ms-appx-web://8f028944-29cc-4f85-8d13-c1ef987ea8f3/webContext.html&gt; because the destination URI is in a higher security zone. You can&#8217;t navigate from a zone with lower security to a zone with higher security unless you&#8217;re navigating to a local context URI from a web context URI and you&#8217;ve registered the local context URI with the MSApp.addPublicLocalApplicationUri method.</p></blockquote>
+<p>So we can access the image file in the main app code, create a local blob URL to it and then pass that to the nested local context to be used in an image element.  As we are crossing from local domain (context), to web domain domain and back to local domain we&#8217;ll need to use the official HTML cross domain communication &#8220;postMessage&#8221; twice.  In theory it should be possible to access the inner local context directly from the outer one as they are both the same domain. However, in practice it&#8217;s not possible access an iframe&#8217;s content if it is from another domain (eg access to contentDocument etc is blocked).</p>
+<p>To help make this all clear I&#8217;ve placed working code in an example VisualStudio project in GitHub<a href="https://github.com/SteveALee/Win8LocalResourcesAccess"> SteveALee/Win8LocalResourceAccess</a>.</p>
+<p>A final note, obviously you need to tread a little carefully as addPublicLocalApplicationUri is overriding the security model which is there for good reasons. In particular watch out for untrusted code access in the web context. Being forced to restrict the cross domains interactions to postMessage is a security advantage.</p>
+<h1>But really?</h1>
+<p>Time for a quick sanity check. Is all this worth the effort? Is there really a use case or is it simply an academic exercise? Why not just remove the web context completely? Won&#8217;t other platforms have similar cross domain limitations for access local resources? Remember we want the core application to be HTML code that will run on other platforms without change. I can&#8217;t yet comment on other browser/platform combinations, but this is certainly a possible partial solution to having generic HTML code that works on various platforms. For now, I&#8217;m recording it so I can come back to it if required when we start to look at other platforms.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2013/06/accessing-local-resources-from-win8-app-web-context/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+	</channel>
+</rss>

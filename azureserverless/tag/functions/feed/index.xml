@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+>
+
+<channel>
+	<title>Functions &#8211; AzureServerless</title>
+	<atom:link href="/azureserverless/tag/functions/feed/" rel="self" type="application/rss+xml" />
+	<link>/azureserverless/</link>
+	<description>Using Microsoft Azure in a Serverless mode</description>
+	<lastBuildDate>Tue, 05 Sep 2017 08:46:08 +0000</lastBuildDate>
+	<language>en-GB</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+
+<image>
+	<url>/azureserverless/wp-content/uploads/2016/11/cropped-Functions-32x32.png</url>
+	<title>Functions &#8211; AzureServerless</title>
+	<link>/azureserverless/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">119351739</site>	<item>
+		<title>Watching TypeScript files while developing local Functions</title>
+		<link>/azureserverless/2017/08/22/watching-typescript-files-while-developing-local-functions/</link>
+		<comments>/azureserverless/2017/08/22/watching-typescript-files-while-developing-local-functions/#comments</comments>
+		<pubDate>Tue, 22 Aug 2017 09:15:08 +0000</pubDate>
+		<dc:creator><![CDATA[steve@opendirective.com]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Functions]]></category>
+		<category><![CDATA[TypeScript]]></category>
+
+		<guid isPermaLink="false">/azureserverless/?p=400</guid>
+		<description><![CDATA[[UPDATE 2017/09/04] Thanks to @LindyDonna for pointing out the hosts.json option to added extra directories to the host watch list. We no longer need to use Remy Sharp&#8217;s nodemon to restart the host. For front end development we&#8217;ve become used to automatic rebuild and run as TypeScript source files are [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>[UPDATE 2017/09/04] Thanks to <a href="http://twitter.com/lindydonna">@LindyDonna</a> for pointing out the <code>hosts.json</code> option to added extra directories to the host watch list. We no longer need to use Remy Sharp&#8217;s <code>nodemon</code> to restart the host.</p>
+<p>For front end development we&#8217;ve become used to automatic rebuild and run as TypeScript source files are edited. Webpack, for example, can be configured to watch files, transpile and reload into the dev server. That&#8217;s fast and efficient and hot module reloading makes things even smoother. A key to the speed is that only those files that change are processed, just like the old days with <code>make</code> for compiled languages (and unlike gulp, grunt etc).</p>
+<p>The Azure Function Core Tools host will fortunately monitor files and reload as required when a function app is running in the host. It only processes JavaScript files and there are no hooks to allow adding transpilation from TypeScript (see note below). But that&#8217;s not a real problem as the TypeScript compiler has a <code>--watch</code> option which will recompile and update the .js files, which then cause the host to reload them. We just need to run tsc and the function host as parallel tasks and <code>npm-run-all</code> handles that for us.</p>
+<p>By default the host only watches the files that contain function entry points, not any other files they include. That&#8217;s a problem if like me you have refactored so modules are shared between the Functions. However there is a handy <code>watchDirectories</code> option in <code>host.json</code> that lets you add extra directory trees to be monitored.</p>
+<p>My build process is to have the source in <code>functionApp\src</code> and build is in 2 steps into <code>functionApp\build</code> ;</p>
+<ul>
+<li>Copy all the .json files.</li>
+<li>Compile with tsc. The <code>tsconfig.json</code> uses the <code>outDir</code> option to compile <code>**/*.ts</code>.</li>
+</ul>
+<p>Modules shared between functions are in <code>_modules</code> folder. All the required dev config files and node_modules are in <code>functionApp</code>. See <a href="https://github.com/OpenDirective/brian/tree/master/functionApp">this example</a> for full details.</p>
+<p>Here&#8217;s a fragment of <code>package.json</code> that implements the watch, along with the build and start host scripts.</p><pre class="crayon-plain-tag">scripts: {
+    "build:func": "ncp functionApp/src functionApp/build --filter \\w\\.json &amp;&amp; tsc -p functionApp",
+    "start:funchost": "cd functionApp/build &amp;&amp; func host start --debug vscode &amp;&amp; cd ../..",
+    "watch:func": "npm-run-all -p \"build:func -- --watch\" start:funchost"
+}</pre><p>The very handy <code>npm-run all</code> lets us run both the build and Function host in parallel. As <code>tsc --watch</code> compiles all files before it watches them the host will reload all files after starting (I guess we could add a delay to stop this, but that is hacky and fragile)</p>
+<p>The <code>hosts.json</code> entry is as follows:</p><pre class="crayon-plain-tag">{
+    "watchDirectories": ["_modules"]
+}</pre><p>Here&#8217;s full details of the <a href="https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json">available <code>host.json</code> </a>options.</p>
+<p><strong>Footnote:</strong></p>
+<p>As an aside, I do plan to try changing the Core Tools to run <code>.ts</code> as well as <code>.js</code> files and then launch with <code>ts-node</code> which will set node to transpile and load the resulting  <code>.js</code> as part of <code>require('./module.ts')</code> handling. That will allow the processing of individual files as they change.</p>
+]]></content:encoded>
+			<wfw:commentRss>/azureserverless/2017/08/22/watching-typescript-files-while-developing-local-functions/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">400</post-id>	</item>
+		<item>
+		<title>Why use async/await for your JavaScript AzureFunctions?</title>
+		<link>/azureserverless/2017/08/20/why-use-asyncawait-for-your-javascript-azurefunctions/</link>
+		<comments>/azureserverless/2017/08/20/why-use-asyncawait-for-your-javascript-azurefunctions/#comments</comments>
+		<pubDate>Sun, 20 Aug 2017 12:45:02 +0000</pubDate>
+		<dc:creator><![CDATA[steve@opendirective.com]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Functions]]></category>
+		<category><![CDATA[TypeScript]]></category>
+
+		<guid isPermaLink="false">/azureserverless/?p=409</guid>
+		<description><![CDATA[I just reworked my previously posted code access a google photos album list to use async/await and think it gives a good account of itself. It&#8217;s not a massive change but I think easier to read and less  boiler plate. As Azure Functions only support nodejs 6.5.0, I switched to [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>I just reworked my previously posted code access a google photos album list to use async/await and think it gives a good account of itself. It&#8217;s not a massive change but I think easier to read and less  boiler plate.</p>
+<p>As Azure Functions only support nodejs 6.5.0, I switched to typescript in order to use async/await but I want to use it any way. More versions of node will be supported (it&#8217;s work in progresss) so you will be able to use async/await without typescript&#8217;s extra transpilation step.</p><pre class="crayon-plain-tag">function getPhotoAlbumsList( context, req ) {
+    getAdminAccessToken()
+        .then(({ object: { access_token } }) =&gt; {
+            const userId = req.user.sub
+            return getUserProfile(access_token, userId)
+        })
+        .then(({ object }) =&gt; {
+            const google_access_token = object.identities[0].access_token
+            return getPhotoAlbums(google_access_token)
+        })
+        .then(({ object: { feed: { entry } } }) =&gt; {
+            const titles = entry.map((ent: any) =&gt; ent.title.$t)
+            return {
+                status: 200,
+                body: JSON.stringify(titles),
+                headers: { 'Content-Type': 'application/json' }
+            }
+        })
+        .catch(err =&gt; {
+            return {
+                status: 400,
+                body: err.message
+            }
+        })
+        .then(res =&gt; {
+            context.done(null, res)
+        })
+}</pre><p>&nbsp;</p><pre class="crayon-plain-tag">async function getPhotoAlbumsList( context: HttpContext, req: Auth0FunctionRequest): Promise&lt;void&gt; {
+    try {
+        const { access_token: admin_access_token } = await getAdminAccessToken()
+        const userId = req.user.sub
+        const { identities } = await getUserProfile(admin_access_token, userId)
+        const google_access_token = identities[0].access_token
+        const titles = await getGooglePhotoAlbumList(google_access_token)
+        const titlesText = JSON.stringify(titles)
+        context.done(null, {
+            status: 200,
+            body: titlesText,
+            headers: { 'Content-Type': 'application/json' }
+        })
+    } catch (err) {
+        context.done(null, {
+            status: 400,
+            body: err.message
+        })
+    }
+}</pre><p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>/azureserverless/2017/08/20/why-use-asyncawait-for-your-javascript-azurefunctions/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">409</post-id>	</item>
+		<item>
+		<title>All about Function App Settings for storing secrets</title>
+		<link>/azureserverless/2017/08/18/all-about-function-app-settings-for-storing-secrets/</link>
+		<comments>/azureserverless/2017/08/18/all-about-function-app-settings-for-storing-secrets/#comments</comments>
+		<pubDate>Fri, 18 Aug 2017 09:29:01 +0000</pubDate>
+		<dc:creator><![CDATA[steve@opendirective.com]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Functions]]></category>
+
+		<guid isPermaLink="false">/azureserverless/?p=357</guid>
+		<description><![CDATA[When developing a Azure Function App you will likely have configuration secrets such as 3rd party API keys and certificates that you really do not want to share with anyone. These secrets will accessed by your Function&#8217;s code both on Azure and locally when developing with the Core tools or [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>When developing a Azure Function App you will likely have configuration secrets such as 3rd party API keys and certificates that you really do not want to share with anyone. These secrets will accessed by your Function&#8217;s code both on Azure and locally when developing with the Core tools or Visual Studio. But otherwise you do not want them to be made available.</p>
+<p>The standard way for handling this outside Microsoft tools is to have a .env (dotenv) file containing a set of NAME=VALUE lines. This file can be processed by various tools that set OS process environment variables that you code can then access via standard means. A Webpack plugin also makes the variables available to code running in the browser which doesn&#8217;t have access to any OS process data.</p>
+<p>Of course you really <em>don&#8217;t</em> want to check this file into version control for others to read. So, you typically add it to something like the .gitignore file. But it&#8217;s still very easy to make mistakes or there may be back door ways to access file on the OS. Thus, encryption mechanism are often use for the file at rest. Even then, someone may be able to list the OS environment at runtime and so access the secrets.</p>
+<p>Azure Functions take an alternative and somewhat mores secure approach. It provides a database of &#8220;App Settings&#8221; as part of the underlying <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-how-to-use-azure-function-app-settings#settings">App Service Application Settings</a>. Note, don&#8217;t confuse these with the identically named <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-how-to-use-azure-function-app-settings#manage-app-service-settings">Function App Settings</a> tab. Again, these are name, value pairs that the code accesses as environment variables. Otherwise, access is restricted to interactive means in the portal and via specific authenticated APIs.</p>
+<p>Here&#8217;s a summary of how the App Settings work:</p>
+<ul>
+<li>Azure App Settings are stored in a database for each Function App.</li>
+<li>Function ode accesses these as environment variables.</li>
+<li>They can be manually viewed, created and updated in the portal (but LFs cannot be entered, even as \n).</li>
+<li>Remote programmatic access to the App Settings is mediated by Azure through specific secure APIs.</li>
+<li>A <code>local.settings.json</code> file containing the settings can be generated by the portal as part of a Function App content download.
+<ul>
+<li>The file name is a tad confusing, but I see why.</li>
+<li>There is a bug in the main key &#8220;Values&#8221; which is provided as &#8220;Value&#8221;.</li>
+</ul>
+</li>
+<li>There appears to be no way in the portal to send a file into the App Settings.</li>
+<li>The AzureFunctions Core Tools CLI can send the local.settings.json contents to App Settings as part of a <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local#publish">Function Application publish</a> to Azure. Eg <code>func azure functionapp publish &lt;FunctionAppName&gt; --publish-local-settings</code>. The file itself is NOT uploaded. If you do upload the file (say via KUDU) it will be ignored.</li>
+<li>The App settings can be fetched into <span style="color: #222222; font-family: Consolas;">local.settings.json</span> via the AzureFunctions CLI.</li>
+<li>There is no fully programmatic way to upload the App Settings as AzureFunctions CLI will involve some interactive login and requires fairly non deterministic state setting of the Subscription and needs to be in the correct directory when run. Ideally for fully automated CI/CD the Function App path, user and password could be specified on the command line.</li>
+<li>Visual Studio Azure Functions tools use the <span style="display: inline !important; float: none; background-color: transparent; color: #333333; cursor: text; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; line-height: 22.4px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;">AzureFunctions Core Tools CLI under the hood, </span> so you will need specify the <code><span style="display: inline !important; float: none; background-color: transparent; color: #333333; cursor: text; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; line-height: 22.4px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;">--publish-local-settings</span></code> option.</li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>/azureserverless/2017/08/18/all-about-function-app-settings-for-storing-secrets/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">357</post-id>	</item>
+		<item>
+		<title>Deploying to Azure Functions and Blob Storage from npm scripts</title>
+		<link>/azureserverless/2017/08/12/deploying-to-azure-functions-from-npm-scripts/</link>
+		<comments>/azureserverless/2017/08/12/deploying-to-azure-functions-from-npm-scripts/#comments</comments>
+		<pubDate>Sat, 12 Aug 2017 10:35:27 +0000</pubDate>
+		<dc:creator><![CDATA[steve@opendirective.com]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Functions]]></category>
+
+		<guid isPermaLink="false">/azureserverless/?p=358</guid>
+		<description><![CDATA[My latest web app project is a Typescript SPA frontend hosted in Blob storage with a Serverless Azure Functions Javascript backend. For an optimal development experience I need automated deployment that is easy and reproducible. This will be used on my Windows git4windows bash development environment and later on a [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>My latest web app project is a Typescript SPA frontend hosted in Blob storage with a Serverless Azure Functions Javascript backend. For an optimal development experience I need automated deployment that is easy and reproducible. This will be used on my Windows git4windows bash development environment and later on a CI/CD server (which might be Windows but more likely, Linux). I expected this was going to be &#8220;easy-peasy&#8221; given Azure Function&#8217;s relative maturity and the number of deployment options available. Wrong! I spent considerable time fiddling about getting something &#8216;just right&#8217; for deploying the SPA and and backend to Azure. The problem is an absence of portable CLI commands that sync a local directory to either the AzureFunction file space or Blob storage. Hopefully this post will save others the same hassle.</p>
+<p>The simple portable solution uses:</p>
+<ul>
+<li>The <a href="https://docs.microsoft.com/en-us/azure/storage/storage-use-azcopy">AzCopy</a> command to deploy the SPA to Blob storage while setting the correct ContentType (sets MIME type when served over HTTP)</li>
+<li>FTP ncftpput (part of the <a href="http://ncftp.com/ncftp/">ncftp client</a>) to recursively deploy the Function App directory structure, without using any repositories</li>
+<li>npm <a href="https://www.npmjs.com/package/dotenv">dotenv</a> and <a href="https://www.npmjs.com/package/cross-env">cross-env</a> to provide cross platform private env var access (both are npm CLI packages)</li>
+</ul>
+<p>This is by no means a perfect solution and I explore some potential alternatives below. Note WAWSDeploy is an effective Windows-only solution for the Functions code.</p>
+<p>Here are the relevant npm scripts I use:</p><pre class="crayon-plain-tag">"deploy:spa": "dotenv cross-env-shell AzCopy /Source:build /Dest:$AZURE_SPA_CONTAINER_URL /DestKey:$AZURE_SPA_STORAGE_KEY /S /Y /SetContentType",
+"deploy:func": "dotenv cross-env-shell \"ncftpput -R -u $AZURE_FTP_USER -p $AZURE_FTP_PWD $AZURE_FTP_HOST / functionApp/src/\"",
+"deploy": "npm run deploy:spa &amp;&amp; npm run deploy:func"</pre><p></p>
+<ul>
+<li>The Azure Functions FTP settings are now rather hidden in the <code>Functions -&gt; Platform Features -&gt; Properties</code>. I used <code>FTPS host name</code> and <code>FTP/deployment user</code>. You set a subscription-wide username and password in <code>Functions -&gt; Platform Features -&gt; Deployment Credentials</code>. Note, changing the password requires changing the username to something else and then back again to avoid an &#8216;in use&#8217; error.</li>
+<li>Cross-env lets you use a portable <code>$ENVVAR</code> form of environment variable reference in your npm scripts</li>
+<li>Dotenv lets you provide all your deployment variables in a provate <code>.env</code> file. Hopefully, it&#8217;s obvious that you must <strong>never checkin</strong> this to VC, so add <code>*.env</code> to your <code>.gitignore</code>. You can provide a different <code>.env</code> file per deployment scenario, or on a CI/CD server you could just set the env vars directly.</li>
+<li>The extra <code>\"</code> round the <code>ncftpput</code> command stop dotenv interpreting the <code>-p</code> option</li>
+</ul>
+<p>And sample output from <code><code>npm run deploy</code></code>:</p><pre class="crayon-plain-tag">C:\projects\brian&gt;npm run deploy
+
+&gt; brian@0.1.0 deploy C:\projects\brian
+&gt; npm run deploy:spa &amp;&amp; npm run deploy:func
+
+&gt; brian@0.1.0 deploy:spa C:\projects\brian
+&gt; dotenv cross-env-shell AzCopy /Source:build /Dest:$AZURE_SPA_CONTAINER_URL /DestKey:$AZURE_SPA_STORAGE_KEY /S /Y /SetContentType
+
+Finished 5 of total 5 file(s).
+[2017/08/12 11:00:52] Transfer summary:
+-----------------
+Total files transferred: 5
+Transfer successfully:   5
+Transfer skipped:        0
+Transfer failed:         0
+Elapsed time:            00.00:00:02
+
+&gt; brian@0.1.0 deploy:func C:\projects\brian
+&gt; dotenv cross-env-shell "ncftpput -R -u $AZURE_FTP_USER -p $AZURE_FTP_PAWD $AZURE_FTP_HOST / functionApp/src/"
+
+functionApp\src\host.json:                               2.00 B    43.07 B/s
+functionApp\src\local.settings.json:                     1.14 kB   14.83 kB/s
+functionApp\src\proxies.json:                          721.00 B     9.96 kB/s
+functionApp\src\HttpTriggerJS1\function.json:          257.00 B     4.73 kB/s
+functionApp\src\HttpTriggerJS1\index.js:               510.00 B    12.45 kB/s</pre><p>Here&#8217;s an elided <code>.env</code> file</p><pre class="crayon-plain-tag">AZURE_SPA_STORAGE_KEY=&lt;KEY&gt;
+AZURE_SPA_CONTAINER_URL=&lt;URL&gt;
+AZURE_FTP_USER=&lt;USER&gt;
+AZURE_FTP_PWD=&lt;PWD&gt;
+AZURE_FTP_HOST=&lt;HOST-DOMAIN&gt; # without the protocol provided in the portal</pre><p></p>
+<h2>Notes</h2>
+<ul>
+<li>A disadvantage of FTP is it does not do a full sync and delete files that no are longer needed. It&#8217;s a shame rsync is not supported, though that can be a pain to get configured. Indeed, it appears that there is no single cross platform tool that can sync folders to/from Functions filespace. Perhaps another AzureFunction for that.</li>
+<li>AzCopy also does not delete existing files, though it does copy directory trees to a Blob container.</li>
+<li>NcFTP is a mature, portable client and offers directory tree copy, unlike basic clients. However FTP copying is slow compared to the optimised Git sync methods, especially as there is a lack of incremental updates. A common technique is to transfer a single .ZIP archive and have the server unpack it. Unfortunately, this doesn&#8217;t seem to be available for simple FTP deployments. Perhaps a new Azure Function would fix that. [Update: it can be done using the Kudu REST API, but again does not delete unwanted files]</li>
+<li>The OneDrive and DropBox deployment options for Azure Functions sound useful but they require a manual sync in the portal, making then useless for automated deployment.</li>
+</ul>
+<h3> Why not Git?</h3>
+<ul>
+<li>Azure Functions deployment options are heavily oriented to using VC, git specifically,  but that really is is not ideal as you either have to commit all your deploy-able artifacts to your source repository or use a separate repository just for deployment. Having these in VC does mean you can roll back to any version, but I intend to use slots for 1 level rollback and will use the source VC to rebuild other version if ever needed. You may not be bothered about putting built artifacts in your main repository but I see it as an anti pattern, not to mention the unnecessary bloat. Typescript produces JS and typings and for Javascript on nodejs you currently need to bundle all the dependencies to get over the slow cold start times.</li>
+<li>Another reason for using a separate deployment repository is your main repository is extremely likely to contain many files that you do NOT want deployed, but will be.</li>
+<li>Azure Functions does not support SSH authentication and Git HTTPS authentication options mean you will be prompted for a password unless you use a credential manager.</li>
+<li>While it would be possible to create/use a separate git repository for deployment, it cannot live in the project directory structure (can&#8217;t nest git repos) and seems like quite a bit of hassle to get right with scripting. Git submodules may be a solution.</li>
+</ul>
+<h2>In search of a better solution</h2>
+<h3>Functions</h3>
+<p>For the back-end&#8217;s AzureFunction deployment, the limitations of FTP are a problem. FTP is slow, is not incremental and will not sync directory trees by removing unwanted files. I&#8217;ve not found a simple cross platform sync tool that does all this. If you know of one please do tell in the comments!</p>
+<p>Git does address these all issues with its fast minimal on wire protocols and working directory syncing. That&#8217;s probably why the AzureFunctions deployment options are so centred around git. Given this I should either forget my aversion to having a separate deployment repository or investigate a workjable solution, complete wit hthe require git setup. This might use git submodules for a local repo dynamically created in a temporary folder.</p>
+<p>The <a href="https://github.com/Azure/azure-functions-cli">Azure Functions Core Tools</a> does include a non syncing publish action but the tool is too dependent on context and has to be run in the correct folder making it fiddly to use. It is also WIndows only</p>
+<p>A Windows-only solution is David Ebbo&#8217;s <a href="https://github.com/davidebbo/WAWSDeploy">WAWSDeploy</a> which wraps msdeploy and does have a delete option. It works really well. You only need deploy the .PublishSettings file you can dowload from the Azure Function App blade in the portal (<code>Get Publish Profile</code>) and use a npm script like this (don&#8217;t forget to add <code>*.PublishSettinigs</code> to .gitingore):</p><pre class="crayon-plain-tag">"deploy:func:win": "&lt;...&gt;\WAWSDeploy.exe functionApp\\build functionApp.PublishSettings /d"</pre><p></p>
+<h3>Blob Storage</h3>
+<p>Again, for the SPA&#8217;s Azure Blob Storage, I could find no CLI utility that will both sync and set ContentType. So, until the Azure CLI tool supports both (&#8220;PRs welcome&#8221;) the answer is to use AZCopy with either an occasional manual cleanup or perhaps using cron or an AzureFunction.</p>
+<p>While the <a href="https://docs.microsoft.com/en-us/cli/azure/overview">Azure CLI</a> might seem the obvious choice, it <a href="https://github.com/Azure/azure-cli/issues/1949">currently</a> does not set the Blob storage ContentType automatically based on file extension. [Update: A <a href="https://github.com/Azure/azure-cli/pull/4342">fix has been commited</a> now].</p>
+<p>AzCopy does do this and is available for Windows and Linux. Strangely though, the Windows version does not accept the &#8211; option switch character which would be portable. The Azure CLI does not offer a directory sync option either, just a basic copy. In fact, there doesn&#8217;t appear to be any tool that does both and is cross platform.</p>
+<p>Possible solutions include a new feature in the Azure CLI , an update to AzCopy (not OSS) or a new utility to replace AZCopy.</p>
+<p>Alternatively the site storage could be changed to use a simple static web server AzureFunction like <a href="http://anthonychu.ca/post/azure-functions-static-file-server/">Anthony Chu&#8217;s</a>, Deployment then becomes identical to the backend, though you&#8217;d want a separate Function App as the deployment cadence will be distinct for each. There are obviously trade-offs compared to using blob storage, such as performance. One obvious question is will CDN caching will work?</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>/azureserverless/2017/08/12/deploying-to-azure-functions-from-npm-scripts/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">358</post-id>	</item>
+		<item>
+		<title>Using TypeScript in Azure Functions (and with Visual Studio Code)</title>
+		<link>/azureserverless/2017/07/16/using-typescript-in-azure-functions/</link>
+		<comments>/azureserverless/2017/07/16/using-typescript-in-azure-functions/#comments</comments>
+		<pubDate>Sun, 16 Jul 2017 10:00:51 +0000</pubDate>
+		<dc:creator><![CDATA[steve@opendirective.com]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Functions]]></category>
+		<category><![CDATA[TypeScript]]></category>
+
+		<guid isPermaLink="false">/azureserverless/?p=321</guid>
+		<description><![CDATA[I really like TypeScript and now use it in most projects that call for JavaScript, whether it&#8217;s for frontend code in a web browser or backend code run by Node.js. The pros and cons of TypeScript compared to JavaScript are well documented but for me the clincher is the excellent [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>I really like TypeScript and now use it in most projects that call for JavaScript, whether it&#8217;s for frontend code in a web browser or backend code run by Node.js. The pros and cons of TypeScript compared to JavaScript are well documented but for me the clincher is the excellent <a href="https://code.visualstudio.com/docs/editor/intellisense">IntelliSense</a> in Visual Studio Code (and other dev environments). While it&#8217;s early days for TypeScript support in Azure Functions it is relatively easy to use and provides a fantastic local development experience.</p>
+<p>In the context of Azure functions, another advantage of TypeScript is that we can escape the limitations of Node 6.5.0 currently supported by Functions and use newer JavaScript features such as <a href="https://blog.mariusschulz.com/2016/12/23/typescript-2-1-object-rest-and-spread">object rest and spread</a> (perfect for use in functional style code). The TypeScript &#8216;compiler&#8217; transpiles down to a specified earlier &#8216;version&#8217; of JavaScript as well as stripping out the type information.</p>
+<p>Use of TypeScript in Functions requires both running the tsc transpiler and accessing the Typings that describe the Functions&#8217; run-time environment types, for example, the &#8216;context&#8217; parameter and HTTP return code names.</p>
+<h2>Transpiling to Javascript</h2>
+<p>The are 2 approaches to transpiling TypeScript with Functions:</p>
+<p>1) Run the TypeScript compiler as part of the local build process and deploy the generated JavaScript to Azure Functions as usual. <span style="display: inline !important; float: none; background-color: transparent; color: #333333; cursor: text; font-family: Georgia,'Times New Roman','Bitstream Charter',Times,serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; line-height: 24px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;">It doesn&#8217;t matter if extra files like the TS source and map are also uploaded as they will be ignored by the Functions runtime.</span> Note that it&#8217;s not clear from Node.js documentation exactly what features of Javascript a given version of Node.js supports. Thus, a little trial and error could be required in setting the tsc &#8216;target&#8217; and &#8216;lib&#8217; options.</p>
+<p>2) Use ts-node and deploy the .ts files to the cloud FunctionApp. ts-node will intercept run time calls to require() and run the TypeScript compiler to create the JavaScript. The problem with this is that Node.js Functions cold start time is already very slow and this will just make it worse. I&#8217;ve not tried this at all so the interactions with Function Web UI and run time have not been tested. In fact, the web UI makes assumptions about files so there are bound to be issues.</p>
+<p>The tsc config for use on the development environment is pretty straight forward (see tsconfig.json below). We simply compile the index.ts in each function directory. You can easily add other TypeScript modules and libraries. These can per function, or more likely, <span style="display: inline !important; float: none; background-color: transparent; color: #333333; cursor: text; font-family: Georgia,'Times New Roman','Bitstream Charter',Times,serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; letter-spacing: normal; line-height: 24px; orphans: 2; text-align: left; text-decoration: none; text-indent: 0px; text-transform: none; -webkit-text-stroke-width: 0px; white-space: normal; word-spacing: 0px;">be shared by all the Functions in the Function App taking advantage of </span>the way modules are resolved by searching &#8216;node_modules&#8217; up the directory structure.</p>
+<p>In addition to setting the tsconfig.json for Node.js and the version we are using, we also configure it to get any helper injected functions from &#8216;tslib&#8217;. These small helper functions are by default in-lined in the generated JavaScript but if there are a lot of them using a shared copy creates less code (though that is unlikely to be a big issue).</p>
+<h2>Azure Functions&#8217; run-time Typings</h2>
+<p>The Functions&#8217; run-time Typings are available in the unofficial npm package <a href="https://github.com/ https://github.com/christopheranderson/azure-functions-typescript">azure-functions-typescript</a>. The package is installed as a dependency and required types imported in the TS source (see example below). A sample Function <a href="https://github.com/christopheranderson/azure-functions-typescript/tree/master/samples">is also provided</a> in this package which you can use as a template for your own TypeScript Functions.</p>
+<p>Note that currently, this package uses an old version of Typescript and the now depreciated Typings npm package. That should not matter for consuming the typings but you might want to look at the <a href="https://github.com/christopheranderson/azure-functions-typescript/pull/7/files">u<span style="background-color: transparent;">pdated </span>sample Function in this PR</a>.</p>
+<h2>Local Development with VSCode</h2>
+<p>Local development of TypeScript functions on Node.js is a fantastic experience with <a href="https://code.visualstudio.com/">Visual Studio Code</a> in combination with <a href="https://github.com/Azure/azure-functions-cli">Azure Functions Core Tools</a>. This local development capability is unique to Azure Functions amongst the Serverless providers.  Currently however, this is limited to Windows development (but not Unbuntu on Windows) due to a limitation of the core tools. This restriction is being worked on right now.</p>
+<p>You can easily run the tsc compilation and use the debugger. You can set breakpoints and watches in the TypeScript source files when mapfiles are generated and seen by the debugger. Any npm scripts defined in the &#8216;package.json&#8217; can be run from the command line as usual (including in code&#8217;s integrated terminal) or executed directly in code using it&#8217;s task runner features. You can also debug the generated JavaScript used by the Functions runtime. This is described in the Azure Functions Documentation on <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local">Local Development</a> and the code <a href="https://code.visualstudio.com/docs/editor/debugging">debugging documentation</a>.</p>
+<div id="attachment_328" style="width: 666px" class="wp-caption aligncenter"><img class="size-large wp-image-328" src="/azureserverless/wp-content/uploads/2017/07/Screenshot-28-1024x576.png" alt="" width="656" height="369" srcset="/azureserverless/wp-content/uploads/2017/07/Screenshot-28-1024x576.png 1024w, /azureserverless/wp-content/uploads/2017/07/Screenshot-28-300x169.png 300w, /azureserverless/wp-content/uploads/2017/07/Screenshot-28-768x432.png 768w" sizes="(max-width: 656px) 100vw, 656px" /><p class="wp-caption-text">Code stopped at a breakpoint in a local TypeScript Function</p></div>
+<p>Remember to use node 6.5.0 locally to match the Functions runtime and avoid any surprises. You might want to use <a href="https://github.com/coreybutler/nvm-windows">nvm-windows</a> to manage Node.js versions and easily switch between them.</p>
+<p>You may get excited to see that Azure Functions Core Tools offers TypeScript as a language option when interactively creating a function. Currently however, it only creates a faux TypeScript function with the input parameters typed as &#8216;any&#8217;. It does nothing to run tsc and does not include the Typings (yet). You&#8217;ll want to install the azure-functions-typescript package and set up the build as described above.</p>
+<h2>Deploying and Live Debugging</h2>
+<p>Once you have the transpiled JavaScript you can deploy it using any of the usual methods that Azure Functions or the Core Tools provide, possibly as part of a build or CI / CD process. You might want to use the <a href="https://github.com/christopheranderson/azure-functions-webpack-sample">webpack bundler</a> package to create a single JavaScript file including both your Functions and required packages from node_modules, thus speeding up cold starts.</p>
+<p>However, when it comes to editing or debugging in the Functions cloud Web UI you only have access to the Javascript not the TypeScript source. It might be possible to upload the TypeScript source with map files and figure out how to get the web UI to us it in errors and the editor (see improvements below). Hopefully the functions team will do this soon.</p>
+<p>That said, the range of code transformations that tsc performs are limited, especially if you get the TS config options for &#8216;target&#8217; and &#8216;lib&#8217; properly matching the version of NodeJs being used. Thus, debugging the JavaScript is not so difficult to manage, manually mapping back to the TypeScript source.</p>
+<p>Of course, live debugging is a general weakness of Serverless in and micro services and you&#8217;ll no doubt be using logging and/or App Insights to track what&#8217;s going on :).</p>
+<h2>Details</h2>
+<p>Here&#8217;s an outline of the process you could follow.</p>
+<ul>
+<li>Create a function with Azure Functions Core Tools and use something like the following files (for an HTTPTrigger example)</li>
+<li>Test and debug the function locally with VSCode, possibly connected to live Azure resources such as queues (so cool)</li>
+<li>Deploy and test.</li>
+</ul>
+<p>package.json</p><pre class="crayon-plain-tag">{
+  "name": "ts-functions",
+  "main": "index.js",
+  "scripts": {
+    "dev": "func host start --debug vscode",
+    "publish": "func azure functionapp publish HttpTriggerTS", 
+    "build": "tsc",
+    "watch": "tsc -w"
+  },
+  "dependencies": {
+    "azure-functions-typescript": "../../azure-functions-typescript/",
+    "tslib": "^1.7.1"
+  },
+  "devDependencies": {
+    "typescript": "^2.4.1"
+  }
+}</pre><p>tsconfig.json</p><pre class="crayon-plain-tag">{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es2015",
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": true,
+        "strict": true,
+        "importHelpers": true
+    },
+    "include": [
+        "**/index.ts"
+    ]
+}</pre><p>&lt;Function&gt;/index.ts</p><pre class="crayon-plain-tag">import {HttpContext, IFunctionRequest, HttpStatusCodes} from 'azure-functions-typescript'
+
+export = function index(context: HttpContext, req: IFunctionRequest): void {
+    context.log("TypeScript HTTP trigger function processed a request.");
+
+    if (req.query.name || (req.body &amp;&amp; req.body.name)) {
+        context.res = {
+            // status: 200, /* Defaults to 200 */
+            body: {
+                message: `Hello there ${(req.query.name || req.body.name)}`
+            }
+        };
+    } else {
+        context.res = {
+            status: HttpStatusCodes.BadRequest,
+            body: "Please pass a name on the query string or in the request body"
+        };
+    }
+    context.done();
+};</pre><p>[UPDATE: 2017-08-20] NB the export format <code>export =</code> is important. It sets the commonjs <code>module.exports</code> variable to be the function. The is especially important when using the &#8216;azure-functions-pack&#8217; to bundle the code for fast upload and cold starts. If you don&#8217;t use this form then function run time will not find the Function entry point, giveing a 500 error form Azure or a more specific error in local development.</p>
+<h2>Ideas for Improvements</h2>
+<p>A minor disadvantage with this simplistic setup is that the generated Function &#8216;index.js&#8217; and map are located in the same folder as the &#8216;index.ts&#8217;. This means the Function runtime will  correctly locate &#8216;index.js&#8217; but makes it more complex to not check in the generated files into version control. An improvement would be to config TS to place the outputs in a separate folder (say dist) and configure the Functions runtime to access the &#8216;index.js&#8217; from there.</p>
+<p>Another possible improvement is to extend the types so that expected query items such as &#8216;req.query.name&#8217; are known.</p>
+]]></content:encoded>
+			<wfw:commentRss>/azureserverless/2017/07/16/using-typescript-in-azure-functions/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">321</post-id>	</item>
+		<item>
+		<title>Getting Started with Azure Serverless &#8211; a Roadmap for Getting up to Speed</title>
+		<link>/azureserverless/2017/04/27/getting-started-with-azure-serverless-a-roadmap-for-getting-up-to-speed/</link>
+		<comments>/azureserverless/2017/04/27/getting-started-with-azure-serverless-a-roadmap-for-getting-up-to-speed/#respond</comments>
+		<pubDate>Thu, 27 Apr 2017 14:27:22 +0000</pubDate>
+		<dc:creator><![CDATA[steve@opendirective.com]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Functions]]></category>
+		<category><![CDATA[LogicApps]]></category>
+
+		<guid isPermaLink="false">/azureserverless/?p=278</guid>
+		<description><![CDATA[This is not a tutorial on using Microsoft&#8217;s Azure Serverless offerings. There&#8217;s already plenty of those, with more appearing every day as Serverless popularity rapidly grows. Rather, this post provides a roadmap of info you&#8217;ll need to use these technologies in your projects or products. Just for good measure we [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>This is not a tutorial on using Microsoft&#8217;s Azure Serverless offerings. There&#8217;s already plenty of those, with more appearing every day as Serverless popularity rapidly grows. Rather, this post provides a roadmap of info you&#8217;ll need to use these technologies in your projects or products. Just for good measure we include a few tutorials as well.</p>
+<p>For now at least, the key Azure Serverless services are</p>
+<ul>
+<li><a href="https://azure.microsoft.com/en-gb/services/functions/">Azure Functions</a> &#8211; chunks of event triggered logic</li>
+<li><a href="https://azure.microsoft.com/en-us/services/logic-apps/">LogicApps</a> &#8211; declarative workflow that calls Functions and 3rd party services</li>
+</ul>
+<p>You&#8217;re very likely to use several other Azure services and tools in your solutions and are they are introduced below.</p>
+<h1>Background Software Knowledge</h1>
+<p>Perhaps Serverless&#8217; greatest attraction is that developers can largely forget about much of the software stack required to build and deploy a business system application or app backend (or even a static web server). As a cloud offering that builds on existing solutions it also abstracts away the hardware too. Thus, you can concentrate on your business or app logic, safe in the knowledge you have outsourced those other details to Microsoft. You do still require some system development and maintenance skills though, though many can be learnt as you become familiar with Azure Serverless.</p>
+<p>The largest impact of &#8220;going serverless&#8221; will be on your system architecture. You certainly won&#8217;t have a single monolith app or a classic 3-tier architecture. Instead, you&#8217;ll be connecting together services and functional chunks, some of which you&#8217;ll create and others coming from 3rd parties. The connections between components will be asynchronous mechanisms like HTTP triggers or messages in queues. Data and state are stored in services that wrap databases, most typically NoSQL. Accordingly, from the outset you&#8217;ll find it useful to have an acquaintance with some architectural techniques beyond basic software development.</p>
+<ul>
+<li>Software as a Service, both as a technical and business concept</li>
+<li>Event driven architectures, along with messages and queues for asynchronous coupling</li>
+<li>Distributed system design, possibly including Microservice architectures</li>
+<li>Monitoring and debugging techniques for distributed systems</li>
+<li>Basic deployment techniques including CI/CD (arguably basic development techniques)</li>
+<li>Backend, Functions and Workflow as a Service (BaaS, FaaS and WaaS) &#8211; strictly for label lovers</li>
+</ul>
+<p>Familiarity with these base technologies will be useful:</p>
+<ul>
+<li>HTTP RESTful architectures and APIs</li>
+<li>Possibly <a href="http://www.graphql.com/">graphQL</a> though it&#8217;s not directly supported</li>
+<li>C# .NET or NodeJS JavaScript &#8211; other languages are supported in Functions but these are arguably the main 2.</li>
+<li>SQL and/or NoSQL &#8211; your going to want to store data somewhere</li>
+</ul>
+<p>You may also find it useful to have a familiarity with code-level async techniques (eg callbacks, promises or reactive streams) but you can have Functions with out using them.</p>
+<p>Notice we didn&#8217;t mention typical cloud concepts such as IaaS or containers. They may be part of how Microsoft implement Azure Serverless but they are mostly hidden details you needn&#8217;t to worry about. In addition, while Serverless is an extension of PaaS you can largely forget about that too.</p>
+<p>Finally, the Functions framework is open source and you&#8217;ll want to have some familiarity with working this way on GitHub in order to <a href="https://github.com/Azure/Azure-Functions">engage and make contributions</a> to the very open team. LogicApps also provides a collection of handy open source <a href="https://github.com/logicappsio">examples and addons</a>.</p>
+<h1>Just do it!</h1>
+<p>With so many tutorials and videos out there it&#8217;s hard to select good ones to include. So I suggest you just google after looking at those below <img src="https://s.w.org/images/core/emoji/11/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p>Bear in mind that the Azure Portal UIs are the fastest way to get going as they are interactive and work online. You can explore using off line development and deployment tooling later. Also, there are generally 2 types of Serverless applications: business automation logic and backend for a mobile or web app. Note you can easily <a href="https://functions.azure.com/try">try Functions panel for free</a> without even logging into Azure or having an account.</p>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-create-a-logic-app">LogicApp tutorial</a> &#8211; send email when a RSS feed is updated &#8211; more are linked at then end</li>
+<li><a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-azure-function">Functions tutorial</a> &#8211; simple test in the portal &#8211; more linked at end</li>
+<li><a href="https://functionschallenge.azure.com/">The Azure Functions challenge</a> &#8211; test your coding skills and learn how to build solutions using Azure Functions at the same time</li>
+</ul>
+<h2>Videos</h2>
+<ul>
+<li>Watch Scott Hansleman&#8217;s short Functions <a href="https://www.youtube.com/watch?v=nCExarOuPAw">introductory video</a> and follow along</li>
+<li>A fairly detailed introduction to <a href="https://www.youtube.com/watch?time_continue=964&amp;v=YuiEAYvniEw">LogicApps</a> by Stephen Siciliano (May 2015)</li>
+<li>Serverless Applications with Azure Functions and Logic Apps &#8211; <a href="https://channel9.msdn.com/Blogs/Microsoft-Integration/Build-and-Deploy-Serverless-Part-1">Part 1</a> &amp; <a href="https://channel9.msdn.com/Blogs/Microsoft-Integration/Build-And-Deploy-Serverless-Part-2">Part2</a></li>
+<li><a href="https://mva.microsoft.com/en-US/training-courses/16829?l=360DZMY4C_105918563">Mastering Azure App Service, Part 1: Building Azure Logic Apps</a> &#8211; Microsoft Virtual Academy Course</li>
+</ul>
+<h1>Gaining Context</h1>
+<p>Your learning style may be to gain a background understanding before diving in to play, or you may like to pick up concepts as you explore. In either case these resources will provide the info you need:</p>
+<h2>Architectures</h2>
+<p>The Serverless community are busy figuring out which architectural patterns work best with Serverless. These patterns aren&#8217;t new and as indicated above, they currently draw from patterns in use in distributed, event driven, reactive systems. Here are a few starting resources.</p>
+<ul>
+<li><a href="https://www.martinfowler.com/articles/serverless.html">Serverless Architecture</a> by Mike Roberts</li>
+<li><a href="https://www.martinfowler.com/articles/microservices.html">Microservice architectures</a> by James Lewis and Martin Flower &#8211; fairly closely related to serverless architecture</li>
+<li>Yochay Kiriaty&#8217;s slides on <a href="https://www.slideshare.net/YochayKiriaty/serverless-patterns-v3-public">Practical Serverless Design Patterns</a> from ServerlessConf Autsin 17. Plus <a href="https://github.com/yochay/serverlesspatterns">code examples</a></li>
+<li><a href="http://www.reactivemanifesto.org/">The Reactive manifesto</a> &#8211; LogicApps and Functions enable this architecture style.
+<ul>
+<li><a href="https://www.oreilly.com/ideas/reactive-programming-vs-reactive-systems">Reactive programming vs. Reactive systems</a> &#8211; a little useful clarification need in the days of React and Reactive Programing</li>
+</ul>
+</li>
+</ul>
+<h2>Azure Specific topics</h2>
+<p>The key technologies are:</p>
+<ul>
+<li><a href="https://azure.microsoft.com/en-us/services/logic-apps/">LogicApps</a> &#8211; workflow definitions</li>
+<li><a href="https://azure.microsoft.com/en-gb/services/functions/">Functions</a> &#8211; event driven code</li>
+<li><a href="https://www.youtube.com/watch?v=8x5sBBUP6pM">Go serverless for the enterprise with Microsoft Azure</a> &#8211; Excellent general introductory video from Chris Anderson</li>
+</ul>
+<p>In addition you&#8217;re bound to use some of these:</p>
+<ul>
+<li><a href="https://azure.microsoft.com/en-gb/services/storage/?wt.srch=1&amp;wt.mc_id=AID529440_SEM_XLuVJVWX">Storage</a> &#8211; File, Disk, Table, Blobs, Queues</li>
+<li><a href="https://azure.microsoft.com/en-gb/services/service-bus/">Service Bus</a> &#8211; enterprise scale messaging</li>
+<li><a href="https://azure.microsoft.com/en-us/services/documentdb/">DocumentDB </a>&#8211; full powered NoSQL</li>
+<li><a href="https://azure.microsoft.com/en-gb/services/storage/tables/">TableStorage</a> &#8211; simple tables &#8211; not full SQL</li>
+<li><a href="https://azure.microsoft.com/en-us/services/event-hubs/">Event Hub</a> &#8211; IoT scale telemetry</li>
+<li><a href="https://azure.microsoft.com/en-us/services/notification-hubs/">Notification Hub</a> &#8211; push notifications</li>
+<li><a href="https://dev.botframework.com/">BotFramework</a> (preview) &#8211; conversational UIs</li>
+</ul>
+<p>A few crosscutting Azure specifics you&#8217;ll want to know about include:</p>
+<ul>
+<li><a href="https://portal.azure.com/">The Azure portal</a> &#8211; navigation and dashboards help tame the vast array of features on offer</li>
+<li><a href="https://azure.microsoft.com/en-us/regions/">Regions</a> &#8211; Data centre locations &#8211; make sure you <a href="http://www.azurespeed.com/">pick the best</a> for you or your users</li>
+<li>Subscriptions &#8211; there are <a href="https://azure.microsoft.com/en-gb/free/">free trials</a> and offers for <a href="https://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/">VisualStudio</a> or MSDN subscribers and <a href="https://bizspark.microsoft.com/">Microsoft BizSpark</a></li>
+<li>Resources and <a href="https://docs.microsoft.com/en-us/rest/api/resources/">Azure Resource Manager</a> (ARM) &#8211; &#8220;infrastructure as code&#8221; deployment management</li>
+<li><a href="https://azure.microsoft.com/en-us/services/app-service/">App Services</a> and especially the KUDU console &#8211;  Functions runs on top of these and inherit many useful features</li>
+<li>Functions pricing &#8211; the <a href="https://azure.microsoft.com/en-us/pricing/details/functions/">consumption plan</a> (pay as you use) can be very cheap indeed, if not free</li>
+<li><a href="https://azure.microsoft.com/en-gb/pricing/details/logic-apps/">LogicApps pricing</a></li>
+</ul>
+<h1>Tools</h1>
+<p>Right now there are 3 main development tools sets, though you can always mix and match too. The tools you uses depend on if you&#8217;re using Functions or LogicApps.</p>
+<p>For Functions the language you use also effects which local development OS you can use, plus available CI/CD options. Fortunately, the Functions Team are working on making all options available on all OSs.  A powerful feature is the ability to run, manage and test Functions locally (or on CI) while they still work with cloud based triggers and services; perfect for unit testing.</p>
+<ul>
+<li><a href="https://portal.azure.com/">The Azure portal</a> &#8211; interactive web app &#8211; great for quick experiments or small systems with a single developer, or a very careful team</li>
+<li><a href="https://www.visualstudio.com/">VisualStudio 2015</a> &#8211; Windows only IDE, team development and deployment. Visual editor for LogicApps. C# Functions</li>
+<li><a href="https://code.visualstudio.com/">Visual Studio Code + CLIs</a>  &#8211; NodeJS JavaScript Functions and soon TypeScript. See <a href="https://blogs.msdn.microsoft.com/appserviceteam/2016/12/01/running-azure-functions-locally-with-the-cli/">this post</a> for details
+<ul>
+<li>Code is a cross platform editor and debugger, powerful intellisense with C#, JavaScript and TypeScript</li>
+<li><a href="https://www.npmjs.com/package/azure-functions-cli">Azure Functions CLI</a> &#8211; Windows only. May merge with Azure CLI</li>
+<li><a href="https://docs.microsoft.com/en-us/cli/azure/overview">Azure CLI</a> &#8211; Cross platform, the latest version arguably makes simple queries rather complex</li>
+</ul>
+</li>
+</ul>
+<p>Both Functions and LogicApps use underlying declarative text files, meaning common text tools (grep, sed, awk etc) can be used when required. That&#8217;s a real lifesaver when you have to make a small change in many places!</p>
+<p>The <a href="https://serverless.com/">Serverless Framework</a> now supports Functions in addition to Apache OpenWhisk and the original AWS Lambda and . This impressive open source project cleanly abstracts away the differences between various Serverless platforms. It currently has a DevOps emphasis and only supports a subset of Functions features (as you&#8217;d expect given it&#8217;s abstraction)</p>
+<ul>
+<li>Introducing <a href="https://cmatskas.com/introducing-the-serverless-framework-for-azure-functions/">The Serverless Framework</a> for Functions by <a data-reactid=".7.2.$lazyPlaceholder_twitter_858322304497053697.2.1.0.1"><span class="rc-MetadataText -username" data-reactid=".7.2.$lazyPlaceholder_twitter_858322304497053697.2.1.0.1.1"><span data-reactid=".7.2.$lazyPlaceholder_twitter_858322304497053697.2.1.0.1.1.1">ChristosMatskas</span></span></a></li>
+</ul>
+<p>Other useful tools include:</p>
+<ul>
+<li><a href="https://azure.microsoft.com/en-us/services/application-insights/">Azure Application Insights</a> &#8211; see what you code is doing. Functions integration is in Preview</li>
+<li><a href="https://azure.microsoft.com/en-us/services/monitor/">Azure Monitor</a> &#8211; detailed azure analytics</li>
+<li><a href="https://www.getpostman.com/">Postman</a> &#8211; the HTTP API testing tool</li>
+<li><a href="http://storageexplorer.com/">Azure Storage Explorer</a> &#8211; Windows app that &#8220;does what it says on the tin&#8221;</li>
+</ul>
+<h1>More, More!</h1>
+<ul>
+<li>Mark Heath&#8217;s curated <a href="https://github.com/markheath/azure-functions-links">list of useful links for Functions</a> over on GitHub.</li>
+</ul>
+<h1>Enjoy</h1>
+<p>That might seem a lot to absorb but the reality is you can just start with a small stand-alone solution that is useful to you. Or perhaps, implement one part of a new or existing system using Functions. Visting the Azure Functions or LogicApps panel, selecting a template, entering some code and testing are all easy small steps. From little acorns&#8230;.</p>
+<p>As Chris Anderson, PM of Azure Functions said &#8220;Solve the problem and get on with the rest of your life&#8221;.</p>
+<h1>Stay informed</h1>
+<ul>
+<li>Follow us at <a href="https://twitter.com/AzureServerless">@AzureServerless</a></li>
+<li><script>(function() {
+	if (!window.mc4wp) {
+		window.mc4wp = {
+			listeners: [],
+			forms    : {
+				on: function (event, callback) {
+					window.mc4wp.listeners.push({
+						event   : event,
+						callback: callback
+					});
+				}
+			}
+		}
+	}
+})();
+</script><!-- MailChimp for WordPress v4.2.5 - https://wordpress.org/plugins/mailchimp-for-wp/ --><form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-70" method="post" data-id="70" data-name="Subscribe" ><div class="mc4wp-form-fields"><p>
+	<label for="email">Join our newsletter for updates and extras:</label>
+	<input type="email" id="email" name="EMAIL" placeholder="Your email address" required />
+	<input type="submit" value="Sign up" />
+</p></div><label style="display: none !important;">Leave this field empty if you're human: <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off" /></label><input type="hidden" name="_mc4wp_timestamp" value="1537204181" /><input type="hidden" name="_mc4wp_form_id" value="70" /><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-1" /><div class="mc4wp-response"></div></form><!-- / MailChimp for WordPress Plugin --></li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>/azureserverless/2017/04/27/getting-started-with-azure-serverless-a-roadmap-for-getting-up-to-speed/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">278</post-id>	</item>
+		<item>
+		<title>Gaining Visibility of your Functions&#8217; Behaviour with Application Insights</title>
+		<link>/azureserverless/2017/04/08/gaining-visibility-of-your-functions-with-application-insights/</link>
+		<comments>/azureserverless/2017/04/08/gaining-visibility-of-your-functions-with-application-insights/#respond</comments>
+		<pubDate>Sat, 08 Apr 2017 08:52:50 +0000</pubDate>
+		<dc:creator><![CDATA[steve@opendirective.com]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Application Insights]]></category>
+		<category><![CDATA[Functions]]></category>
+
+		<guid isPermaLink="false">/azureserverless/?p=269</guid>
+		<description><![CDATA[While Functions provides reasonable basic logging facilities you often want more detail without editing your code to add diagnostic logging lines. This is often critical during development or debugging when local execution of your function is not exhibiting the problem that occurs in the live Function. In addition, DevOps and [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>While Functions provides reasonable basic logging facilities you often want more detail without editing your code to add diagnostic logging lines. This is often critical during development or debugging when local execution of your function is not exhibiting the problem that occurs in the live Function. In addition, DevOps and business Management Information often require excellent run time telemetry of your deployed Functions, along with flexible display and analysis capabilties.</p>
+<p>As <span data-reactid=".0"><a data-reactid=".3.1.$lazyPlaceholder_twitter_848911168089579520.2.1.0.1"><span class="-name" data-reactid=".3.1.$lazyPlaceholder_twitter_848911168089579520.2.1.0.1.0">Christos Matskas</span></a></span> recently posted, there are at 3 main facilities for <a href="https://cmatskas.com/monitoring-applications-and-infrastructure-on-azure/">Monitoring applications and infrastructure on Microsoft Azure</a>. Out of these, <a href="https://azure.microsoft.com/en-us/services/application-insights/">Application Insights</a> is obviously useful with Functions, especially given that a key advantage of using them comes from letting Microsoft look after the infrastructure. Application Insights is a powerful monitoring and visualisation tool that easily provides you with all the graphs and charts you could ever want!</p>
+<p>The Functions team have been working hard to provide first class integration with Application Insights. Until recently you had to add the Application Insights SDKs in your Functions code and you also missed out on some of the automatic monitoring capabilities available to App Services (at least in nodejs functions). But no longer as Chris Anderson explains how easy it to get started <a href="https://blogs.msdn.microsoft.com/appserviceteam/2017/04/06/azure-functions-application-insights/">Azure Functions now has direct integration with Application Insights</a>.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>/azureserverless/2017/04/08/gaining-visibility-of-your-functions-with-application-insights/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">269</post-id>	</item>
+		<item>
+		<title>Azure App Service &#038; Azure Functions SKU Comparison Matrix, plus Application Insights</title>
+		<link>/azureserverless/2017/03/27/azure-app-service-azure-functions-sku-comparison-matrix-plus-application-insights/</link>
+		<comments>/azureserverless/2017/03/27/azure-app-service-azure-functions-sku-comparison-matrix-plus-application-insights/#respond</comments>
+		<pubDate>Mon, 27 Mar 2017 11:27:26 +0000</pubDate>
+		<dc:creator><![CDATA[steve@opendirective.com]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Functions]]></category>
+
+		<guid isPermaLink="false">/azureserverless/?p=248</guid>
+		<description><![CDATA[In case you hadn&#8217;t noticed, Azure Functions builds on Azure App Service, through the open source Kudu,  WebJobs and &#8216;Functions&#8217; environments. Thus, extra powerful and mature features from these platforms are available to the Functions developer. However, as Cory Fowler pointed out recently the number of App Service SKUs makes [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>In case you hadn&#8217;t noticed, Azure Functions builds on Azure App Service, through the open source <a href="https://github.com/projectkudu/kudu">Kudu</a>,  <a href="https://github.com/Azure/azure-webjobs-sdk-script">WebJobs</a> and <a href="https://github.com/Azure/Azure-Functions">&#8216;Functions&#8217;</a> environments. Thus, extra powerful and mature features from these platforms are available to the Functions developer. However, as Cory Fowler pointed out recently the number of App Service SKUs makes it complicated to figure out which App Service features are available in which version (SKU), including the Functions consumption plan.</p>
+<p>So here&#8217;s a really useful <a href="https://blogs.msdn.microsoft.com/appserviceteam/2017/03/23/azure-app-service-web-api-mobile-ase-azure-functions-sku-comparison-matrix-2">Feature Comparison Matrix</a> from Cory. It makes it easy to tell which App Service features are usable from Functions.</p>
+<p>In addition, as Chris Anderson demonstrates, the powerful Azure Application Insights feature can be <a href="https://github.com/christopheranderson/azure-functions-app-insights-sample">used with Functions</a>, all-be-it with some rough edges and limitations. Thankfully, an <a href="https://github.com/Azure/Azure-Functions/wiki/App-Insights-Early-Preview">early preview of Application Insights for Functions</a> is now available through a beta version of the Functions extension (though it&#8217;s NSFP &#8211; not suitable for production).</p>
+]]></content:encoded>
+			<wfw:commentRss>/azureserverless/2017/03/27/azure-app-service-azure-functions-sku-comparison-matrix-plus-application-insights/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">248</post-id>	</item>
+		<item>
+		<title>Access live Azure Functions with a console</title>
+		<link>/azureserverless/2017/03/26/access-live-azure-functions-with-a-console/</link>
+		<comments>/azureserverless/2017/03/26/access-live-azure-functions-with-a-console/#respond</comments>
+		<pubDate>Sun, 26 Mar 2017 10:25:11 +0000</pubDate>
+		<dc:creator><![CDATA[steve@opendirective.com]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Functions]]></category>
+		<category><![CDATA[kudu]]></category>
+
+		<guid isPermaLink="false">/azureserverless/?p=243</guid>
+		<description><![CDATA[Sometimes you want to explore or update a live Function App filesystem, possibly to test solutions to problems. You might even want to execute commands directly on the live function rather than go through the usual &#8220;local build / deploy&#8221; or &#8220;CI&#8221; process. If you&#8217;ve already discovered the &#8216;Function App [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>Sometimes you want to explore or update a live Function App filesystem, possibly to test solutions to problems. You might even want to execute commands directly on the live function rather than go through the usual &#8220;local build / deploy&#8221; or &#8220;CI&#8221; process.</p>
+<p>If you&#8217;ve already discovered the &#8216;Function App Settings&#8217; -&gt; &#8216;Open dev console&#8217; button it&#8217;s likely you rapidly became frustrated with the lack of command line features. Specifically, the absence of Arrow key navigation and Tab completion makes for a most annoying time.</p>
+<p>The solution is use the &#8216;Go to Kudu&#8217; button. Although this is in the &#8216;Deployment&#8217; section, the home view is a very usable console along with a basic file explorer. You&#8217;ll need to navigate to your function app first though. A neat feature is the CD in the console stays in sync with the file explorer and visa versa.</p><pre class="crayon-plain-tag">cd site\wwwroot\FunctionApp</pre><p><img class="size-medium wp-image-244 aligncenter" src="/azureserverless/wp-content/uploads/2017/03/Screenshot-22-300x239.png" alt="" width="300" height="239" srcset="/azureserverless/wp-content/uploads/2017/03/Screenshot-22-300x239.png 300w, /azureserverless/wp-content/uploads/2017/03/Screenshot-22-768x612.png 768w, /azureserverless/wp-content/uploads/2017/03/Screenshot-22-1024x816.png 1024w, /azureserverless/wp-content/uploads/2017/03/Screenshot-22.png 1073w" sizes="(max-width: 300px) 100vw, 300px" /></p>
+<p>Kudu provides extensive developer access to the Web App service and scripts that Functions run on, including access to logs and the environment. Much of this is neatly packaged in the Functions Panel but sometimes it&#8217;s useful to get to the raw information, not just for deployment.</p>
+]]></content:encoded>
+			<wfw:commentRss>/azureserverless/2017/03/26/access-live-azure-functions-with-a-console/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">243</post-id>	</item>
+		<item>
+		<title>Using Serverless Azure Functions with Auth0 and Google APIs</title>
+		<link>/azureserverless/2017/03/15/using-serverless-azure-functions-with-auth0-and-google-apis/</link>
+		<comments>/azureserverless/2017/03/15/using-serverless-azure-functions-with-auth0-and-google-apis/#respond</comments>
+		<pubDate>Wed, 15 Mar 2017 12:12:31 +0000</pubDate>
+		<dc:creator><![CDATA[steve@opendirective.com]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[auth0]]></category>
+		<category><![CDATA[Functions]]></category>
+		<category><![CDATA[serverless]]></category>
+
+		<guid isPermaLink="false">/azureserverless/?p=230</guid>
+		<description><![CDATA[[Update 08 April 2017: The Auth0 post Navigating RS256 and JWKS describes RS256 in more detail, including an endpoint for accessing your Auth0 Public key] This post covers the following user story and appears as a guest post on the Auth0 blog. As a user, I want to log into [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>[Update 08 April 2017: The Auth0 post <a title="Published: April 03, 2017" href="https://auth0.com/blog/navigating-rs256-and-jwks/">Navigating RS256 and JWKS</a> describes RS256 in more detail, including an endpoint for accessing your Auth0 Public key]</p>
+<p>This post covers the following user story and appears as a <a href="https://auth0.com/blog/using-serverless-azure-functions-with-auth0-and-google-apis/">guest post on the Auth0 blog</a>.</p>
+<blockquote><p>As a user, I want to log into the app with my Google account so I get a list of my Google Photos albums.</p></blockquote>
+<p>The backend stack is Nodejs on Azure Functions calling Auth0 and the Google Photos Api via the request module. The client side is a plain old HTML + JavaScript app using the Auth0 Lock for user login in.</p>
+<p>NB &#8211; for clarity I left out code to check the API access token from Auth0. Normally you would check the user claims to see if is allowed to use the Function at all.</p>
+<p>The code is available as <a href="https://gitlab.com/azureserverless/auth0idp/">GitLab project auth0idp</a>.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>/azureserverless/2017/03/15/using-serverless-azure-functions-with-auth0-and-google-apis/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">230</post-id>	</item>
+	</channel>
+</rss>

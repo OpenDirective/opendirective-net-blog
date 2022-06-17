@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>CMS &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/tag/cms/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>CKEditor  Accessibility Checker for content authors</title>
+		<link>/openingaccessibility/2015/05/ckeditor-accessibility-checker-for-content-authors/</link>
+		<comments>/openingaccessibility/2015/05/ckeditor-accessibility-checker-for-content-authors/#comments</comments>
+		<pubDate>Thu, 28 May 2015 13:28:56 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[a11y]]></category>
+		<category><![CDATA[opensource]]></category>
+		<category><![CDATA[web]]></category>
+		<category><![CDATA[CMS]]></category>
+		<category><![CDATA[drupal]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=551</guid>
+		<description><![CDATA[Here&#8217;s a mini review after a quick play with a preview of the new CKEditor Accessibility Checker plugin for content creators. The plugin is provided by CKSource who lead the development of the open source CKEditor and provide additional commercial grade &#8230; <a href="/openingaccessibility/2015/05/ckeditor-accessibility-checker-for-content-authors/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Here&#8217;s a mini review after a quick play with a preview of the new <a href="http://cksource.com/ckeditor/services#accessibility-checker">CKEditor Accessibility Checker</a> plugin for content creators. The plugin is provided by CKSource who lead the development of the open source <a href="http://ckeditor.com/">CKEditor</a> and provide additional commercial grade services.</p>
+<h1>WYSIWYG JavaScript editors</h1>
+<p>If your memory is as long as mine you will recall when WYSIWYG javascript editors first appeared back in the days when we spoke excitedly of DHTML (D = Dynamic = scripted). Designed for use in web programs such as Content Management Systems (CMSs, eg Drupal) these editors replace a basic HTML &lt;textarea&gt; with a rich editing experience somewhat similar to using a word processor, including toolbars. They hide the complexities of creating markup by automatically inserting tags into  generated HTML which is then persisted in the CMS and displayed as part of viewed webpages.</p>
+<p>Two early editors emerged as leaders, at least when I last looked over 5 years ago; CKEditor and <a href="http://www.tinymce.com/">TinyMCE</a>. Both are still going strong and now have many solid features. While these editors provide a familiar experience when creating rich content, there was a problem. Accessibility. Or rather there were 2 accessibility problems.</p>
+<h1>Accessibility woes</h1>
+<p>Firstly, the toolbars were initially implemented as bit images and provided no keyboard access. I&#8217;m pleased to say that has now been fixed and in CKEditor for example you hit Alt+F10 to get focus into the toolbars. There are other <a href="http://docs.ckeditor.com/#!/guide/dev_a11y">accessibility features</a> including keyboard shortcuts and even an Accessibility Help screen accessed via Alt+0</p>
+<p>The 2nd accessibility issues is harder to solve. It&#8217;s the accessibility of the content created by authors using the editor. While the CMS developers like Drupal may make every effort to ensure the end user experience is fully accessible, they cannot fully control user generated content. As the editor manages which tags are added it can ensure a certain level of accessibility including WAI ARIA but authors can still make common accessibility errors, For example it&#8217;s easy to create a bad structure by skipping heading levels. Or the perennial chestnut forgetting to add an alt attribute to important pictures.</p>
+<h1>CKEditor Accessibility Checker</h1>
+<p>One solution to the problem of catching author errors is to provide a tool that authors can use to check their content before they submit it. This is the approach taken in the CKEditor Accessibility Checker plugin. While there are several HTML validation tools and services that could be used the quail checker</p>
+<p>To try the Accessibility Checker I first played with the <a href="http://cksource.com/ckeditor/services#accessibility-checker">comprehensive sample</a> and then knocked up a little test. The sample provide some Wikipedia style content with 7 errors flagged by the <a href="http://quailjs.org/">Quail accessibility checker</a> used for validating the markup.</p>
+<div id="attachment_553" style="width: 990px" class="wp-caption aligncenter"><a href="/openingaccessibility/wp-content/uploads/2015/05/a11yChecker.png"><img class="wp-image-553 size-full" src="/openingaccessibility/wp-content/uploads/2015/05/a11yChecker.png" alt="" width="980" height="620" srcset="/openingaccessibility/wp-content/uploads/2015/05/a11yChecker.png 980w, /openingaccessibility/wp-content/uploads/2015/05/a11yChecker-300x190.png 300w" sizes="(max-width: 980px) 100vw, 980px" /></a><p class="wp-caption-text">CKEditor Accessibility Checker screen shot</p></div>
+<p>As can be seen, a dialog popup provides the user interface with button for Next and Prev error, an explanation of the issue which is also highlighted in the content. A triangle on one edge of the dialog also acts as a pointer to the problem.  All-in-all this is a good interactive experience for navigating and fixing issues. In addition, if the editor content is clicked to make a change the dialog shrinks down out of the way &#8211; a nice touch. Quick fixes are provided as extra javascript snippets in the sample code and make for an easy user experience. A complication here is that authors using CKEditor are intentionally insulated from the raw markup details so errors have to make sense with minimal reference to techy details and standards. I think a reasonable job has been done though some understanding of the underlying markup is required.</p>
+<p>In order to get an experience of the effort involved in using the Editor and Accessibility Checker I created a simple webpage with some dodgey initial content for the editor. This shows how painless it is. In addition to the CKEditor initialisation and textarea  element replacement code, it is only required to include jQuery and declare use of the Accessibility Checker plug in.</p><pre class="crayon-plain-tag">&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;CKEditor with a11yChecker&lt;/title&gt;
+  &lt;meta name="description" content="CKEditor with a11yChecker "&gt;
+  &lt;meta name="author" content="Steve Lee"&gt;
+  &lt;script src="js/ckeditor/ckeditor.js"&gt;&lt;/script&gt;
+  &lt;script src="js/jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;main&gt;
+    &lt;form&gt;
+      &lt;textarea name="editor1" id="editor1" rows="10" cols="80"&gt;
+            &lt;h2&gt;H2 Heading&lt;/h2&gt;
+            &lt;h4&gt;H4 naughty as skipped h3&lt;/h4&gt;
+            &lt;p&gt;No alt attribute on this &lt;img src='img/noalt.jpg' /&gt;&lt;/p&gt;
+            &lt;table&gt;&lt;tr&gt;&lt;td&gt;whoops no th&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+            &lt;p&gt;&lt;span style="background-color:darkgray; color:gray"&gt;Can you read this?&lt;/span&gt;&lt;/p&gt;
+        &lt;/textarea&gt;
+        &lt;script&gt;
+          CKEDITOR.replace( 'editor1', 
+                              {extraPlugins: 'a11ychecker'}
+                              );
+        &lt;/script&gt;
+    &lt;/form&gt;
+  &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre><p>Note that the checker makes an XHR call to Quail so the sample had to run from a server, not file:///.  An easy way to do that is with nodejs and hapi configured as a simple static server. I also used the new <a href="https://code.visualstudio.com/">Visual Studio code</a> editor to edit and run it. All in all that&#8217;s a nice easy and portable way to get a nodejs server up and running</p><pre class="crayon-plain-tag">var Hapi = require('hapi');
+
+// Create a server with a host and port
+var server = new Hapi.Server();
+server.connection({ 
+    host: 'localhost', 
+    port: 3000 
+});
+
+// Add a route for a simple static file server
+server.route({
+    method: 'GET',
+    path: '/{param*}',
+    handler: {
+        directory: {
+            path: 'public',
+            index: true
+        }
+    }
+});
+
+server.start();</pre><p>While the first three accessibility errors in my dodgy markup were found the contrast fail was not, even though this is listed in the Quail documentation. I checked with <a href="http://www.paciellogroup.com/resources/wat/">TPG&#8217;s WAT</a> to ensure it was indeed a WCAG AA and AAA fail. I tried adding it as a new CKeditor style but that made no difference. Perhaps Quail does not map the colour names to values? I assume it works with inline styles. I didn&#8217;t spend anymore time investigating this.</p>
+<p>Some errors are no doubt hard to find as the editor contents are one part in a larger page context. If the wider page context is ignored then some structural errors will not be found. The edit page context is likely to be different to the view one.  Also, if the same content is used in several page contexts the structural integrity may vary.</p>
+<h1>Final Thoughts</h1>
+<p>The Accessibility Checker plugin is a good solution for ensuring user supplied content is accessible or otherwise checking in browser edited markup. The UX is good, though I did not check the accessibility of the UX itself. Quail is a good open source accessibility validator, is configurable and supports <a href="http://quailjs.org/#/guidelines">test for both WCAG and Section 508</a>. The Accessibility Checker documentation claims it can be used with others checkers so perhaps it would work with Tenon.io, though that requires a subscription. The Quick fix feature make it even easier for authors to use</p>
+<p>Currently Accessibility Checker is a commercial offering from CKSource but they said they plan to make it open source under GPL, like CKEditor itself.  I see there is a Drupal plugin for using CKEditor so no doubt the Accessibility checker could be added as well, making Drupal even more accessible.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2015/05/ckeditor-accessibility-checker-for-content-authors/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+	</channel>
+</rss>

@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Uncategorized &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/category/uncategorized/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>At last — true grids in web browsers</title>
+		<link>/openingaccessibility/2017/03/at-last-true-grids-in-web-browsers/</link>
+		<comments>/openingaccessibility/2017/03/at-last-true-grids-in-web-browsers/#respond</comments>
+		<pubDate>Thu, 30 Mar 2017 10:26:12 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=718</guid>
+		<description><![CDATA[I&#8217;ve moved over to medium &#8211; here&#8217;s my first post &#8220;At last &#8212; True grids in web browsers&#8220;]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;ve moved over to medium &#8211; here&#8217;s my first post &#8220;<a href="https://medium.com/@stevealee/at-last-true-grids-in-web-browsers-fe38b83813ec">At last &#8212; True grids in web browsers</a>&#8220;</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2017/03/at-last-true-grids-in-web-browsers/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>AWS, Azure or Firebase for a SPA browser app? Nope, it&#8217;s Kinvey</title>
+		<link>/openingaccessibility/2016/05/aws-azure-or-firebase-for-a-spa-browser-app/</link>
+		<comments>/openingaccessibility/2016/05/aws-azure-or-firebase-for-a-spa-browser-app/#respond</comments>
+		<pubDate>Fri, 27 May 2016 11:09:59 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[serverless]]></category>
+		<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[web]]></category>
+		<category><![CDATA[web apps]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=671</guid>
+		<description><![CDATA[[Update 2016/06/07:  I eventually found Azure to be lacking, though this did lead me to explore the excellent Auth0 for authentication. To be honest all three offerings are currently pretty much a bunch of &#8216;beta bits&#8217;, an apt phrase coined &#8230; <a href="/openingaccessibility/2016/05/aws-azure-or-firebase-for-a-spa-browser-app/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p><strong>[Update 2016/06/07:  I eventually found Azure to be lacking, though this did lead me to explore the excellent <a href="https://auth0.com/">Auth0 </a>for authentication. To be honest all three offerings are currently pretty much a bunch of &#8216;beta bits&#8217;, an apt phrase coined by  by Michael Facemire and Jeffrey S. Hammond  in their &#8220;<a href="https://www.forrester.com/report/The+Forrester+Wave+Mobile+Infrastructure+Services+Q3+2015/-/E-RES119902">Forrester Wave<img src="https://s.w.org/images/core/emoji/11/72x72/2122.png" alt="™" class="wp-smiley" style="height: 1em; max-height: 1em;" />: Mobile Infrastructure Services, Q3 2015</a>&#8220;. I&#8217;m now exploring <a href="http://www.kinvey.com/">Kinvey</a>, one of the services mentioned in that report. Kinvey are certainly responsive and tick most of the boxes. I just hope they can deliver as I&#8217;m seriously behind schedule]</strong></p>
+<p><strong>[Update 2016/06/08: After reviewing Kinvey and chatting with them I&#8217;ve decided it supplies just about all I need.  I&#8217;ve added them in to the comparison below for future reference. The one missing feature is a full CLI to enable scripted &#8220;from clean&#8221; setup and so CI / CD, but then I didn&#8217;t think of that when doing the original post. Another point I forgot was encryption of data in the client storage which they also have covered.]</strong></p>
+<p>My current work is the <a href="https://github.com/OpenDirective/brian">Brian project</a> for people with cognitive disabilities. This open source development is funded by the Prosperity For All EU FP7 project (part of GPII initiative). The plan is for it to become a self financing a service based on Gregg Vanderheiden&#8217;s Easy One Communicator and features from MAAVIS.</p>
+<p>After much thought about implementing Progressive Enhancement for a proper &#8216;web app&#8217;  verses usage scenarios requiring offline access I decided to start off making a so-called Single Page App (SPA) or &#8216;browser app&#8217; as I prefer to call them. SPAs require javascript for their functionality and tend to take advantage of all the latest features in the evergreen browsers. They treat the browser as a platform and are designed as part of a system architecture with custom client-server splits. This usually means consuming REST or other APIs directly in the client in order to access a broad range of services (often micro service based). These services may be part of the architecture being developed or from the many 3rd party offerings that add value through aggregation (or mashup).</p>
+<p>Those services that are part of the new system being developed might be implemented as a HTTP server, either self hosted or in the cloud (so called IaaS). However, these days it is possible to go &#8216;serverless&#8217; by using so called Backend as a Service (BaaS) cloud offerings for &#8216;mobile&#8217; apps (MBaaS). These go a step beyond Platform as a Service (PaaS) which lets you concentrate on you server software at the top of your backend stack.  They also added features that are critical for mobile situations; eg offline data sync, user authentication. I decided to go this route as I really did not want to get involved in DevOps or SysOps or whatever you want to call service configuration, maintenance and security. Another advantage of BaaS is you can easily scale up the backend should your service &#8216;go large&#8217;; you just need to pay more.</p>
+<p>The three main PaaS offerings that include some BaaS are Amazon Web Services (AWS), Microsoft Azure and Google Firebase. My initial thoughts were these big operators would have the best dev experience.</p>
+<ul>
+<li>Amazon AWS has been around the longest are easily the most popular IaaS. Not bad for a spin-off from Amazon&#8217;s own in house services. I discovered them via the excellent Serverless project early in my investigations.</li>
+<li>Azure has steadily added features since the early IaaS only offering days and with the recent introduction of Apps and Functions looks like a pretty reasonable BaaS. It has a strong enterprise positioning.</li>
+<li>Firebase was until very recently quite limited. They just rounded out the PaaS offering but adding authentication, storage and other features. Firebase is strong on metrics and pushing ads to users (now surprise there as is now Google / Alphabet). They often mention the most up-to-date requirements of SPA developers using modern JS practices.</li>
+<li>Kinvey is about 4 years old and started supporting indie developers (like me) but recently pivoted to be more enterprise focussed. Their founder and CEO Sravish Sridhar claims to have <a href="http://readwrite.com/2014/02/02/kinvey-sravish-sridhar-builders/">invented the term BaaS </a>and prove the model works. They have a rounded provision and fully support HTML5 and javascript in the browser.</li>
+</ul>
+<p>As an aside, the Serverless project simplifies the configuration of your backend. This is  especially important in a team environment. Though serverless is tied to parts of AWS, Azure may come.</p>
+<p>I tried AWS first. However after writing some client code and hitting many problems and confusions I finally decided enough was enough and I should look at others. The next big sticking point was username only sign in, most Brian users will not have email addresses. The following is a brief summary of my findings and thoughts based on my requirements.</p>
+<p>Disclaimer: this review is a result of reading around the subject, with the exception of AWS I have not tried working code, yet. I also looked at the free tiers but with an eye on the expansion options</p>
+<h2>Clear docs and examples for JavaScript mobile web app client</h2>
+<ul>
+<li>AWS: Quite a mess. iOS and Android are first class but javascript poorly linked and rather hard to find. To be fair, some components are beta. The main problem is lots bits and no clear complete examples</li>
+<li>Azure: Yes but slightly confusing messaging and so many features that are not relevant to browser apps. &#8220;Web Apps&#8221; focusses on the back end services while a &#8220;Mobile App&#8221; add an offline-capable OData v3 feed for data and client SDKs including JS. Apache Cordova (hybrid apps) is often mentioned whenever JS is but apart from a few dependencies on Cordova plugins, browsers are equally well supported.  An <a href="https://shellmonger.com/category/mobile-development/">excellent series of posts</a> from the from the Apps project lead</li>
+<li>Firebase: Excellent getting oriented and get started docs with good complete examples. Clean SDKs. All really easy to find.</li>
+<li>Kinvey: Hard to fault really: case studies,  developer guides, references, samples and code all easy to find and digest. No bloat or hype, just good information. They even have some whitepapers and ebooks introducing the wider topics and comparisions with other providors.</li>
+</ul>
+<p>All the JS client SDKs are open source projects</p>
+<h2>Support</h2>
+<p>You get what you pay for with support so I just tried pre sales via twitter and other free channels</p>
+<ul>
+<li>AWS: I tried issues on the client SDK projects with limit success</li>
+<li>Azure I got excellent direct help from the project lead.</li>
+<li>Google: Use Stack Overflow &#8211; no response yet</li>
+<li>Kinvey: Pretty much perfect. Initial Twitter contact from the CEO when I happened to mention Kinvey. Swiftly followed by voice discussion with JS lead. Forum is also active.</li>
+</ul>
+<h2>Static hosting for SPAs</h2>
+<p>SPAs only need static hosting for the HTML, JS, CSS and other assets, While developing you don&#8217;t want caches to get in the way. In production you want CDNs to give global fast access. HTTPS is a must have as is URL rewriting as SPA use pushState to simulate URLs and we need to stop the server throwing 404s</p>
+<ul>
+<li>AWS: S3 doesn&#8217;t provide HTTPS, cloud front does but only suitable for deployment</li>
+<li>Azure: All covered, Blob storage looks best or possibly web apps</li>
+<li>Firebase: all covered</li>
+<li>Kinvey: No. Perhaps the only missing feature</li>
+</ul>
+<p>There&#8217;s always GitPages, Surge and other services for cheap static hosting.</p>
+<h2>Simple sign-in with Username and Password</h2>
+<p>Brian users are elderly in residential environments and are most unlikely to have either email, SMS or accounts with other social services. Thus the commonplace and more secure authentication flows that require email or SMS cannot be used. Even a password may be too much for a person living with dementia.</p>
+<ul>
+<li>AWS: Explicit with Cognito User Pools, a new beta service.</li>
+<li>Azure: fairly straight forward example given using Auth0 a separate service</li>
+<li>Firebase: requires a custom Auth flow and identity server &#8211; perhaps works with Auth0</li>
+<li>Kinvey: Yes. Plus options for enterprise and social federated</li>
+</ul>
+<h2>Offline data sync for use config</h2>
+<p>This means no need to use REST APIs for data access. Just read/write locally and the system takes care of details as and when connectivity is available. Further, sync supports updates between devices. Should also optimise battery use and metered connection costs. I&#8217;m not particularly bothered if data is JSON, pairs or SQL.</p>
+<ul>
+<li>AWS: supposedly easy using Cognito Sync. I hit problems which basic set/get transaction which caused me to look at others.</li>
+<li>Azure: not yet but in progress and a fork on GitHub project. Will initially be for Cordova apps only.</li>
+<li>Firebase: yes. They mention all the important points.</li>
+<li>Kinvey: Yes. Again covers the bases plus works with all browser storage options. Very clean flexible SDK based on RxJS observables and providing a Fluid style API for queries. This is a big bonus for Brian which uses RxJS CycleJS</li>
+</ul>
+<h2>Storage for media files and URL access</h2>
+<p>Brian needs to display local images but the FileAPI URLs used to access local content are temporary. This almost certainly security related. Thus we unfortunately need to upload local files, store them an access with a private URL. Alternatively we create a Hybrid app to circumvent the sandboxing, but then we have to play the App Store dance and Ive no desire to do that.</p>
+<ul>
+<li>AWS: S3 and the Generate Web URL API for public and signed URLs</li>
+<li>Azure: Blob storage with public and private URLs</li>
+<li>Firebase: just released. Not clear how to get URL as operations seem to be upload / download only.</li>
+<li>Kinvey: yes, delegates to Google cloud storage. Still not clear how to provide private URLs</li>
+</ul>
+<h2>Server side code execution, AKA business logic</h2>
+<p>Rather than setting up a full server it should be possible to run &#8216;snippits&#8217; Obviously security, authentication and integration with other parts are all important.</p>
+<ul>
+<li>AWS: yes &#8211; Lambda</li>
+<li>Azure: yes functions &#8211; still beta and not yet fully integrated with Apps</li>
+<li>Firebase: no</li>
+<li>Kinvey: Yes. Restricted node environment on free tier, full node on paid tiers.</li>
+</ul>
+<h2>CLI to make config easy to manage and reproduce</h2>
+<p>All the systems have snazzy interactive web GUIs but as I discovered with SQL Server maintenance you *really* need to script you configuration to make it reproducible and to easily make bulk changes. This is especially important for CI /CD and allowing anyone to easily set up an open source project from scratch</p>
+<ul>
+<li>AWS: yes</li>
+<li>Azure: yes and not just Windows either</li>
+<li>Firebase yes.</li>
+<li>Kinvey: Only for business logic on free. Requires manual management and deployment of some config. Offers image cloning on other tiers</li>
+</ul>
+<h2>Features for metering, crash support</h2>
+<ul>
+<li>AWS: yes</li>
+<li>Azure: yes</li>
+<li>Firebase: naturally strong given Googles business model</li>
+<li>Kinvey: only with enterprise tier</li>
+</ul>
+<h2>Realtime messaging, data and push notifications</h2>
+<p>I&#8217;m not bothered by this right now but it might be useful. I didn&#8217;t spend any time looking at this</p>
+<ul>
+<li>AWS: push notifications</li>
+<li>Azure:  push notifications</li>
+<li>Firebase:  make a big thing of push etc.</li>
+<li>Kinvey: push notifications but not for JS clients (yet)</li>
+</ul>
+<h2>Collaboration opportunities</h2>
+<p>I&#8217;m developing the client in CycleJS and RxJS (switching  soon to xstream) and the small but growing community includes those working on another SPA using Firebase. It would be great to share effort with the <a href="https://github.com/sdebaun/sparks-cyclejs">sparks project</a>, especially as they really understand the technology a lot more than myself. If I don&#8217;t use Firebase it might still be possible to share concepts with them and maybe make a similar driver for the community to use with another provider.</p>
+<h2>Cost</h2>
+<p>I left the most important &#8217;till last. Brian is an open source project and I&#8217;m collaborating with various EU projects who are performing trials. So as a micro SME I&#8217;m very cost sensitive. At least until I get the self financing service going. Thus a free period or credits are vital.</p>
+<ul>
+<li>AWS: I year free access to almost everything, Looks cheap after.</li>
+<li>Azure: Somewhat confusing array of subscriptions that can run in parallel. Free month, F1 tier, MSDN and BizSpark. I&#8217;ve applied for the latter. Pricing a bit confusing and one page seemed out of date.</li>
+<li>Google: most parts are free but some appear to always be chargeable.</li>
+<li>Kinvey: Free developers tier good for all non enterprise .focused features, can have unlimited backends (called Apps).</li>
+</ul>
+<h2>Conclusion</h2>
+<p>Part of the reason for this post was for me to collect my thoughts and make a decision. So despite being very late with getting a MVP out the door, I&#8217;m going to use Kinvey, rather than spend more time trying to get AWS working or fight with the gaps in Azure&#8217;s provision. I&#8217;ll take the extended learning curve and present lack of offline sync on the chin. It looks like Kinvey has all my requirements covered except a full CLI so with any luck I can just get on with my app now! I&#8217;ll post my experience</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2016/05/aws-azure-or-firebase-for-a-spa-browser-app/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>On Recovering Windows 8.1 when it goes wrong</title>
+		<link>/openingaccessibility/2015/05/on-recovering-windows-8-1when-it-goes-wrong/</link>
+		<comments>/openingaccessibility/2015/05/on-recovering-windows-8-1when-it-goes-wrong/#respond</comments>
+		<pubDate>Mon, 18 May 2015 21:27:20 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Win8]]></category>
+		<category><![CDATA[Windows]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=535</guid>
+		<description><![CDATA[tl;dr; After a double disaster with my workhorse Windows 8.1 laptop I&#8217;ve been exploring the easy ways to create a usable backup image of my system when set up to my liking. The Windows Recovery Environment (Windows RE) turns out &#8230; <a href="/openingaccessibility/2015/05/on-recovering-windows-8-1when-it-goes-wrong/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<h1>tl;dr;</h1>
+<p>After a double disaster with my workhorse Windows 8.1 laptop I&#8217;ve been exploring the easy ways to create a usable backup image of my system when set up to my liking. The Windows Recovery Environment (<strong>Windows RE</strong>) turns out to be well thought out but a couple of confusing bits of UI and mass of conflicting advice on the interweb leads to obfuscation. The following is my experience. Jump to the end for the solution of creating a custom image for system Refresh.</p>
+<h1>Blue Screens of Death are still a thing</h1>
+<p>I was unlucky enough to have 2 consecutive failures. The first was Windows update installing an Alps driver for my Dell XPS12 trackpad. The resulting service caused a Blue Screen of Death and required a length &#8216;binary chop&#8217; process on the services to identify the cause so I could uninstall it (Basically the steps are: get into Safe Mode, run msconfig,  check Hide all Microsoft  Services on services tab and disable half the services, reboot and add or remove services before rebooting, rinse and repeat &#8217;till you have figured out what is causing the problem).</p>
+<p>Without any custom recovery setup my only solution was a clean install of Windows 8.1 (from a MSDN ISO) followed by resinstalling all my desktop apps, followed by restoration of File History backup for my docs/data from my NAS. Annoyingly I had forgot to backup a few hidden files in my user root when setting up File History. Anyway, the result was a nice fast PC booting.</p>
+<p>Oh, but then after a reboot I suddenly got stuck in a non recoverable BSoD loop (CRITICAL_SERVICE_FAILURE). So I had to do it all again. I&#8217;m pretty sure the cause was using Glary Utilities to clean up and not the hardware. But I ran the Dell tests and Seagate&#8217;s own SSD tests just in case it was a hardware issue (all fine).</p>
+<h1>Being sensible and creating a recovery image</h1>
+<p>So this time I decided to create an image to facilitate easy restoration. While there are classic solutions like trusty old clonezilla I felt the Windows solution should be usable. While reading around indicated I might be able to create a partition on the system disk I wanted to create a boot able USB stick (the XPS12 has no optical drive) in case I got the non booting BSoD loop again..</p>
+<p>While Windows RE supports options for both both <strong>Refresh</strong> (leaves your docs/data) and <strong>Reset</strong> (full factory reset)  both required me to supply recovery media (I think the install image on USB should have worked, but I went for a full reset anyway). My plan was to create a custom image that can be used in this case to reinstall all apps and programs.</p>
+<h1>Partition or image?</h1>
+<p>Now this is where the trail gets a bit muddy. While the desktop Control Panel recovery tool can create a backup drive, the useful sounding check box &#8220;Copy the recovery partition from the PC to the recovery drive&#8221; is disabled, even on a system created from a Windows install image. Firstly it appears &#8216;partition&#8217; actually means image, though an OEM may have put a custom recovery image on a partition (and you can do the same).</p>
+<p>The solution to the disabled checkbox appears to be to provide an <strong>Install.wim</strong> windows system image and configure windows to use it with <strong>reagentc</strong>. Then if I understand it the created recovery drive will contain the Windows RE and the Install.wim and so enable you to boot and recover from the drive. However I have not yet tested this.</p>
+<p>Now it turns out you can create a custom wim image from a snapshot of your system and leave this on your system disk when it can be used for a Refresh. Several people claim you can also rename the custom image as Install.wim and then register it so you can create a recovery drive (and possibly use it for a full Reset).</p>
+<p>Now the tool used to create and register a custom image is <strong>recimg</strong> but it&#8217;s help has a big disclaimer that only documents and apps will be preserved during a Refresh, not desktop programs. This turns out to be the second confusing information. It would no doubt be true for the default Install.wim, assuming that actually worked out of the box. The recimg help also states it can only be used for a Refresh not a Reset but I don&#8217;t know if that is true after it is renamed to Image.wim. I&#8217;ve yet to try it.</p>
+<p>Once you create a <strong>CustomImage.wim</strong> you can then run Refresh from the Windows RE which will use the new . Of course that assumes you can get your PC to boot, which I wasn&#8217;t able to. To cover that I&#8217;ve copied my CustomImage.wim to an external drive in the hope I can use it later if required. As mentioned above you can create a recovery drive from your custom image, but the need to rename (or copy) and register it your newly created CustomImage.wim as Install.wim to enable the checkbox.</p>
+<p>In the end my plan was to create a CustomImage.wim after installing Office and my dev tools. This weighed in at a hefty  30 GB so I removed it from my SSD as soon as I had made a copy. I didn&#8217;t have a device suitable for a recovery drive.</p>
+<p>[Update 2015-05-24: Warning the recovery drive utility does a FAT format so your drive will be limited to 32GB &#8211; which really restricts it&#8217;s application, infact makes it useless for me. Also the drive I purchased (Elite) appears as a local drive rather than portable so is not seen by the utility]</p>
+<h1>Creating a custom image for Refresh</h1>
+<ul>
+<li>Get system to a clean, updated and stable state</li>
+<li>Open a Command Prompt</li>
+<li>Run &#8216;mkdir c:\RefreshImage&#8217;</li>
+<li>Run &#8216;recimg -CreateImage C:\RefreshImage&#8217;</li>
+<li>You will now have a C:\RefreshImage\CustomImage.wim</li>
+<li>Run &#8216;reagentc /info&#8217; to check the custom image is registered</li>
+</ul>
+<h1>Creating a Recovery Drive with you custom image</h1>
+<ul>
+<li>Open a Command Prompt</li>
+<li>copy (or rename) CustomImage.wim to Install.wim</li>
+<li>Run &#8216;reagenc /SetOSImage /Path C:\RefreshImage\Install.wim /Index 1&#8217;</li>
+<li>Run &#8216;reagentc /info&#8217; to check the recovery image is registered</li>
+<li>In control panel select &#8216;Create a recovery drive&#8217; and check &#8216;Copy Recovery partition.</li>
+</ul>
+<p>If you want to know more Steven Synofsky wrote a post on how the <a href="http://blogs.msdn.com/b/b8/archive/2012/01/04/refresh-and-reset-your-pc.aspx">Windows RE system works</a> for Reset and Refresh.</p>
+<p>(Note Microsoft also provide tools for OEMs to create custom recovery images, tools and menus but they are more complex to use).</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2015/05/on-recovering-windows-8-1when-it-goes-wrong/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Sara Soueidan on Improving SVG on the web</title>
+		<link>/openingaccessibility/2015/05/sara-soueidan-on-improving-svg-on-the-web/</link>
+		<comments>/openingaccessibility/2015/05/sara-soueidan-on-improving-svg-on-the-web/#respond</comments>
+		<pubDate>Thu, 07 May 2015 15:30:05 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=530</guid>
+		<description><![CDATA[Following on from my last 2 posts; Symbols for AAC using SVG and a RESTful web API and I’m liking Microsoft again here&#8217;s an excellent video session from the recent Microsoft Edge web Summit. In &#8216;On the Edge with SVG&#8216; Sara Soueidan reviews the state of &#8230; <a href="/openingaccessibility/2015/05/sara-soueidan-on-improving-svg-on-the-web/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Following on from my last 2 posts; <a href="/openingaccessibility/2015/03/mulberry-symbols-for-aac-svg-and-apis/">Symbols for AAC using SVG and a RESTful web API</a> and <a class="row-title" title="Edit “I’m liking Microsoft again”" href="/openingaccessibility/wp-admin/post.php?post=518&amp;action=edit">I’m liking Microsoft again</a> here&#8217;s an excellent video session from the recent Microsoft Edge web Summit. In &#8216;<a href="http://channel9.msdn.com/Events/WebPlatformSummit/2015/On-the-Edge-with-SVG">On the Edge with SVG</a>&#8216; <a href="http://channel9.msdn.com/Events/Speakers/sara-soueidan">Sara Soueidan</a> reviews the state of the SVG specification and implementation in browsers, including Edge. Sara also gives call for action to vote for these improvements.</p>
+<p>Here&#8217;s the current list of<a href="https://wpdev.uservoice.com/search?filter=ideas&amp;query=svg"> SVG related suggestions</a> for Edge on dev.monder.ie.</p>
+<p>As always Mozilla Developer Network (MDN) has excellent <a href="https://developer.mozilla.org/en-US/docs/Web/SVG">documentation on SVG</a> as it currently is.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2015/05/sara-soueidan-on-improving-svg-on-the-web/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>GPII contributors and Tiger Team enhance work of Cloud4All and Prosperity4All</title>
+		<link>/openingaccessibility/2015/03/gpii-contributors-and-tiger-team/</link>
+		<comments>/openingaccessibility/2015/03/gpii-contributors-and-tiger-team/#respond</comments>
+		<pubDate>Tue, 03 Mar 2015 18:22:13 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=466</guid>
+		<description><![CDATA[The development of the Global Public Inclusive Infrastructure (GPII) international accessibility infrastructure is progressing apace. Our work in the EC FP7 Cloud4All (C4A) project has just completed its 3rd year and achieved a successful review. The sibling project, Prosperity4All (P4A), &#8230; <a href="/openingaccessibility/2015/03/gpii-contributors-and-tiger-team/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>The development of the Global Public Inclusive Infrastructure (<a href="http://gpii.net/">GPII</a>) international accessibility infrastructure is progressing apace. Our work in the EC FP7 <a href="http://www.cloud4all.info/">Cloud4All (C4A) </a>project has just completed its 3<sup>rd</sup> year and achieved a successful review. The sibling project, <a href="http://www.prosperity4all.eu/">Prosperity4All (P4A)</a>, is currently preparing for its 1<sup>st</sup> review. With this solid background and with funding from the Universal Interface and Information Technology Access RERC (<a href="http://trace.wisc.edu/itrerc/">UIITA-RERC</a>) at the Trace Center we have started to work on a couple of cross project activities, namely Contributor “on boarding” and the Tiger Team</p>
+<p><a href="http://www.cloud4all.info/"><img class="alignright" src="http://www.cloud4all.info/wp-content/themes/cloud4all-wp-theme/images/header_logo.png" alt="C4a Logo" width="240" height="72" /></a>The research activity taking place in the Cloud4All <a href="http://www.prosperity4all.eu/"><img class="alignright" src="http://www.prosperity4all.eu/wp-content/themes/fss-rtf/img/xlogo_prosperity.png.pagespeed.ic.RHyBO76Hra.png" alt="P4A logo" width="360" height="71" /></a>and Prosperity4All EC FP7 projects is the critical seed for the wider game plan for making the GPII a solid reality. The vision is for a vibrant ecosystem of accessibility users and developers working to co-create resources, tools and services that are effective in getting the best possible solutions into the hands of users.</p>
+<p>In order for this to work in a sustainable way we need to have a healthy community of people who are excited, engaged and contributing to the effort. Some folks may provide funding and others their time, either paid or not. We need this to happen in all areas of the GPII activity, including the areas we are currently working as funded research. For example, the Automatic Personalisation for Preferences being developed in cloud for all will only be successful when a majority of solutions work with it so users can select and use them. Also, the Developer Space in Prosperity4All will be successful when developers regard it as the place to go for making their solutions full accessible.</p>
+<p>So we have to activities of Raising the Floor that are designed to play a part in encouraging a active community.</p>
+<p><strong>Contributors</strong></p>
+<p>Since Gregg Vanderheiden first started telling people about the GPII people have become excited about it and offered their help or asked how their solutions can work with it. In fact, we have already attracted over 130 people who have expressed such an interest. However, we have not been in a position to help these people easily get on board and contribute their skills in any organised fashion.</p>
+<p>So we are starting to create resources that ease the “on boarding” process. These are currently on the wiki <a href="http://wiki.gpii.net/w/Contributor%27s_Emporium">Contributor&#8217;s Emporium</a> page but will move to a website based on the C4A site with some info on the P4A websites. We are also working with the P4A dissemination team to send a newsletter in order collect contributor interests and provide them with project news updates. We also have a new <a href="http://wiki.gpii.net/w/Mailing_Lists#Contributors_.28contributors.40gpii.net.29">Contributors mailing list</a> (google group) for discussion.</p>
+<p>Naturally we welcome contributions and ideas from everyone involved in the current projects. In particular, we request that during our work we all consider</p>
+<ol>
+<li>Ways to incorporate contributions from others into your work</li>
+<li>Provide clear documentation suitable for people outside your workgroup</li>
+<li>Mark selected issues as ‘Suitable for Contributors’</li>
+</ol>
+<p><strong>Tiger Team</strong></p>
+<p>The <a href="http://wiki.gpii.net/w/Imp_Tiger_Team">Tiger Team</a> is a small group of Raising the Floor members tasked with shepherding the GPII from research outputs to production infrastructure. Initially we are concentrating on increasing the number of solutions that work with the GPII architecture for Automatic Personalisation from Preferences (from C4A). This architecture has been carefully designed to ease the process of making solutions GPII-enabled. Indeed, in many cases the effort required is to provide configuration information to the architecture. Still, the work needs to be done, ideally with the solution developer’s support so the Tiger Team are leading this work.</p>
+<p>This work, funded by UIITA-RERC, is also one example of where contributors can play a part and we naturally welcome input from all current project members. For example you might suggest solutions to work on, provide documentation or otherwise help the growth of the GPII. We hold an open team meeting every week.</p>
+<p><strong>Join us</strong></p>
+<p>If any of this interests you then do please get in contact at <a href="mailto:contibutorcoord@gpii.net">contibutorcoord@gpii.net</a>. We look forward to working with you on this.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2015/03/gpii-contributors-and-tiger-team/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Flashing Mozilla Firefox OS Flame Phone on Windows</title>
+		<link>/openingaccessibility/2014/09/flashing-firefox-os-on-windows/</link>
+		<comments>/openingaccessibility/2014/09/flashing-firefox-os-on-windows/#comments</comments>
+		<pubDate>Fri, 26 Sep 2014 17:59:25 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[FirefoxOS]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=443</guid>
+		<description><![CDATA[tl;dr the shallow_flash.sh file used to flash Firefox OS nightly builds t to phones such as the Flame now works on Cygwin on Windows. The reason for previous failure and the solution highlight a difference between Linux and Windows. Mozilla&#8217;s &#8230; <a href="/openingaccessibility/2014/09/flashing-firefox-os-on-windows/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p><strong>tl;dr the shallow_flash.sh file used to flash Firefox OS nightly builds t to phones such as the Flame now works on Cygwin on Windows. The reason for previous failure and the solution highlight a difference between Linux and Windows.<br />
+</strong></p>
+<p>Mozilla&#8217;s <a href="https://developer.mozilla.org/en-US/Firefox_OS">Firefox OS</a> is undergoing rapid development, with the cutting edge nightly builds <a href="/openingaccessibility/wp-content/uploads/2014/09/Firefox-OS-Flame-Reference-Device-small.png"><img class="alignright size-full wp-image-444" src="/openingaccessibility/wp-content/uploads/2014/09/Firefox-OS-Flame-Reference-Device-small.png" alt="Firefox-OS-Flame-Reference-Device-small" width="150" height="305" srcset="/openingaccessibility/wp-content/uploads/2014/09/Firefox-OS-Flame-Reference-Device-small.png 150w, /openingaccessibility/wp-content/uploads/2014/09/Firefox-OS-Flame-Reference-Device-small-147x300.png 147w" sizes="(max-width: 150px) 100vw, 150px" /></a>now at version 2.2 (as compared to the less frequent Vendor supplied builds). Each Firefox OS phone has slightly different mechanism for flashing using these Mozilla builds but the general approach is similar. Basically a base version of all the full software stack (Gonk, Gecko and Gaia) is available for flashing and then partial builds update just Gecko and Gaia). There are also OTA updates that can be just Gecko &amp; Gaia not requiring a reboot, or a full update (FOTA) requiring a reboot.</p>
+<p>Firefox OS developers almost exclusively use Linux, or OS X. This is for good reasons,. In particular building on Windows can be slow as it is not so hot at processing lots of small files as required for a build. Something I soon found when building Desktop Firefox on my Windows laptop.</p>
+<p>However, when it comes to flashing, we find that people who are not building the software also want to use the pre-built images on their phones and these community members are often using Windows. They often do not wish to build and may not be particularly technical. Also the Mozilla builds have been created with a full set of features that can be lacking from personal builds (at least they are from mine).</p>
+<p>Unfortunately the official &#8216;shallow_flash.sh&#8217; script used for the partial flashes has been developed for linux. Although it should work on the <a href="https://cygwin.com/">Cygwin</a> linux &#8217;emulator&#8217; for Windows, flashed phones would never reboot. This has now been fixed.</p>
+<p>The core problem with the script highlights another reason Linux is better than Windows for Firefox OS development. In short, Firefox OS uses the Linux kernel and HAL layer from Android. Thus the close match between target and host operating systems when using Linux reduces many problems. In particular, some of the files contained in the Gecko updates require the X (executable) file attribute in order for Firefox OS to work at all. Windows doesn&#8217;t have this attribute and so when the files are unarchived and pushed to the phone the x attribute is lost resulting in a dead phone. In fact Cygwin tries to emulate the x attribute, but it really only pretends it is on for files it thinks are executable, something completely useless for the Firefox OS files in question.</p>
+<p>The good news is Cygwin provides all the wonderful *nix commands which have been used for years to perform administrative magic with seemingly little effort. The philosophy of using small focussed tools in combinations in order to get the job done comes to the rescue here. A single line can be added to the script to reset all those x attributes that got lost, Here it is</p><pre class="crayon-plain-tag">run_adb shell chmod 777 $(tar -tvf $GECKO_TAR_FILE | awk '$1 ~ /^[^d].*x$/ {print &quot;/system/&quot; $NF}')</pre><p>Without going into details this extracts from the .tar.gz archive the list of files with x set (and that are not also directories) and passes it to chmod to set the x attribute on the files on the phone. Simples.</p>
+<p>While I was at it I also fixed a bug with the way local files were handled. A hack copying files to a temporary folder worked around the problem and could be removed with a simple fix. Also, when testing we found problems if the files were place in a folder with spaces in the name so that was fixed too.</p>
+<p>Until the patch is merged in you can find the fixed version of shallow_flash.sh in <a href="https://github.com/Mozilla-TWQA/B2G-flash-tool/pull/276">this pull request </a>.</p>
+<p>In addition as the person this work  was for is not especially technical, I created <a href="http://opendirective.net/b2g/flame/B2GShallowFlash.zip">a single zip file</a> containing the script, the Firefox OS update files and a minimal version of Cygwin. This gives an easy download, unzip and run flash.bat UX. Since the Cygwin installer is complex and hardly accessible this might be useful to other folks too.</p>
+<p>As a foot note having submitted this pull request I found someone else had recently submitted a similar pull request (though only setting the x attribute on a few predefined files).  I do wish I had seen this one earlier as it took some time to figure it was the x attribute causing the problem. Heh. Such is open source <img src="https://s.w.org/images/core/emoji/11/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2014/09/flashing-firefox-os-on-windows/feed/</wfw:commentRss>
+		<slash:comments>10</slash:comments>
+		</item>
+		<item>
+		<title>Setting up home and office networks with a single line and with wifi extension</title>
+		<link>/openingaccessibility/2014/09/setting-up-two-home-lans-with-a-single-line-and-with-wifi-extension/</link>
+		<comments>/openingaccessibility/2014/09/setting-up-two-home-lans-with-a-single-line-and-with-wifi-extension/#comments</comments>
+		<pubDate>Thu, 11 Sep 2014 04:55:18 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=424</guid>
+		<description><![CDATA[tl;dr It is straight forward to connect a second Ethernet WAN modem/router/AP to a BT home hub (or other primary router) and configure it as a separate, independent LAN (TCP/IP subnet). A 3rd Wireless AP/Router can then used as a Wi-Fi client (or alternatively a bridge) &#8230; <a href="/openingaccessibility/2014/09/setting-up-two-home-lans-with-a-single-line-and-with-wifi-extension/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p><strong>tl;dr It is straight forward to connect a second Ethernet WAN modem/router/AP to a BT home hub (or other primary router) and configure it as a separate, independent LAN (TCP/IP subnet). A 3rd Wireless AP/Router can then used as a Wi-Fi client (or alternatively a bridge) to extend the secondary LAN over an air gap.</strong></p>
+<p><a href="/openingaccessibility/wp-content/uploads/2014/09/BTHomeHub5.jpg"><img class="alignleft wp-image-437 size-full" src="/openingaccessibility/wp-content/uploads/2014/09/BTHomeHub5.jpg" alt="BTHomeHub5" width="266" height="200" /></a><a href="/openingaccessibility/wp-content/uploads/2014/09/TL-WR843ND.jpg"><img class="alignright wp-image-438 size-full" src="/openingaccessibility/wp-content/uploads/2014/09/TL-WR843ND.jpg" alt="TP-Link TL-WR843ND" width="207" height="240" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>My home office has had its own dedicated copper telephone line and LAN/Wi-Fi since I started working from home. While having a dedicated line makes accounting a little simpler, I almost never use never use the phone as I have my mobile and also a wireless DECT connection to the home line. Since we moved the home line to BT Infinity fibre broadband (currently running at an uncapped 75/20Mbs) the home LAN has been much faster than the very cheap ISP office package from TalkTalk Business. I have thus been thinking of sharing the home network for work and dropping the office line completely. The home LAN use is not yet heavy enough that I need to worry too much about contention, though this might well change with 2 teenagers at home.</p>
+<p>If sharing the BT line was to be successful I wanted to somehow keep the home and office LANs quite separate. In addition the office is separated from the house by a physical gap of about 3m and I didn&#8217;t particularly want to run a rugged Ethernet cable across the gap, preferring a wireless solution.</p>
+<p>After a bit of research I&#8217;ve now got a very acceptable solution with separate LANs and full line speed available in office (most of the time). I upgraded the BT Infinity to uncapped speed and usage and negotiated a free <a href="http://www.productsandservices.bt.com/products/broadband/wireless-hub-5-router#/intro">Home Hub 5</a> to replace the old 3rd edition we&#8217;ve had since Infity became available. The Home Hub 5 is an excellent piece of kit, supporting 802.11ac for maximum Wi-Fi speed. I did debate using this for the office network and a Wi-Fi connection to it is always an option, though the 5GHz transmitter doesn&#8217;t reach the office.</p>
+<p>After research and being very happy with a recently acquired TP-link Wi-Fi dongle, I broke with my long standing Netgear tradition and purchased two TP-Link <a href="http://uk.tp-link.com/products/details/?categoryid=1246&amp;model=TL-WR843ND">TL-WR843ND</a> Ethernet WAN modem routers. These have 300Mbs 802.11b/g/n Wi-Fi support (an Ethernet WAN connects to a cable modem rather than a copper phone line as with ADSL devices).</p>
+<p>These TP-Link devices have 2 useful enhancements over the cheaper TL-WR841ND. For one, the Power over Ethernet feature makes it easy to place the device without worrying about the availability of a near-by power outlet. Secondly, it has a WISP mode designed for connection to wireless ISPs and I felt this might work well as an alternative to the usual Wi-Fi bridge arrangement to extend LANs via Wi-Fi which these devices also explicitly support (and it does).</p>
+<p>So in outline the configuration steps I performed are as follows:</p>
+<p>1) Set up one TL-WR843ND in  router mode (the default is WISP mode) with the WAN connection type set to dynamic IP (as the Home hub provides DCHP). Set it&#8217;s LAN IP address to 192.168.2.1 (it&#8217;s own DHCP server will update to match). This puts it on a different subnet to both the Home Hub and the office network.</p>
+<p>Connect it&#8217;s Ethernet WAN input to a BT Home Hub LAN socket. This then works as a second router/AP but will be dedicated to connecting to the other TL-WR843ND via W-Fi to extend the office LAN (though you could always us it as a normal AP as well). I turned off  the SSID broadcast to make connections less likely. The home network uses the Home Hub as usual.</p>
+<p>2) Configure the 2nd TL-WR843ND in WISP mode to access the first AP you set up above and use it as the office router/AP. Use the router&#8217;s quick setup option and/or the Survey button to find the first AP. This then provides wired and Wi-Fi access to office equipment. Use a different WIF SSID to the other TL-WR843ND and perhaps manually set the channel to be different to the BT Home Hub 2.4GHz channel  rather than auto mode (I used Ch 1 for the Home Hub and 13 for the APs).</p>
+<p>Notes:</p>
+<p>1) I had to manually set the Wi-Fi region on both routers to UK as it defaults to US.</p>
+<p>2) A bug in the WISP mode of the TL-WR843ND means it assumes American Wi-Fi channels for the WAN. So, the first AP will not be not seen by the WAN Survey button if it is on channel 12/13 . The solution is to initially switch to router mode and change to UK region.</p>
+<p>3) The office network connects via the the BT Home Hub which is possibly less reliable; should the Hub fail both home and office networks will go down. It should  be possible to swap the 2 routers so the Hub connects via the TL-WR843ND.  While I proved the TL-WR843ND works when connected directly to the fibre modem instead of the Home Hub, I did not check if the Home Hub has appropriate settings to work as the secondary router (I think not). I may need to revisit this if I hit problems going through the 2 routers, eg when hosting a website or needing port forwarding.</p>
+<p>4) In theory it should be possible to connect both routers to the fibre modem. However the BT supplied ECI modem is locked so only the LAN1 socket works. It is possible to unlock the modem with special hardware but I did not want to go down this route.</p>
+<p>5) I learnt the fickleness of W-Fi as when testing wireless access to the 1st router as I only got 20Mbs with my Dell XPS 12 laptop which got a full 75Mbs with the BT Home Hub. Having checked everything was the same and proving wired access was full speed, I tried the Wi-Fi access from other devices. Needless to say the TP-Link dongle work best and I got mixed results from other devices. I can only assume some strange incompatibility with the XPS Wi-Fi</p>
+<p>6) As the WISP client mode worked perfectly well I didn&#8217;t try the Wi-Fi bridging mode. I&#8217;ve not idea if one mode is more efficient that the other.</p>
+<p>7) When setting up the the routers don&#8217;t forget to set strong passwords and encryption.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2014/09/setting-up-two-home-lans-with-a-single-line-and-with-wifi-extension/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>ZTE Open &#8211; upgrading to Firefox OS 1.2</title>
+		<link>/openingaccessibility/2014/04/zte-open-upgrading-to-firefox-os-1-2/</link>
+		<comments>/openingaccessibility/2014/04/zte-open-upgrading-to-firefox-os-1-2/#comments</comments>
+		<pubDate>Sun, 06 Apr 2014 20:24:25 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[mobile]]></category>
+		<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[FirefoxOS]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=351</guid>
+		<description><![CDATA[[Continued in Success! Firefox OS 1.4 built and running on ZTE Open] I&#8217;ve just bought a ZTE Open phone with the intention of exploring Firefox OS, Mozilla&#8217;s new HTML-based, fully open mobile operating system. The idea was that at £54 &#8230; <a href="/openingaccessibility/2014/04/zte-open-upgrading-to-firefox-os-1-2/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p><strong>[Continued in <a href="/openingaccessibility/2014/04/success-firefox-os-1-4-built-and-running-on-zte-open/">Success! Firefox OS 1.4 built and running on ZTE Open</a>]</strong></p>
+<p>I&#8217;ve just bought a <a href="http://stores.ebay.co.uk/ZTE-Mobile-UK">ZTE Open</a> phone with the intention of exploring <a href="https://www.mozilla.org/en-US/firefox/os/">Firefox OS</a>, Mozilla&#8217;s new HTML-based, fully open mobile operating system. The idea was that at £54 pounds from ZTE Europe on eBay it is a very low cost entry into building <a href="https://marketplace.firefox.com/developers/">Firefox OS apps</a> or the <a href="https://developer.mozilla.org/en-US/Firefox_OS">OS itself</a>. Little did I expect it to be such a pain but the good news  is I finally managed to get it going and thought I should share how.</p>
+<p>The phone is OK but you get what you pay for. It reminds me of the very cheap Galaxy Europa I one brought a couple of years back.  With my fat fingers it&#8217;s very hard to type on the seemingly inaccurate and very small touch screen. A passive stylus doesn&#8217;t work either. However, it works well enough as a basic smartphone.</p>
+<p><a href="/openingaccessibility/wp-content/uploads/2014/04/open-orange.jpg"><img class="aligncenter size-medium wp-image-353" alt="ZTE Open" src="/openingaccessibility/wp-content/uploads/2014/04/open-orange-300x300.jpg" width="300" height="300" srcset="/openingaccessibility/wp-content/uploads/2014/04/open-orange-300x300.jpg 300w, /openingaccessibility/wp-content/uploads/2014/04/open-orange-150x150.jpg 150w, /openingaccessibility/wp-content/uploads/2014/04/open-orange.jpg 1000w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+<p>First the problem; the ZTE Open I received was at OS version 1.0 and I obviously want to hack on the latest (1.3 /1.4) and send updates to the phone. Also, the easiest entry  to developing apps is to use either the <a href="https://developer.mozilla.org/en-US/docs/Tools/Firefox_OS_Simulator">Firefox OS Simulator</a> or the <a href="https://developer.mozilla.org/en-US/Firefox_OS/Using_the_App_Manager">Apps Manager</a> connected to a real device running 1.2 or  higher.</p>
+<p>You know what it&#8217;s like, you hit a problem and Google throws up loads of fixes that have worked for others. The problem is that these solutions are often slightly different being discovered at various times since the problem 1st appeared and many subtle changes have occurred to the various bits of software or hardware, thus breaking the solutions. I got extremely frustrated and was even informed that the phone has been nicknamed the &#8220;ZTE Closed&#8221; by some folks at Mozilla. Anyway I won&#8217;t waste time on all the dead ends I tried but simply present the final solution that worked for me. I will just mention that I had no luck with the <a href="https://developer.mozilla.org/en-US/Firefox_OS/Developer_phone_guide/ZTE_OPEN">MDN page</a> or  <a href="https://hacks.mozilla.org/2014/01/upgrading-your-zte-open-to-firefox-1-1-or-1-2-fastboot-enabled/">Mozilla Hacks article</a> that&#8217;s worked for many &#8211; &#8220;fastboot devices&#8221; would just not work. I missed the note in that post to the solution that eventually worked for me (after a few problems). It might be due to my using Windows as host rather than Linux but I found the alternative solution before I tried on Linux.</p>
+<p>So the solution:</p>
+<ol>
+<li>Upgrade to 1.1B02 using the <a href="http://www.ztedevices.com/support/smart_phone/b5a2981a-1714-4ac7-89e1-630e93e220f8.html">SDCard method provide by ZTE</a> (US &amp; UK)</li>
+<li>Upgrade to 1.2 using the <a href="https://www.dropbox.com/sh/rnj3rja7gd54s98/kGH6LCBRmf">phone download method provided by ZTE</a> (US &amp; UK)</li>
+</ol>
+<p>The 1st step is probably not needed but I performed it as an early step anyway. I modified the second step to also update &#8220;system&#8221; which is not shown selected in the ZTE instructions.</p>
+<p><strong>ZTE Open Firmware site</strong></p>
+<p>As is so often the case once I finally solved it I found the perfect source of information. I don&#8217;t know who owns the site but <a href="https://sites.google.com/site/zteopenfirmware/fastboot">zteopenfirmware</a> is a real mine of information on the ZTE Open phones firmware. They even provide advice on using version 1.3 and 1.4 which I intend to build and flash soon as an exercise. While I discovered the same answer, I&#8217;d be hard put to provide such clear details on upgrading the ZTE Open. Thus I simply refer you to this excellent resource.</p>
+<p>Hopefully this short post will save a few others some pain. Good luck and happy hacking.</p>
+<p>PS. if you like such things, here is a draft <a href="http://www.movistar.co/documentos/manualesProductos/ZTE_Mozilla_Open_P752-Manual_de_Usuario.pdf">user manual for the ZTE Open</a> (pdf).</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2014/04/zte-open-upgrading-to-firefox-os-1-2/feed/</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+		</item>
+		<item>
+		<title>Free international SAPI voices from Microsoft</title>
+		<link>/openingaccessibility/2014/02/free-international-sapi-voices-from-microsoft/</link>
+		<comments>/openingaccessibility/2014/02/free-international-sapi-voices-from-microsoft/#respond</comments>
+		<pubDate>Fri, 28 Feb 2014 14:28:09 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[Assistve Technology]]></category>
+		<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Windows]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=329</guid>
+		<description><![CDATA[Either this is a well kept secret of I&#8217;ve been asleep, but I&#8217;ve only just found Microsoft provide easy access to the SAPI voices provided with other language versions of Windows. The following is the case in my Windows 8.1 Pro &#8230; <a href="/openingaccessibility/2014/02/free-international-sapi-voices-from-microsoft/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Either this is a well kept secret of I&#8217;ve been asleep, but I&#8217;ve only just found Microsoft provide easy access to the SAPI voices provided with other language versions of Windows. The following is the case in my Windows 8.1 Pro but your mileage may vary as they say.</p>
+<p>There don&#8217;t appear to be voices for every language, for example while I got German, I didn&#8217;t get one for Greek. There are several provided for Spanish.</p>
+<p>In order to get the extra voices you simple go to Control-&gt;Panel-&gt;Language and add a  language. When you double click on the new language you get (after a pause) an option to download and install a &#8216;Language pack&#8217;. This install takes forever, but eventually the new SAPI voices then appear in the Windows TTS options as usual.</p>
+<p>Additionally the language at the top of the list selects the system used for Windows text and is also reported to programs. You will need to log out or reboot for a change to take effect. We use this in the latest Maavis installer to provide internationalisation support for the Cloud4All project.</p>
+<p>Microsoft have done an excellent job with internationalisation &#8211; it&#8217;s a very clean user experience.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2014/02/free-international-sapi-voices-from-microsoft/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Revo Pixis RS internet/DAB/FM radio review</title>
+		<link>/openingaccessibility/2013/11/revo-pixis-internetdabfm-clock-radio-review/</link>
+		<comments>/openingaccessibility/2013/11/revo-pixis-internetdabfm-clock-radio-review/#comments</comments>
+		<pubDate>Sat, 30 Nov 2013 14:27:41 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[a11y]]></category>
+		<category><![CDATA[age]]></category>
+		<category><![CDATA[Audio]]></category>
+		<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=303</guid>
+		<description><![CDATA[I just received a shiny new Rivo Pixis RS digital radio direct from Revo and after using it for a short while I felt it definitely deserved a review. What follows is my initial impressions after setting it up and using &#8230; <a href="/openingaccessibility/2013/11/revo-pixis-internetdabfm-clock-radio-review/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I just received a shiny new <a href="http://revo.co.uk/shop/pixis-ir/">Rivo Pixis RS</a> digital radio direct from Revo and after using it for a short while I felt it definitely deserved a review. What follows is my initial impressions after setting it up and using for a short period.</p>
+<div id="attachment_304" style="width: 310px" class="wp-caption aligncenter"><a href="/openingaccessibility/wp-content/uploads/2013/11/RevoRSLoRes.png"><img class="size-medium wp-image-304" alt="Revo Pixis RS Radio - (source Revo website)" src="/openingaccessibility/wp-content/uploads/2013/11/RevoRSLoRes-300x225.png" width="300" height="225" srcset="/openingaccessibility/wp-content/uploads/2013/11/RevoRSLoRes-300x225.png 300w, /openingaccessibility/wp-content/uploads/2013/11/RevoRSLoRes.png 625w" sizes="(max-width: 300px) 100vw, 300px" /></a><p class="wp-caption-text">Revo Pixis RS Radio &#8211; (source Revo website)</p></div>
+<p>When my old Pure Tempus DAB clock radio joined our other broken Pure radios I needed a replacement and was very reluctant to buy another Pure due to very real quality concerns. My requirements are actually simple, but it&#8217;s seemingly very hard to find a device that matches them. My wife and I have tried several brands and models over the recent years, all falling short in one way or another.</p>
+<ul>
+<li>Great sound &#8211; as a wannabe sound engineer / musician this matters a lot, even given DAB and Internet radio limitations. Both speech and music are required</li>
+<li>Clear clock-display with sleep option &#8211; as an young older person my eyesight ain&#8217;t what it was</li>
+<li>Low light levels &#8211; I want to sleep at night and some clock radios give you a sun tan at night</li>
+<li>Easy use with customisable internet feeds and podcast selection</li>
+<li>Reliability &#8211; after so many early failures I want something that goes on and on, yet can be updated with patches</li>
+</ul>
+<p>I&#8217;ve been aware of Revo for a few years and  liked the look and specification of the Pixis on &#8216;web&#8217;. Having Internet radio means I can listen to remote stations like KPLU along with those essential tech podcasts like FLOSS Weekly. Meanwhile, my wife can catch up on The Archers (hmm, maybe not such a positive after all). So I though the extra cost of the RS was worth it. Trouble was it was out of stock at all the usual suspects like Amazon so I called Rivo. The really friendly, helpful and knowledgeable person I spoke to reassured me it would meet my requirements and stated the Pixis RSs had just arrived at the warehouse and would soon be going out to the retailers. I grabbed one there and then, over the phone, and it arrived next day by UPS.</p>
+<p>The Pixis is a complete doddle to set up with a serviceable wizard,In use is equally easy to operate. I&#8217;m pleased to say it meets all my requirements with ease, though the reliability and update ability have yet to be proven (note though, the external build quality is excellent).</p>
+<p>The sound is great with a good driver and <a href="http://en.wikipedia.org/wiki/Bass_reflex">bass reflex</a> cabinet; I had to reduce the bass a tad as the default was a bit over the top for my taste. The clock is clear with the backlight level auto adjusted to room conditions and it can be reduced further, or even switched completely off in standby.  Even better most of my podcasts and internet stations of choice were already listed in the extensive Pixis lists.  Further the layout and navigation are both excellent. <strong>If your clock radio requirements match mine above then you need look no further the Pixis RS </strong>(and I guess the similar Pixis). It is the best design and implementation of a digital radio I have ever come across<strong>. </strong></p>
+<p>That said, as usual, I have a few observations and thoughts that I&#8217;d like to pass on to Revo in the hope they are useful in improving and already great product.</p>
+<p>Some time back I imagined what a good internet radio and associated web selection service would be like. This was before I have seen any consumer products, or perhaps before they existed. We eventually purchased a Logitech squeeze radio but this *really* sucks. The radio user experience is complex, buggy and just plain horrid, plus the service often goes down with no explanation. The Pixis however comes *really* close to my imagined ideal. OK, so having Open Source server software like Squeeze to play with is nice, but actually it&#8217;s not really needed, if ,as with the Pixis, interoperability standards like U<a href="http://en.wikipedia.org/wiki/Universal_Plug_and_Play">PnP </a>are supported for media streaming.</p>
+<p>So what improvements would I like to see? Well very few.</p>
+<ul>
+<li>A bigger clock. It is small. Why not use the entire screen?</li>
+<li>An option to turn off the backlight when listening, or at least when sleep is active.</li>
+<li>Finer volume control at lower levels &#8211; the steps are slightly too course. Perhaps a different non-linear law like the old volume &#8216;pots&#8217;?</li>
+<li>A top level favourites mode that aggregates all the others. It&#8217;s OK to have favourites for each mode, (though both internet station and podcasts is fiddly) and find station by media makes sense. However, for favourites your don&#8217;t care which media they are on, you just want to access them.</li>
+<li>Bigger sleep UI buttons. When your are half asleep and want to extend sleep it&#8217;s a bit too small.</li>
+<li>Sleep to remember the previous time used &#8211; shouldn&#8217;t need to set it every time.</li>
+<li>Search through podcast lists. It&#8217;s great having podcasts listed under each station but the BBC R4 lists is very long and a search would be really useful.</li>
+</ul>
+<p>That&#8217;s all I have on my wish list. Even after a very brief time using the Pixis RS I&#8217;m stuck by it&#8217;s great design.. However, as accessibility and ageing are my area of interest I&#8217;ll add a couple more comments.</p>
+<p>Older users, including those with age related visual and dexterity problems, or even those with dementia, would benefit from a slightly modified UI to have larger text and buttons and possibly a slightly simplified navigation. Spoken feedback would help too. That said, the Revo is great in this respect, the main issue is the small text in lists.</p>
+<p>In addition, unlike radios with real buttons, touch screens are not accessible to people who are blind or have low vision. However, being software based, it should be easy to add speech synthesis and auditory touch browsing, as in Apple&#8217;s iOS VoiceOver or Android Eyes-Free facilities, both of which are built into mobile phones. This would increase Revo&#8217;s potential market considerably.</p>
+<p>So in summary the Revo is an near-perfect radio for my use as a clock radio and my experience with Revo people has also been exceptionally pleasant. I&#8217;d love to have more contact with them.</p>
+<p>[UPDATE: 2013/11/30] with media streaming the Pixis is listed as &#8216;Unknown Device&#8217; in Windows Media Player Streaming options device list. Otherwise streaming from PC just works. I&#8217;ve been advised by Revo that this will be fixed</p>
+<p>[UPDATE 2013/12/01] After a couple of nights use one considerable weakness has become apparent when using the Pixis as clock radio; the clock display is not shown unless the Pixis is turned &#8216;off&#8217;. Well, it is, but it&#8217;s very small in top left corner. To be fair the Pixis is not advertised as a clock radio, but it would be ideal as one if a solution is found. 2 potential solutions occur; a top level icon to manually display the clock or a setting to give time display priority so it automatically displayed, perhaps after a timeout. A work around is to simply turn it off to read the time: it picks up from where it was  when turned back on.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2013/11/revo-pixis-internetdabfm-clock-radio-review/feed/</wfw:commentRss>
+		<slash:comments>8</slash:comments>
+		</item>
+	</channel>
+</rss>

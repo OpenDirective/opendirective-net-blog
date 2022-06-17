@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Setting up home and office networks with a single line and with wifi extension</title>
+	<atom:link href="/openingaccessibility/2014/09/setting-up-two-home-lans-with-a-single-line-and-with-wifi-extension/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility/2014/09/setting-up-two-home-lans-with-a-single-line-and-with-wifi-extension/</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Tue, 24 Jul 2018 09:34:38 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>By: Steve</title>
+		<link>/openingaccessibility/2014/09/setting-up-two-home-lans-with-a-single-line-and-with-wifi-extension/#comment-39258</link>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+		<pubDate>Tue, 13 Sep 2016 09:55:41 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=424#comment-39258</guid>
+		<description><![CDATA[I can&#039;t recall, but it might have been to set up the &#039;broadcast&#039; end first and then the &#039;receiver&#039; followed. I certainly dug around all the options.]]></description>
+		<content:encoded><![CDATA[<p>I can&#8217;t recall, but it might have been to set up the &#8216;broadcast&#8217; end first and then the &#8216;receiver&#8217; followed. I certainly dug around all the options.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Oskar Larsson</title>
+		<link>/openingaccessibility/2014/09/setting-up-two-home-lans-with-a-single-line-and-with-wifi-extension/#comment-38560</link>
+		<dc:creator><![CDATA[Oskar Larsson]]></dc:creator>
+		<pubDate>Thu, 09 Jun 2016 21:03:57 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=424#comment-38560</guid>
+		<description><![CDATA[How did you manage to change WiFi channel when in WISP mode?
+I can&#039;t change this on mine... for me the channel stays the same as the WISP WiFi is using - which is not optimal for best performance.]]></description>
+		<content:encoded><![CDATA[<p>How did you manage to change WiFi channel when in WISP mode?<br />
+I can&#8217;t change this on mine&#8230; for me the channel stays the same as the WISP WiFi is using &#8211; which is not optimal for best performance.</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

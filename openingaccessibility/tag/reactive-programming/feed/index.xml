@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Reactive Programming &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/tag/reactive-programming/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Using reactive streams on serverless with cyclejs, xstream and Azure Functions</title>
+		<link>/openingaccessibility/2016/10/exploring-reactive-streams-with-serverless-xstream-cyclejs-and-azure-functions/</link>
+		<comments>/openingaccessibility/2016/10/exploring-reactive-streams-with-serverless-xstream-cyclejs-and-azure-functions/#respond</comments>
+		<pubDate>Sat, 22 Oct 2016 22:00:26 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[web]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[Reactive Programming]]></category>
+		<category><![CDATA[serverless]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=699</guid>
+		<description><![CDATA[[ Update 2016-10-23 the code is now in the cyclejs community repo] During development of my latest SaaS product, Brian, I&#8217;ve settled on a couple of key architectural decisions. For the Frontend I&#8217;m using Reactive programming (RP) with streams and &#8230; <a href="/openingaccessibility/2016/10/exploring-reactive-streams-with-serverless-xstream-cyclejs-and-azure-functions/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>[ Update 2016-10-23 the code is now in the <a href="https://github.com/cyclejs-community/cycle-serverless">cyclejs community repo</a>]</p>
+<p>During development of my latest SaaS product, Brian, I&#8217;ve settled on a couple of key architectural decisions. For the Frontend I&#8217;m using Reactive programming (RP) with streams and for the backend I&#8217;ve decided on the &#8216;Serverless&#8217; (FaaS) approach. Specifically, I&#8217;m using  Andre Stalz&#8217;s <a href="http://staltz.com/xstream">xstream</a> with the incredibly light &#8216;framework&#8217; <a href="https://cycle.js.org/">cyclejs</a> (but cyclejs supports other streaming libs, including the excellent <a href="https://rxjs.codeplex.com/">RxJS</a>) . Microsoft&#8217;s <a href="https://azure.microsoft.com/en-us/services/functions/">Azure Functions</a> give a FaaS solution backed-up by many other options including BaaS &amp; PaaS should they be required. This post looks at using them together on the backend.</p>
+<div style="width: 285px" class="wp-caption alignleft"><img src="https://cycle.js.org/img/cyclejs_logo.svg" alt="Cyclejs" width="275" height="275" /><p class="wp-caption-text">Cyclejs</p></div>
+<div style="width: 287px" class="wp-caption alignright"><img src="http://stiller.co.il/blog/wp-content/uploads/2016/04/Azure-Functions-Logo.png" alt="Functions logo" width="277" height="278" /><p class="wp-caption-text">Functions logo</p></div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>I&#8217;m happy that the trade-offs and benefits with these approaches should meet my requirements. Namely, achieving  rapid development by focussing energy higher &#8216;up the stack&#8217;. I want to concentrate on innovation of user features and &#8216;business logic&#8217; and not boilerplate or DevOps. From my early explorations I think Serverless and cyclejs manage to hit sweet spots of benefit and learning curve. However, they are most definitely not silver bullets, having wrinkles all their own that take time and effort to learn and overcome.</p>
+<p>When I initially created Functions code using a traditional imperative style I rapidly found I missed the RP style I&#8217;d become familiar with when using CycleJS with RxJS. It&#8217;s a style that gets under your skin once you make the mental shift. Perhaps my background in real-time async communications predisposes me to seeing the benefits of asynchronous handling of streams. But whatever, I thought it would be fun to try it in the serverless context. At least both front and back ends would then be similar in architecture.</p>
+<p>You may wonder why on earth I would consider using RP in a FaaS context. After all, the  FaaS architecture is all about small functions which are run once triggered and then quickly end. Thus, it would seem there isn&#8217;t much scope for streams when there is single trigger input event plus perhaps another data source or two.  One often touted advantage of RP is that it&#8217;s pure functions are easier to test, but that&#8217;s also a recommend practice with FaaS so that&#8217;s not an obvious advantage for having RP as well as FaaS.</p>
+<p>One reason for wanting to use RP is that any non trivial functions are likely to have other asynchronous event sources, including SaaS requests and database updates over REST. Even so, there are other less tangible benefits of RP with cyclejs that I personally I found over imperative code style:</p>
+<ul>
+<li>Loose coupling through reactive observers</li>
+<li>Declarative style married to functional programming techniques</li>
+<li>Separation of input, output side effects from the &#8220;pure&#8221; business logic</li>
+</ul>
+<p>Together these engender a clean high-level way to describe program logic. Bugs also appear to be reduced and it also enables testing without excessive mocking due to the absence of side effects in the main code. Sometimes however, debugging can be more involved due to current tooling supporting imperative and not reactive. However, tooling is starting to appear as more turn to RP.</p>
+<p>So what are the differences found when running xstream and cyclejs on Azure Functions environment compared to the usual browser (and sometimes nodejs) contexts?Surprisingly few it turns out. Fortunately, Functions builds on Azure Web Apps which supports nodejs and express. Better, it&#8217;s node 6.x that is provided which includes all those key ES6 features that really help clean up RP code. Another plus is that the cycle HTTP driver works fine on node.</p>
+<p>In this implementation I&#8217;ve taken the approach of providing a cycle runtime in each Azure Function. Effectively, each Function is a component in the cycle sense of the word, though connections between components will have to be via HTTP, queues or other out of process couplings. This approach seems to be the a good choice as you can use Cyclejs or not for any individual function, depending on the complexity and preferences. As the Functions run time is open source there is scope to explore different and more deeply embedded approaches.</p>
+<p>So without further a-do here&#8217;s the Functions driver code.</p><pre class="crayon-plain-tag">const xs = require('xstream').default
+
+module.exports = function makeFunctionsDriver(context, dispwrap, inArgs) {
+
+    function driver(s$) {
+        s$.addListener({ next: (i) =&gt; { setTimeout(() =&gt; {  // next tick to allow other listenerns to be iterated
+                                            context.res = i 
+                                            if (dispwrap &amp;&amp;
+                                                typeof dispwrap.disposer === 'function') {
+                                                dispwrap.disposer()
+                                            }
+                                            context.done()
+                                            }, 1)
+                         },   
+                         error: () =&gt; {},
+                         complete: () =&gt; {}
+        })
+
+        return xs.createWithMemory({
+            start: listener =&gt; {
+                setTimeout(() =&gt; {listener.next({context, inArgs})}, 1)
+            },
+            stop: () =&gt; {},
+        })
+
+  
+    }
+
+    const logger = a =&gt; context.log(a)
+    return {driver, logger}
+}</pre><p>As with all drivers, the Function driver is there to handle useful side effects such as input and output. In this case it converts the Function inputs (&#8220;context&#8221; and an array of input bindings) into a source stream. It also sinks a stream containing the function&#8217;s output. This also acts as a signal that the function should complete (the driver calls context.done).  The sink also disposes of the streams created by run() for cleanup (this adds a little implementation complexity due to a forward declaration and JS&#8217;s lack of true pass-by-reference).</p>
+<p>It turns out that using console.log is not useful in Functions, rather the alternative context.log is used. Thus, we also provide a Log driver that uses this channel. This is also used with xstream&#8217;s debug operator, which fortunately accepts a function argument as well as a value. I also decided the FunctionsDriver factory would return the log function itself as well as the driver. In this way nearly all the FaaS platform dependencies are encapsulated in the driver. This makes it possible to write a version for AWS Lamda or other serverless frameworks.</p>
+<p>Here&#8217;s an example usage for a HTTP Function. It starts a 1 second ticker and on the 3rd tick makes a REST API request. It then returns the first item from the response in function output. The code demonstrates the use of all the driver features and the clarity of RP with cyclejs.</p><pre class="crayon-plain-tag">const xs = require('xstream').default
+const run = require('@cycle/xstream-run').run
+const makeHTTPDriver = require('@cycle/http').makeHTTPDriver
+const makeFunctionsDriver = require('./functionsDriver.js')
+
+module.exports = function (context, ...inArgs) {
+    const dispwrap = {}             // because JS doesn't do pass-by-ref
+    const {driver: functionsDriver, logger} = makeFunctionsDriver(context, dispwrap, inArgs)
+
+    const drivers = {
+        FaaS: functionsDriver,
+        HTTP: makeHTTPDriver(),
+        log: msg$ =&gt; { msg$.addListener({next: msg =&gt; logger(`${msg}`) }) }
+    }
+
+    dispwrap.disposer = run(main, drivers)
+   
+    function main(sources) {
+        const input$ = sources.FaaS
+            .map((s) =&gt; `context.req.originalUrl: ${s.context.req.originalUrl} /
+                         inArgs[0]: ${JSON.stringify(s.inArgs[0])}`)
+            
+        const ticks$ = xs.periodic(1000)
+            .map(t =&gt; (t + 1) * 100)
+        
+        const log$ = xs.merge(input$, ticks$)
+
+        const trigger$ = ticks$
+            .drop(2)
+            .debug((i) =&gt; logger(`trigger tick: ${i}`))
+ 
+        const request$ = trigger$
+            .map(() =&gt; ({
+                            url: 'http://jsonplaceholder.typicode.com/users/1',
+                            method: 'GET'
+                        }))
+
+        const response$ = sources.HTTP
+            .select()
+            .flatten()
+        const user1Data$ = response$.map(response =&gt; response.body)
+        const exit$ = user1Data$
+            .map(u =&gt; ({ status: 200, body: u}))
+
+        return {
+            FaaS: exit$,
+            log: log$,
+            HTTP: request$
+        }
+    }
+}</pre><p>One issue that needs to be ironed out is sometimes exceptions such as syntax errors get lost and not presented in the Functions Logs. That&#8217;s probably xstream not re throwing captured exceptions. For now the fix is to put try&#8230;catch(log) blocks around parts of the code to get visibility.</p>
+<p>What do you think. Does this approach work for you?</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2016/10/exploring-reactive-streams-with-serverless-xstream-cyclejs-and-azure-functions/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

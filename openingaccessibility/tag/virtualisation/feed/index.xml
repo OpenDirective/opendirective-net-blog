@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Virtualisation &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/tag/virtualisation/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>More on portable npm scripts</title>
+		<link>/openingaccessibility/2016/03/more-on-portable-npm-scripts/</link>
+		<comments>/openingaccessibility/2016/03/more-on-portable-npm-scripts/#comments</comments>
+		<pubDate>Thu, 17 Mar 2016 15:46:55 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[web]]></category>
+		<category><![CDATA[Windows]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[nodejs]]></category>
+		<category><![CDATA[npm]]></category>
+		<category><![CDATA[Virtualisation]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=640</guid>
+		<description><![CDATA[Following on from my earlier post on the topic of writing portable npm scripts, here&#8217;s a few more useful tips. [UPDATE 2016/03/31: Bash for Windows was announced at Microsoft Build 2016. This exciting feature will allow running of Linux npm &#8230; <a href="/openingaccessibility/2016/03/more-on-portable-npm-scripts/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Following on from my earlier post on the topic of <a href="/openingaccessibility/2015/12/writing-portable-npm-build-scripts/">writing portable npm scripts</a>, here&#8217;s a few more useful tips.</p>
+<p>[UPDATE 2016/03/31: Bash for Windows was announced at Microsoft Build 2016. This exciting feature will allow running of Linux npm script builds with ease. See <a href="http://www.hanselman.com/blog/DevelopersCanRunBashShellAndUsermodeUbuntuLinuxBinariesOnWindows10.aspx">Scott Hanselman&#8217;s blog post</a>]</p>
+<p>[UPDATE: 2016/03/29:  The recently released <a href="https://blog.docker.com/2016/03/docker-for-mac-windows-beta/">Docker for Windows Beta</a> might be a good alternative to using a VM. It user Hyper-V.]</p>
+<p>[UPDATE: 2016/03/29:  This is a comprehensive article on <a href="http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/">using npm for build</a>]</p>
+<h1>Copying files</h1>
+<p>Use the <a href="https://www.npmjs.com/package/ncp">ncp </a>module to copy files. This goes nicely with mkdirp and rimraf  mentioned before.</p>
+<h1>Setting environment variables</h1>
+<p>It&#8217;s common to have scripts with a command line of the form</p><pre class="crayon-plain-tag">NODE_ENV=production webpack --config client/webpack.config.js</pre><p>This sets the environment variable NODE_ENV for the duration the command runs. In this case it is use to perform a production build with webpack.</p>
+<p>Such syntax works fine in bash etc on Linux / OS X but fails on windows where npm scripts always use CMD. One solution is to use the <a href="https://www.npmjs.com/package/cross-env">cross-env</a> npm module which uses a regx to find environment settings (and so is probably not fool-proof). Once installed you just prefix your command like so</p><pre class="crayon-plain-tag">cross-env NODE_ENV=production webpack --config client/webpack.config.js</pre><p></p>
+<h1>Running an extra bash process</h1>
+<p>I use the <a href="https://git-for-windows.github.io/">Git for Windows</a> bash shell for all my development CLI needs on Windows (It is also installed as part of the <a href="https://desktop.github.com/">GitHub Desktop for Windows</a>). This is a port of the mature MSYS / MinGW port of Linux build environments and works pretty well, though some of the commands are old versions.</p>
+<p>On Windows, npm ignores the current shell from which you run it and doesn&#8217;t pass the shell on to the sub processes as you would expect. However, you can easily run bash as the main command in a npm script (it&#8217;s an extra process but that hardly matters). This works as bash sets the path which is then inherited by the cmd subshell in which npm runs your package.json scripts. As a result it&#8217;s easy enough to create portable scripts or convert linux based scripts to also run on Windows. You just need to wrap the command in <pre class="crayon-plain-tag">bash -c "...."</pre> For example, the above env setting script can be recoded as follows</p><pre class="crayon-plain-tag">bash -c"NODE_ENV=production webpack --config client/webpack.config.js"</pre><p>The only issue i found is the need to carefully quote &#8221; characters. For example here&#8217;s a little script to prompt before deploying to GitHub pages (I&#8217;m showing the full package.json entry for clarity)</p><pre class="crayon-plain-tag">"deploy": "bash -c \"read -n1 -p\\\"Have you commited ready to deploy (yY) \\\"; echo; [[ $REPLY = [yY] ]] &amp;&amp; npm run _buildanddeploy || { echo \\\"You didn't answer yes, or deploy failed.\\\"; }",</pre><p></p>
+<h1>Using a Linux VM</h1>
+<p>I often use a Linux VM as part of my development. With Vagrent it&#8217;s easy to provision a headless VirtualBox (or other) VM that shares the host filespace and exposes a SSH terminal. Thus you can edit using Windows tools like VisualStudio Code yet run everything in the Linux VM. This lets you run local tests in the same VM as a CI or CD system (which will usually be Linux , unless you are using Azure). One easy configuration I&#8217;ve used is this <a href="https://github.com/GPII/qi-development-environments">Quality Infrastructure</a> from the GPII project.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2016/03/more-on-portable-npm-scripts/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>On Converting a VM from VMWare to VIrtualBox</title>
+		<link>/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/</link>
+		<comments>/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comments</comments>
+		<pubDate>Tue, 29 Jul 2014 12:34:07 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[opensource]]></category>
+		<category><![CDATA[Win8]]></category>
+		<category><![CDATA[Windows]]></category>
+		<category><![CDATA[Virtualisation]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=419</guid>
+		<description><![CDATA[In short, don&#8217;t! It&#8217;s way too much hassle. It&#8217;s so much easier to create a new identical VM in VirtualBox and set it to use the same virtual disk file (.vmdk). I  expect this applies when moving VMs in the &#8230; <a href="/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>In short, don&#8217;t! It&#8217;s way too much hassle.</p>
+<p>It&#8217;s so much easier to create a new identical VM in VirtualBox and set it to use the same virtual disk file (.vmdk). I  expect this applies when moving VMs in the opposite direction too.</p>
+<p>Hopefully this note will save others a lot of wasted time discovering this after following various dead ends when googling for the answer. The bottom line is that while it should be possible to export from VMWare to the standard OVF format and import into VirtualBox, differences in interpretation of the format between the two make it difficult if not impossible (I gave up).</p>
+<p>I&#8217;ve been using the VMWare Player for creating and managing my VMs on a Windows host for some time after my business partner experienced trashed VMs with our then preferred VirtualBox. However Since using windows 8.1 i found the mouse was offset when using an external monitor with my laptop, something which quickly made it unusable. Otherwise, to be fair, VMWare Player is fast and trouble free.</p>
+<p>So I decided to switch back to VirtualBox and the wisdom on the web is to export and import via OVF using VMWare&#8217;s OVFTool.</p>
+<p>1st problem, I had used VMWare Player&#8217;s default option to split the virtual disk file up. This actually make little sense if you have a file system that supports large files, and probably negatively affects performance. This can be resolved using VMWare&#8217;s vmware-vdiskmanager utility. Except this is now only available in the full VMWare Workstation. There is a trial version but guess what, it can&#8217;t be installed along side VMWarePlayer. So I had to installed and use it on another PC (and no, I didn&#8217;t it on a VM <img src="https://s.w.org/images/core/emoji/11/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /> ).</p>
+<p>Exporting using OVTool takes ages and then the &#8220;Import Appliance&#8221; operation fails. The first problem is a disagreement on the SCSI disk driver. VirtualBox treats the SAS as a separate type to SCSI, whereas VMWare makes it a subtype.. Even if you comment the SCSI and disk sections out of the .ofv file before import, another error occurs with checking the hash of the virtual disk in the .mf file. I suspect &#8220;Import Appliance&#8221; should only be used with  &#8220;Export Appliance&#8221; to move VirtuaBox VMs between hosts.</p>
+<p>So to summarise, the easiest solution for transferring a VM to VirtualBox to is to create a new VM in VirtuaBox, but without a disk. Make it as close as possible to the original VMWare VM. Then add a SAS driver and attach the existing .vdmk virtual disk (or a copy of it).  You&#8217;ll need to install the VirtualBox support drivers if it&#8217;s a Windows VM.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/feed/</wfw:commentRss>
+		<slash:comments>14</slash:comments>
+		</item>
+	</channel>
+</rss>

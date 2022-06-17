@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+
+	>
+<channel>
+	<title>Comments on: All about Function App Settings for storing secrets</title>
+	<atom:link href="/azureserverless/2017/08/18/all-about-function-app-settings-for-storing-secrets/feed/" rel="self" type="application/rss+xml" />
+	<link>/azureserverless/2017/08/18/all-about-function-app-settings-for-storing-secrets/</link>
+	<description>Using Microsoft Azure in a Serverless mode</description>
+	<lastBuildDate>Tue, 12 Sep 2017 00:24:54 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>By: Azure Weekly: Aug 21, 2017 &#8211; Build Azure</title>
+		<link>/azureserverless/2017/08/18/all-about-function-app-settings-for-storing-secrets/#comment-6</link>
+		<dc:creator><![CDATA[Azure Weekly: Aug 21, 2017 &#8211; Build Azure]]></dc:creator>
+		<pubDate>Mon, 21 Aug 2017 08:01:05 +0000</pubDate>
+		<guid isPermaLink="false">/azureserverless/?p=357#comment-6</guid>
+		<description><![CDATA[[&#8230;] All about Function App Settings for storing secrets by steve@opendirective.com [&#8230;]]]></description>
+		<content:encoded><![CDATA[<p>[&#8230;] All about Function App Settings for storing secrets by <a href="mailto:steve@opendirective.com">steve@opendirective.com</a> [&#8230;]</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

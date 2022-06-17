@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>HTML &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/category/html/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Is the web getting less webby and will serverless make it worse?</title>
+		<link>/openingaccessibility/2016/09/is-the-web-getting-less-webby/</link>
+		<comments>/openingaccessibility/2016/09/is-the-web-getting-less-webby/#respond</comments>
+		<pubDate>Tue, 13 Sep 2016 11:43:58 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[HTML]]></category>
+		<category><![CDATA[web a11y]]></category>
+		<category><![CDATA[web apps]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[serverless]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=691</guid>
+		<description><![CDATA[[Title inspired by a quote from Scott Hanselman on Serverless with Azure Functions &#8216;It&#8217;s as close to &#8220;cloudy&#8221; as The Cloud can get&#8217;] There&#8217;s some big changes happening in web land that are fuelled by rapid app framework developments and &#8230; <a href="/openingaccessibility/2016/09/is-the-web-getting-less-webby/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>[Title inspired by a quote from Scott Hanselman on <a href="http://www.hanselman.com/blog/WhatIsServerlessComputingExploringAzureFunctions.aspx">Serverless with Azure Functions</a> &#8216;It&#8217;s as close to &#8220;cloudy&#8221; as The Cloud can get&#8217;]</p>
+<p>There&#8217;s some big changes happening in web land that are fuelled by rapid app framework developments and advances in cloud land. In particular the system architectural client-server split is shifting. We currently see these architectures (and variations):</p>
+<ul>
+<li>Classic 3 tier with web server passing presentation to the web browser as linked pages of HTML etc</li>
+<li>Ajax-ified with some presentation elements being dynamically requested and updated by the browser or even generated client-side from received data.</li>
+<li>Single Page Applications where presentation and navigation are completely generated in the browser which directly accesses various 1st and 3rd party RESTful APIs (SaaS).</li>
+<li>The Opera Mini browser Opera Mini is very popular, especially in poorer countries. It is something of  an architectural oddity as it renders  on a display server and uses a thin-client style display protocol to the client app for data efficiency. This is effectively a final stage applied after the others in this list.</li>
+<li>GraphQL is becoming popular for API queries as it lets the client dictate the payload and simplifies queries that would require multiple RESTful API round trips</li>
+</ul>
+<p>SPAs bring web apps into parity with Native Mobile Apps (and even some Desktop apps). The main difference now being the specific client side SDKs used to bind to the messaging protocols such as REST over HTTP.</p>
+<p>On the server we see hosting being outsourced at progressively higher levels in the stack: the so called cloudy IaaS, PaaS, BaaS, FaaS and WaaS. In addition, microservices are being used to break up monolithic middle tiers. In the last year we have seen the rise of interest in so called Serverless (BaaS, FaaS and WaaS). This was initiated by the introduction of AWS Lambda, quickly followed by other providers including Azure Functions, Google Cloud Functions, OpenWhisk.</p>
+<p><a href="/openingaccessibility/wp-content/uploads/2016/09/14867685775_c7044f0e2e_z.jpg"><img class="aligncenter wp-image-694 size-medium" src="/openingaccessibility/wp-content/uploads/2016/09/14867685775_c7044f0e2e_z-300x300.jpg" alt="cute pompom spider" width="300" height="300" srcset="/openingaccessibility/wp-content/uploads/2016/09/14867685775_c7044f0e2e_z-300x300.jpg 300w, /openingaccessibility/wp-content/uploads/2016/09/14867685775_c7044f0e2e_z-150x150.jpg 150w, /openingaccessibility/wp-content/uploads/2016/09/14867685775_c7044f0e2e_z.jpg 640w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+<p>So, exiting times for developers! But are these architectural changes eroding core Webby principals, especially the very carefully developed inclusive design principles? What is the impact on web users?</p>
+<p>After 25 years the classic web architecture has, with the help of Web standards, become available to almost everyone regardless of their device capabilities or their accessibility needs. Well, that&#8217;s in theory. The reality is completely dependent on developers being aware of best practices and prioritising them. HTML presentation elements are rendered by a wide range of browsers on varied devices including desktop with mouse and keyboard input, portable touch enabled devices with sizes from watches to tablets, and even hybrids such as 2 in ones. In addition to device variability, the Web standards and best practices support human and context variability through carefully baked in accessibility.</p>
+<p>The move to micro (and nano FaaS) service architectures on the back end should have limited impact on this webbiness as they are internal details of the servers.  However, the protocols used between client and server are RESTful in the web world, or rather, RESTful communications are the lifeblood of the web. Newer developments like GraphQL start to move away from the web&#8217;s RESTful architecture by effectively using one part of HTTP as a transport (somewhat like SOAP). However, this largely a detail of interest to developers only as far as most web users are concerned.</p>
+<p>On the face of it the use of client-side generated presentation with AJAX or a SPA should make no difference to webbiness either. True, dynamic creation of the UI is open to developers playing fast and loose with the standards. And accessibility is often being the first casualty. But this is just as possible when content is generated on the server.</p>
+<p>A big difference between SPAs and HTML apps is that browser developers put enormous effort into ensuring bad HTML and CSS fail gracefully across supported devices. JavaScript, on the other hand, is NOT fail safe. An error means it crashes and the user probably gets a nasty surprise. Individual developers or client side JavaScript framework developers have to effectively duplicate the effort that browser vendors go to in order to get as rugged an UX. Thus the user experience may not be as  consistent or as accessible with a SPA.</p>
+<p>Another issue is that developers want to use the latest and greatest browser features, often in order to give a great UX. For example Service Workers allow developers to provide a great offline experience. As the rate of change accelerates the chances of a user having an old browser that doesn&#8217;t support a shiny new feature increases. This is much more exaggerated with features accessed through JavaScript code compared to HTML as the speed and focus is currently there. Even the JavaScript language itself is rapidly evolving witch new features developers are keen to use. So, unless there&#8217;s careful design to work with a range of devices users may be left stranded.</p>
+<p>An established technique to avoid these problems is Progressive Enhancement where a basic HTML experience is available and UX enhancements are layered on for users with browsers that support the latest CSS and JavaScript shininess. But, with SPAs there is no initial HTML rendering for less able browsers. Lately techniques such as serverside rendering and Universal (isomorphic) JavaScript restore this to a large extent. Interestingly, the drive for these techniques has been SEO (Google can&#8217;t spider a client side app)  and time to initial display content of, rather than PE concerns.</p>
+<p>In summary, then, the architectural shifts we are seeing do provide new ways to break the carefully designed universal nature of the web and exclude users of some devices or with some accessibility needs. However by carefully following inclusive design thinking at the system level these can be minimised. The shape of web app architectures may be changing but we can ensure the core principles remain in our minds as we develop.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2016/09/is-the-web-getting-less-webby/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>HTML apps and the 50 year software engineering legecy</title>
+		<link>/openingaccessibility/2013/08/html-apps-and-the-50-year-software-engineering-legecy/</link>
+		<comments>/openingaccessibility/2013/08/html-apps-and-the-50-year-software-engineering-legecy/#respond</comments>
+		<pubDate>Thu, 22 Aug 2013 15:38:02 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[HTML]]></category>
+		<category><![CDATA[opensource]]></category>
+		<category><![CDATA[web]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=216</guid>
+		<description><![CDATA[I no longer call myself a &#8216;software engineer&#8216; but I do consider it to be a vital part of my career background. To my mind, engineering provides the rigour and discipline aspects of being a developer, the other parts being &#8230; <a href="/openingaccessibility/2013/08/html-apps-and-the-50-year-software-engineering-legecy/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I no longer call myself a <a href="http://en.wikipedia.org/wiki/Software_engineer">&#8216;software engineer</a>&#8216; but I do consider it to be a vital part of my career background. To my mind, engineering provides the rigour and discipline aspects of being a developer, the other parts being the craftmanship of software and community social interactions with other members of a project/product team.</p>
+<p>To be fair I&#8217;ve been a round a while; from my first early tentative hacks of 6800 assembler listings of a BASIC interpreter, through commercial development of mission critical mobile data systems, to open development of accessibility and HTML apps. Along the way I&#8217;ve picked up a number of  good practices as projects got larger and more complex. Some I rapidly unlearned (eg Waterfall &amp; V models, Yourdon, Jackson), others have stood the test of time (eg modular encapsulation, OOD, unit testing) and new ones have come along (eg Open Development, Agile methods, TDD, Human centred design). These great thing is these all apply regardless of technology used.</p>
+<div id="attachment_220" style="width: 241px" class="wp-caption aligncenter"><a href="/openingaccessibility/wp-content/uploads/2013/08/462px-Detailed_DoD_Technical_Reference_Model.jpg"><img class="size-medium wp-image-220 " alt="My Big App" src="/openingaccessibility/wp-content/uploads/2013/08/462px-Detailed_DoD_Technical_Reference_Model-231x300.jpg" width="231" height="300" srcset="/openingaccessibility/wp-content/uploads/2013/08/462px-Detailed_DoD_Technical_Reference_Model-231x300.jpg 231w, /openingaccessibility/wp-content/uploads/2013/08/462px-Detailed_DoD_Technical_Reference_Model.jpg 462w" sizes="(max-width: 231px) 100vw, 231px" /></a><p class="wp-caption-text">My Big App</p></div>
+<p>So it was interesting to suddenly notice a year or so back that at conferences like the <a href="http://events.jquery.org/2012/uk/">first jQueryUK</a> conference how HTML developers are starting to wrestle with some of the problems already experienced by previous software developers. The issues are arising as we attempt to build apps in HTML technologies, layering javascript heavy designs on top of the declarative basics of HTML and CSS.  The issues are those that occur when you move to development-in-the large. For example, the need for modules, and namespaces, relying on the scaffolding of 3rd party libraries or frameworks, cross platform (browser) support and handling the social aspects of working in teams or open projects.</p>
+<p>I guess it&#8217;s a new generation coming along and many grew up on the cut-n-paste hackiness of the early web. Now the problems have got bigger and more serious so the approach needs to change. To solve this, a number of libraries/frameworks have become the first port of call for developers trying to make life easier on complex HTML apps. Some of  these plug serious gaps in the language such as the lack of modules required for design in-the-large (I&#8217;ll deliberately not mention class based OOD here). Others provide abstraction and encapsulation of the messiness of the web, but these often work in almost purely programmatic ways, ignoring and replacing the strengths and principles of declarative HTML.</p>
+<p>Some large monolithic libraries pull in masses of code even if not needed, this having a bad affect on load performance sensitive usages, such as mobile. For example jQuery (and jQueryMobile) undoubtedly make a developer&#8217;s life simpler in many ways, but are monolithic. Now, however the original purpose it served, namely using CSS declarative syntax for DOM element selection, is now available natively in browsers with <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element.querySelectorAll">element.querySelectorAll()</a>. Plus native can be faster at run time and without the loading overhead. Another example is how the javascript code for forms handling, especially validation, is often not necessary due to HTML5 improvements.</p>
+<p>John Allsopp neatly picks up on this topic in his recent post recent post &#8216;<a href="http://www.sitepoint.com/is-html-relevant-in-the-age-of-web-apps/">Is HTML Relevant in the Age of Web Apps?</a>&#8216;, neatly highlighting the impact of sucking in all this code complexity.</p>
+<blockquote><p>As the systems we build increasingly replace traditional enterprise, client server, desktop and mobile apps (yes it <em>will</em> happen), this luxury of building disposable code, with no real concern for the tower of complexity our code rests upon, will pass.</p>
+<p>It’s time for us to grow up, and start learning from the more than 50 year legacy of software engineering.</p>
+<p>Because, as with all history, if we don’t learn from it, we are doomed to repeat it</p></blockquote>
+<p>So how can best learn the required good techniques? &#8220;<a href="http://java.dzone.com/articles/4-things-i-wish-i-would-have">4 Things I Wish I Would Have Known When I Started My Software Development Career</a>&#8221; by John Sonmez, the <a href="http://simpleprogrammer.com/">Simple Programmer</a> outlines 4 mistakes I&#8217;ve made myself in my career (and for some still have a tendency to do).</p>
+<blockquote>
+<ul>
+<li>There is no “right way” in software development</li>
+<li>Reading a book cover-to-cover is not the best way to learn</li>
+<li>Learning particular technologies in-depth is a waste of time</li>
+<li>Always have a side project</li>
+</ul>
+<p><i> </i></p></blockquote>
+<p><span style="line-height: normal;">Actua</span><img class="alignleft" style="font-size: 12px; line-height: 18px;" title="Code Complete 2" alt="CC2e" src="http://cc2e.com/_img/cc2e-cover-small.gif" width="162" height="198" /><span style="line-height: normal;">lly, o</span><span style="line-height: normal;">ne book that it probably </span><strong style="line-height: normal;">is</strong><span style="line-height: normal;"> worth reading cover-to-cover is Steve McConnell&#8217;s labour of love &#8216;</span><a style="line-height: normal;" href="http://cc2e.com/Default.aspx">Co</a><a style="line-height: normal;" href="http://cc2e.com/Default.aspx">de Complete: A Practical Handbook of Software Construction</a>&#8216;<span style="line-height: normal;">. I must admit I&#8217;ve only deep-skim-read it but it&#8217;s full of <a href="http://cc2e.com/Page.aspx?nid=71">perfect gems of software construction</a> mined from the coalface and lovingly presented for your delight. I have a scruffy old copy of the 1st version but Steve has updated it and I expect it&#8217;s even better. Not at all bad for a book that only cost&#8217;s <a href="http://www.amazon.co.uk/gp/product/0735619670/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=1634&amp;creative=6738&amp;creativeASIN=0735619670&amp;linkCode=as2&amp;tag=opendirective-21">£24.48 at Amazon.co.uk </a></span></p>
+<p>&nbsp;</p>
+<p>Use Code Complete for a side project with an open source project that practices community driven open development, and you&#8217;ll soon be on your way to learning from that legacy.</p>
+<p>Engineer on.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2013/08/html-apps-and-the-50-year-software-engineering-legecy/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Accessing local resources from a Win8 app HTML web context</title>
+		<link>/openingaccessibility/2013/06/accessing-local-resources-from-win8-app-web-context/</link>
+		<comments>/openingaccessibility/2013/06/accessing-local-resources-from-win8-app-web-context/#comments</comments>
+		<pubDate>Tue, 04 Jun 2013 21:03:32 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[Apps]]></category>
+		<category><![CDATA[HTML]]></category>
+		<category><![CDATA[Win8]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=154</guid>
+		<description><![CDATA[Javascript Windows 8 App Store apps (AKA Modern apps AKA Metro apps) are strongly sandboxed and one of the effects of this is that access to local resources is tightly restricted to a small set of clearly de-marked locations. Furthermore, &#8230; <a href="/openingaccessibility/2013/06/accessing-local-resources-from-win8-app-web-context/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Javascript Windows 8 App Store apps (AKA Modern apps AKA Metro apps) are strongly sandboxed and one of the effects of this is that access to local resources is tightly restricted to a small set of clearly de-marked locations. Furthermore, HTML in an iFrame running in a so-called &#8220;web context&#8221; has further restrictions compared to the &#8220;local context&#8221; of HTML for the native app. Media resources in local library locations such as &#8220;My Pictures&#8221; are not easily accessible from the web context but it can be achieved. I&#8217;m documenting the solution here as I worked hard to solve it and could not find any documentation at the time.</p>
+<h1>A little background</h1>
+<p>Having built a few HTML spikes of <a href="http://maaivs.fullmeasure.co.uk/">Maavis</a> features we satisfied ourselves that it is now perfectly feasible to replace the old <a href="http://en.wikipedia.org/wiki/XUL">XUL</a> version with a mixture of HTML5, W3C widgets and a thin native code wrapper to provide access to platform features not yet available in the browser sandbox. Going for HTML has many advantages, including portability now, good future deployment options, and a potentially large community, something that is vital for a successful open development project.</p>
+<p>And then, the Windows 8 release landed and we decide to seriously look at it as the first platform we targeted. I won&#8217;t go into all the reasons for this but it&#8217;s interesting to note that the simplified touch interface style that is a key feature of the Maavis UI has now appeared in consumer platforms, including Windows 8.</p>
+<p>So we spent an OpenDirective week off-site hacking and exploring how we might implement features in HTML running in a Windows App Store app native wrapper. In other words we want the core application to be HTML code that will run on other platforms without change (AKA a hybrid app). I picked access to local image files which would be pretty straight forward, or so I thought.</p>
+<p>At this point I became painfully aware that the <a href="http://msdn.microsoft.com/en-US/windows/default.aspx">MSDN documentation</a>, my preferred first port of call, was early release and the quality was simply not what I was used to from previous experience. I spent many years delving into Win32 program and system development from the days of Windows 3.1 (well actually &#8220;Windows for Work Groups&#8221;) until Vista arrived. This had accustomed me to the excellent API documentation and articles that formed part of Microsoft&#8217;s formidable developer evangelism efforts. MSDN magazine, then later a handful of CDs, and then a huge raft of DVDs, contained all tools and information you could ever want as a developer. As time passed <a href="http://www.codeproject.com/">Code Project</a> became a &#8220;go to&#8221;community resource and it&#8217;s good to still see it is still going strong (don&#8217;t miss their <a href="http://www.windowsazure.com/en-us/">Azure </a>competition).</p>
+<p>At this point in time, however, while APIs were clearly defined by the objects, methods and properties, critical conceptual information providing context and defining the models just wasn&#8217;t there. Sure you can often work out the map of the forest from a study of all the trees but that leaves a lot of unknown &#8216;there be dragons&#8217; areas, even after much trial and error. A couple of 3rd party blog posts gave vital clues but still with many gaps, caused largely by their being written for the preview releases of Windows 8. Plus heavy weight solutions like having a local webserver exclude running on Windows RT, and the background processing possibilities are restricted in App Store Apps.</p>
+<p>I have since found the &#8220;must read&#8221; free ebook: <a href="http://blogs.msdn.com/b/microsoft_press/archive/2012/10/29/free-ebook-programming-windows-8-apps-with-html-css-and-javascript.aspx">Programming Windows 8 Apps with HTML, CSS, and JavaScript</a> which fills in many of the knowledge gaps (hint, at 70MB,  don&#8217;t  try to email the MOBI to your kindle, you&#8217;ll have to sideload it). Also, Microsoft have now provided many great on-line developer resources. Now the developers friend <a href="http://stackoverflow.com/">Stack Overflow</a> has good Windows 8 discussions.</p>
+<h1>A solution</h1>
+<p>To reiterate, the problem to be solved is to display an image in HTML in a web context iFrame where the image is a file in the &#8220;My Pictures&#8221; library on the local file system.</p>
+<p>We need a URI referencing the image for src attribute of an image tag/element and while it could theoretically be defined declaratively in the HTML or set programatically by setting the src attribute, I&#8217;ll stick to the latter as that is more much flexible in terms of possible solutions, as well see.</p>
+<p>WinRT provides a set of URI protocols for accessing resources in various locations (the protocol is the <strong>http:</strong> part of a web URI). However, the restrictions we hit in the App web context are:</p>
+<ul>
+<li>The <strong>file:</strong> protocol is completely blocked. This is the usual way to access local resources from HTML.</li>
+<li>There is no protocol for accessing the libraries like My Pictures. <strong>ms-appx: </strong>and <strong>ms-appx-web</strong> access content in the app package, while <strong>ms-appdata</strong>: looks in the app data storage area.</li>
+<li>While files in library locations can be programmatically accessed from the local context and accessed by dynamically created <strong>blob:</strong> URLs to be referenced in the HTML, such references are blocked from within the web context. This is no doubt due to cross domain restriction requirements.</li>
+</ul>
+<p>But wait, the solution could be to use a local context iframe containing the image element that is nested inside the web context HTML. The nested local context will then be able to use the blob URI in an image element src attribute to access the image file. Result.</p>
+<p>Except, that isn&#8217;t allowed either. Sigh.</p>
+<p>But wait, the WinRT MSApp method <a href="http://msdn.microsoft.com/en-us/library/windows/apps/hh465759.aspx">addPublicLocalApplicationUri</a> looks very interesting. It &#8220;exposes the provided local context URIs to arbitrary untrusted web content&#8221;. In other words we might be able to use it to allow a local context iframe to be embedded in a web context iframe.</p>
+<p>And you know what? It works. In fact I subsequently found this solution is described at the end of a long runtime error message in Visual Studio that is easy to over look</p>
+<blockquote><p><a href="msdn.microsoft.com/query/dev11.query?appId=Dev11IDEF1&amp;l=EN-US&amp;k=k(VS.WebClient.Help.APPHOST9605);k(DevLang-jscript);k(DevLang-dhtml);k(DevLang-javascript)&amp;rd=true">APPHOST9605</a>: Can&#8217;t navigate to &lt;ms-appx:///nestedLocalContext.html&gt; from &lt;ms-appx-web://8f028944-29cc-4f85-8d13-c1ef987ea8f3/webContext.html&gt; because the destination URI is in a higher security zone. You can&#8217;t navigate from a zone with lower security to a zone with higher security unless you&#8217;re navigating to a local context URI from a web context URI and you&#8217;ve registered the local context URI with the MSApp.addPublicLocalApplicationUri method.</p></blockquote>
+<p>So we can access the image file in the main app code, create a local blob URL to it and then pass that to the nested local context to be used in an image element.  As we are crossing from local domain (context), to web domain domain and back to local domain we&#8217;ll need to use the official HTML cross domain communication &#8220;postMessage&#8221; twice.  In theory it should be possible to access the inner local context directly from the outer one as they are both the same domain. However, in practice it&#8217;s not possible access an iframe&#8217;s content if it is from another domain (eg access to contentDocument etc is blocked).</p>
+<p>To help make this all clear I&#8217;ve placed working code in an example VisualStudio project in GitHub<a href="https://github.com/SteveALee/Win8LocalResourcesAccess"> SteveALee/Win8LocalResourceAccess</a>.</p>
+<p>A final note, obviously you need to tread a little carefully as addPublicLocalApplicationUri is overriding the security model which is there for good reasons. In particular watch out for untrusted code access in the web context. Being forced to restrict the cross domains interactions to postMessage is a security advantage.</p>
+<h1>But really?</h1>
+<p>Time for a quick sanity check. Is all this worth the effort? Is there really a use case or is it simply an academic exercise? Why not just remove the web context completely? Won&#8217;t other platforms have similar cross domain limitations for access local resources? Remember we want the core application to be HTML code that will run on other platforms without change. I can&#8217;t yet comment on other browser/platform combinations, but this is certainly a possible partial solution to having generic HTML code that works on various platforms. For now, I&#8217;m recording it so I can come back to it if required when we start to look at other platforms.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2013/06/accessing-local-resources-from-win8-app-web-context/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+	</channel>
+</rss>

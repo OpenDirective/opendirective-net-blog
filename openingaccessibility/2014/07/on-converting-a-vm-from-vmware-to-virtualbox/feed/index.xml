@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: On Converting a VM from VMWare to VIrtualBox</title>
+	<atom:link href="/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Tue, 24 Jul 2018 09:34:38 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>By: Steve</title>
+		<link>/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comment-40831</link>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+		<pubDate>Sat, 25 Feb 2017 10:59:20 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=419#comment-40831</guid>
+		<description><![CDATA[Thanks!]]></description>
+		<content:encoded><![CDATA[<p>Thanks!</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: mrpinks</title>
+		<link>/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comment-40810</link>
+		<dc:creator><![CDATA[mrpinks]]></dc:creator>
+		<pubDate>Wed, 22 Feb 2017 10:40:31 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=419#comment-40810</guid>
+		<description><![CDATA[Yes you can. My host is ubuntu 16.04, 64 bit, 16GB ram.
+I run multiple OS&#039;s in vmware player and virtualbox all at the same time.
+The only potential for problems is shared resources ie cd-rom drive etc.]]></description>
+		<content:encoded><![CDATA[<p>Yes you can. My host is ubuntu 16.04, 64 bit, 16GB ram.<br />
+I run multiple OS&#8217;s in vmware player and virtualbox all at the same time.<br />
+The only potential for problems is shared resources ie cd-rom drive etc.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Steve</title>
+		<link>/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comment-38466</link>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+		<pubDate>Wed, 01 Jun 2016 11:14:17 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=419#comment-38466</guid>
+		<description><![CDATA[I can only suggest you try it. There is a free VM player. However virtualisation can be tricky. I know hyperv and virtualBox are incompatible.]]></description>
+		<content:encoded><![CDATA[<p>I can only suggest you try it. There is a free VM player. However virtualisation can be tricky. I know hyperv and virtualBox are incompatible.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Jan</title>
+		<link>/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comment-38465</link>
+		<dc:creator><![CDATA[Jan]]></dc:creator>
+		<pubDate>Wed, 01 Jun 2016 09:45:08 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=419#comment-38465</guid>
+		<description><![CDATA[Can I run VirtualBox and VmWare next to each other on one machine? I&#039;d like to be able to that during the period that not all of my VMs are converted. And it can be sort of a fallback if one of the converted disk files are messed up somehow.]]></description>
+		<content:encoded><![CDATA[<p>Can I run VirtualBox and VmWare next to each other on one machine? I&#8217;d like to be able to that during the period that not all of my VMs are converted. And it can be sort of a fallback if one of the converted disk files are messed up somehow.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Steve</title>
+		<link>/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comment-37948</link>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+		<pubDate>Fri, 22 Apr 2016 07:34:59 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=419#comment-37948</guid>
+		<description><![CDATA[:)]]></description>
+		<content:encoded><![CDATA[<p>🙂</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Tom Fast</title>
+		<link>/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comment-37923</link>
+		<dc:creator><![CDATA[Tom Fast]]></dc:creator>
+		<pubDate>Wed, 20 Apr 2016 22:44:51 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=419#comment-37923</guid>
+		<description><![CDATA[This just saved me. Thanks a ton! 
+
+The last sentence was the key:
+&quot;Then add a SAS driver and attach the existing .vdmk virtual disk (or a copy of it).  You’ll need to install the VirtualBox support drivers if it’s a Windows VM.&quot;]]></description>
+		<content:encoded><![CDATA[<p>This just saved me. Thanks a ton! </p>
+<p>The last sentence was the key:<br />
+&#8220;Then add a SAS driver and attach the existing .vdmk virtual disk (or a copy of it).  You’ll need to install the VirtualBox support drivers if it’s a Windows VM.&#8221;</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Eveline</title>
+		<link>/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comment-37349</link>
+		<dc:creator><![CDATA[Eveline]]></dc:creator>
+		<pubDate>Mon, 22 Feb 2016 13:08:38 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=419#comment-37349</guid>
+		<description><![CDATA[Worked beautifully! Thanks!]]></description>
+		<content:encoded><![CDATA[<p>Worked beautifully! Thanks!</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: sahmada</title>
+		<link>/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comment-36765</link>
+		<dc:creator><![CDATA[sahmada]]></dc:creator>
+		<pubDate>Mon, 18 Jan 2016 10:58:41 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=419#comment-36765</guid>
+		<description><![CDATA[Thanks for this tip.
+
+But as you told, hard disk file ( vmdk ) must be in one piece. I tried to use a vmdk file while it was multi parted, and no way :(
+
+I had to convert it to OVF and import it in VBox :&#124;
+
+Now , what should I do in VBox to make its HDD file available and working in VMWare workstation ?]]></description>
+		<content:encoded><![CDATA[<p>Thanks for this tip.</p>
+<p>But as you told, hard disk file ( vmdk ) must be in one piece. I tried to use a vmdk file while it was multi parted, and no way 🙁</p>
+<p>I had to convert it to OVF and import it in VBox 😐</p>
+<p>Now , what should I do in VBox to make its HDD file available and working in VMWare workstation ?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: using #virtualbox to run a #bitnami #redmine #vmware vmdk #vm &#124; VIZZ</title>
+		<link>/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comment-32578</link>
+		<dc:creator><![CDATA[using #virtualbox to run a #bitnami #redmine #vmware vmdk #vm &#124; VIZZ]]></dc:creator>
+		<pubDate>Tue, 08 Sep 2015 14:03:18 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=419#comment-32578</guid>
+		<description><![CDATA[[&#8230;] /openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/ [&#8230;]]]></description>
+		<content:encoded><![CDATA[<p>[&#8230;] <a href="/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/" rel="nofollow">/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/</a> [&#8230;]</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Steve</title>
+		<link>/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comment-32560</link>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+		<pubDate>Mon, 07 Sep 2015 16:32:09 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=419#comment-32560</guid>
+		<description><![CDATA[No problem :)]]></description>
+		<content:encoded><![CDATA[<p>No problem 🙂</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

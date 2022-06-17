@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<title>On Converting a VM from VMWare to VIrtualBox | Opening Accessibility</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="stylesheet" type="text/css" media="all" href="/openingaccessibility/wp-content/themes/accessible/style.css" />
+<link rel="pingback" href="/openingaccessibility/xmlrpc.php" />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Opening Accessibility &raquo; Feed" href="/openingaccessibility/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Opening Accessibility &raquo; Comments Feed" href="/openingaccessibility/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Opening Accessibility &raquo; On Converting a VM from VMWare to VIrtualBox Comments Feed" href="/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.8"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='crayon-css'  href='/openingaccessibility/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<script type='text/javascript' src='/openingaccessibility/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='/openingaccessibility/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/openingaccessibility/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta'></script>
+<link rel='https://api.w.org/' href='/openingaccessibility/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/openingaccessibility/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="/openingaccessibility/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Help: I bricked my Firefox OS device by enabling the Accessibility Screen Reader!' href='/openingaccessibility/2014/05/help-i-bricked-my-firefox-os-1-3-device-by-enabling-the-accessibility-screen-reader/' />
+<link rel='next' title='Setting up home and office networks with a single line and with wifi extension' href='/openingaccessibility/2014/09/setting-up-two-home-lans-with-a-single-line-and-with-wifi-extension/' />
+<meta name="generator" content="WordPress 4.9.8" />
+<link rel="canonical" href="/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/" />
+<link rel='shortlink' href='/openingaccessibility/?p=419' />
+<link rel="alternate" type="application/json+oembed" href="/openingaccessibility/wp-json/oembed/1.0/embed?url=%2F2014%2F07%2Fon-converting-a-vm-from-vmware-to-virtualbox%2F" />
+<link rel="alternate" type="text/xml+oembed" href="/openingaccessibility/wp-json/oembed/1.0/embed?url=%2F2014%2F07%2Fon-converting-a-vm-from-vmware-to-virtualbox%2F&#038;format=xml" />
+
+<!-- Bad Behavior 2.2.22 run time: 4.955 ms -->
+</head>
+
+<body class="post-template-default single single-post postid-419 single-format-standard">
+<div id="wrapper" class="hfeed">
+	<div id="header">
+		<div id="masthead">
+			<div id="branding" role="banner">
+								<div id="site-title">
+					<span>
+						<a href="/openingaccessibility/" title="Opening Accessibility" rel="home">Opening Accessibility</a>
+					</span>
+				</div>
+				<div id="site-description">Where open source joins accessibility</div>
+
+										<img src="/openingaccessibility/wp-content/uploads/2013/02/copy-cropped-Lapland-gateway.jpg" width="940" height="198" alt="" />
+								</div><!-- #branding -->
+
+			<div id="access" role="navigation">
+			  				<div class="skip-link screen-reader-text"><a href="#content" title="Skip to content">Skip to content</a></div>
+								<div class="menu"><ul>
+<li ><a href="/openingaccessibility/">Home</a></li><li class="page_item page-item-8"><a href="/openingaccessibility/about/">About</a></li>
+</ul></div>
+			</div><!-- #access -->
+		</div><!-- #masthead -->
+	</div><!-- #header -->
+
+	<div id="main">
+
+		<div id="container">
+			<div id="content" role="main">
+
+			
+
+				<div id="nav-above" class="navigation">
+					<div class="nav-previous"><a href="/openingaccessibility/2014/05/help-i-bricked-my-firefox-os-1-3-device-by-enabling-the-accessibility-screen-reader/" rel="prev"><span class="meta-nav">&larr;</span> Help: I bricked my Firefox OS device by enabling the Accessibility Screen Reader!</a></div>
+					<div class="nav-next"><a href="/openingaccessibility/2014/09/setting-up-two-home-lans-with-a-single-line-and-with-wifi-extension/" rel="next">Setting up home and office networks with a single line and with wifi extension <span class="meta-nav">&rarr;</span></a></div>
+				</div><!-- #nav-above -->
+
+				<div id="post-419" class="post-419 post type-post status-publish format-standard hentry category-opensource category-win8 category-windows tag-virtualisation">
+					<h1 class="entry-title">On Converting a VM from VMWare to VIrtualBox</h1>
+
+					<div class="entry-meta">
+						<span class="meta-prep meta-prep-author">Posted on</span> <a href="/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/" title="1:34 pm" rel="bookmark"><span class="entry-date">July 29, 2014</span></a> <span class="meta-sep">by</span> <span class="author vcard"><a class="url fn n" href="/openingaccessibility/author/steveopendirective-com/" title="View all posts by Steve">Steve</a></span>					</div><!-- .entry-meta -->
+
+					<div class="entry-content">
+						<p>In short, don&#8217;t! It&#8217;s way too much hassle.</p>
+<p>It&#8217;s so much easier to create a new identical VM in VirtualBox and set it to use the same virtual disk file (.vmdk). I  expect this applies when moving VMs in the opposite direction too.</p>
+<p>Hopefully this note will save others a lot of wasted time discovering this after following various dead ends when googling for the answer. The bottom line is that while it should be possible to export from VMWare to the standard OVF format and import into VirtualBox, differences in interpretation of the format between the two make it difficult if not impossible (I gave up).</p>
+<p>I&#8217;ve been using the VMWare Player for creating and managing my VMs on a Windows host for some time after my business partner experienced trashed VMs with our then preferred VirtualBox. However Since using windows 8.1 i found the mouse was offset when using an external monitor with my laptop, something which quickly made it unusable. Otherwise, to be fair, VMWare Player is fast and trouble free.</p>
+<p>So I decided to switch back to VirtualBox and the wisdom on the web is to export and import via OVF using VMWare&#8217;s OVFTool.</p>
+<p>1st problem, I had used VMWare Player&#8217;s default option to split the virtual disk file up. This actually make little sense if you have a file system that supports large files, and probably negatively affects performance. This can be resolved using VMWare&#8217;s vmware-vdiskmanager utility. Except this is now only available in the full VMWare Workstation. There is a trial version but guess what, it can&#8217;t be installed along side VMWarePlayer. So I had to installed and use it on another PC (and no, I didn&#8217;t it on a VM 🙂 ).</p>
+<p>Exporting using OVTool takes ages and then the &#8220;Import Appliance&#8221; operation fails. The first problem is a disagreement on the SCSI disk driver. VirtualBox treats the SAS as a separate type to SCSI, whereas VMWare makes it a subtype.. Even if you comment the SCSI and disk sections out of the .ofv file before import, another error occurs with checking the hash of the virtual disk in the .mf file. I suspect &#8220;Import Appliance&#8221; should only be used with  &#8220;Export Appliance&#8221; to move VirtuaBox VMs between hosts.</p>
+<p>So to summarise, the easiest solution for transferring a VM to VirtualBox to is to create a new VM in VirtuaBox, but without a disk. Make it as close as possible to the original VMWare VM. Then add a SAS driver and attach the existing .vdmk virtual disk (or a copy of it).  You&#8217;ll need to install the VirtualBox support drivers if it&#8217;s a Windows VM.</p>
+<p>&nbsp;</p>
+											</div><!-- .entry-content -->
+
+
+					<div class="entry-utility">
+						This entry was posted in <a href="/openingaccessibility/category/opensource/" rel="category tag">opensource</a>, <a href="/openingaccessibility/category/win8/" rel="category tag">Win8</a>, <a href="/openingaccessibility/category/windows/" rel="category tag">Windows</a> and tagged <a href="/openingaccessibility/tag/virtualisation/" rel="tag">Virtualisation</a>. Bookmark the <a href="/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/" title="Permalink to On Converting a VM from VMWare to VIrtualBox" rel="bookmark">permalink</a>.											</div><!-- .entry-utility -->
+				</div><!-- #post-## -->
+
+				<div id="nav-below" class="navigation">
+					<div class="nav-previous"><a href="/openingaccessibility/2014/05/help-i-bricked-my-firefox-os-1-3-device-by-enabling-the-accessibility-screen-reader/" rel="prev"><span class="meta-nav">&larr;</span> Help: I bricked my Firefox OS device by enabling the Accessibility Screen Reader!</a></div>
+					<div class="nav-next"><a href="/openingaccessibility/2014/09/setting-up-two-home-lans-with-a-single-line-and-with-wifi-extension/" rel="next">Setting up home and office networks with a single line and with wifi extension <span class="meta-nav">&rarr;</span></a></div>
+				</div><!-- #nav-below -->
+
+				<a href="#wrapper" class="skip-content screen-reader-text">Skip to top</a><h2 class="screen-reader-text">Comments</h2>
+			<div id="comments">
+
+
+			<h3 id="comments-title">14 Responses to <em>On Converting a VM from VMWare to VIrtualBox</em></h3>
+
+
+			<ol class="commentlist">
+					<li class="comment even thread-even depth-1" id="li-comment-30378">
+		<div id="comment-30378">
+			<div class="comment-author vcard">
+				<img alt='' src='http://2.gravatar.com/avatar/59e381507a01e1c8cf58d2521260c0e1?s=40&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/59e381507a01e1c8cf58d2521260c0e1?s=80&#038;d=mm&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' />				<cite class="fn">David Schmidt</cite> <span class="says">says:</span>			</div><!-- .comment-author .vcard -->
+			
+			<div class="comment-meta commentmetadata"><a href="/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comment-30378">
+				June 22, 2015 at 11:28 am</a>			</div><!-- .comment-meta .commentmetadata -->
+
+			<div class="comment-body"><p>Thanks for the hint. Did not know it would work out of the box by just using the vmware vmdk file 🙂</p>
+</div>
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/?replytocom=30378#respond' onclick='return addComment.moveForm( "comment-30378", "30378", "respond", "419" )' aria-label='Reply to David Schmidt'>Reply</a>			</div><!-- .reply -->
+		</div><!-- #comment-##  -->
+
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-30674">
+		<div id="comment-30674">
+			<div class="comment-author vcard">
+				<img alt='' src='http://0.gravatar.com/avatar/0905e41cba2220f185261af60468c14f?s=40&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/0905e41cba2220f185261af60468c14f?s=80&#038;d=mm&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' />				<cite class="fn">Ulrich</cite> <span class="says">says:</span>			</div><!-- .comment-author .vcard -->
+			
+			<div class="comment-meta commentmetadata"><a href="/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comment-30674">
+				July 6, 2015 at 4:42 pm</a>			</div><!-- .comment-meta .commentmetadata -->
+
+			<div class="comment-body"><p>Cool, didn&#8217;t know either. Saved me lots of time &#8211; thank you for sharing this piece of information.</p>
+</div>
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/?replytocom=30674#respond' onclick='return addComment.moveForm( "comment-30674", "30674", "respond", "419" )' aria-label='Reply to Ulrich'>Reply</a>			</div><!-- .reply -->
+		</div><!-- #comment-##  -->
+
+	</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-31724">
+		<div id="comment-31724">
+			<div class="comment-author vcard">
+				<img alt='' src='http://0.gravatar.com/avatar/922eeb4a792df7f70c78d01ecaf87ecc?s=40&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/922eeb4a792df7f70c78d01ecaf87ecc?s=80&#038;d=mm&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' />				<cite class="fn">André Fonseca</cite> <span class="says">says:</span>			</div><!-- .comment-author .vcard -->
+			
+			<div class="comment-meta commentmetadata"><a href="/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comment-31724">
+				August 11, 2015 at 4:12 pm</a>			</div><!-- .comment-meta .commentmetadata -->
+
+			<div class="comment-body"><p>Thumbs up! Was about to start an endless conversion.</p>
+</div>
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/?replytocom=31724#respond' onclick='return addComment.moveForm( "comment-31724", "31724", "respond", "419" )' aria-label='Reply to André Fonseca'>Reply</a>			</div><!-- .reply -->
+		</div><!-- #comment-##  -->
+
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-32445">
+		<div id="comment-32445">
+			<div class="comment-author vcard">
+				<img alt='' src='http://1.gravatar.com/avatar/16462ef71451fa6f712d333c18264b7b?s=40&#038;d=mm&#038;r=g' srcset='http://1.gravatar.com/avatar/16462ef71451fa6f712d333c18264b7b?s=80&#038;d=mm&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' />				<cite class="fn">Don Kara</cite> <span class="says">says:</span>			</div><!-- .comment-author .vcard -->
+			
+			<div class="comment-meta commentmetadata"><a href="/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comment-32445">
+				September 2, 2015 at 7:14 pm</a>			</div><!-- .comment-meta .commentmetadata -->
+
+			<div class="comment-body"><p>Great advice, thank you!</p>
+</div>
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/?replytocom=32445#respond' onclick='return addComment.moveForm( "comment-32445", "32445", "respond", "419" )' aria-label='Reply to Don Kara'>Reply</a>			</div><!-- .reply -->
+		</div><!-- #comment-##  -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-steveopendirective-com bypostauthor even depth-2" id="li-comment-32560">
+		<div id="comment-32560">
+			<div class="comment-author vcard">
+				<img alt='' src='http://0.gravatar.com/avatar/9cf3b2625e7daf7aa5d01542fbedb2c5?s=40&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/9cf3b2625e7daf7aa5d01542fbedb2c5?s=80&#038;d=mm&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' />				<cite class="fn">Steve</cite> <span class="says">says:</span>			</div><!-- .comment-author .vcard -->
+			
+			<div class="comment-meta commentmetadata"><a href="/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comment-32560">
+				September 7, 2015 at 5:32 pm</a>			</div><!-- .comment-meta .commentmetadata -->
+
+			<div class="comment-body"><p>No problem 🙂</p>
+</div>
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/?replytocom=32560#respond' onclick='return addComment.moveForm( "comment-32560", "32560", "respond", "419" )' aria-label='Reply to Steve'>Reply</a>			</div><!-- .reply -->
+		</div><!-- #comment-##  -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="post pingback">
+		<p>Pingback: <a href='https://vizz8info.wordpress.com/2015/09/08/using-virtualbox-to-run-a-bitnami-redmine-vmware-vmdk-vm/' rel='external nofollow' class='url'>using #virtualbox to run a #bitnami #redmine #vmware vmdk #vm | VIZZ</a></p>
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-even depth-1" id="li-comment-36765">
+		<div id="comment-36765">
+			<div class="comment-author vcard">
+				<img alt='' src='http://2.gravatar.com/avatar/b80f8cf11c435b9a912706f39a323efd?s=40&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/b80f8cf11c435b9a912706f39a323efd?s=80&#038;d=mm&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' />				<cite class="fn">sahmada</cite> <span class="says">says:</span>			</div><!-- .comment-author .vcard -->
+			
+			<div class="comment-meta commentmetadata"><a href="/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comment-36765">
+				January 18, 2016 at 10:58 am</a>			</div><!-- .comment-meta .commentmetadata -->
+
+			<div class="comment-body"><p>Thanks for this tip.</p>
+<p>But as you told, hard disk file ( vmdk ) must be in one piece. I tried to use a vmdk file while it was multi parted, and no way 🙁</p>
+<p>I had to convert it to OVF and import it in VBox 😐</p>
+<p>Now , what should I do in VBox to make its HDD file available and working in VMWare workstation ?</p>
+</div>
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/?replytocom=36765#respond' onclick='return addComment.moveForm( "comment-36765", "36765", "respond", "419" )' aria-label='Reply to sahmada'>Reply</a>			</div><!-- .reply -->
+		</div><!-- #comment-##  -->
+
+	</li><!-- #comment-## -->
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-37349">
+		<div id="comment-37349">
+			<div class="comment-author vcard">
+				<img alt='' src='http://2.gravatar.com/avatar/e06d7b3bac1af1b0307d16b17b8f0309?s=40&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/e06d7b3bac1af1b0307d16b17b8f0309?s=80&#038;d=mm&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' />				<cite class="fn">Eveline</cite> <span class="says">says:</span>			</div><!-- .comment-author .vcard -->
+			
+			<div class="comment-meta commentmetadata"><a href="/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comment-37349">
+				February 22, 2016 at 1:08 pm</a>			</div><!-- .comment-meta .commentmetadata -->
+
+			<div class="comment-body"><p>Worked beautifully! Thanks!</p>
+</div>
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/?replytocom=37349#respond' onclick='return addComment.moveForm( "comment-37349", "37349", "respond", "419" )' aria-label='Reply to Eveline'>Reply</a>			</div><!-- .reply -->
+		</div><!-- #comment-##  -->
+
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-even depth-1" id="li-comment-37923">
+		<div id="comment-37923">
+			<div class="comment-author vcard">
+				<img alt='' src='http://2.gravatar.com/avatar/8ce83593f4495314d1e05a2f5b65867b?s=40&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/8ce83593f4495314d1e05a2f5b65867b?s=80&#038;d=mm&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' />				<cite class="fn"><a href='http://tomfast.com/' rel='external nofollow' class='url'>Tom Fast</a></cite> <span class="says">says:</span>			</div><!-- .comment-author .vcard -->
+			
+			<div class="comment-meta commentmetadata"><a href="/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comment-37923">
+				April 20, 2016 at 11:44 pm</a>			</div><!-- .comment-meta .commentmetadata -->
+
+			<div class="comment-body"><p>This just saved me. Thanks a ton! </p>
+<p>The last sentence was the key:<br />
+&#8220;Then add a SAS driver and attach the existing .vdmk virtual disk (or a copy of it).  You’ll need to install the VirtualBox support drivers if it’s a Windows VM.&#8221;</p>
+</div>
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/?replytocom=37923#respond' onclick='return addComment.moveForm( "comment-37923", "37923", "respond", "419" )' aria-label='Reply to Tom Fast'>Reply</a>			</div><!-- .reply -->
+		</div><!-- #comment-##  -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-steveopendirective-com bypostauthor even depth-2" id="li-comment-37948">
+		<div id="comment-37948">
+			<div class="comment-author vcard">
+				<img alt='' src='http://0.gravatar.com/avatar/9cf3b2625e7daf7aa5d01542fbedb2c5?s=40&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/9cf3b2625e7daf7aa5d01542fbedb2c5?s=80&#038;d=mm&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' />				<cite class="fn">Steve</cite> <span class="says">says:</span>			</div><!-- .comment-author .vcard -->
+			
+			<div class="comment-meta commentmetadata"><a href="/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comment-37948">
+				April 22, 2016 at 8:34 am</a>			</div><!-- .comment-meta .commentmetadata -->
+
+			<div class="comment-body"><p>🙂</p>
+</div>
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/?replytocom=37948#respond' onclick='return addComment.moveForm( "comment-37948", "37948", "respond", "419" )' aria-label='Reply to Steve'>Reply</a>			</div><!-- .reply -->
+		</div><!-- #comment-##  -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-38465">
+		<div id="comment-38465">
+			<div class="comment-author vcard">
+				<img alt='' src='http://1.gravatar.com/avatar/7731ce9fc7542fcce7c45833fa82827e?s=40&#038;d=mm&#038;r=g' srcset='http://1.gravatar.com/avatar/7731ce9fc7542fcce7c45833fa82827e?s=80&#038;d=mm&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' />				<cite class="fn">Jan</cite> <span class="says">says:</span>			</div><!-- .comment-author .vcard -->
+			
+			<div class="comment-meta commentmetadata"><a href="/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comment-38465">
+				June 1, 2016 at 10:45 am</a>			</div><!-- .comment-meta .commentmetadata -->
+
+			<div class="comment-body"><p>Can I run VirtualBox and VmWare next to each other on one machine? I&#8217;d like to be able to that during the period that not all of my VMs are converted. And it can be sort of a fallback if one of the converted disk files are messed up somehow.</p>
+</div>
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/?replytocom=38465#respond' onclick='return addComment.moveForm( "comment-38465", "38465", "respond", "419" )' aria-label='Reply to Jan'>Reply</a>			</div><!-- .reply -->
+		</div><!-- #comment-##  -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-steveopendirective-com bypostauthor even depth-2" id="li-comment-38466">
+		<div id="comment-38466">
+			<div class="comment-author vcard">
+				<img alt='' src='http://0.gravatar.com/avatar/9cf3b2625e7daf7aa5d01542fbedb2c5?s=40&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/9cf3b2625e7daf7aa5d01542fbedb2c5?s=80&#038;d=mm&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' />				<cite class="fn">Steve</cite> <span class="says">says:</span>			</div><!-- .comment-author .vcard -->
+			
+			<div class="comment-meta commentmetadata"><a href="/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comment-38466">
+				June 1, 2016 at 12:14 pm</a>			</div><!-- .comment-meta .commentmetadata -->
+
+			<div class="comment-body"><p>I can only suggest you try it. There is a free VM player. However virtualisation can be tricky. I know hyperv and virtualBox are incompatible.</p>
+</div>
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/?replytocom=38466#respond' onclick='return addComment.moveForm( "comment-38466", "38466", "respond", "419" )' aria-label='Reply to Steve'>Reply</a>			</div><!-- .reply -->
+		</div><!-- #comment-##  -->
+
+	<ul class="children">
+	<li class="comment odd alt depth-3" id="li-comment-40810">
+		<div id="comment-40810">
+			<div class="comment-author vcard">
+				<img alt='' src='http://2.gravatar.com/avatar/8edc0d7be8fa778dbd7b74dd0826e5c5?s=40&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/8edc0d7be8fa778dbd7b74dd0826e5c5?s=80&#038;d=mm&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' />				<cite class="fn">mrpinks</cite> <span class="says">says:</span>			</div><!-- .comment-author .vcard -->
+			
+			<div class="comment-meta commentmetadata"><a href="/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comment-40810">
+				February 22, 2017 at 10:40 am</a>			</div><!-- .comment-meta .commentmetadata -->
+
+			<div class="comment-body"><p>Yes you can. My host is ubuntu 16.04, 64 bit, 16GB ram.<br />
+I run multiple OS&#8217;s in vmware player and virtualbox all at the same time.<br />
+The only potential for problems is shared resources ie cd-rom drive etc.</p>
+</div>
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/?replytocom=40810#respond' onclick='return addComment.moveForm( "comment-40810", "40810", "respond", "419" )' aria-label='Reply to mrpinks'>Reply</a>			</div><!-- .reply -->
+		</div><!-- #comment-##  -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-steveopendirective-com bypostauthor even depth-4" id="li-comment-40831">
+		<div id="comment-40831">
+			<div class="comment-author vcard">
+				<img alt='' src='http://0.gravatar.com/avatar/9cf3b2625e7daf7aa5d01542fbedb2c5?s=40&#038;d=mm&#038;r=g' srcset='http://0.gravatar.com/avatar/9cf3b2625e7daf7aa5d01542fbedb2c5?s=80&#038;d=mm&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' />				<cite class="fn">Steve</cite> <span class="says">says:</span>			</div><!-- .comment-author .vcard -->
+			
+			<div class="comment-meta commentmetadata"><a href="/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comment-40831">
+				February 25, 2017 at 10:59 am</a>			</div><!-- .comment-meta .commentmetadata -->
+
+			<div class="comment-body"><p>Thanks!</p>
+</div>
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/?replytocom=40831#respond' onclick='return addComment.moveForm( "comment-40831", "40831", "respond", "419" )' aria-label='Reply to Steve'>Reply</a>			</div><!-- .reply -->
+		</div><!-- #comment-##  -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+			</ol>
+
+
+	
+
+	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#respond" style="display:none;">Cancel reply</a></small></h3>			<form action="/openingaccessibility/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+				<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" value="" size="30" maxlength="200" /></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='419' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="bea08f4057" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="202"/></p>			</form>
+			</div><!-- #respond -->
+	
+</div><!-- #comments -->
+
+
+			</div><!-- #content -->
+		</div><!-- #container -->
+
+<h2 class="screen-reader-text">More informations</h2>
+		<div id="primary" class="widget-area" role="complementary">
+			<ul class="xoxo">
+
+<li id="search-2" class="widget-container widget_search"><form role="search" method="get" id="searchform" class="searchform" action="/openingaccessibility/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s" />
+					<input type="submit" id="searchsubmit" value="Search" />
+				</div>
+			</form></li>		<li id="recent-posts-2" class="widget-container widget_recent_entries">		<h3 class="widget-title">Recent Posts</h3>		<ul>
+											<li>
+					<a href="/openingaccessibility/2017/03/at-last-true-grids-in-web-browsers/">At last — true grids in web browsers</a>
+									</li>
+											<li>
+					<a href="/openingaccessibility/2016/10/exploring-reactive-streams-with-serverless-xstream-cyclejs-and-azure-functions/">Using reactive streams on serverless with cyclejs, xstream and Azure Functions</a>
+									</li>
+											<li>
+					<a href="/openingaccessibility/2016/09/is-the-web-getting-less-webby/">Is the web getting less webby and will serverless make it worse?</a>
+									</li>
+											<li>
+					<a href="/openingaccessibility/2016/05/aws-azure-or-firebase-for-a-spa-browser-app/">AWS, Azure or Firebase for a SPA browser app? Nope, it&#8217;s Kinvey</a>
+									</li>
+											<li>
+					<a href="/openingaccessibility/2016/05/i-dont-care-about-the-os-just-give-me-my-web-apps/">&#8220;I don&#8217;t care about the OS, just give me my web Apps&#8221;</a>
+									</li>
+					</ul>
+		</li><li id="categories-2" class="widget-container widget_categories"><h3 class="widget-title">Categories</h3><form action="/openingaccessibility" method="get"><label class="screen-reader-text" for="cat">Categories</label><select  name='cat' id='cat' class='postform' >
+	<option value='-1'>Select Category</option>
+	<option class="level-0" value="5">a11y&nbsp;&nbsp;(12)</option>
+	<option class="level-0" value="32">age&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="16">Android&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="23">Apps&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="27">Assistve Technology&nbsp;&nbsp;(5)</option>
+	<option class="level-0" value="31">Audio&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="19">bass&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="20">dementia&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="28">development&nbsp;&nbsp;(12)</option>
+	<option class="level-0" value="53">devops&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="21">HTML&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="38">mobile&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="25">mobile a11y&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="18">music&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="3">opena11y&nbsp;&nbsp;(5)</option>
+	<option class="level-0" value="4">opensource&nbsp;&nbsp;(11)</option>
+	<option class="level-0" value="30">OS X&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="6">personal&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="34">PHP&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="55">serverless&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="29">ss12eu&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="1">Uncategorized&nbsp;&nbsp;(15)</option>
+	<option class="level-0" value="17">Video&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="9">web&nbsp;&nbsp;(10)</option>
+	<option class="level-0" value="26">web a11y&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="54">web apps&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="22">Win8&nbsp;&nbsp;(4)</option>
+	<option class="level-0" value="35">Windows&nbsp;&nbsp;(8)</option>
+	<option class="level-0" value="33">WordPress&nbsp;&nbsp;(1)</option>
+</select>
+</form>
+<script type='text/javascript'>
+/* <![CDATA[ */
+(function() {
+	var dropdown = document.getElementById( "cat" );
+	function onCatChange() {
+		if ( dropdown.options[ dropdown.selectedIndex ].value > 0 ) {
+			dropdown.parentNode.submit();
+		}
+	}
+	dropdown.onchange = onCatChange;
+})();
+/* ]]> */
+</script>
+
+</li><li id="linkcat-2" class="widget-container widget_links"><h3 class="widget-title">CMS Accessibility Blogs</h3>
+	<ul class='xoxo blogroll'>
+<li><a href="http://accessible.sprungmarker.de/" title="Home for Sylvia Egger&#8217;s Twenty Ten child theme and other musings">Accessibile Twitter</a></li>
+<li><a href="http://groups.drupal.org/accessibility">Drupal Accessibility group</a></li>
+<li><a href="http://make.wordpress.org/accessibility/" title="What it says on the tin &#8211; improving WP a11y">WordPress accessibility</a></li>
+
+	</ul>
+</li>
+<li id="linkcat-24" class="widget-container widget_links"><h3 class="widget-title">Web Accessibility Blogs</h3>
+	<ul class='xoxo blogroll'>
+<li><a href="http://www.456bereastreet.com/" title="Roger Johansson is one of the most active and knowledgeable accessibility bloggers.">456 Berea Street</a></li>
+<li><a href="https://medium.com/@dennisl/" title="Dennis E. Lembree&#8217;s blog (the man behind EasyChirp and @webaxe)">Dennis Lembrée</a></li>
+<li><a href="http://www.iheni.com/" title="Mobile and web accessibility goodness">Henny Swan</a></li>
+<li><a href="http://juicystudio.com/" title="Gez Lemon provides some of the most influential research and writing in the accessibility field, particularly on the technical aspects of accessibility and assistive technologies">Juicy Studio</a></li>
+<li><a href="http://blog.paciellogroup.com/" title="Blog from the leading supplier of commercial accessibility services and posts by the mighty Steve Faulkner">The Paciello Group</a></li>
+<li><a href="http://webaim.org/blog/" title="Jarrad and the crew at webAIM produce some of the best introductory and advanced articles on web accessibility">WebAIM</a></li>
+<li><a href="http://www.webaxe.org/" title="The Blog and podcast on Web Accessibility">WebAxe</a></li>
+
+	</ul>
+</li>
+<li id="meta-2" class="widget-container widget_meta"><h3 class="widget-title">Meta</h3>			<ul>
+						<li><a href="/openingaccessibility/wp-login.php">Log in</a></li>
+			<li><a href="/openingaccessibility/feed/">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="/openingaccessibility/comments/feed/">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>			</ul>
+			</li>			</ul>
+		</div><!-- #primary .widget-area -->
+
+	</div><!-- #main -->
+
+	<div id="footer" role="contentinfo">
+		<div id="colophon">
+
+<h2 class="screen-reader-text">More informations</h2>
+
+			<div id="site-info">
+				<a href="/openingaccessibility/" title="Opening Accessibility" rel="home">
+					Opening Accessibility				</a>
+			</div><!-- #site-info -->
+
+			<div id="site-generator">
+				<a href="#wrapper" class="skip-bottom screen-reader-text">Skip to top</a>				<a href="https://wordpress.org/" title="Semantic Personal Publishing Platform">Proudly powered by WordPress.</a>
+			</div><!-- #site-generator -->
+
+		</div><!-- #colophon -->
+	</div><!-- #footer -->
+
+</div><!-- #wrapper -->
+
+<script type='text/javascript' src='/openingaccessibility/wp-includes/js/comment-reply.min.js?ver=4.9.8'></script>
+<script type='text/javascript' src='/openingaccessibility/wp-includes/js/wp-embed.min.js?ver=4.9.8'></script>
+<script async="async" type='text/javascript' src='/openingaccessibility/wp-content/plugins/akismet/_inc/form.js?ver=4.0.8'></script>
+</body>
+</html>

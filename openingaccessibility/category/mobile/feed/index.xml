@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>mobile &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/category/mobile/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Success! Firefox OS 1.4 built and running on ZTE Open</title>
+		<link>/openingaccessibility/2014/04/success-firefox-os-1-4-built-and-running-on-zte-open/</link>
+		<comments>/openingaccessibility/2014/04/success-firefox-os-1-4-built-and-running-on-zte-open/#comments</comments>
+		<pubDate>Sun, 13 Apr 2014 14:29:24 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[mobile]]></category>
+		<category><![CDATA[FirefoxOS]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=362</guid>
+		<description><![CDATA[[Update 2013-04-13 : Trunk, currently 1.5.0.0 also happily builds and runs. Just use &#8220;BRANCH=master&#8221; with config and build] It&#8217;s been a long battle but I have finally got a Firefox OS 1.4 build running on the ZTE Open. I started &#8230; <a href="/openingaccessibility/2014/04/success-firefox-os-1-4-built-and-running-on-zte-open/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p><strong>[Update 2013-04-13 : Trunk, currently 1.5.0.0 also happily builds and runs. Just use &#8220;BRANCH=master&#8221; with config and build]</strong> It&#8217;s been a long battle but I have finally got a Firefox OS 1.4 build running on the ZTE Open. I started my career in embedded development but had quite forgot how &#8216;interesting&#8217; it can get, what with all the moving parts to get lined up (more thought&#8217;s below). To continue my <a href="/openingaccessibility/2014/04/zte-open-upgrading-to-firefox-os-1-2/">previous post on getting the 1.2 release from ZTE working</a>, I&#8217;ll now explain how to build and run Firefox OS 1.4 starting out with the the 1.0 installed on my device from ZTE on eBay. <a href="/openingaccessibility/wp-content/uploads/2014/04/WIN_20140413_153727-2.jpg"><img class="aligncenter size-medium wp-image-370" src="/openingaccessibility/wp-content/uploads/2014/04/WIN_20140413_153727-2-167x300.jpg" alt="WIN_20140413_153727 (2)" width="167" height="300" srcset="/openingaccessibility/wp-content/uploads/2014/04/WIN_20140413_153727-2-167x300.jpg 167w, /openingaccessibility/wp-content/uploads/2014/04/WIN_20140413_153727-2.jpg 401w" sizes="(max-width: 167px) 100vw, 167px" /></a> 1. Upgrade the phone to the FirefoxOS <a href="https://www.dropbox.com/sh/rnj3rja7gd54s98/kGH6LCBRmf">1.2 provided by ZTE</a> (US &amp; UK) and test. (Actually this is probably unnecessary) 2. Build 1.4 according to the <a href="Upgrade to 1.2 using the phone download method provided by ZTE (US &amp; UK)">MDN build instructions.</a>. I built the user version (no test apps and optimised)</p><pre class="crayon-plain-tag">cd B2G
+git pull
+./repo sync -d
+BRANCH=v1.4 VARIANT=user ./config.sh inari
+BRANCH=v1.4 VARIANT=user ./build.sh</pre><p>3. Flash the built .img files to the phone. This was the hard part to solve. Mozilla provide a nice little &#8216;flash.sh&#8217; script which wraps up all the details of using adb and fastboot for each device but I have never got it to work. Neither could I get a manual flash to work as described in the <a href="https://developer.mozilla.org/en-US/Firefox_OS/Developer_phone_guide/ZTE_OPEN">MDN ZTE open</a> page. The problem seems to that the ZTE fastbboot implementation reboots during a flash command (possible related to size of the image). The solution is to use the Windows NandDL_firefox tool provided as part of ZTE&#8217;s 1.2 release. This uses a special phone mode to copy files and flash them and does not require adb or fastboot. You may have realised that Firefox OS cannot be built on Windows (at least I have not tried with Cygwin or MinGW). Thus you need an VM or 2 machines. In my case I ran Ubuntu 12.04 as a guest on Windows 8.1 and shared the files between them. The only problem I&#8217;ve found is that even with almost 8GB and 4 cores in the guest some builds still fail with a mysterious build error 2. This is most likely due ot resources as a build on a Ubuntu machine is fine. To use the ZTE NandDL_firefox tool simple create a folder with the following files</p><pre class="crayon-plain-tag">boot.img
+partition.mbn
+partition_zte.mbn
+system.img
+userdata.img</pre><p>The 2 .mbn files are copied from the <a href="https://www.mediafire.com/?93rd9h278oq2z2m">ZTE 1.2 release</a> while system.img and userdata.img are those built and found in &#8230;/B2G/out/target/product/inari. That leaves boot.img which we need as the default ZTE 1.2 one does not work with the built images. Unfortunately this is not built for some reason (perhaps legal). However it is possible to create a working image such as <a href="https://www.mediafire.com/?93rd9h278oq2z2m">Emanuel Hoogeveen&#8217;s boot.img</a>  which I used (see <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=925502">bug 925502</a> for more details). To flash the phone:</p>
+<ol>
+<li>Install the Windows <a href="http://www.ztedevices.com/support/smart_phone/b5a2981a-1714-4ac7-89e1-630e93e220f8.html">ZTE USB driver</a>.</li>
+<li>Run the <a href="https://www.dropbox.com/sh/rnj3rja7gd54s98/kGH6LCBRmf">ZTE NandDL_firefox</a> tool (ensure the .bin file is in the same location as the exe).</li>
+<li>Remove the phone battery and press the volume up and down buttons while plugging into the computer via a USB cable.</li>
+<li>Select the folder containing the files.</li>
+<li>Ensure only the 3 image file (boot, system, userdata) are selected in the checkboxes.</li>
+<li>Click the bottom left button to start the upload.</li>
+<li>When the phone reboots remove the usb lead, fit the battery and restart.</li>
+<li>You may want to enter Recovery mode (hold volume up and power up) to clear the data and cash (ie factory reset).</li>
+</ol>
+<p>Once Firefox OS 1.2 or later is installed you can use the Firefox <a href="https://developer.mozilla.org/en-US/Firefox_OS/Using_the_App_Manager">App Manager</a> to manage your apps being developed on the phone, possibly in addition to developing them in the <a href="https://developer.mozilla.org/en-US/Firefox_OS/Using_the_App_Manager#Using_a_Firefox_OS_Simulator_Add-on">simulator</a>.</p>
+<h2>Final Thoughts</h2>
+<p>Mozilla&#8217;s reason for creating Fireox OS is to ensure everyone can access and particiapte in the internet/web using fully open mobile technology and services. This is an important part of the <a href="http://www.mozilla.org/en-GB/about/manifesto/">Mozilla Manifesto</a>. For this to work Mozilla needs partners who really get what openness means and, in particular, provide support for their devices thus allowing anyone to build and update the majority of software on the device and not just Apps (ideally all of the software should be buildable). Unfortunately ZTE have rather fallen short of this so far, making it extremely difficult for anyone wanting to develop Firefox OS on the ZTE Open. This can be easily seen by the result of a few web searches. Unfortunately this reflects badly on Firefox OS, and so Mozilla, as the developer experience with the ZTC Open is so <strong>very</strong> painful. I really hope ZTE will get on board and help play their part soon. The phone is certainly popular as a cheap developer device and they could do well with it while gaining respect from open mobile developers. We can only hope the partners behind devices like the Flame and soon-to-be- available Tablets are more switched on! The biggest pain point is ZTE&#8217;s failure to provide a full implementation of fastboot on the phone. This was supposed to have landed in their update to 1.1 but my and many other&#8217;s experience is it just does NOT work. Come on ZTE! I suspect that sadly many phones have been bricked and left in exasperation as  a nice orange paperweight. I know I nearly did that with mine. I&#8217;m so glad I didn&#8217;t do this as I can now play with almost any aspect of Firefox OS should I want/need to. That&#8217;s *my* definition of &#8220;Open&#8221;.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2014/04/success-firefox-os-1-4-built-and-running-on-zte-open/feed/</wfw:commentRss>
+		<slash:comments>35</slash:comments>
+		</item>
+		<item>
+		<title>ZTE Open &#8211; upgrading to Firefox OS 1.2</title>
+		<link>/openingaccessibility/2014/04/zte-open-upgrading-to-firefox-os-1-2/</link>
+		<comments>/openingaccessibility/2014/04/zte-open-upgrading-to-firefox-os-1-2/#comments</comments>
+		<pubDate>Sun, 06 Apr 2014 20:24:25 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[mobile]]></category>
+		<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[FirefoxOS]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=351</guid>
+		<description><![CDATA[[Continued in Success! Firefox OS 1.4 built and running on ZTE Open] I&#8217;ve just bought a ZTE Open phone with the intention of exploring Firefox OS, Mozilla&#8217;s new HTML-based, fully open mobile operating system. The idea was that at £54 &#8230; <a href="/openingaccessibility/2014/04/zte-open-upgrading-to-firefox-os-1-2/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p><strong>[Continued in <a href="/openingaccessibility/2014/04/success-firefox-os-1-4-built-and-running-on-zte-open/">Success! Firefox OS 1.4 built and running on ZTE Open</a>]</strong></p>
+<p>I&#8217;ve just bought a <a href="http://stores.ebay.co.uk/ZTE-Mobile-UK">ZTE Open</a> phone with the intention of exploring <a href="https://www.mozilla.org/en-US/firefox/os/">Firefox OS</a>, Mozilla&#8217;s new HTML-based, fully open mobile operating system. The idea was that at £54 pounds from ZTE Europe on eBay it is a very low cost entry into building <a href="https://marketplace.firefox.com/developers/">Firefox OS apps</a> or the <a href="https://developer.mozilla.org/en-US/Firefox_OS">OS itself</a>. Little did I expect it to be such a pain but the good news  is I finally managed to get it going and thought I should share how.</p>
+<p>The phone is OK but you get what you pay for. It reminds me of the very cheap Galaxy Europa I one brought a couple of years back.  With my fat fingers it&#8217;s very hard to type on the seemingly inaccurate and very small touch screen. A passive stylus doesn&#8217;t work either. However, it works well enough as a basic smartphone.</p>
+<p><a href="/openingaccessibility/wp-content/uploads/2014/04/open-orange.jpg"><img class="aligncenter size-medium wp-image-353" alt="ZTE Open" src="/openingaccessibility/wp-content/uploads/2014/04/open-orange-300x300.jpg" width="300" height="300" srcset="/openingaccessibility/wp-content/uploads/2014/04/open-orange-300x300.jpg 300w, /openingaccessibility/wp-content/uploads/2014/04/open-orange-150x150.jpg 150w, /openingaccessibility/wp-content/uploads/2014/04/open-orange.jpg 1000w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+<p>First the problem; the ZTE Open I received was at OS version 1.0 and I obviously want to hack on the latest (1.3 /1.4) and send updates to the phone. Also, the easiest entry  to developing apps is to use either the <a href="https://developer.mozilla.org/en-US/docs/Tools/Firefox_OS_Simulator">Firefox OS Simulator</a> or the <a href="https://developer.mozilla.org/en-US/Firefox_OS/Using_the_App_Manager">Apps Manager</a> connected to a real device running 1.2 or  higher.</p>
+<p>You know what it&#8217;s like, you hit a problem and Google throws up loads of fixes that have worked for others. The problem is that these solutions are often slightly different being discovered at various times since the problem 1st appeared and many subtle changes have occurred to the various bits of software or hardware, thus breaking the solutions. I got extremely frustrated and was even informed that the phone has been nicknamed the &#8220;ZTE Closed&#8221; by some folks at Mozilla. Anyway I won&#8217;t waste time on all the dead ends I tried but simply present the final solution that worked for me. I will just mention that I had no luck with the <a href="https://developer.mozilla.org/en-US/Firefox_OS/Developer_phone_guide/ZTE_OPEN">MDN page</a> or  <a href="https://hacks.mozilla.org/2014/01/upgrading-your-zte-open-to-firefox-1-1-or-1-2-fastboot-enabled/">Mozilla Hacks article</a> that&#8217;s worked for many &#8211; &#8220;fastboot devices&#8221; would just not work. I missed the note in that post to the solution that eventually worked for me (after a few problems). It might be due to my using Windows as host rather than Linux but I found the alternative solution before I tried on Linux.</p>
+<p>So the solution:</p>
+<ol>
+<li>Upgrade to 1.1B02 using the <a href="http://www.ztedevices.com/support/smart_phone/b5a2981a-1714-4ac7-89e1-630e93e220f8.html">SDCard method provide by ZTE</a> (US &amp; UK)</li>
+<li>Upgrade to 1.2 using the <a href="https://www.dropbox.com/sh/rnj3rja7gd54s98/kGH6LCBRmf">phone download method provided by ZTE</a> (US &amp; UK)</li>
+</ol>
+<p>The 1st step is probably not needed but I performed it as an early step anyway. I modified the second step to also update &#8220;system&#8221; which is not shown selected in the ZTE instructions.</p>
+<p><strong>ZTE Open Firmware site</strong></p>
+<p>As is so often the case once I finally solved it I found the perfect source of information. I don&#8217;t know who owns the site but <a href="https://sites.google.com/site/zteopenfirmware/fastboot">zteopenfirmware</a> is a real mine of information on the ZTE Open phones firmware. They even provide advice on using version 1.3 and 1.4 which I intend to build and flash soon as an exercise. While I discovered the same answer, I&#8217;d be hard put to provide such clear details on upgrading the ZTE Open. Thus I simply refer you to this excellent resource.</p>
+<p>Hopefully this short post will save a few others some pain. Good luck and happy hacking.</p>
+<p>PS. if you like such things, here is a draft <a href="http://www.movistar.co/documentos/manualesProductos/ZTE_Mozilla_Open_P752-Manual_de_Usuario.pdf">user manual for the ZTE Open</a> (pdf).</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2014/04/zte-open-upgrading-to-firefox-os-1-2/feed/</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+		</item>
+	</channel>
+</rss>

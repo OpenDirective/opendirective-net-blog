@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Working with Windows native code from node.js</title>
+	<atom:link href="/openingaccessibility/2015/10/working-with-windows-native-code-from-node-js/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility/2015/10/working-with-windows-native-code-from-node-js/</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Tue, 24 Jul 2018 09:34:38 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>By: Steve</title>
+		<link>/openingaccessibility/2015/10/working-with-windows-native-code-from-node-js/#comment-41326</link>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+		<pubDate>Sun, 16 Jul 2017 09:11:15 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=581#comment-41326</guid>
+		<description><![CDATA[Thanks for reporting that type-o I&#039;ll fix it.]]></description>
+		<content:encoded><![CDATA[<p>Thanks for reporting that type-o I&#8217;ll fix it.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Fabrício Lélis</title>
+		<link>/openingaccessibility/2015/10/working-with-windows-native-code-from-node-js/#comment-41261</link>
+		<dc:creator><![CDATA[Fabrício Lélis]]></dc:creator>
+		<pubDate>Tue, 20 Jun 2017 20:07:51 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=581#comment-41261</guid>
+		<description><![CDATA[Hi, 
+Great article. I tried your example to GetDisplayResolution but, this error occurred: 
+if (c.FALSE !== windows.EnumDisplaySettingsW(ref.NULL, c.ENUM_CURRENT_SETTINGS, dm.ref()))
+        ^
+
+ReferenceError: c is not defined
+    at Object.windows.getScreenResolution
+    at Function.Module.runMain (module.js:605:10)
+    at startup (bootstrap_node.js:158:16)
+    at bootstrap_node.js:575:3
+
+Where is c defined?  Can you help me?
+Thanks in advance.]]></description>
+		<content:encoded><![CDATA[<p>Hi,<br />
+Great article. I tried your example to GetDisplayResolution but, this error occurred:<br />
+if (c.FALSE !== windows.EnumDisplaySettingsW(ref.NULL, c.ENUM_CURRENT_SETTINGS, dm.ref()))<br />
+        ^</p>
+<p>ReferenceError: c is not defined<br />
+    at Object.windows.getScreenResolution<br />
+    at Function.Module.runMain (module.js:605:10)<br />
+    at startup (bootstrap_node.js:158:16)<br />
+    at bootstrap_node.js:575:3</p>
+<p>Where is c defined?  Can you help me?<br />
+Thanks in advance.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: prabhat singh</title>
+		<link>/openingaccessibility/2015/10/working-with-windows-native-code-from-node-js/#comment-40077</link>
+		<dc:creator><![CDATA[prabhat singh]]></dc:creator>
+		<pubDate>Tue, 22 Nov 2016 04:22:19 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=581#comment-40077</guid>
+		<description><![CDATA[Hi,
+
+Nice article. I wanted to try getting current caret position, so came to your blog. I tried the following, but it doen&#039;t work.
+
+var ffi = require(&#039;ffi&#039;);
+var ref = require(&#039;ref&#039;);
+
+ var voidPtr = ref.refType(ref.types.void);
+  var user32 = ffi.Library(&#039;user32.dll&#039;, {
+      GetCaretPos:[&#039;bool&#039;,[voidPtr]]
+  });
+var pbuf = new Buffer(2);
+  caretpos = user32.GetCaretPos(pbuf);
+ var cpos =(new Uint8Array(pbuf));
+  console.log(&quot;&#062;&quot;,cpos  ); //Doesn&#039;t work **&#062; Uint8Array [ 0, 0, 0, 0 ]**]]></description>
+		<content:encoded><![CDATA[<p>Hi,</p>
+<p>Nice article. I wanted to try getting current caret position, so came to your blog. I tried the following, but it doen&#8217;t work.</p>
+<p>var ffi = require(&#8216;ffi&#8217;);<br />
+var ref = require(&#8216;ref&#8217;);</p>
+<p> var voidPtr = ref.refType(ref.types.void);<br />
+  var user32 = ffi.Library(&#8216;user32.dll&#8217;, {<br />
+      GetCaretPos:[&#8216;bool&#8217;,[voidPtr]]<br />
+  });<br />
+var pbuf = new Buffer(2);<br />
+  caretpos = user32.GetCaretPos(pbuf);<br />
+ var cpos =(new Uint8Array(pbuf));<br />
+  console.log(&#8220;&gt;&#8221;,cpos  ); //Doesn&#8217;t work **&gt; Uint8Array [ 0, 0, 0, 0 ]**</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: steve</title>
+		<link>/openingaccessibility/2015/10/working-with-windows-native-code-from-node-js/#comment-36306</link>
+		<dc:creator><![CDATA[steve]]></dc:creator>
+		<pubDate>Fri, 01 Jan 2016 20:20:33 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=581#comment-36306</guid>
+		<description><![CDATA[more details on Scot Frees&#039; blog http://blog.scottfrees.com/getting-your-c-to-the-web-with-node-js]]></description>
+		<content:encoded><![CDATA[<p>more details on Scot Frees&#8217; blog <a href="http://blog.scottfrees.com/getting-your-c-to-the-web-with-node-js" rel="nofollow">http://blog.scottfrees.com/getting-your-c-to-the-web-with-node-js</a></p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Adding a sleep button to Dell XPS 12 convertable ultrabook</title>
+	<atom:link href="/openingaccessibility/2014/02/adding-a-sleep-button-to-dell-xps-12-convertable/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility/2014/02/adding-a-sleep-button-to-dell-xps-12-convertable/</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Tue, 24 Jul 2018 09:34:38 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>By: Steve</title>
+		<link>/openingaccessibility/2014/02/adding-a-sleep-button-to-dell-xps-12-convertable/#comment-30876</link>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+		<pubDate>Fri, 17 Jul 2015 08:19:36 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=324#comment-30876</guid>
+		<description><![CDATA[Hey, that&#039;s great to hear :)]]></description>
+		<content:encoded><![CDATA[<p>Hey, that&#8217;s great to hear 🙂</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Frank</title>
+		<link>/openingaccessibility/2014/02/adding-a-sleep-button-to-dell-xps-12-convertable/#comment-30875</link>
+		<dc:creator><![CDATA[Frank]]></dc:creator>
+		<pubDate>Fri, 17 Jul 2015 08:17:39 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=324#comment-30875</guid>
+		<description><![CDATA[Great contribution, congratulations.
+
+After 1 year using the DELL XPS 12 found you article and has helped me in my presentations.
+
+Thank you for sharing your knowledge!]]></description>
+		<content:encoded><![CDATA[<p>Great contribution, congratulations.</p>
+<p>After 1 year using the DELL XPS 12 found you article and has helped me in my presentations.</p>
+<p>Thank you for sharing your knowledge!</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

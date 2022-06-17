@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "text": "Home",
+      "url": "/",
+      "external": false
+    },
+    {
+      "text": "RSS",
+      "url": "/feed.xml",
+      "external": false
+    },
+    {
+      "text": "Old blogs",
+      "url": "/old-blogs",
+      "external": false
+    }
+  ]
+}

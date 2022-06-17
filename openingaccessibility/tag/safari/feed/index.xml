@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>safari &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/tag/safari/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Safari tab key navigation disabled by default</title>
+		<link>/openingaccessibility/2011/05/safari-tab-key-navigation-disabled-by-default/</link>
+		<comments>/openingaccessibility/2011/05/safari-tab-key-navigation-disabled-by-default/#comments</comments>
+		<pubDate>Tue, 03 May 2011 13:12:26 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[a11y]]></category>
+		<category><![CDATA[keyboard]]></category>
+		<category><![CDATA[safari]]></category>
+		<category><![CDATA[tab access]]></category>
+		<category><![CDATA[web]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=23</guid>
+		<description><![CDATA[For some bizarre reason tab key navigation is turned off by default in the Mac Safari web browser. By this I mean hitting the tab key repeatedly does not visit each interactive element on the page. This lack is a &#8230; <a href="/openingaccessibility/2011/05/safari-tab-key-navigation-disabled-by-default/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>For some bizarre reason <a href="http://www.w3.org/TR/html401/interact/forms.html#h-17.11.1">tab key navigation</a> is turned off by default in the Mac Safari web browser. By this I mean hitting the tab key repeatedly does not visit each interactive element on the page.</p>
+<p>This lack is a pain for keen keyboard users as it&#8217;s the only guaranteed way to access all links and form elements. Even if  websites were to apply the <a href="http://www.w3.org/TR/html401/interact/forms.html#h-17.11.2">AccessKey</a> attribute to all links and fields, browsers in general do not provide a way to discover what allocations have been made. Browsers do provide a useful default tab order, assuming the HTML markup has a reasonable element flow.</p>
+<p>Another group of users that need tab key access  are users of simple alternative input like switches. The overlay assistive technology that such users often use translate simple gestures into tab and enter key events, thus allowing access to most of the web app doc. This is slow and painful in many cases. especially if the tab order is not well designed. However it does provide access. The common exceptions are any &#8216;clever&#8217; javascript custom controls that forget to provide any keyboard access, assuming pointer only is used. This is more common than it should be and is yet another good reason to use an established accessible toolkit like <a href="http://jqueryui.com/">jQuery UI</a> , <a href="http://dojotoolkit.org/">Dojo</a> or <a href="http://fluidproject.org/products/infusion/">Fluid Infusion</a> for your web app.</p>
+<p>Screen reader user also benefit from tab navigation, though screen readers provide do more useful ways to navigate the screen. For example they can list headings (assuming the document has been well structured, as screen readers can&#8217;t work miracles).</p>
+<p>So I wonder why this is turned off by default? I use Firefox as my default browser on my Mac Book Pro, but when setting up this blog I ran Safari for a quick test of a guest user. I used the tab key to check the Accessible 2 sub theme was doing its stuff. It was broken and tab skipped straight to the search box (the first form input element), missing all the links.</p>
+<p>There has long been an option in system prefs &#8211; &gt; keyboard that enables tab to all fields, but even though this was on I had no joy. Eventually after a twitter discussion, I stumbled across a new (?) similar option in Safari -&gt; Prefs -&gt; Advanced that also need to be turned on in order to enable <strong>basic</strong> tab navigation.</p>
+<p>Does anyone know the logic for having tab navigation turned off in Safari by default? I&#8217;m guessing someone with influence had an issue of some sort. In Windows and Linux, tab navigation is a fundamental of any UI whether it&#8217;s a dialog or an app. HTML5 allows <a href="http://www.w3.org/TR/html5/editing.html#focus">any item to be focusable</a> either programmatically or by the user. So having tab navigation off is a bad move.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2011/05/safari-tab-key-navigation-disabled-by-default/feed/</wfw:commentRss>
+		<slash:comments>5</slash:comments>
+		</item>
+	</channel>
+</rss>

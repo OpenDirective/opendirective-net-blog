@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>opensource &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/category/opensource/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Free and easy HTTPS certificates with CDN with Kloudsec</title>
+		<link>/openingaccessibility/2016/03/free-and-easy-https-certificates-with-cdn/</link>
+		<comments>/openingaccessibility/2016/03/free-and-easy-https-certificates-with-cdn/#respond</comments>
+		<pubDate>Sat, 19 Mar 2016 17:11:54 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[devops]]></category>
+		<category><![CDATA[opensource]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=639</guid>
+		<description><![CDATA[HTTPS is a &#8216;must have&#8217; for any web service, SPA or progressive web application and so it is naturally high on my list of things to get to grips with. As a first step for the Brian project I&#8217;m creating &#8230; <a href="/openingaccessibility/2016/03/free-and-easy-https-certificates-with-cdn/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>HTTPS is a &#8216;must have&#8217; for any web service, SPA or progressive web application and so it is naturally high on my list of things to get to grips with. As a first step for the Brian project I&#8217;m creating a SPA (browser client side app) using web assets served up with GitHub pages (basically free hosting). It&#8217;s easy enough to set up the <a href="https://github.com/OpenDirective/brianLive">static pages</a> and a <a href="https://github.com/OpenDirective/brian/blob/master/scripts/deploy.sh">simple deploy script</a>. If you stick to the GitHub supplied URL (eg http://opendirective.github.io/brianLive/) you get CDN and HTTPS access</p>
+<p>However, if  you have a custom domain pointing at your Github Pages (eg  <a href="http://brian.opendirective.net/">brian.opendirective.net</a>) then a) You lose <code>HTTPS</code> support and b) You lose the <code>CDN</code> functionality if your custom domain is an apex domain (An apex domain is a domain without prefixes, such as <code>example.com</code>, not <code>www.example.com</code>)</p>
+<p>The thought of setting up HTTPS certificates used to fill me with dread. After reading around I was very disillusioned by the apparent complex tedious process. Assuming I understood it correctly.</p>
+<p><a href="/openingaccessibility/wp-content/uploads/2016/03/kloudsec.png" rel="attachment wp-att-649"><img class="aligncenter size-full wp-image-649" src="/openingaccessibility/wp-content/uploads/2016/03/kloudsec.png" alt="kloudsec" width="201" height="193" /></a>Recently however, <a href="https://letsencrypt.org/">LetsEncrypt</a> arrived on the scene, soothing stressed web developers with their streamlined process for creating free HTTPS certificates. Still, the process does include installing and operating a local client tool. I decided to wait a bit.</p>
+<p>Then Steve Goh (@nubela) of  <a href="https://kloudsec.com/">kloudsec</a> cold called me asking if I&#8217;d like to try the new version of their developer CDN service which supports GitHub Pages. I&#8217;m pleased he did. This new service provides GitHub custom domains a kloudsec CDN with HTTPS certificate provisioning and various plugins.</p>
+<p>As you can see from <a href="https://kloudsec.com/github-pages/">kloudsec.com/github-pages</a>. It&#8217;s a simple 3 step process. If you&#8217;ve already setup your GitHub pages then you&#8217;ll have done one step already. After registering with Kloudsec and setting up GitHub pages in your repository you&#8217;ll need to change your DNS settings.  This only requires adding 2 new records (and A and a TXT for verification of ownership), plus you&#8217;ll want to remove any CNAME you may have previously created for GitHub pages set up.</p>
+<p>It all goes very smoothly. The website dashboard is clear and you get progress emails. You&#8217;ll obviously need to wait an unknown time for DNS propagation but otherwise it&#8217;s a simple few click and edits before your GitHub pages are served as HTTPS. You can also turn on a redirect from HTTP to HTTPS as well.</p>
+<p>I hit a few rough edges which is not surprising given the Beta statement, but nothing I couldn&#8217;t easily resolve. The email and dashboard make it all pretty clear. I&#8217;m sure the process will be made even smoother.</p>
+<p>In summary, for zero cost except a few minutes work you get a CDN with North American, Europe and Asian access, speed optimisations, HTTPS serving with HTTPS certification and, automatic backup serving of your pages, anti hack features and a clear dashboard of performance. Other paid plugins are/ will be available and I sure the simple one-click install will make them really attractive. You can also download your certificate should you want to use with alternative hosting arrangements.</p>
+<p>The Kloudsec service is not just for GitHub pages but works with <a href="https://kloudsec.com/#/dashboard/website/new">any domain</a>.</p>
+<p>Highly recommended..</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2016/03/free-and-easy-https-certificates-with-cdn/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>CKEditor  Accessibility Checker for content authors</title>
+		<link>/openingaccessibility/2015/05/ckeditor-accessibility-checker-for-content-authors/</link>
+		<comments>/openingaccessibility/2015/05/ckeditor-accessibility-checker-for-content-authors/#comments</comments>
+		<pubDate>Thu, 28 May 2015 13:28:56 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[a11y]]></category>
+		<category><![CDATA[opensource]]></category>
+		<category><![CDATA[web]]></category>
+		<category><![CDATA[CMS]]></category>
+		<category><![CDATA[drupal]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=551</guid>
+		<description><![CDATA[Here&#8217;s a mini review after a quick play with a preview of the new CKEditor Accessibility Checker plugin for content creators. The plugin is provided by CKSource who lead the development of the open source CKEditor and provide additional commercial grade &#8230; <a href="/openingaccessibility/2015/05/ckeditor-accessibility-checker-for-content-authors/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Here&#8217;s a mini review after a quick play with a preview of the new <a href="http://cksource.com/ckeditor/services#accessibility-checker">CKEditor Accessibility Checker</a> plugin for content creators. The plugin is provided by CKSource who lead the development of the open source <a href="http://ckeditor.com/">CKEditor</a> and provide additional commercial grade services.</p>
+<h1>WYSIWYG JavaScript editors</h1>
+<p>If your memory is as long as mine you will recall when WYSIWYG javascript editors first appeared back in the days when we spoke excitedly of DHTML (D = Dynamic = scripted). Designed for use in web programs such as Content Management Systems (CMSs, eg Drupal) these editors replace a basic HTML &lt;textarea&gt; with a rich editing experience somewhat similar to using a word processor, including toolbars. They hide the complexities of creating markup by automatically inserting tags into  generated HTML which is then persisted in the CMS and displayed as part of viewed webpages.</p>
+<p>Two early editors emerged as leaders, at least when I last looked over 5 years ago; CKEditor and <a href="http://www.tinymce.com/">TinyMCE</a>. Both are still going strong and now have many solid features. While these editors provide a familiar experience when creating rich content, there was a problem. Accessibility. Or rather there were 2 accessibility problems.</p>
+<h1>Accessibility woes</h1>
+<p>Firstly, the toolbars were initially implemented as bit images and provided no keyboard access. I&#8217;m pleased to say that has now been fixed and in CKEditor for example you hit Alt+F10 to get focus into the toolbars. There are other <a href="http://docs.ckeditor.com/#!/guide/dev_a11y">accessibility features</a> including keyboard shortcuts and even an Accessibility Help screen accessed via Alt+0</p>
+<p>The 2nd accessibility issues is harder to solve. It&#8217;s the accessibility of the content created by authors using the editor. While the CMS developers like Drupal may make every effort to ensure the end user experience is fully accessible, they cannot fully control user generated content. As the editor manages which tags are added it can ensure a certain level of accessibility including WAI ARIA but authors can still make common accessibility errors, For example it&#8217;s easy to create a bad structure by skipping heading levels. Or the perennial chestnut forgetting to add an alt attribute to important pictures.</p>
+<h1>CKEditor Accessibility Checker</h1>
+<p>One solution to the problem of catching author errors is to provide a tool that authors can use to check their content before they submit it. This is the approach taken in the CKEditor Accessibility Checker plugin. While there are several HTML validation tools and services that could be used the quail checker</p>
+<p>To try the Accessibility Checker I first played with the <a href="http://cksource.com/ckeditor/services#accessibility-checker">comprehensive sample</a> and then knocked up a little test. The sample provide some Wikipedia style content with 7 errors flagged by the <a href="http://quailjs.org/">Quail accessibility checker</a> used for validating the markup.</p>
+<div id="attachment_553" style="width: 990px" class="wp-caption aligncenter"><a href="/openingaccessibility/wp-content/uploads/2015/05/a11yChecker.png"><img class="wp-image-553 size-full" src="/openingaccessibility/wp-content/uploads/2015/05/a11yChecker.png" alt="" width="980" height="620" srcset="/openingaccessibility/wp-content/uploads/2015/05/a11yChecker.png 980w, /openingaccessibility/wp-content/uploads/2015/05/a11yChecker-300x190.png 300w" sizes="(max-width: 980px) 100vw, 980px" /></a><p class="wp-caption-text">CKEditor Accessibility Checker screen shot</p></div>
+<p>As can be seen, a dialog popup provides the user interface with button for Next and Prev error, an explanation of the issue which is also highlighted in the content. A triangle on one edge of the dialog also acts as a pointer to the problem.  All-in-all this is a good interactive experience for navigating and fixing issues. In addition, if the editor content is clicked to make a change the dialog shrinks down out of the way &#8211; a nice touch. Quick fixes are provided as extra javascript snippets in the sample code and make for an easy user experience. A complication here is that authors using CKEditor are intentionally insulated from the raw markup details so errors have to make sense with minimal reference to techy details and standards. I think a reasonable job has been done though some understanding of the underlying markup is required.</p>
+<p>In order to get an experience of the effort involved in using the Editor and Accessibility Checker I created a simple webpage with some dodgey initial content for the editor. This shows how painless it is. In addition to the CKEditor initialisation and textarea  element replacement code, it is only required to include jQuery and declare use of the Accessibility Checker plug in.</p><pre class="crayon-plain-tag">&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;CKEditor with a11yChecker&lt;/title&gt;
+  &lt;meta name="description" content="CKEditor with a11yChecker "&gt;
+  &lt;meta name="author" content="Steve Lee"&gt;
+  &lt;script src="js/ckeditor/ckeditor.js"&gt;&lt;/script&gt;
+  &lt;script src="js/jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;main&gt;
+    &lt;form&gt;
+      &lt;textarea name="editor1" id="editor1" rows="10" cols="80"&gt;
+            &lt;h2&gt;H2 Heading&lt;/h2&gt;
+            &lt;h4&gt;H4 naughty as skipped h3&lt;/h4&gt;
+            &lt;p&gt;No alt attribute on this &lt;img src='img/noalt.jpg' /&gt;&lt;/p&gt;
+            &lt;table&gt;&lt;tr&gt;&lt;td&gt;whoops no th&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+            &lt;p&gt;&lt;span style="background-color:darkgray; color:gray"&gt;Can you read this?&lt;/span&gt;&lt;/p&gt;
+        &lt;/textarea&gt;
+        &lt;script&gt;
+          CKEDITOR.replace( 'editor1', 
+                              {extraPlugins: 'a11ychecker'}
+                              );
+        &lt;/script&gt;
+    &lt;/form&gt;
+  &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre><p>Note that the checker makes an XHR call to Quail so the sample had to run from a server, not file:///.  An easy way to do that is with nodejs and hapi configured as a simple static server. I also used the new <a href="https://code.visualstudio.com/">Visual Studio code</a> editor to edit and run it. All in all that&#8217;s a nice easy and portable way to get a nodejs server up and running</p><pre class="crayon-plain-tag">var Hapi = require('hapi');
+
+// Create a server with a host and port
+var server = new Hapi.Server();
+server.connection({ 
+    host: 'localhost', 
+    port: 3000 
+});
+
+// Add a route for a simple static file server
+server.route({
+    method: 'GET',
+    path: '/{param*}',
+    handler: {
+        directory: {
+            path: 'public',
+            index: true
+        }
+    }
+});
+
+server.start();</pre><p>While the first three accessibility errors in my dodgy markup were found the contrast fail was not, even though this is listed in the Quail documentation. I checked with <a href="http://www.paciellogroup.com/resources/wat/">TPG&#8217;s WAT</a> to ensure it was indeed a WCAG AA and AAA fail. I tried adding it as a new CKeditor style but that made no difference. Perhaps Quail does not map the colour names to values? I assume it works with inline styles. I didn&#8217;t spend anymore time investigating this.</p>
+<p>Some errors are no doubt hard to find as the editor contents are one part in a larger page context. If the wider page context is ignored then some structural errors will not be found. The edit page context is likely to be different to the view one.  Also, if the same content is used in several page contexts the structural integrity may vary.</p>
+<h1>Final Thoughts</h1>
+<p>The Accessibility Checker plugin is a good solution for ensuring user supplied content is accessible or otherwise checking in browser edited markup. The UX is good, though I did not check the accessibility of the UX itself. Quail is a good open source accessibility validator, is configurable and supports <a href="http://quailjs.org/#/guidelines">test for both WCAG and Section 508</a>. The Accessibility Checker documentation claims it can be used with others checkers so perhaps it would work with Tenon.io, though that requires a subscription. The Quick fix feature make it even easier for authors to use</p>
+<p>Currently Accessibility Checker is a commercial offering from CKSource but they said they plan to make it open source under GPL, like CKEditor itself.  I see there is a Drupal plugin for using CKEditor so no doubt the Accessibility checker could be added as well, making Drupal even more accessible.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2015/05/ckeditor-accessibility-checker-for-content-authors/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>On Converting a VM from VMWare to VIrtualBox</title>
+		<link>/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/</link>
+		<comments>/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comments</comments>
+		<pubDate>Tue, 29 Jul 2014 12:34:07 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[opensource]]></category>
+		<category><![CDATA[Win8]]></category>
+		<category><![CDATA[Windows]]></category>
+		<category><![CDATA[Virtualisation]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=419</guid>
+		<description><![CDATA[In short, don&#8217;t! It&#8217;s way too much hassle. It&#8217;s so much easier to create a new identical VM in VirtualBox and set it to use the same virtual disk file (.vmdk). I  expect this applies when moving VMs in the &#8230; <a href="/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>In short, don&#8217;t! It&#8217;s way too much hassle.</p>
+<p>It&#8217;s so much easier to create a new identical VM in VirtualBox and set it to use the same virtual disk file (.vmdk). I  expect this applies when moving VMs in the opposite direction too.</p>
+<p>Hopefully this note will save others a lot of wasted time discovering this after following various dead ends when googling for the answer. The bottom line is that while it should be possible to export from VMWare to the standard OVF format and import into VirtualBox, differences in interpretation of the format between the two make it difficult if not impossible (I gave up).</p>
+<p>I&#8217;ve been using the VMWare Player for creating and managing my VMs on a Windows host for some time after my business partner experienced trashed VMs with our then preferred VirtualBox. However Since using windows 8.1 i found the mouse was offset when using an external monitor with my laptop, something which quickly made it unusable. Otherwise, to be fair, VMWare Player is fast and trouble free.</p>
+<p>So I decided to switch back to VirtualBox and the wisdom on the web is to export and import via OVF using VMWare&#8217;s OVFTool.</p>
+<p>1st problem, I had used VMWare Player&#8217;s default option to split the virtual disk file up. This actually make little sense if you have a file system that supports large files, and probably negatively affects performance. This can be resolved using VMWare&#8217;s vmware-vdiskmanager utility. Except this is now only available in the full VMWare Workstation. There is a trial version but guess what, it can&#8217;t be installed along side VMWarePlayer. So I had to installed and use it on another PC (and no, I didn&#8217;t it on a VM <img src="https://s.w.org/images/core/emoji/11/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /> ).</p>
+<p>Exporting using OVTool takes ages and then the &#8220;Import Appliance&#8221; operation fails. The first problem is a disagreement on the SCSI disk driver. VirtualBox treats the SAS as a separate type to SCSI, whereas VMWare makes it a subtype.. Even if you comment the SCSI and disk sections out of the .ofv file before import, another error occurs with checking the hash of the virtual disk in the .mf file. I suspect &#8220;Import Appliance&#8221; should only be used with  &#8220;Export Appliance&#8221; to move VirtuaBox VMs between hosts.</p>
+<p>So to summarise, the easiest solution for transferring a VM to VirtualBox to is to create a new VM in VirtuaBox, but without a disk. Make it as close as possible to the original VMWare VM. Then add a SAS driver and attach the existing .vdmk virtual disk (or a copy of it).  You&#8217;ll need to install the VirtualBox support drivers if it&#8217;s a Windows VM.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/feed/</wfw:commentRss>
+		<slash:comments>14</slash:comments>
+		</item>
+		<item>
+		<title>User experiences for low digital literacy and cognitive disabilities with Firefox</title>
+		<link>/openingaccessibility/2014/02/user-experiences-for-low-digital-literacy-and-cognitive-disabilities/</link>
+		<comments>/openingaccessibility/2014/02/user-experiences-for-low-digital-literacy-and-cognitive-disabilities/#respond</comments>
+		<pubDate>Tue, 25 Feb 2014 12:04:14 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[opensource]]></category>
+		<category><![CDATA[FirefoxOS]]></category>
+		<category><![CDATA[Low Digital Literacy]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=323</guid>
+		<description><![CDATA[[Update 2014-02-15] I&#8217;ve just discovered Mozilla X-Tag that allows extension elements to be created much like XBL. It&#8217;s a library rather than native browser implementation (&#8217;till W3C Web Components land) and I&#8217;m not sure if it allows nesting and inheritance which I &#8230; <a href="/openingaccessibility/2014/02/user-experiences-for-low-digital-literacy-and-cognitive-disabilities/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p><strong>[Update 2014-02-15] I&#8217;ve just discovered <a href="http://x-tags.org/">Mozilla X-Tag</a> that allows extension elements to be created much like XBL. It&#8217;s a library rather than native browser implementation (&#8217;till W3C <a href="https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/custom/index.html">Web Components</a> land) and I&#8217;m not sure if it allows nesting and inheritance which I used, but it&#8217;s a great start.</strong></p>
+<p>Back in 2007 I worked with University of Sheffield&#8217;s <a href="http://www.shef.ac.uk/scharr/sections/hsr/rrg/welcome">ScHARR RAT group</a> to create a prototype framework providing simple non threatening access to media and communications for people living with dementia. The <a href="http://maavis.fullmeasure.co.uk/">Maavis </a>design bucked the trend in full featured user experience by using a touch monitor, big buttons with text and images along with a consistent navigation model.</p>
+<p>Maavis provides access to photos, videos, music, web pages, programs and video calls , but avoids appearing to be a complicated computer. It proved very successful with the target audience, who welcomed it and enjoyed enhance communication experiences with others. We also found clear applications opportunities and interest for people with learning difficulties and other groups with low digital literacy.</p>
+<table cellpadding="0">
+<tbody>
+<tr>
+<td>
+<div>
+<p><a href="http://maavis.fullmeasure.co.uk/home/top.png?attredirects=0"><img alt="" src="http://maavis.fullmeasure.co.uk/_/rsrc/1287169751118/home/topTN.png" border="0" /></a></p>
+<div><a href="http://maavis.fullmeasure.co.uk/home/slideshow.png?attredirects=0"><img alt="" src="http://maavis.fullmeasure.co.uk/_/rsrc/1287169678999/home/slideshowTN.png" border="0" /></a></div>
+</div>
+</td>
+<td>
+<div><a href="http://maavis.fullmeasure.co.uk/home/choosephoto.png?attredirects=0"><img alt="" src="http://maavis.fullmeasure.co.uk/_/rsrc/1287169697531/home/choosephotoTN.png" border="0" /></a></div>
+<div><a href="http://maavis.fullmeasure.co.uk/home/info.png?attredirects=0"><img alt="" src="http://maavis.fullmeasure.co.uk/_/rsrc/1287169806018/home/infoTN.png" border="0" /></a></div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Since then of course, simpler touch enabled, button-based access has become the norm on phones and tablets and this is extending to touch enabled laptops with Windows 8, Ubuntu Linux and perhaps, even Android. The smaller friendly form factors of tablets coupled with apps that have simple user experiences have proved very effective with people living with dementia and others with low digital literacy. See for example the work of charity <a href="http://www.aliveactivities.org/">Alive!</a> in using iPads improving the quality of life of older people in care.</p>
+<p>However, there is in general apps a considerable complexity in interaction and cognitive load for the user groups Maavis is aimed at. Especially if they are to be use unassisted. Beyond the launcher home screens the experience is often complex, plus there is much inconsistency and lack of clear affordances showing how to interact. The range of gestures that are used may be good for proficient users but can be daunting to many. Thus there is still a clear need for something like Maavis.</p>
+<h2>What&#8217;s next?</h2>
+<p>It&#8217;s clear to OpenDirective that there is wide demand for products and services based on the Maavis concepts and in a number of market segments. In addition to the applications mentioned above, use in the third world is opening up with increased mobile device ownership infrastructure coupled with lack of historic experience with western tech. However,  despite tentative development efforts using HTML technology, further collaboration with ScHARR and funding application to Technology Strategy Board , OpenDirective have not yet shipped a product.</p>
+<p>I believe now is the time to play to our strengths which lie more in the &#8216;softer&#8217; tech skills of community and collaboration. Accordingly, in the newly launched Properity4All EC project OpenDirective is working on developing frameworks for low digital literacy and &#8220;stepping stone&#8221; applications that provide a bridge to stronger technical literacy. We will also be using our Maavis based product work (codenamed &#8216;Brian&#8217;) to evaluate the collaborative technology and tools developed in Prosperity4All. This work also builds on our participation in the related Cloud4All EC project where we have integrate Maavis with the automatic accessibility personalisation infrastructure being developed.</p>
+<p>These are exciting times for technological developments in support of those with low digital literacy and cognitive disabilities. Awareness of and commitment to support for living well with dementia  is growing across the board in the West as the population ages. That includes the recognition of the need for improved access to technology to be use as part of the proposed telecare solutions. In addition web accessibility has mature through the efforts many dedicated folks. Open Development and agile are also well embedded in commercial software developments. An  exciting recent development which specifically targets this area is the W3C <a href="http://www.w3.org/WAI/PF/cognitive-a11y-tf/">Cognitive and Learning Disabilities Accessibility Task Force</a> led by Lisa Seeman. Thus we now have a excellent opportunities for establishing good practices though community and frameworks.</p>
+<h2>From Mozilla Firefox XUL to HTML5</h2>
+<p>The <a href="http://maavis.fullmeasure.co.uk/">original Maavis</a> was developed as a Firefox extension, using the Mozilla XUL technology. This proved reasonable at the time, though as always there were hidden gotchas to be dealt with. The main reasons for choosing XUL were:</p>
+<ul>
+<li>Ability to run full screen in kiosk mode and appear to function as a windows program</li>
+<li>The firmly open collaborative stance of Mozilla and their dedication to accessibility</li>
+<li>Great community, especially support and access to the devs.</li>
+<li>Cross platform technology leaving few areas to be handled such as TextToSpeech</li>
+<li>Interesting HTML like tech with  XBL for custom tags and XPCOM for extensions</li>
+<li>JavaScript extensions such as code modules and more recent language version.</li>
+<li>Excellent tooling including debuggers and first class MDN docs</li>
+<li>Open source &#8211; goes without saying  but allows custom builds of Firefox as a very last resort</li>
+</ul>
+<p>Now however, times have moved on and the HTML5 etc technologies have matured rapidly, so much so that nearly all of those reasons apply equally to HTML technologies. New core features and APIs mean a simpler technical solution and frameworks add more value (at the risk of bloat and increased load times). Further, the VERY large number of people familiar with HTML removes one barrier to attracting developers. Plus HTML offers a fairly low skills entry barrier. Accordingly we&#8217;ve be working on using HTML for Brian.</p>
+<p>During the original development I hit 2 real pain points; crating a resizable grid layout of buttons and really simple video conferencing. I believe both these are now easily supported in HTML. The resizable &#8220;true grid&#8221; layout in particular was huge amount of work, requiring numerous hacks and work-arounds. This was well before responsive design was a twinkle in Ethan Marcotte&#8217;s eye but was a firm requirement. The solution I came up with used custom tags through XBL and I&#8217;m very pleased with the clean declarative solution to defining screens of buttons. However, XBL never &#8216;took&#8217; in HTML and while there are useable frameworks I&#8217;m not convinced they are the way to go. Now the <a href="http://dev.w3.org/csswg/css-grid/">CSS grid layout</a> looks like the perfect solution for layout.</p>
+<p>For video conferencing we wanted a really simple and uncluttered UX and in-fact Apple FaceTime which came out later was pretty much what we after. However, after trying the few  suitable video call apps we settled on trying to automate Skype. This was a nightmare. The APIs (at least those freely usable in an OpenSource project) only let you make or receive a call through the Skype programme, with all its horrid UI clutter and noise. Plus API bindings were severely limited. In the end I used a Python server, launched by Maavis which made the calls and also tried to control the Skype UI through synthesised key/mouse events. Naturally this is very fragile and it broke every Skype updated. I lost a lot of hair over this single feature which is easily the most popular with users. But now we have <a href="http://www.webrtc.org/">WebRTC</a> supported in three browsers (oh and Microsoft&#8217;s variant in IE) that allows more control and peer to peer calls. I am hopeful.</p>
+<h2>FirefoxOS</h2>
+<p>Firefox still looks very interesting as a platform in this space, but largely for different reasons to before. <a href="http://www.mozilla.org/en-US/firefox/partners">FirefoxOS</a><span style="text-decoration: underline;">&#8216;s</span> native support of HTML, coupled with the Marketplace app store and a truly open source solution are all strong pulls. The low cost of the <a href="http://reviews.cnet.com/8301-13970_7-57619338-78/with-firefox-os-mozilla-begins-the-$25-smartphone-push/">FirefoxOS mobile and tablet devices</a> coming out from Mozilla partners simply add to the attraction, especially if consider supporting the Global South. Mozilla are looking at africa later this year.</p>
+<p>We&#8217;ve previously looked at Windows Modern HTML apps, but while it has wide spread and is technically very good, it&#8217;s utterly commercial solution with there&#8217;s a awful lot of proprietary stack. Plus devices are currently all high end and so expensive.</p>
+<p>Time to explore FirefoxOS, especially now tablet support is being worked on.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2014/02/user-experiences-for-low-digital-literacy-and-cognitive-disabilities/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Sending emails with PHP on cheap hosting</title>
+		<link>/openingaccessibility/2013/12/sending-emails-with-php-on-cheap-hosting/</link>
+		<comments>/openingaccessibility/2013/12/sending-emails-with-php-on-cheap-hosting/#respond</comments>
+		<pubDate>Mon, 09 Dec 2013 10:56:35 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[opensource]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[web]]></category>
+		<category><![CDATA[WordPress]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=318</guid>
+		<description><![CDATA[Many cheap or free share hosting services block the PHP mail() function so it silently does nothing. For example, I just added a contact form to a small WordPress based web site for a friend but it didn&#8217;t work as &#8230; <a href="/openingaccessibility/2013/12/sending-emails-with-php-on-cheap-hosting/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Many cheap or free share hosting services block the PHP mail() function so it silently does nothing. For example, I just added a contact form to a small <a href="http://wordpress.org/">WordPress</a> based <a href="http://davidburchfieldpoetry.com/">web site</a> for a friend but it didn&#8217;t work as the web hoster, xtreemhost, block it (or everything gets heavily spam filtered, which amounts to the same thing).</p>
+<p>The solution is to use a separate SMTP mail server and this is actually quite simple using one of the most popular PHP mail solutions <a href="https://github.com/PHPMailer/PHPMailer">PHPMailer</a> and a Gmail or Google Apps email account. Most SMTP servers will block such so called &#8220;relaying&#8221; when sending from different domain to the mail server. However, if you have a GMail account you can use the Google SMTP server authenticated as that user.</p>
+<p>In my case, I just added a new account to our family domain running on GApps and used that. I added the minimum PHPMailer files required (<a id="ace81e501931d8763b49f2410cf3094d-2f6831a81eeafba4b38f3bb4959db412d948c546" title="class.phpmailer.php" href="https://github.com/PHPMailer/PHPMailer/blob/master/class.phpmailer.php">class.phpmailer.php</a>, <a id="ac5c95a7c256b389656048bd46dc2985-6366724a761f25e8b601b45f39460fc54707c3bc" title="class.smtp.php" href="https://github.com/PHPMailer/PHPMailer/blob/master/class.smtp.php">class.smtp.php</a> and <a id="5114544afadc9af298ba54a73467bf22-be0dad2537abf6688545a56f77e84b89ea0ca904" title="PHPMailerAutoload.php" href="https://github.com/PHPMailer/PHPMailer/blob/master/PHPMailerAutoload.php">PHPMailerAutoload.php</a>) along with a child theme with my new mail() function in the functions.php file. Well, actually, I found the PHP override/replace functions for built-ins didn&#8217;t work so I had to edit the plugin code to use a new mail function explicitly, rather than just redefining it in the child theme. Not ideal, but an acceptable maintenance weak point.</p>
+<p>The PHPMailer examples include one for <a href="https://github.com/PHPMailer/PHPMailer/blob/master/examples/gmail.phps">using GMail SMTP</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2013/12/sending-emails-with-php-on-cheap-hosting/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>What programming experience should a good programmer have?</title>
+		<link>/openingaccessibility/2013/10/what-programming-experience-should-a-good-programmer-have/</link>
+		<comments>/openingaccessibility/2013/10/what-programming-experience-should-a-good-programmer-have/#respond</comments>
+		<pubDate>Fri, 04 Oct 2013 16:35:28 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[opensource]]></category>
+		<category><![CDATA[web a11y]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=268</guid>
+		<description><![CDATA[I was recently asked Which languages [and tools] do you consider a competent/experienced and useful programmer would have ability to programme in these days. Especially for personal computers, tablets and/or smart phones. That&#8217;s an interesting question and I gave it &#8230; <a href="/openingaccessibility/2013/10/what-programming-experience-should-a-good-programmer-have/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I was recently asked</p>
+<blockquote>
+<div>Which languages [and tools] do you consider a competent/experienced and useful programmer would have ability to programme in these days. Especially for personal computers, tablets and/or smart phones.</div>
+</blockquote>
+<p>That&#8217;s an interesting question and I gave it some thought, before replying. It&#8217;s not just languages that are important, though they do influence how programmers think about solving a problem. The architecture they are used in is also very  important eg event driven, single thread or threaded. Plus, as the question indicates, so are tool chain and workflow experience. Team development experience and deep and prolonged use of at least one language solving real design issues are the hallmarks of a good developer.</p>
+<p>I think the specific problem domain is less important but some do require specific skills &#8211; eg Real time telemetries. However certain experiences are all very desirable eg UI,  various client-server splits and database. Some platforms require specific languages, eg iOS needs Objective-C but good skills are transferable so a decent developer can take a running start, especially if experience in C or Java.</p>
+<p>Another requirement is knowledge of the platform APIs or frameworks which can be very large and take a time to become well experienced in. Again a good developer will soon learn his way around as needed. Indeed someone said</p>
+<blockquote><p>The key to being a good developer is to be able to find your answer as quickly as possible, without learning anything else.</p></blockquote>
+<p>That said, a good, solid grounding is irreplaceable.</p>
+<p>So here&#8217;s an attempt at listing some key languages, tools and skills in demand today:</p>
+<ul>
+<li>Without a doubt web technologies and especially the triad of HTML(5), CSS and Javascript. This covers web apps, mobile apps, and now server too (node).</li>
+<li>Not a language, but an appreciation of the REST architectural style is vital.</li>
+<li>Modular, object-oriented, and block structured compiled languages like Java, C++ (C at a pinch). This covers native mobile apps, Desktop OS systems programming and also server side</li>
+<li>Python is also an excellent alternative to Java / C++ even though is not strictly compiled.</li>
+</ul>
+<p>Closely following these core competencies are:</p>
+<ul>
+<li>Server side languages for web app such as PHP, Ruby, Java, Javascript (node) or .NET/C# (or perhaps Python) as web apps almost always require some server-side support.</li>
+<li>SQL, though noSQL use is also valuable</li>
+<li>Shell scripting experience with bash or cmd can be very useful, especially for build but deep knowledge is often more a system administrators bag</li>
+</ul>
+<p>Of course I think every programmer would benefit from a good understanding of Assembler <img src="https://s.w.org/images/core/emoji/11/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p>In terms of generic tool chains supporting team work</p>
+<ul>
+<li>Version control, especially distributed like git</li>
+<li>Issue/bug tracker</li>
+<li>A good IDE or equivalent tools eg Eclipse, VisualStudio, browser debug tools</li>
+<li>Build tools</li>
+</ul>
+<p>These are closely followed by the equally important</p>
+<ul>
+<li>Unit testing tools</li>
+<li>Continuous integration tools</li>
+<li>Accessibility test tools and assistive technology</li>
+</ul>
+<p>Finally, and perhaps most important &#8211; any solid opensource community experience is a major plus.</p>
+<p>So what do you think? Have I missed anything critical? I&#8217;m not interested in &#8216;me too&#8217; language nominations or raw DOM verses jQuery flames. I&#8217;m after what core experience a &#8216;competent/experienced and useful programmer&#8217; could be expected to have?</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2013/10/what-programming-experience-should-a-good-programmer-have/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>SS12 EU Student assistive technology competition a success at AAATE conference</title>
+		<link>/openingaccessibility/2013/09/ss12-eu-student-assistive-technology-competition-a-success-at-aaate-conference/</link>
+		<comments>/openingaccessibility/2013/09/ss12-eu-student-assistive-technology-competition-a-success-at-aaate-conference/#respond</comments>
+		<pubDate>Sat, 21 Sep 2013 12:42:33 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[Assistve Technology]]></category>
+		<category><![CDATA[opensource]]></category>
+		<category><![CDATA[ss12eu]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=242</guid>
+		<description><![CDATA[[Updated 23/09/2013 &#8211; added posters, code and photograph] The second SS12 EU assistive technology (AT) competition held as part of the  AAATE 2013 conference culminated in the announcement of the winning student team as part of the closing session. As with the previous SS12 EU during ICCHP, &#8230; <a href="/openingaccessibility/2013/09/ss12-eu-student-assistive-technology-competition-a-success-at-aaate-conference/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p><strong>[Updated 23/09/2013 &#8211; added posters, code and photograph]</strong></p>
+<p>The second <a href="http://ss12.info/Europe/">SS12 EU</a> assistive technology (AT) competition held as part of the  <a href="http://www.aaate2013.eu/">AAATE 2013</a> conference culminated in the announcement of the winning student team as part of the closing session. As with the previous SS12 EU during <a href="http://www.icchp.org/">ICCHP</a>, and indeed previous events run in the United States of America, the students presented interesting and well executed assistive technology ideas. The winners hard work was rewarded with a trophy, certificates and a Nexus 7 tablet for each team member.</p>
+<p style="text-align: center;"><a href="/openingaccessibility/wp-content/uploads/2013/09/SS12.jpg"><img class="size-full wp-image-247  aligncenter" alt="SS12" src="/openingaccessibility/wp-content/uploads/2013/09/SS12.jpg" width="150" height="81" /></a></p>
+<p>The five teams of 2 or 3 students each presented the AT projects they had chosen to work on during the last semester (or in one case holiday). They are in no particular order:</p>
+<ul>
+<li><a href="http://www.univ-paris8.fr/">Université Paris 8</a> a smartphone sign language communicator for interactions with hearing people. <a href="/openingaccessibility/wp-content/uploads/2013/09/Poster_Frankreich_AAATE.pdf">Frankreich team poster</a>.</li>
+<li><a href="http://www.muni.cz/">Masaryk University</a> with a email extension for sending sign language video messages. <a href="/openingaccessibility/wp-content/uploads/2013/09/Poster_Masaryk_AAATE.pdf">Masaryk team poster</a>.</li>
+<li><a href="http://www.tuke.sk/tuke/university">Technical University of Košice</a> with a smartphone photographic text to speech device for the visually impared.  <a href="/openingaccessibility/wp-content/uploads/2013/09/Poster_Kosice_2_AAATE.pdf">Kosice team poster</a>. <a href="https://sourceforge.net/projects/lynxsightmobile/">LynxSight code</a>.</li>
+<li><a href="http://www.dundee.ac.uk/">University of Dundee</a> &#8211; with a photo sharing system for older people and their relatives. <a href="/openingaccessibility/wp-content/uploads/2013/09/Poster_Dundee_2_AAATE.pdf">Dundee team poster</a>. <a href="https://github.com/Phreakerr/KithandKin">Kith and Kin code.</a></li>
+<li><a href="http://www.jku.at/content">Johannes Kepler University Linz</a> with touch tablet Braille keyboard. <a href="/openingaccessibility/wp-content/uploads/2013/09/Poster_JKU_AAATE.pdf">JKU team poster</a>. <a href="https://github.com/jkuiis/SS12_JKU_2013_BrailleKeyboard">Braille Keyboard code.</a></li>
+</ul>
+<p><strong>And the winner is &#8230;&#8230; Johannes Kepler University </strong>with their Touch Braille keyboard.</p>
+<div id="attachment_253" style="width: 310px" class="wp-caption aligncenter"><a href="/openingaccessibility/wp-content/uploads/2013/09/SS122013.jpg"><img class="size-medium wp-image-253" alt="The SS12 teams and judges (Sean is behind camera)" src="/openingaccessibility/wp-content/uploads/2013/09/SS122013-300x225.jpg" width="300" height="225" srcset="/openingaccessibility/wp-content/uploads/2013/09/SS122013-300x225.jpg 300w, /openingaccessibility/wp-content/uploads/2013/09/SS122013.jpg 1024w" sizes="(max-width: 300px) 100vw, 300px" /></a><p class="wp-caption-text">The SS12 teams and judges (Sean is behind camera)</p></div>
+<p>The award presentation was part of a week of activity designed to enable the students to learn as much as possible about Assitive Technology research, products and services. These activities include introductions to a wide range of topics from the SS12 EU team as well as access to conference all sessions. <a href="http://www.linkedin.com/profile/view?id=18438577">Stanley Lam</a> described the history and aims of <a href="http://www.projectpossibility.org/">Project:Possibility</a>, the originators of SS12.  <a href="http://www.linkedin.com/profile/view?id=82677648">Sean Goggin</a>, chair of Project:Possibility, introduced the seminal <a href="http://www.csun.edu/cod/conference/">CSUN conference</a>, from the perspective of a member of the conference organising team.  <a href="http://www.linkedin.com/profile/view?id=113095174">Neel Shearer</a> discussed working in a commercial environment.  I gave a high level introduction to open development and it&#8217;s application to AT.</p>
+<p style="text-align: center;"><a href="/openingaccessibility/wp-content/uploads/2013/09/ProjPoss.jpg"><img class="aligncenter  wp-image-246" alt="Project:Possibility" src="/openingaccessibility/wp-content/uploads/2013/09/ProjPoss.jpg" width="266" height="130" /></a></p>
+<p>Critically, the students were given registration to the AAATE conference, one of the premier conferences for those working the field.  They also placed posters describing their projects. Of course, the social activities in a selection of Vilamoura (Portugese Algarve) restaurants and bars were an important highlight for all. Naturally, the students and others involved in SS12 had T-shirts to clearly identify them as a group. Ensuring all this activity ran smoothly, <a href="http://www.linkedin.com/profile/view?id=3844402">Andrea Petz</a> was kept fully occupied.</p>
+<div id="attachment_248" style="width: 220px" class="wp-caption aligncenter"><a href="/openingaccessibility/wp-content/uploads/2013/09/AAATE.jpg"><img class=" wp-image-248" alt="AAATE" src="/openingaccessibility/wp-content/uploads/2013/09/AAATE-300x286.jpg" width="210" height="200" srcset="/openingaccessibility/wp-content/uploads/2013/09/AAATE-300x286.jpg 300w, /openingaccessibility/wp-content/uploads/2013/09/AAATE.jpg 494w" sizes="(max-width: 210px) 100vw, 210px" /></a><p class="wp-caption-text">AAATE logo</p></div>
+<p>The AAATE conference forms an important part of <a href="http://www.aaate.net/">AAATE</a>&#8216;s mission to advance AT quality and uptake. This activity meshes well with that of Project:Possibility, namely to introduce computer science students to the worlds of AT and accessibility. In the EU the SS12 organisers, led by <a href="http://www.linkedin.com/profile/view?id=28345939">Klaus Meissenburger</a>, are also keen to embed AT modules into more university computing courses.</p>
+<p>Finally we raise a big &#8220;thank you&#8221; to our <a href="http://ss12.info/Europe/">sponsors</a> for enabling us to run such a great event this year.</p>
+<p>We&#8217;re looking forward to even more student teams and increased impact on AT awareness next year at ICCHP 2014. we hope you can join us. If you would like to enter a student team next year then keep an eye on the <a href="http://www.aaate.net/ProjectPossibility">AAATE Project:Possibility page</a> and the <a href="http://www.icchp.org/call/projectpossibility">ICCHP SS12 page</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2013/09/ss12-eu-student-assistive-technology-competition-a-success-at-aaate-conference/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>HTML apps and the 50 year software engineering legecy</title>
+		<link>/openingaccessibility/2013/08/html-apps-and-the-50-year-software-engineering-legecy/</link>
+		<comments>/openingaccessibility/2013/08/html-apps-and-the-50-year-software-engineering-legecy/#respond</comments>
+		<pubDate>Thu, 22 Aug 2013 15:38:02 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[HTML]]></category>
+		<category><![CDATA[opensource]]></category>
+		<category><![CDATA[web]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=216</guid>
+		<description><![CDATA[I no longer call myself a &#8216;software engineer&#8216; but I do consider it to be a vital part of my career background. To my mind, engineering provides the rigour and discipline aspects of being a developer, the other parts being &#8230; <a href="/openingaccessibility/2013/08/html-apps-and-the-50-year-software-engineering-legecy/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I no longer call myself a <a href="http://en.wikipedia.org/wiki/Software_engineer">&#8216;software engineer</a>&#8216; but I do consider it to be a vital part of my career background. To my mind, engineering provides the rigour and discipline aspects of being a developer, the other parts being the craftmanship of software and community social interactions with other members of a project/product team.</p>
+<p>To be fair I&#8217;ve been a round a while; from my first early tentative hacks of 6800 assembler listings of a BASIC interpreter, through commercial development of mission critical mobile data systems, to open development of accessibility and HTML apps. Along the way I&#8217;ve picked up a number of  good practices as projects got larger and more complex. Some I rapidly unlearned (eg Waterfall &amp; V models, Yourdon, Jackson), others have stood the test of time (eg modular encapsulation, OOD, unit testing) and new ones have come along (eg Open Development, Agile methods, TDD, Human centred design). These great thing is these all apply regardless of technology used.</p>
+<div id="attachment_220" style="width: 241px" class="wp-caption aligncenter"><a href="/openingaccessibility/wp-content/uploads/2013/08/462px-Detailed_DoD_Technical_Reference_Model.jpg"><img class="size-medium wp-image-220 " alt="My Big App" src="/openingaccessibility/wp-content/uploads/2013/08/462px-Detailed_DoD_Technical_Reference_Model-231x300.jpg" width="231" height="300" srcset="/openingaccessibility/wp-content/uploads/2013/08/462px-Detailed_DoD_Technical_Reference_Model-231x300.jpg 231w, /openingaccessibility/wp-content/uploads/2013/08/462px-Detailed_DoD_Technical_Reference_Model.jpg 462w" sizes="(max-width: 231px) 100vw, 231px" /></a><p class="wp-caption-text">My Big App</p></div>
+<p>So it was interesting to suddenly notice a year or so back that at conferences like the <a href="http://events.jquery.org/2012/uk/">first jQueryUK</a> conference how HTML developers are starting to wrestle with some of the problems already experienced by previous software developers. The issues are arising as we attempt to build apps in HTML technologies, layering javascript heavy designs on top of the declarative basics of HTML and CSS.  The issues are those that occur when you move to development-in-the large. For example, the need for modules, and namespaces, relying on the scaffolding of 3rd party libraries or frameworks, cross platform (browser) support and handling the social aspects of working in teams or open projects.</p>
+<p>I guess it&#8217;s a new generation coming along and many grew up on the cut-n-paste hackiness of the early web. Now the problems have got bigger and more serious so the approach needs to change. To solve this, a number of libraries/frameworks have become the first port of call for developers trying to make life easier on complex HTML apps. Some of  these plug serious gaps in the language such as the lack of modules required for design in-the-large (I&#8217;ll deliberately not mention class based OOD here). Others provide abstraction and encapsulation of the messiness of the web, but these often work in almost purely programmatic ways, ignoring and replacing the strengths and principles of declarative HTML.</p>
+<p>Some large monolithic libraries pull in masses of code even if not needed, this having a bad affect on load performance sensitive usages, such as mobile. For example jQuery (and jQueryMobile) undoubtedly make a developer&#8217;s life simpler in many ways, but are monolithic. Now, however the original purpose it served, namely using CSS declarative syntax for DOM element selection, is now available natively in browsers with <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element.querySelectorAll">element.querySelectorAll()</a>. Plus native can be faster at run time and without the loading overhead. Another example is how the javascript code for forms handling, especially validation, is often not necessary due to HTML5 improvements.</p>
+<p>John Allsopp neatly picks up on this topic in his recent post recent post &#8216;<a href="http://www.sitepoint.com/is-html-relevant-in-the-age-of-web-apps/">Is HTML Relevant in the Age of Web Apps?</a>&#8216;, neatly highlighting the impact of sucking in all this code complexity.</p>
+<blockquote><p>As the systems we build increasingly replace traditional enterprise, client server, desktop and mobile apps (yes it <em>will</em> happen), this luxury of building disposable code, with no real concern for the tower of complexity our code rests upon, will pass.</p>
+<p>It’s time for us to grow up, and start learning from the more than 50 year legacy of software engineering.</p>
+<p>Because, as with all history, if we don’t learn from it, we are doomed to repeat it</p></blockquote>
+<p>So how can best learn the required good techniques? &#8220;<a href="http://java.dzone.com/articles/4-things-i-wish-i-would-have">4 Things I Wish I Would Have Known When I Started My Software Development Career</a>&#8221; by John Sonmez, the <a href="http://simpleprogrammer.com/">Simple Programmer</a> outlines 4 mistakes I&#8217;ve made myself in my career (and for some still have a tendency to do).</p>
+<blockquote>
+<ul>
+<li>There is no “right way” in software development</li>
+<li>Reading a book cover-to-cover is not the best way to learn</li>
+<li>Learning particular technologies in-depth is a waste of time</li>
+<li>Always have a side project</li>
+</ul>
+<p><i> </i></p></blockquote>
+<p><span style="line-height: normal;">Actua</span><img class="alignleft" style="font-size: 12px; line-height: 18px;" title="Code Complete 2" alt="CC2e" src="http://cc2e.com/_img/cc2e-cover-small.gif" width="162" height="198" /><span style="line-height: normal;">lly, o</span><span style="line-height: normal;">ne book that it probably </span><strong style="line-height: normal;">is</strong><span style="line-height: normal;"> worth reading cover-to-cover is Steve McConnell&#8217;s labour of love &#8216;</span><a style="line-height: normal;" href="http://cc2e.com/Default.aspx">Co</a><a style="line-height: normal;" href="http://cc2e.com/Default.aspx">de Complete: A Practical Handbook of Software Construction</a>&#8216;<span style="line-height: normal;">. I must admit I&#8217;ve only deep-skim-read it but it&#8217;s full of <a href="http://cc2e.com/Page.aspx?nid=71">perfect gems of software construction</a> mined from the coalface and lovingly presented for your delight. I have a scruffy old copy of the 1st version but Steve has updated it and I expect it&#8217;s even better. Not at all bad for a book that only cost&#8217;s <a href="http://www.amazon.co.uk/gp/product/0735619670/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=1634&amp;creative=6738&amp;creativeASIN=0735619670&amp;linkCode=as2&amp;tag=opendirective-21">£24.48 at Amazon.co.uk </a></span></p>
+<p>&nbsp;</p>
+<p>Use Code Complete for a side project with an open source project that practices community driven open development, and you&#8217;ll soon be on your way to learning from that legacy.</p>
+<p>Engineer on.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2013/08/html-apps-and-the-50-year-software-engineering-legecy/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Screencast of Maavis and Cloud4All integration</title>
+		<link>/openingaccessibility/2013/04/screencast-of-maavis-and-cloud4all-integration/</link>
+		<comments>/openingaccessibility/2013/04/screencast-of-maavis-and-cloud4all-integration/#respond</comments>
+		<pubDate>Tue, 23 Apr 2013 09:33:50 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[a11y]]></category>
+		<category><![CDATA[dementia]]></category>
+		<category><![CDATA[opena11y]]></category>
+		<category><![CDATA[opensource]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=138</guid>
+		<description><![CDATA[I finally put up a short screencast of Maavis in use. This also demonstrates how integration with Cloud4All provides automatic personalisation of settings based on a token that identifies the user. Cloud4All is an EU project that is implementing part &#8230; <a href="/openingaccessibility/2013/04/screencast-of-maavis-and-cloud4all-integration/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I finally put up a short screencast of <a href="http://maavis.fullmeasure.co.uk/">Maavis</a> in use. This also demonstrates how integration with <a href="http://www.cloud4all.info/">Cloud4All</a> provides automatic personalisation of settings based on a token that identifies the user. Cloud4All is an EU project that is implementing part of the <a href="http://gpii.net/">GPII</a> personalisation infrastructure.</p>
+<p><iframe width="640" height="360" src="http://www.youtube.com/embed/F1ATPYSv02Y?feature=oembed" frameborder="0" allowfullscreen></iframe></p>
+<p>To record I used <a href="http://camstudio.org/">CamStudio </a>on Windows and the slight echo seems to be a result of turning on preview of the microphone in Windows and using the CamStudio option of recording from &#8216;speakers&#8217;. This allowed both my voice and Maavis synthetic speech to be mixed and recorded. You get a slight delay in hearing your voice as you record, no doubt due to double latency, but I found I got used to it.</p>
+<p>I also made life a little harder for myself as Maavis and Cloud4All are running in a Virtual Machine (using the VMWare player). Running CamStudio in the same VM killed the response and Maavis took forever to run. So I ran CamStudio in the Host OS and recorded the VM window.</p>
+<p>YouTube thought I was using widescreen, which I was not. This may have been because I had not full screened the VM window so the hight was reduced. However I also have my Windows TaskBar on the left whic halso reduces the widht. Who knows, I don&#8217;t think it has any practical effect.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2013/04/screencast-of-maavis-and-cloud4all-integration/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Developing programs designed for AT users</title>
+		<link>/openingaccessibility/2013/01/developing-programs-for-at-users-and-that-run-on-multiple-platforms/</link>
+		<comments>/openingaccessibility/2013/01/developing-programs-for-at-users-and-that-run-on-multiple-platforms/#respond</comments>
+		<pubDate>Wed, 30 Jan 2013 18:23:22 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[a11y]]></category>
+		<category><![CDATA[opena11y]]></category>
+		<category><![CDATA[opensource]]></category>
+		<category><![CDATA[web]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=68</guid>
+		<description><![CDATA[It can be a challenging enough to develop programs (and apps) that provide a first class user experience for users of Assistive Technology (AT) such as screen readers. There are plenty of examples of programs &#8216;out there&#8217; with varying degrees &#8230; <a href="/openingaccessibility/2013/01/developing-programs-for-at-users-and-that-run-on-multiple-platforms/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>It can be a challenging enough to develop programs (and apps) that provide a first class user experience for users of Assistive Technology (AT) such as screen readers. There are plenty of examples of programs &#8216;out there&#8217; with varying degrees of broken accessibility when used with AT. Certainly enough to demonstrate that good accessibility is not a given and requires effort. So if you want to design specifically for users of AT you can expect a good challenge indeed.</p>
+<p>If you add the requirement to support a range of platforms then the challenge gets even more interesting . There appears to be little information &#8216;out there&#8217; to guide developers in the best approaches and tools available for AT friendly cross platform solutions.  In this post I explore the underlying issues.  In a later post I&#8217;ll present some of the available solutions. While I concentrate on the technical aspects,  I do hope it is obvious that good UX design for AT users is of paramount importance.</p>
+<p>In general there are 2 key aspects of accessibility and programs designed specifically for AT users; the accessibility of the format of  the primary information or documents and the accessibility of the User Interface (UI). Developers want to use a toolkit that enables them to ensure great interaction with both by AT users but are often not sure how to approach it.</p>
+<p>Thoughts about developing such AT targeted programs led Prateek Tandon of <a href="http://projectpossibility.org/">ProjectPossibility</a> to ask us this question:</p>
+<blockquote><p>is there a particularly good language / toolset / framework to build out-of-box working applications that will work on the major desktop platforms with popular screen readers such as NVDA, JAWS, and VoiceOver?</p></blockquote>
+<p>The answer to that is &#8220;it&#8217;s complicated&#8221;, especially when I generalise it to &#8220;will work with AT&#8221;  Each platform, whether desktop or mobile has development tools which will mostly create accessible application UIs, <strong>if</strong> you pay attention to detail and perform proper testing. In addition, there are several tools available for creating cross platform native  solutions,. Many of these are mature opensource projects, including those for C++, Java and Python. In addition HTML apps and widgets are fast becoming a viable alternative, though not without some complications as we&#8217;ll explore below. The requirement for 1st class AT integration adds another dimension of complexity. The ATs on each platform are different (with the notable exception of OS X and iOS, and the Win8 versions). Plus the critical Accessibility APIs that provide the glue between the apps and AT are also different.  These accessibility APIs enable AT users to explore and manipulate the application UI and be made aware of status changes or other events.</p>
+<p>Considering screen readers, for example: on Windows there is NVDA and JAWs using MSAA, UIA and IAccessible2 APIs, on Linux we have Orca using AT/SPI, on OS X and iOS there is VoiceOver and on Android it&#8217;s EyesFree.  This complexity makes it much harder to create apps that work as desired on all platforms, especially if, as a developer, you make life hard for yourself by creating your own custom controls. It&#8217;s so much better to use standard native controls provided by the OS (buttons, lists etc) as they have accessibility baked in. The next preferable choice is to use toolkits with custom controls that have well developed and tested accessibility and AT support. Developing custom controls from scratch requires you to implement <strong>all</strong> the accessibility yourself, not an easy task to get right given the variations and edge cases to be considered.</p>
+<p>As an example of this complexity Java Swing is popular for UI development of Java programmes. However, it has a least one short-coming for AT users, namely the need to perform a fiddly manual install of an extra package for AT access on Windows (Java Access Bridge). Of course an excellent solution to this specific problem would be for the open a11y community to improve the Java Access Bridge so the problem goes away. This would also be of benefit to users of the Windows Screen reader NVDA who want to access OpenOffice. For OpenOffice users, however, another solution is looking feasible as the community are looking at porting IBM&#8217;s work on supporting the <a href="http://www.linuxfoundation.org/collaborate/workgroups/accessibility/iaccessible2">IAccessibile2</a> open standard from Symphony to Apache OpenOffice).</p>
+<p>HTML applications are rapidly becoming popular with developers, and look set to become the preferred technology for creating cost effective, portable and maintainable programs or apps. A key advantage is that the browser becomes a virtual platform that is (at least in theory) the same on any platform using any browser. This requires the standards to be followed carefully by the browser developers. The <a href="http://www.w3.org/">W3C standards</a> are becoming richer and active community input is helping with speed and requirements. Browsers are now multilaterally implementing the standards more accurately and Javascript performance is no longer an issue. Critically, Javascript APIs providing access to platform capabilities are being specified and implemented. Thus full featured HTML applications to match native version are now being created.</p>
+<p>However when we consider <a href="http://www.w3.org/WAI/">HTML app accessibility</a> and integration with AT there is a more complex picture. This is due to the deeper stack of software parts compared with native apps. All the parts have to work together to ensure AT can fully access and present the HTML app&#8217;s UI. The web browser itself must implement the platform Accessibility API and cleanly map HTML accessibility through it to the AT. It does this for both it&#8217;s own chrome and the HTML content being handled. The HTML apps must be carefully developed to use accessibility best practices, especially those that effect AT. In particular good markup must be used and <a href="http://www.w3.org/WAI/intro/aria.php">WAI ARIA</a> adds important extra detail necessary for accessible applications, especially for events and updates.</p>
+<p>Again you can make life easier for yourself by sticking to the HTML defined controls or using HTML frameworks with built-in accessibility. Open frameworks such as jQuery and Dojo have had contributions from <a href="http://paciellogroup.com/">TPG</a>, Mozilla and others who care about accessibility. Other frameworks others like <a href="http://wiki.fluidproject.org/display/fluid/Fluid+accessibility">fluid</a> have had accessibility baked in. In addition, when addressing general platform portability issues, tools like Apache Cordova/PhoneGap and jQueryMobile  provide mature open source solutions with reasonable accessibility.</p>
+<p>The accessibility of touch screen devices is adding more challenges, and also the potential for innovation in UX for AT users. This is being spearheaded by work on mobile devices (though touch is also now becoming a built in option for laptop and desktop devices as the boundaries blur eg keyboard with a tablet or Windows 8).  For example the ways <a href="http://www.digitaltrends.com/mobile/android-and-ios-accessibility-can-help-everybody/">blind users can access touch screens</a> is improving through the integrated provision of solutions like VoiceOver, talkBack, kickBack and others. The solutions for others such as those with physical or cognitive advisabilities are still a way behind. This is fertile ground for research and new solutions.</p>
+<p>We have outlined the issues involved when  creating applications designed to be used via AT and that run on several platforms. In a future post we&#8217;ll explore the options available in more detail, <strong>but I need your input</strong>. If you have any experience of developing programs with AT users in mind pop your thoughts and experience in the comments and I&#8217;ll compile them for the next post.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2013/01/developing-programs-for-at-users-and-that-run-on-multiple-platforms/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

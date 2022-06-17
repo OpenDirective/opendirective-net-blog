@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Low Digital Literacy &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/tag/low-digital-literacy/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>User experiences for low digital literacy and cognitive disabilities with Firefox</title>
+		<link>/openingaccessibility/2014/02/user-experiences-for-low-digital-literacy-and-cognitive-disabilities/</link>
+		<comments>/openingaccessibility/2014/02/user-experiences-for-low-digital-literacy-and-cognitive-disabilities/#respond</comments>
+		<pubDate>Tue, 25 Feb 2014 12:04:14 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[opensource]]></category>
+		<category><![CDATA[FirefoxOS]]></category>
+		<category><![CDATA[Low Digital Literacy]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=323</guid>
+		<description><![CDATA[[Update 2014-02-15] I&#8217;ve just discovered Mozilla X-Tag that allows extension elements to be created much like XBL. It&#8217;s a library rather than native browser implementation (&#8217;till W3C Web Components land) and I&#8217;m not sure if it allows nesting and inheritance which I &#8230; <a href="/openingaccessibility/2014/02/user-experiences-for-low-digital-literacy-and-cognitive-disabilities/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p><strong>[Update 2014-02-15] I&#8217;ve just discovered <a href="http://x-tags.org/">Mozilla X-Tag</a> that allows extension elements to be created much like XBL. It&#8217;s a library rather than native browser implementation (&#8217;till W3C <a href="https://dvcs.w3.org/hg/webcomponents/raw-file/tip/spec/custom/index.html">Web Components</a> land) and I&#8217;m not sure if it allows nesting and inheritance which I used, but it&#8217;s a great start.</strong></p>
+<p>Back in 2007 I worked with University of Sheffield&#8217;s <a href="http://www.shef.ac.uk/scharr/sections/hsr/rrg/welcome">ScHARR RAT group</a> to create a prototype framework providing simple non threatening access to media and communications for people living with dementia. The <a href="http://maavis.fullmeasure.co.uk/">Maavis </a>design bucked the trend in full featured user experience by using a touch monitor, big buttons with text and images along with a consistent navigation model.</p>
+<p>Maavis provides access to photos, videos, music, web pages, programs and video calls , but avoids appearing to be a complicated computer. It proved very successful with the target audience, who welcomed it and enjoyed enhance communication experiences with others. We also found clear applications opportunities and interest for people with learning difficulties and other groups with low digital literacy.</p>
+<table cellpadding="0">
+<tbody>
+<tr>
+<td>
+<div>
+<p><a href="http://maavis.fullmeasure.co.uk/home/top.png?attredirects=0"><img alt="" src="http://maavis.fullmeasure.co.uk/_/rsrc/1287169751118/home/topTN.png" border="0" /></a></p>
+<div><a href="http://maavis.fullmeasure.co.uk/home/slideshow.png?attredirects=0"><img alt="" src="http://maavis.fullmeasure.co.uk/_/rsrc/1287169678999/home/slideshowTN.png" border="0" /></a></div>
+</div>
+</td>
+<td>
+<div><a href="http://maavis.fullmeasure.co.uk/home/choosephoto.png?attredirects=0"><img alt="" src="http://maavis.fullmeasure.co.uk/_/rsrc/1287169697531/home/choosephotoTN.png" border="0" /></a></div>
+<div><a href="http://maavis.fullmeasure.co.uk/home/info.png?attredirects=0"><img alt="" src="http://maavis.fullmeasure.co.uk/_/rsrc/1287169806018/home/infoTN.png" border="0" /></a></div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Since then of course, simpler touch enabled, button-based access has become the norm on phones and tablets and this is extending to touch enabled laptops with Windows 8, Ubuntu Linux and perhaps, even Android. The smaller friendly form factors of tablets coupled with apps that have simple user experiences have proved very effective with people living with dementia and others with low digital literacy. See for example the work of charity <a href="http://www.aliveactivities.org/">Alive!</a> in using iPads improving the quality of life of older people in care.</p>
+<p>However, there is in general apps a considerable complexity in interaction and cognitive load for the user groups Maavis is aimed at. Especially if they are to be use unassisted. Beyond the launcher home screens the experience is often complex, plus there is much inconsistency and lack of clear affordances showing how to interact. The range of gestures that are used may be good for proficient users but can be daunting to many. Thus there is still a clear need for something like Maavis.</p>
+<h2>What&#8217;s next?</h2>
+<p>It&#8217;s clear to OpenDirective that there is wide demand for products and services based on the Maavis concepts and in a number of market segments. In addition to the applications mentioned above, use in the third world is opening up with increased mobile device ownership infrastructure coupled with lack of historic experience with western tech. However,  despite tentative development efforts using HTML technology, further collaboration with ScHARR and funding application to Technology Strategy Board , OpenDirective have not yet shipped a product.</p>
+<p>I believe now is the time to play to our strengths which lie more in the &#8216;softer&#8217; tech skills of community and collaboration. Accordingly, in the newly launched Properity4All EC project OpenDirective is working on developing frameworks for low digital literacy and &#8220;stepping stone&#8221; applications that provide a bridge to stronger technical literacy. We will also be using our Maavis based product work (codenamed &#8216;Brian&#8217;) to evaluate the collaborative technology and tools developed in Prosperity4All. This work also builds on our participation in the related Cloud4All EC project where we have integrate Maavis with the automatic accessibility personalisation infrastructure being developed.</p>
+<p>These are exciting times for technological developments in support of those with low digital literacy and cognitive disabilities. Awareness of and commitment to support for living well with dementia  is growing across the board in the West as the population ages. That includes the recognition of the need for improved access to technology to be use as part of the proposed telecare solutions. In addition web accessibility has mature through the efforts many dedicated folks. Open Development and agile are also well embedded in commercial software developments. An  exciting recent development which specifically targets this area is the W3C <a href="http://www.w3.org/WAI/PF/cognitive-a11y-tf/">Cognitive and Learning Disabilities Accessibility Task Force</a> led by Lisa Seeman. Thus we now have a excellent opportunities for establishing good practices though community and frameworks.</p>
+<h2>From Mozilla Firefox XUL to HTML5</h2>
+<p>The <a href="http://maavis.fullmeasure.co.uk/">original Maavis</a> was developed as a Firefox extension, using the Mozilla XUL technology. This proved reasonable at the time, though as always there were hidden gotchas to be dealt with. The main reasons for choosing XUL were:</p>
+<ul>
+<li>Ability to run full screen in kiosk mode and appear to function as a windows program</li>
+<li>The firmly open collaborative stance of Mozilla and their dedication to accessibility</li>
+<li>Great community, especially support and access to the devs.</li>
+<li>Cross platform technology leaving few areas to be handled such as TextToSpeech</li>
+<li>Interesting HTML like tech with  XBL for custom tags and XPCOM for extensions</li>
+<li>JavaScript extensions such as code modules and more recent language version.</li>
+<li>Excellent tooling including debuggers and first class MDN docs</li>
+<li>Open source &#8211; goes without saying  but allows custom builds of Firefox as a very last resort</li>
+</ul>
+<p>Now however, times have moved on and the HTML5 etc technologies have matured rapidly, so much so that nearly all of those reasons apply equally to HTML technologies. New core features and APIs mean a simpler technical solution and frameworks add more value (at the risk of bloat and increased load times). Further, the VERY large number of people familiar with HTML removes one barrier to attracting developers. Plus HTML offers a fairly low skills entry barrier. Accordingly we&#8217;ve be working on using HTML for Brian.</p>
+<p>During the original development I hit 2 real pain points; crating a resizable grid layout of buttons and really simple video conferencing. I believe both these are now easily supported in HTML. The resizable &#8220;true grid&#8221; layout in particular was huge amount of work, requiring numerous hacks and work-arounds. This was well before responsive design was a twinkle in Ethan Marcotte&#8217;s eye but was a firm requirement. The solution I came up with used custom tags through XBL and I&#8217;m very pleased with the clean declarative solution to defining screens of buttons. However, XBL never &#8216;took&#8217; in HTML and while there are useable frameworks I&#8217;m not convinced they are the way to go. Now the <a href="http://dev.w3.org/csswg/css-grid/">CSS grid layout</a> looks like the perfect solution for layout.</p>
+<p>For video conferencing we wanted a really simple and uncluttered UX and in-fact Apple FaceTime which came out later was pretty much what we after. However, after trying the few  suitable video call apps we settled on trying to automate Skype. This was a nightmare. The APIs (at least those freely usable in an OpenSource project) only let you make or receive a call through the Skype programme, with all its horrid UI clutter and noise. Plus API bindings were severely limited. In the end I used a Python server, launched by Maavis which made the calls and also tried to control the Skype UI through synthesised key/mouse events. Naturally this is very fragile and it broke every Skype updated. I lost a lot of hair over this single feature which is easily the most popular with users. But now we have <a href="http://www.webrtc.org/">WebRTC</a> supported in three browsers (oh and Microsoft&#8217;s variant in IE) that allows more control and peer to peer calls. I am hopeful.</p>
+<h2>FirefoxOS</h2>
+<p>Firefox still looks very interesting as a platform in this space, but largely for different reasons to before. <a href="http://www.mozilla.org/en-US/firefox/partners">FirefoxOS</a><span style="text-decoration: underline;">&#8216;s</span> native support of HTML, coupled with the Marketplace app store and a truly open source solution are all strong pulls. The low cost of the <a href="http://reviews.cnet.com/8301-13970_7-57619338-78/with-firefox-os-mozilla-begins-the-$25-smartphone-push/">FirefoxOS mobile and tablet devices</a> coming out from Mozilla partners simply add to the attraction, especially if consider supporting the Global South. Mozilla are looking at africa later this year.</p>
+<p>We&#8217;ve previously looked at Windows Modern HTML apps, but while it has wide spread and is technically very good, it&#8217;s utterly commercial solution with there&#8217;s a awful lot of proprietary stack. Plus devices are currently all high end and so expensive.</p>
+<p>Time to explore FirefoxOS, especially now tablet support is being worked on.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2014/02/user-experiences-for-low-digital-literacy-and-cognitive-disabilities/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

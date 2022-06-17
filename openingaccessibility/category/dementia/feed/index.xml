@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>dementia &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/category/dementia/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>ATIS4ALL &#8211; discovering and discussing Assistive Technology</title>
+		<link>/openingaccessibility/2013/07/atis4all-discovering-and-discussing-assistive-technology/</link>
+		<comments>/openingaccessibility/2013/07/atis4all-discovering-and-discussing-assistive-technology/#respond</comments>
+		<pubDate>Fri, 19 Jul 2013 13:10:42 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[Assistve Technology]]></category>
+		<category><![CDATA[dementia]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=198</guid>
+		<description><![CDATA[Assistive Technology (AT, see video at end of post) is a peculiar subject for most of us. Often, by using AT to make adaptations to our physical environment or the technology we already use we can dramatically improve the quality of &#8230; <a href="/openingaccessibility/2013/07/atis4all-discovering-and-discussing-assistive-technology/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Assistive Technology (AT, see video at end of post) is a peculiar subject for most of us. Often, by using AT to make adaptations to our physical environment or the technology we already use we can dramatically improve the quality of life for ourselves or those we care for. We can thus make every day activities much easier, or perhaps, actually possible at all. For example low tech gadgets like <a href="http://www.tenura.co.uk/Home/Rubber-Jar-and-Bottle-Openers/Tenura-Anti-Slip-Silicone-Rubber-Jar-Opener-p5.html?gclid=CMjX8bbAu7gCFdHMtAod8hAA7A">jar openers</a> or using a computer&#8217;s <a href="http://en.wikipedia.org/wiki/StickyKeys">Sticky Keys feature for one handed keyboard input</a> will bring an end to endless frustration in our activities of daily living.  As a more sophisticated example, blind folks can happily use computers and mobile devices if they have screen reader AT like <a href="http://www.nvaccess.org/">NVDA</a> and <a href="http://www.possum.co.uk/products-and-services/environmental-control">Environmental controls</a> allow those with physical difficulties to independently manage their living spaces (again see the video)</p>
+<p>So given the benefits why aren&#8217;t we all buying, supplying and using more ATs, especially as they are readily available, often at major retailers, as with these <a href="http://www.amazon.co.uk/s/?ie=UTF8&amp;keywords=plug+with+handle&amp;tag=googhydr-21&amp;index=aps&amp;hvadid=21161236980&amp;hvpos=1t1&amp;hvexid=761820&amp;hvnetw=g&amp;hvrand=116206144329968063&amp;hvpone=&amp;hvptwo=&amp;hvqmt=b&amp;hvdev=c&amp;ref=pd_sl_2ja9pw83d8_b">plugs with handles from Amazon</a>. Well, a large part of the problem is knowing that specific ATs exist, how they can be applied to and how to find the right solutions for individual requirements.</p>
+<p>In fact, there exists in the UK, a range of ways to find out about AT at the national and local level. For example, much needed consumer research and reporting on accessibility is carried out by <a href="http://www.rica.org.uk/">Rica</a>. Specialists such as the <a href="http://www.rnib.org.uk/shop">RNIB list and sell many products</a> for people with a range of visual issues, <a href="http://www.atdementia.org.uk/">ATDemetia supply info on products</a> for people with dementia and the <a href="http://www.macularsociety.org/How-we-help">Macular Society run local support groups</a>. More general suppliers like <a href="http://www.alvolution.co.uk/">Alvolution</a> provide a range of AT products for conditions including Dementia, Learning Difficulties and Epilepsy. Plus, local organisations such as <a href="http://www.devoninsight.org.uk/resource-centre">Devon in Sight provide resource centres</a> where you can try out the options. Then again, national centres like the <a href="http://acecentre.org.uk/services">ACE Centre provide a wide range of services</a> including assessment and if you are lucky your local <a href="http://www.barnsleyhospital.nhs.uk/services/assistive-technology/">service provider will be really switched on about AT, like Barnsley NHS Trust</a>.</p>
+<p>But what about products and services from wider afield such as Europe, or even globally? And how do we ensure those working in Policy and Research activities are actively included and collaborate effectively with developers, manufacturers and service providers? At least in the UK we have <a href="http://www.fastuk.org/">FAST who do a sterling job ensuring information is disseminated</a>, even to the extent of producing the <a href="http://fast.isledev.co.uk/fastdocuments/S22%20Report%202012-13.pdf">Department of Health&#8217;s annual report on R&amp;D in AT (pdf).<br />
+</a></p>
+<p><a href="http://www.atis4all.eu/"><img class="aligncenter" alt="" src="http://www.atis4all.eu/img/atisLog.png" width="211" height="53" /></a></p>
+<p>Enter <a href="http://www.atis4all.eu/">ATIS4ALL</a>, an EU project (actually a Thematic Network) that aims to dramatically improve the widespread awareness and adoption of  AT. <a href="http://www.opendirective.com/">OpenDirective</a> are part of the diverse consortium of organisations all involved in AT in one way or another. As a group we are attacking the problem on 2 fronts:</p>
+<ul>
+<li><a href="http://collaborativeportal.atis4all.eu/en-GB/default.aspx">ATIS4all portal</a> &#8211; a community and meeting place for discovery and discussion.</li>
+<li><a href="http://www.etna-project.eu/">ETNA 2.0</a>&#8211; an online database of AT that combines many sources of information.</li>
+</ul>
+<p>Taken together these will enable ATIS4all to play an important role in addressing the issues discussed above so we can all more easily find the AT that will help us or those we care for.</p>
+<p>The <a href="http://collaborativeportal.atis4all.eu/en-GB/default.aspx">ATS4All portal</a> is now open for business and like any such service it NEEDS YOU. The more people we have using it and contributing the better it will be for all of us. In particular we are looking for supporters to become actively involved in small or large ways. We need users, suppliers, developers, policy people, services, basically anyone with an interest in AT. If you think this will be of use to you and you want to get involved then  we&#8217;d love you to <a href="http://collaborativeportal.atis4all.eu/en-GB/register.aspx">simply register and join in</a> or perhaps <a href="http://www.atis4all.eu/BecomeASupporter.aspx">become a Supporter</a>. You can do as little as hang out in the forums or as much as collecting and curating useful AT resources. It&#8217;s up to you.</p>
+<p>We hope to see you soon.</p>
+<p>[Update 19/07/2013] This <a href="http://www.scie.org.uk/">SCIE</a> Social Care TV <a href="http://www.scie.org.uk/socialcaretv/video-player.asp?guid=9BE2764A-D81E-4C5F-8A83-B15EEEDFFA7E">Video introduces AT</a> and also describes it&#8217;s use in Telecare and Telehealth (no subtitles).</p>
+<p>[Update 23/07/2013] Somehow my shout-out for <a href="http://www.smartboxat.com/">Smartbox</a> got lost in an edit. The Hawes&#8217; family-owned business is most defiantly worth exploring for AT, especially for AT designed for people with physical disabilities.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2013/07/atis4all-discovering-and-discussing-assistive-technology/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Screencast of Maavis and Cloud4All integration</title>
+		<link>/openingaccessibility/2013/04/screencast-of-maavis-and-cloud4all-integration/</link>
+		<comments>/openingaccessibility/2013/04/screencast-of-maavis-and-cloud4all-integration/#respond</comments>
+		<pubDate>Tue, 23 Apr 2013 09:33:50 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[a11y]]></category>
+		<category><![CDATA[dementia]]></category>
+		<category><![CDATA[opena11y]]></category>
+		<category><![CDATA[opensource]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=138</guid>
+		<description><![CDATA[I finally put up a short screencast of Maavis in use. This also demonstrates how integration with Cloud4All provides automatic personalisation of settings based on a token that identifies the user. Cloud4All is an EU project that is implementing part &#8230; <a href="/openingaccessibility/2013/04/screencast-of-maavis-and-cloud4all-integration/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>I finally put up a short screencast of <a href="http://maavis.fullmeasure.co.uk/">Maavis</a> in use. This also demonstrates how integration with <a href="http://www.cloud4all.info/">Cloud4All</a> provides automatic personalisation of settings based on a token that identifies the user. Cloud4All is an EU project that is implementing part of the <a href="http://gpii.net/">GPII</a> personalisation infrastructure.</p>
+<p><iframe width="640" height="360" src="http://www.youtube.com/embed/F1ATPYSv02Y?feature=oembed" frameborder="0" allowfullscreen></iframe></p>
+<p>To record I used <a href="http://camstudio.org/">CamStudio </a>on Windows and the slight echo seems to be a result of turning on preview of the microphone in Windows and using the CamStudio option of recording from &#8216;speakers&#8217;. This allowed both my voice and Maavis synthetic speech to be mixed and recorded. You get a slight delay in hearing your voice as you record, no doubt due to double latency, but I found I got used to it.</p>
+<p>I also made life a little harder for myself as Maavis and Cloud4All are running in a Virtual Machine (using the VMWare player). Running CamStudio in the same VM killed the response and Maavis took forever to run. So I ran CamStudio in the Host OS and recorded the VM window.</p>
+<p>YouTube thought I was using widescreen, which I was not. This may have been because I had not full screened the VM window so the hight was reduced. However I also have my Windows TaskBar on the left whic halso reduces the widht. Who knows, I don&#8217;t think it has any practical effect.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2013/04/screencast-of-maavis-and-cloud4all-integration/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

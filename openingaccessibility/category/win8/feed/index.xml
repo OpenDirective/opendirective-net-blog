@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Win8 &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/category/win8/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>On Recovering Windows 8.1 when it goes wrong</title>
+		<link>/openingaccessibility/2015/05/on-recovering-windows-8-1when-it-goes-wrong/</link>
+		<comments>/openingaccessibility/2015/05/on-recovering-windows-8-1when-it-goes-wrong/#respond</comments>
+		<pubDate>Mon, 18 May 2015 21:27:20 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Win8]]></category>
+		<category><![CDATA[Windows]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=535</guid>
+		<description><![CDATA[tl;dr; After a double disaster with my workhorse Windows 8.1 laptop I&#8217;ve been exploring the easy ways to create a usable backup image of my system when set up to my liking. The Windows Recovery Environment (Windows RE) turns out &#8230; <a href="/openingaccessibility/2015/05/on-recovering-windows-8-1when-it-goes-wrong/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<h1>tl;dr;</h1>
+<p>After a double disaster with my workhorse Windows 8.1 laptop I&#8217;ve been exploring the easy ways to create a usable backup image of my system when set up to my liking. The Windows Recovery Environment (<strong>Windows RE</strong>) turns out to be well thought out but a couple of confusing bits of UI and mass of conflicting advice on the interweb leads to obfuscation. The following is my experience. Jump to the end for the solution of creating a custom image for system Refresh.</p>
+<h1>Blue Screens of Death are still a thing</h1>
+<p>I was unlucky enough to have 2 consecutive failures. The first was Windows update installing an Alps driver for my Dell XPS12 trackpad. The resulting service caused a Blue Screen of Death and required a length &#8216;binary chop&#8217; process on the services to identify the cause so I could uninstall it (Basically the steps are: get into Safe Mode, run msconfig,  check Hide all Microsoft  Services on services tab and disable half the services, reboot and add or remove services before rebooting, rinse and repeat &#8217;till you have figured out what is causing the problem).</p>
+<p>Without any custom recovery setup my only solution was a clean install of Windows 8.1 (from a MSDN ISO) followed by resinstalling all my desktop apps, followed by restoration of File History backup for my docs/data from my NAS. Annoyingly I had forgot to backup a few hidden files in my user root when setting up File History. Anyway, the result was a nice fast PC booting.</p>
+<p>Oh, but then after a reboot I suddenly got stuck in a non recoverable BSoD loop (CRITICAL_SERVICE_FAILURE). So I had to do it all again. I&#8217;m pretty sure the cause was using Glary Utilities to clean up and not the hardware. But I ran the Dell tests and Seagate&#8217;s own SSD tests just in case it was a hardware issue (all fine).</p>
+<h1>Being sensible and creating a recovery image</h1>
+<p>So this time I decided to create an image to facilitate easy restoration. While there are classic solutions like trusty old clonezilla I felt the Windows solution should be usable. While reading around indicated I might be able to create a partition on the system disk I wanted to create a boot able USB stick (the XPS12 has no optical drive) in case I got the non booting BSoD loop again..</p>
+<p>While Windows RE supports options for both both <strong>Refresh</strong> (leaves your docs/data) and <strong>Reset</strong> (full factory reset)  both required me to supply recovery media (I think the install image on USB should have worked, but I went for a full reset anyway). My plan was to create a custom image that can be used in this case to reinstall all apps and programs.</p>
+<h1>Partition or image?</h1>
+<p>Now this is where the trail gets a bit muddy. While the desktop Control Panel recovery tool can create a backup drive, the useful sounding check box &#8220;Copy the recovery partition from the PC to the recovery drive&#8221; is disabled, even on a system created from a Windows install image. Firstly it appears &#8216;partition&#8217; actually means image, though an OEM may have put a custom recovery image on a partition (and you can do the same).</p>
+<p>The solution to the disabled checkbox appears to be to provide an <strong>Install.wim</strong> windows system image and configure windows to use it with <strong>reagentc</strong>. Then if I understand it the created recovery drive will contain the Windows RE and the Install.wim and so enable you to boot and recover from the drive. However I have not yet tested this.</p>
+<p>Now it turns out you can create a custom wim image from a snapshot of your system and leave this on your system disk when it can be used for a Refresh. Several people claim you can also rename the custom image as Install.wim and then register it so you can create a recovery drive (and possibly use it for a full Reset).</p>
+<p>Now the tool used to create and register a custom image is <strong>recimg</strong> but it&#8217;s help has a big disclaimer that only documents and apps will be preserved during a Refresh, not desktop programs. This turns out to be the second confusing information. It would no doubt be true for the default Install.wim, assuming that actually worked out of the box. The recimg help also states it can only be used for a Refresh not a Reset but I don&#8217;t know if that is true after it is renamed to Image.wim. I&#8217;ve yet to try it.</p>
+<p>Once you create a <strong>CustomImage.wim</strong> you can then run Refresh from the Windows RE which will use the new . Of course that assumes you can get your PC to boot, which I wasn&#8217;t able to. To cover that I&#8217;ve copied my CustomImage.wim to an external drive in the hope I can use it later if required. As mentioned above you can create a recovery drive from your custom image, but the need to rename (or copy) and register it your newly created CustomImage.wim as Install.wim to enable the checkbox.</p>
+<p>In the end my plan was to create a CustomImage.wim after installing Office and my dev tools. This weighed in at a hefty  30 GB so I removed it from my SSD as soon as I had made a copy. I didn&#8217;t have a device suitable for a recovery drive.</p>
+<p>[Update 2015-05-24: Warning the recovery drive utility does a FAT format so your drive will be limited to 32GB &#8211; which really restricts it&#8217;s application, infact makes it useless for me. Also the drive I purchased (Elite) appears as a local drive rather than portable so is not seen by the utility]</p>
+<h1>Creating a custom image for Refresh</h1>
+<ul>
+<li>Get system to a clean, updated and stable state</li>
+<li>Open a Command Prompt</li>
+<li>Run &#8216;mkdir c:\RefreshImage&#8217;</li>
+<li>Run &#8216;recimg -CreateImage C:\RefreshImage&#8217;</li>
+<li>You will now have a C:\RefreshImage\CustomImage.wim</li>
+<li>Run &#8216;reagentc /info&#8217; to check the custom image is registered</li>
+</ul>
+<h1>Creating a Recovery Drive with you custom image</h1>
+<ul>
+<li>Open a Command Prompt</li>
+<li>copy (or rename) CustomImage.wim to Install.wim</li>
+<li>Run &#8216;reagenc /SetOSImage /Path C:\RefreshImage\Install.wim /Index 1&#8217;</li>
+<li>Run &#8216;reagentc /info&#8217; to check the recovery image is registered</li>
+<li>In control panel select &#8216;Create a recovery drive&#8217; and check &#8216;Copy Recovery partition.</li>
+</ul>
+<p>If you want to know more Steven Synofsky wrote a post on how the <a href="http://blogs.msdn.com/b/b8/archive/2012/01/04/refresh-and-reset-your-pc.aspx">Windows RE system works</a> for Reset and Refresh.</p>
+<p>(Note Microsoft also provide tools for OEMs to create custom recovery images, tools and menus but they are more complex to use).</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2015/05/on-recovering-windows-8-1when-it-goes-wrong/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>On Converting a VM from VMWare to VIrtualBox</title>
+		<link>/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/</link>
+		<comments>/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/#comments</comments>
+		<pubDate>Tue, 29 Jul 2014 12:34:07 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[opensource]]></category>
+		<category><![CDATA[Win8]]></category>
+		<category><![CDATA[Windows]]></category>
+		<category><![CDATA[Virtualisation]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=419</guid>
+		<description><![CDATA[In short, don&#8217;t! It&#8217;s way too much hassle. It&#8217;s so much easier to create a new identical VM in VirtualBox and set it to use the same virtual disk file (.vmdk). I  expect this applies when moving VMs in the &#8230; <a href="/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>In short, don&#8217;t! It&#8217;s way too much hassle.</p>
+<p>It&#8217;s so much easier to create a new identical VM in VirtualBox and set it to use the same virtual disk file (.vmdk). I  expect this applies when moving VMs in the opposite direction too.</p>
+<p>Hopefully this note will save others a lot of wasted time discovering this after following various dead ends when googling for the answer. The bottom line is that while it should be possible to export from VMWare to the standard OVF format and import into VirtualBox, differences in interpretation of the format between the two make it difficult if not impossible (I gave up).</p>
+<p>I&#8217;ve been using the VMWare Player for creating and managing my VMs on a Windows host for some time after my business partner experienced trashed VMs with our then preferred VirtualBox. However Since using windows 8.1 i found the mouse was offset when using an external monitor with my laptop, something which quickly made it unusable. Otherwise, to be fair, VMWare Player is fast and trouble free.</p>
+<p>So I decided to switch back to VirtualBox and the wisdom on the web is to export and import via OVF using VMWare&#8217;s OVFTool.</p>
+<p>1st problem, I had used VMWare Player&#8217;s default option to split the virtual disk file up. This actually make little sense if you have a file system that supports large files, and probably negatively affects performance. This can be resolved using VMWare&#8217;s vmware-vdiskmanager utility. Except this is now only available in the full VMWare Workstation. There is a trial version but guess what, it can&#8217;t be installed along side VMWarePlayer. So I had to installed and use it on another PC (and no, I didn&#8217;t it on a VM <img src="https://s.w.org/images/core/emoji/11/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /> ).</p>
+<p>Exporting using OVTool takes ages and then the &#8220;Import Appliance&#8221; operation fails. The first problem is a disagreement on the SCSI disk driver. VirtualBox treats the SAS as a separate type to SCSI, whereas VMWare makes it a subtype.. Even if you comment the SCSI and disk sections out of the .ofv file before import, another error occurs with checking the hash of the virtual disk in the .mf file. I suspect &#8220;Import Appliance&#8221; should only be used with  &#8220;Export Appliance&#8221; to move VirtuaBox VMs between hosts.</p>
+<p>So to summarise, the easiest solution for transferring a VM to VirtualBox to is to create a new VM in VirtuaBox, but without a disk. Make it as close as possible to the original VMWare VM. Then add a SAS driver and attach the existing .vdmk virtual disk (or a copy of it).  You&#8217;ll need to install the VirtualBox support drivers if it&#8217;s a Windows VM.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2014/07/on-converting-a-vm-from-vmware-to-virtualbox/feed/</wfw:commentRss>
+		<slash:comments>14</slash:comments>
+		</item>
+		<item>
+		<title>BBC publish draft mobile accessibility guidelines to address developer &#8216;assumptions&#8217;</title>
+		<link>/openingaccessibility/2013/06/bbc-publish-draft-mobile-accessibility-guidelines-to-address-developer-assumptions/</link>
+		<comments>/openingaccessibility/2013/06/bbc-publish-draft-mobile-accessibility-guidelines-to-address-developer-assumptions/#respond</comments>
+		<pubDate>Wed, 19 Jun 2013 10:10:03 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[mobile a11y]]></category>
+		<category><![CDATA[opena11y]]></category>
+		<category><![CDATA[web a11y]]></category>
+		<category><![CDATA[Win8]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=179</guid>
+		<description><![CDATA[Whilst guidelines for web accessibility have been in existence for several years and are slowly evolving, until now there has been a lack of best practices targeted specifically at the additional complications of mobile accessibility (web or native). This is &#8230; <a href="/openingaccessibility/2013/06/bbc-publish-draft-mobile-accessibility-guidelines-to-address-developer-assumptions/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Whilst guidelines for web accessibility have been in existence for several years and are slowly evolving, until now there has been a lack of best practices targeted specifically at the additional complications of mobile accessibility (web or native). This is especially important now mobile use is so predominant and I believe is globally in the majority due to so many people outside the affluent West having phones and not computers.</p>
+<p>Yesterday Henny Swan finally made an exciting official tweet:</p>
+<blockquote><p>Introducing the Draft BBC Mobile Accessibility Standards and Guidelines:<a href="http://t.co/5brg5IDZoD" target="_blank" rel="nofollow">bbc.co.uk/blogs/internet…</a><a title="Mobile" href="https://hootsuite.com/dashboard#">#Mobile</a><a title="Development" href="https://hootsuite.com/dashboard#">#Development</a><a title="Design" href="https://hootsuite.com/dashboard#">#Design</a><a title="BBC" href="https://hootsuite.com/dashboard#">#BBC</a></p></blockquote>
+<p>Henny also <a href="http://www.iheni.com/draft-bbc-mobile-accessibility-guidelines/">blogged</a> and Gareth Ford Williams followed up with more details on LinkedIn</p>
+<blockquote><p>Just to let you all know the Draft BBC Mobile Accessibility Guidelines were published today. You can find them on the Future Media Standards and Guidelines site at:<a href="http://www.linkedin.com/redir/redirect?url=http%3A%2F%2Fwww%2Ebbc%2Eco%2Euk%2Fguidelines%2Ffuturemedia%2Faccessibility%2Fmobile_access%2Eshtml&amp;urlhash=MY3u" target="_blank">http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile_access.shtml</a></p>
+<p>A blog post about them is here: <a href="http://www.linkedin.com/redir/redirect?url=http%3A%2F%2Fwww%2Ebbc%2Eco%2Euk%2Fblogs%2Finternet%2Fposts%2FAccessibility-Mobile-Apps&amp;urlhash=FT_l" target="_blank">http://www.bbc.co.uk/blogs/internet/posts/Accessibility-Mobile-Apps</a></p>
+<p>The guidelines are in accessible PDF and Word format at the moment but should be in a much more digestible and usable format soon so watch this space.<br />
+These standards have been developed over the last 18 months and have been developed and tested using the following mobile projects: BBC Olympics, BBC Sport, BBC iPlayer, BBC iPlayer Radio and BBC Weather.</p>
+<p>We are asking for feedback to identify areas of focus for the the further development of the guidelines and any comments, would be greatly welcome.</p>
+<p>Best Regards,</p>
+<p>Gareth Ford Williams<br />
+Head of Accessibility, BBC Future Media</p></blockquote>
+<p>This is an excellent start and should help raise awareness of the issues amongst commissioners, designers and developers and so improve the accessibility quality of apps and mobile tech in general.</p>
+<div id="attachment_193" style="width: 310px" class="wp-caption aligncenter"><a href="/openingaccessibility/wp-content/uploads/2013/06/mobilea11y.jpg"><img class="size-medium wp-image-193" alt="User viewing mobile screen with a magnifying glass" src="/openingaccessibility/wp-content/uploads/2013/06/mobilea11y-300x211.jpg" width="300" height="211" srcset="/openingaccessibility/wp-content/uploads/2013/06/mobilea11y-300x211.jpg 300w, /openingaccessibility/wp-content/uploads/2013/06/mobilea11y.jpg 480w" sizes="(max-width: 300px) 100vw, 300px" /></a><p class="wp-caption-text">Image by Hajime NAKANO http://www.flickr.com/photos/jetalone/</p></div>
+<p style="text-align: center;">So just what exactly are the extra accessibility issues introduced by mobile tech? Well I like to think that accessibility boils down to this simple design mantra:</p>
+<blockquote><p>Don&#8217;t make assumptions about how users will access your content or app.</p></blockquote>
+<p>Obviously any engineering or craft activity has to make some assumptions or nothing useful would ever be created. However the assumptions can and should be minimised within meaningful constraints if we want to avoid excluding users (and so reducing market).</p>
+<p>For example, it&#8217;s a good idea to not assume that all users will be using a mouse and can easily interpret visual-only cues. These assumptions were initially thought of in the context of users with disabilities, though some folks (myself included) pointed out they effect a much wider usage. For example, many users prefer to use only a keyboard for speed of access and  a search engine &#8220;spider robot&#8221; is effectively a blind user.  In fact a few years ago there was a hot debate over if accessibility should be primarily for people with disabilities or of general utility. Fortunately, this soon blew over and accessibility efforts are now concentrated on improving accessibility for all users and use cases.</p>
+<p>With the rapid rise in mobile technologies (and I include all portable formats in that definition) it soon became clear that &#8220;contextual disability&#8221; also occurs and needs to be specifically addressed. For example in bright light conditions the screen becomes hard  to read, if not impossible. thus, adaptations usually designed for people with low vision or blindness are potentially usefully for all users in certain common circumstances. Another example is that when driving a car verbal interactions are much more appropriate so hands and eyes can be used for safe navigation.</p>
+<p>Another design assumption has become apparent with the very wide variation in screen size and resolution  across devices (eg Apple&#8217;s retina displays).  In the early days of the web this was not an issue as screen size was a small range and as text was the content the browser was free to reflow to any screen size/resolution. However as I found when trying to make my first ever website with graphics look good on both 19&#8243; and 13&#8243; monitors, it isn&#8217;t that easy to accommodate variations. In fact given the state of browsers and HTML then I gave up.</p>
+<p>Now we have a name for handling variation in screen resolution on the web; &#8216;<a href="http://en.wikipedia.org/wiki/Responsive_web_design">Responsive design</a>&#8216;. With this a few core techniques allow the user experience to be adjusted according to screen size. At this point in time however, the technology such as CSS media queries is still a little immature, certainly when compared to some native solutions I have used. However this is a hot topic with solutions like <a href="http://dev.w3.org/csswg/css-grid/">CSS Grid Layout</a> looking very interesting. We can expect rapid improvements.</p>
+<p>In addition to screen size variation, the almost ubiquitous use of touch technology on mobile devices provides a new challenge for designers wishing to target multiple devices. Leading the charge are web apps and widgets which offer a path to creating solutions that can run on devices ranging from small screen mobile with touch to traditional desktop with large monitor, keyboard and mouse. In this space the W3C and others are working on <a href="http://www.w3.org/2010/webevents/">new specifications for handling different input modes</a> in unified ways.</p>
+<p>Windows 8 appears to be targeting this world of portable and desktop devices and their different interaction modes. At the moment it&#8217;s somewhat schizophrenic with both the Windows Store Apps and traditional Windows 7 style desktop sides being quite separate. However I think we can expect Microsoft to learn and develop the user experience rapidly. What is of special interest is that Windows Store apps can be created using the key W3C specified open technologies (actually, this may be the preferred technology). This allows portable solutions to be more easily developed. Add the fact that Microsoft now play an active part in web standardisation efforts, we can expect improvements in the device and accessibility support in both Windows and web solutions.</p>
+<p>A final assumption is more an issue of device and operating system manufacturers not supporting interaction methods available on desktop and that are commonly used by people with disabilities. In particular people with physical disabilities who use simple switch devices to interact have had little access to mobile devices. On the desktop, switches are nowadays connected as USB devices (often simulating games controllers) but very few mobile devices have USB sockets. Bluetooth is a viable alternative and for example Komodo OpenLab&#8217;s <a href="http://komodoopenlab.com/tecla/">Tecla</a> switch access device uses this approach to provide switch control of Android and iOS devices. An exciting development here is that iOS 7 includes switch controlled scanning and so we can hope Android and Windows will take note and follow.</p>
+<p>In some ways it&#8217;s reassuring that mainstream developers are hitting and addressing many of the issues that the accessibility community has be working on for some time. We can expect faster and more innovative solutions. As long as accessibility remains firmly on the agenda and the accessibility community keeps up the highly effective work to help ensure vendors keep their eye on the ball..</p>
+<p>Along with the <a href="http://www.w3.org/Mobile/">W3C Mobile web Initiative</a>,  the BBC draft guidelines have an important part to play as we collectively figure out how to remove damaging assumptions and create usable and accessible solutions that are available on a wide range of platform formats. As the authors point out, these are a starting point and they welcome the discussion on how to move forward.</p>
+<p>As a footnote, the <a href="http://www.cloud4all.info/">Cloud4All</a> EU project is exploring automatic personalisation of devices according to a users accessibility preferences profile. This will act as a way to help remove the sensitivity to designer assumptions by applying the best available adjustments. An important part of this work is context awareness.</p>
+<p>[Update 2013-06-20] in addition to the W3C Web Events working group the <a href="http://www.w3.org/WAI/IndieUI/">IndieUI</a> and <a href="http://www.w3.org/2012/pointerevents/">Pointer Events</a> working groups are also working on combined input modes.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2013/06/bbc-publish-draft-mobile-accessibility-guidelines-to-address-developer-assumptions/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Accessing local resources from a Win8 app HTML web context</title>
+		<link>/openingaccessibility/2013/06/accessing-local-resources-from-win8-app-web-context/</link>
+		<comments>/openingaccessibility/2013/06/accessing-local-resources-from-win8-app-web-context/#comments</comments>
+		<pubDate>Tue, 04 Jun 2013 21:03:32 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[Apps]]></category>
+		<category><![CDATA[HTML]]></category>
+		<category><![CDATA[Win8]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=154</guid>
+		<description><![CDATA[Javascript Windows 8 App Store apps (AKA Modern apps AKA Metro apps) are strongly sandboxed and one of the effects of this is that access to local resources is tightly restricted to a small set of clearly de-marked locations. Furthermore, &#8230; <a href="/openingaccessibility/2013/06/accessing-local-resources-from-win8-app-web-context/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<p>Javascript Windows 8 App Store apps (AKA Modern apps AKA Metro apps) are strongly sandboxed and one of the effects of this is that access to local resources is tightly restricted to a small set of clearly de-marked locations. Furthermore, HTML in an iFrame running in a so-called &#8220;web context&#8221; has further restrictions compared to the &#8220;local context&#8221; of HTML for the native app. Media resources in local library locations such as &#8220;My Pictures&#8221; are not easily accessible from the web context but it can be achieved. I&#8217;m documenting the solution here as I worked hard to solve it and could not find any documentation at the time.</p>
+<h1>A little background</h1>
+<p>Having built a few HTML spikes of <a href="http://maaivs.fullmeasure.co.uk/">Maavis</a> features we satisfied ourselves that it is now perfectly feasible to replace the old <a href="http://en.wikipedia.org/wiki/XUL">XUL</a> version with a mixture of HTML5, W3C widgets and a thin native code wrapper to provide access to platform features not yet available in the browser sandbox. Going for HTML has many advantages, including portability now, good future deployment options, and a potentially large community, something that is vital for a successful open development project.</p>
+<p>And then, the Windows 8 release landed and we decide to seriously look at it as the first platform we targeted. I won&#8217;t go into all the reasons for this but it&#8217;s interesting to note that the simplified touch interface style that is a key feature of the Maavis UI has now appeared in consumer platforms, including Windows 8.</p>
+<p>So we spent an OpenDirective week off-site hacking and exploring how we might implement features in HTML running in a Windows App Store app native wrapper. In other words we want the core application to be HTML code that will run on other platforms without change (AKA a hybrid app). I picked access to local image files which would be pretty straight forward, or so I thought.</p>
+<p>At this point I became painfully aware that the <a href="http://msdn.microsoft.com/en-US/windows/default.aspx">MSDN documentation</a>, my preferred first port of call, was early release and the quality was simply not what I was used to from previous experience. I spent many years delving into Win32 program and system development from the days of Windows 3.1 (well actually &#8220;Windows for Work Groups&#8221;) until Vista arrived. This had accustomed me to the excellent API documentation and articles that formed part of Microsoft&#8217;s formidable developer evangelism efforts. MSDN magazine, then later a handful of CDs, and then a huge raft of DVDs, contained all tools and information you could ever want as a developer. As time passed <a href="http://www.codeproject.com/">Code Project</a> became a &#8220;go to&#8221;community resource and it&#8217;s good to still see it is still going strong (don&#8217;t miss their <a href="http://www.windowsazure.com/en-us/">Azure </a>competition).</p>
+<p>At this point in time, however, while APIs were clearly defined by the objects, methods and properties, critical conceptual information providing context and defining the models just wasn&#8217;t there. Sure you can often work out the map of the forest from a study of all the trees but that leaves a lot of unknown &#8216;there be dragons&#8217; areas, even after much trial and error. A couple of 3rd party blog posts gave vital clues but still with many gaps, caused largely by their being written for the preview releases of Windows 8. Plus heavy weight solutions like having a local webserver exclude running on Windows RT, and the background processing possibilities are restricted in App Store Apps.</p>
+<p>I have since found the &#8220;must read&#8221; free ebook: <a href="http://blogs.msdn.com/b/microsoft_press/archive/2012/10/29/free-ebook-programming-windows-8-apps-with-html-css-and-javascript.aspx">Programming Windows 8 Apps with HTML, CSS, and JavaScript</a> which fills in many of the knowledge gaps (hint, at 70MB,  don&#8217;t  try to email the MOBI to your kindle, you&#8217;ll have to sideload it). Also, Microsoft have now provided many great on-line developer resources. Now the developers friend <a href="http://stackoverflow.com/">Stack Overflow</a> has good Windows 8 discussions.</p>
+<h1>A solution</h1>
+<p>To reiterate, the problem to be solved is to display an image in HTML in a web context iFrame where the image is a file in the &#8220;My Pictures&#8221; library on the local file system.</p>
+<p>We need a URI referencing the image for src attribute of an image tag/element and while it could theoretically be defined declaratively in the HTML or set programatically by setting the src attribute, I&#8217;ll stick to the latter as that is more much flexible in terms of possible solutions, as well see.</p>
+<p>WinRT provides a set of URI protocols for accessing resources in various locations (the protocol is the <strong>http:</strong> part of a web URI). However, the restrictions we hit in the App web context are:</p>
+<ul>
+<li>The <strong>file:</strong> protocol is completely blocked. This is the usual way to access local resources from HTML.</li>
+<li>There is no protocol for accessing the libraries like My Pictures. <strong>ms-appx: </strong>and <strong>ms-appx-web</strong> access content in the app package, while <strong>ms-appdata</strong>: looks in the app data storage area.</li>
+<li>While files in library locations can be programmatically accessed from the local context and accessed by dynamically created <strong>blob:</strong> URLs to be referenced in the HTML, such references are blocked from within the web context. This is no doubt due to cross domain restriction requirements.</li>
+</ul>
+<p>But wait, the solution could be to use a local context iframe containing the image element that is nested inside the web context HTML. The nested local context will then be able to use the blob URI in an image element src attribute to access the image file. Result.</p>
+<p>Except, that isn&#8217;t allowed either. Sigh.</p>
+<p>But wait, the WinRT MSApp method <a href="http://msdn.microsoft.com/en-us/library/windows/apps/hh465759.aspx">addPublicLocalApplicationUri</a> looks very interesting. It &#8220;exposes the provided local context URIs to arbitrary untrusted web content&#8221;. In other words we might be able to use it to allow a local context iframe to be embedded in a web context iframe.</p>
+<p>And you know what? It works. In fact I subsequently found this solution is described at the end of a long runtime error message in Visual Studio that is easy to over look</p>
+<blockquote><p><a href="msdn.microsoft.com/query/dev11.query?appId=Dev11IDEF1&amp;l=EN-US&amp;k=k(VS.WebClient.Help.APPHOST9605);k(DevLang-jscript);k(DevLang-dhtml);k(DevLang-javascript)&amp;rd=true">APPHOST9605</a>: Can&#8217;t navigate to &lt;ms-appx:///nestedLocalContext.html&gt; from &lt;ms-appx-web://8f028944-29cc-4f85-8d13-c1ef987ea8f3/webContext.html&gt; because the destination URI is in a higher security zone. You can&#8217;t navigate from a zone with lower security to a zone with higher security unless you&#8217;re navigating to a local context URI from a web context URI and you&#8217;ve registered the local context URI with the MSApp.addPublicLocalApplicationUri method.</p></blockquote>
+<p>So we can access the image file in the main app code, create a local blob URL to it and then pass that to the nested local context to be used in an image element.  As we are crossing from local domain (context), to web domain domain and back to local domain we&#8217;ll need to use the official HTML cross domain communication &#8220;postMessage&#8221; twice.  In theory it should be possible to access the inner local context directly from the outer one as they are both the same domain. However, in practice it&#8217;s not possible access an iframe&#8217;s content if it is from another domain (eg access to contentDocument etc is blocked).</p>
+<p>To help make this all clear I&#8217;ve placed working code in an example VisualStudio project in GitHub<a href="https://github.com/SteveALee/Win8LocalResourcesAccess"> SteveALee/Win8LocalResourceAccess</a>.</p>
+<p>A final note, obviously you need to tread a little carefully as addPublicLocalApplicationUri is overriding the security model which is there for good reasons. In particular watch out for untrusted code access in the web context. Being forced to restrict the cross domains interactions to postMessage is a security advantage.</p>
+<h1>But really?</h1>
+<p>Time for a quick sanity check. Is all this worth the effort? Is there really a use case or is it simply an academic exercise? Why not just remove the web context completely? Won&#8217;t other platforms have similar cross domain limitations for access local resources? Remember we want the core application to be HTML code that will run on other platforms without change. I can&#8217;t yet comment on other browser/platform combinations, but this is certainly a possible partial solution to having generic HTML code that works on various platforms. For now, I&#8217;m recording it so I can come back to it if required when we start to look at other platforms.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2013/06/accessing-local-resources-from-win8-app-web-context/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+	</channel>
+</rss>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>git &#8211; Opening Accessibility</title>
+	<atom:link href="/openingaccessibility/tag/git/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Thu, 30 Mar 2017 10:26:12 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Dealing with Windows text line endings in git</title>
+		<link>/openingaccessibility/2015/12/dealing-with-windows-text-line-endings-in-git/</link>
+		<comments>/openingaccessibility/2015/12/dealing-with-windows-text-line-endings-in-git/#respond</comments>
+		<pubDate>Thu, 03 Dec 2015 14:01:24 +0000</pubDate>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+				<category><![CDATA[development]]></category>
+		<category><![CDATA[Windows]]></category>
+		<category><![CDATA[git]]></category>
+
+		<guid isPermaLink="false">/openingaccessibility/?p=595</guid>
+		<description><![CDATA[Text line endings on Windows: Still painful after all these years Once upon a time, in the days of Microsoft MS-DOS development one of main pain points and source of bugs was the distinction between text and binary files. When &#8230; <a href="/openingaccessibility/2015/12/dealing-with-windows-text-line-endings-in-git/">Continue reading <span class="meta-nav">&#8594;</span></a>]]></description>
+				<content:encoded><![CDATA[<h1>Text line endings on Windows: Still painful after all these years</h1>
+<p>Once upon a time, in the days of Microsoft MS-DOS development one of main pain points and source of bugs was the distinction between text and binary files. When you opened a file you had to say if it was to be accessed in binary or text mode. In text mode the file content was translated when you read or wrote a string of text, meaning you had to know the file contents and use the correct mode. Presumably this was done to keep files smaller as the translation was 2 specific characters in memory mapped to 1 specific character in the file. Fortunately this translation on rad or write issue has mostly completely disappeared now those 2 characters are stored in files by Windows. But the legacy of those 2 pesky characters still causes pain whenever developers share files on multiple platforms such as Windows, Linux and OS X.</p>
+<div style="width: 605px" class="wp-caption alignnone"><img class="detail__media__img-highres js-detail-img js-detail-img-high" src="https://images.duckduckgo.com/iu/?u=http%3A%2F%2Flcjapan.com%2Fos%2Fms-dos.jpg&amp;f=1" alt="A MS-DOS start prompt on screen waiting for the user to type a command" width="595" height="446" /><p class="wp-caption-text">A legacy from MS-DOS days lurks in Windows</p></div>
+<h1>Shake your carriage</h1>
+<p>The characters in question are used to mark the end of each line of text (except if automatic text wrapping occurs). You don&#8217;t see them but they&#8217;re lurking there waiting to catch you out, especially when sharing files between OSs or when using version control.</p>
+<p>These 2 characters are technically the ASCII control characters for <a href="https://en.wikipedia.org/wiki/Carriage_return">Carriage Return</a> (CR) and <a href="https://en.wikipedia.org/wiki/Newline">Newline or Line Feed</a> (LF). Note that control characters are a special group that rather than being printed invoke some sort of action. They hark back to the days of Teletype printers where CR would make the print head scoot back to the start of the line (carriage being the mechanism carrying the print head) and LF would move the print head down a line with out effecting the horizontal position. Thus, whenever a new line needed to be started a CR+ LF pair would be sent to the Teletype.</p>
+<p>These character are represented in various ways in text files and programs, in ASCII or UNICODE:</p>
+<ul>
+<li>CR
+<ul>
+<li>0x0D hex</li>
+<li>&#8220;\r&#8221; in strings</li>
+<li>Ctrl M or ^M</li>
+</ul>
+</li>
+<li>LF
+<ul>
+<li>0x0A hex</li>
+<li>&#8220;\n&#8221; in strings</li>
+<li>Ctrl J or ^J</li>
+</ul>
+</li>
+</ul>
+<p>We&#8217;ve kept this ancient legacy so that the end of every text line (newline) is marked by these characters. Actually, that&#8217;s not exactly true. Rather, each OS uses a different set of characters and that is the root cause of the problem,</p>
+<ul>
+<li>Linux uses LF only</li>
+<li>Windows sticks with CRLF</li>
+<li>OS X for a while used CR only but now uses LF</li>
+</ul>
+<p>As a quick aside, you can discover a file&#8217;s line endings by using the &#8220;file&#8221; command that comes with Linux tools for Windows like &#8220;Cygwin&#8221; or &#8220;<a href="https://git-for-windows.github.io/">Git for Windows</a>&#8220;. If any line endings are not LF it will tell you. You can also use editors like venerable <a href="https://notepad-plus-plus.org/">notepad++</a> which also lets you change the line ending format.</p>
+<h1>Return to the future</h1>
+<p>Life gets complicated when you need to share text files between these OSs, either directly (eg via network access) or by copying files, perhaps via version control tools.  You can try to perform translation to the native format whenever you copy or have tools that support either end of line. The danger with the later approach is not processing all text files or ending up with files with mixed line endings. Mixed line endings will confuse tools that often only check the start of files to determine line ending format. In either case, you&#8217;ll likely to get strange effects in editors such as joined lines or funny characters (eg ^M).</p>
+<p>This problem surfaces quite often now with open source development where contributors can be using any tools on any OS. In addition to sharing files via version control, developers sometime access files share files between a VM and the host OS without checking out to each.</p>
+<p>So perhaps the best approach is to standardise on a single  format for all your files, namely LF.  Fortunately these days most Windows programs that developers use support the LF only style, whether they are Windows native or ports of Linux tools.  The notable exception is dear old notepad, which still insists on a CRLF pair to end each line (not doubt as it&#8217;s just a &#8220;souped up&#8221; edit control and Windows use CRLF natively).</p>
+<p>There are of course still issues and the ubiquitous git version control is one culprit you are almost certain to stumble across.</p>
+<h1>Make sure you git the right newlines</h1>
+<p>By default git assumes that your workspace files will use the OS native newline format for all text files. It will also try to auto detect text files. Internally however,  git uses LF only (usually) and translates on Windows during checkin and checkout. This is configured by the &#8220;core.eol&#8221; and &#8220;core.autocrlf&#8221; settings which default to &#8220;CRLF&#8221; and &#8220;true&#8221; on Git for Windows. These are hardcoded and not set in any of the usual git config files.</p>
+<p>On the face of it this is good as you get OS specific end of lines on each platform, but only if you always check out to the operating system you are working on. However, as noted above, developers often share files across OSs  so unless they standardise on a single format they&#8217;re likely to hit problems.</p>
+<p>If you want to use LF universally for your project you need to configure git appropriately. These days that is pretty easy using <a href="https://www.kernel.org/pub/software/scm/git/docs/gitattributes.html">gitattributes</a>, usually in a .gitattributes file at the root of your project working tree. This overrides any &#8211;global, &#8211;system or local config settings thereby ensuring a consistent experience in the project. You might possibly need to specify &#8211;local config settings as well as some .gitattribute options fallback to those.</p>
+<p>The catch, just as in those MS-DOS days, is that you must not translate anything if the file is not pure text but is some other &#8220;binary&#8221; format, eg non XML based word processor files. If you translate these files you corrupt them, &#8220;simples&#8221;. Accordingly, git tries to auto detect text files but you can also explicitly declare which files are to be treated as either text or binary.</p>
+<h1>Gitting practical</h1>
+<p>This leads to 2 approaches to using LF everywhere:</p>
+<ul>
+<li>Tell git to never translate anything</li>
+<li>Tell git to always convert to LF in your workspace</li>
+</ul>
+<h2>Never translate</h2>
+<p>The first option seems safe but you&#8217;ll have to ensure all text files you [potentially] wish to share only ever contain LFs. That means making sure editors and other tools never use a CRLF when creating the file or editing lines. Not easy when CRLF is still the native Windows line ending.</p>
+<p>Enter <a href="http://editorconfig.org/">EditorConfig</a> to the rescue! This is a standard configuration file supported by many editors and that specifies format options including line endings. Thus, developers get a consistent editing experience and files are created the same way whatever editor or IDE they use. Some editors support EditorConfig directly and others have plugins. For example, the <a href="https://visualstudiogallery.msdn.microsoft.com/c8bccfe2-650c-4b42-bc5c-845e21f96328">Visual Studio extension</a> supports most options including line endings, but currently the <a href="https://marketplace.visualstudio.com/items/chrisdias.vscodeEditorConfig">Visual Studio Code extension</a> only supports indent style so is no use here.</p>
+<p>The way to stop git translating anything is to use a .gitattributes entry of <strong>&#8220;* -text</strong>&#8220;. This simply says nothing should be treated as text. You can always override for specific filename patterns, for example &#8220;*.txt eol=lf&#8221;.</p>
+<p>The other thing you can do is to ensure your development workflow includes a check for  CRLF line endings. For example, you can check all files, including binary, using something like &#8220;<strong><span class="pln">grep </span><span class="pun">&#8211;</span><span class="pln">Url $</span><span class="str">&#8216;\x0D&#8217;</span></strong><span class="pln"><strong> *</strong>&#8221; in &#8220;Git for Windows&#8221;. This will return 0 if any matches, 1 otherwise.</span></p>
+<h2>Always LF</h2>
+<p>Alternatively, you may want to use the second option of having git translate line endings to LF in your workspace. But, bear in mind it only translates on checkout. Thus any CRLFs will remain in your workspace until you go though a complete checkin/checkout cycle.  Once again you&#8217;ll probably want to use EditorConfig to specify LF end of lines for all new writes.</p>
+<p>To get CRLFs translated you&#8217;ll need to force git to checkout your files over the existing copies as by default it doesn&#8217;t want to. Otherwise you can leave your workspace in an strange intermediate state that is different from what anyone will experience when they clone or checkout the code. This could potentially be a source of hard to track bugs (though most unlikely). If you use Continuous Integration in your workflow then any potential problems will be quickly found.</p>
+<p>To be fare, git gives a loud warning when you are in state when a checkout will change the line endings. However that error is slightly confusing.</p>
+<div id="attachment_618" style="width: 999px" class="wp-caption aligncenter"><a href="/openingaccessibility/wp-content/uploads/2015/12/Untitled1.png"><img class="size-full wp-image-618" src="/openingaccessibility/wp-content/uploads/2015/12/Untitled1.png" alt="Git warning when line endings are not yet translated." width="989" height="117" srcset="/openingaccessibility/wp-content/uploads/2015/12/Untitled1.png 989w, /openingaccessibility/wp-content/uploads/2015/12/Untitled1-300x35.png 300w" sizes="(max-width: 989px) 100vw, 989px" /></a><p class="wp-caption-text">Git warning when line endings are not yet translated.</p></div>
+<p>Git and editors may also complain about the mixed line endings issue described above.</p>
+<p>To configure git for this option use <strong>&#8220;* eol=lf&#8221;</strong> in .gitattributes. As this will force all files to be treated as text and so converted on checkin <strong>make sure you explicitly mark any binary files</strong> with lines like &#8220;*.png binary&#8221;. If you don&#8217;t then you checked in file may be corrupt and you may not notice for some time and be stuck with a hard to fix problem.</p>
+<p>Note when you first set this option you&#8217;ll probably get a load of warnings and all files will appear to change. See the notes on .gitattributes end-of-line conversion for the steps to overcome this.</p>
+<h1>Coming soon</h1>
+<p>A gitattributes option to support &#8220;* text=auto eol=lf&#8221; has <a href="http://git.661346.n2.nabble.com/EOL-conversion-on-checkout-for-text-files-only-td7628470.html">been discussed</a>. This would turn on auto textfile detection and then use LF end of lines for any text files. Currently the &#8220;eol=lf&#8221; options turns on text handling for all files and so you need to carefully declare all binary files.  That&#8217;s good practice any way, as no doubt git could incorrectly detect, but at least it would not be critical. We should push for this option.</p>
+<p>By the way, Editor Config should soon support a &#8220;end_of_line=native&#8221; option that will use whatever line ending makes sense according to the OS. That will play better with the default git behaviour but doesn&#8217;t help when files are shared without checkout such as in VMs.</p>
+]]></content:encoded>
+			<wfw:commentRss>/openingaccessibility/2015/12/dealing-with-windows-text-line-endings-in-git/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

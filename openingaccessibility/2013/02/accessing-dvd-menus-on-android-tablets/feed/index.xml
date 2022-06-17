@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Accessing DVD menus on Android tablets</title>
+	<atom:link href="/openingaccessibility/2013/02/accessing-dvd-menus-on-android-tablets/feed/" rel="self" type="application/rss+xml" />
+	<link>/openingaccessibility/2013/02/accessing-dvd-menus-on-android-tablets/</link>
+	<description>Where open source joins accessibility</description>
+	<lastBuildDate>Tue, 24 Jul 2018 09:34:38 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>By: Nick Camel</title>
+		<link>/openingaccessibility/2013/02/accessing-dvd-menus-on-android-tablets/#comment-41883</link>
+		<dc:creator><![CDATA[Nick Camel]]></dc:creator>
+		<pubDate>Wed, 07 Mar 2018 18:11:32 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=104#comment-41883</guid>
+		<description><![CDATA[Excellent. This comes down to two steps
+
+1. &quot;Make sure the “AUDIO_TS” and “VIDEO_TS” folders are children of “DVD”&quot;
+
+2. Use VLC to play THE FOLDER &quot;DVD&quot;. Long press on DVD and a play button pops up in the menu.]]></description>
+		<content:encoded><![CDATA[<p>Excellent. This comes down to two steps</p>
+<p>1. &#8220;Make sure the “AUDIO_TS” and “VIDEO_TS” folders are children of “DVD”&#8221;</p>
+<p>2. Use VLC to play THE FOLDER &#8220;DVD&#8221;. Long press on DVD and a play button pops up in the menu.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Arfa Hashmi</title>
+		<link>/openingaccessibility/2013/02/accessing-dvd-menus-on-android-tablets/#comment-41178</link>
+		<dc:creator><![CDATA[Arfa Hashmi]]></dc:creator>
+		<pubDate>Fri, 26 May 2017 05:50:14 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=104#comment-41178</guid>
+		<description><![CDATA[Very helpful suggestions that help in the optimizing website. Thank you for valuable suggestions. &lt;a href=&quot;http://softcracks.cf/dvd-audio-extractor-mac/&quot; rel=&quot;nofollow&quot;&gt;DVD Audio Extractor Mac&lt;/a&gt;]]></description>
+		<content:encoded><![CDATA[<p>Very helpful suggestions that help in the optimizing website. Thank you for valuable suggestions. <a href="http://softcracks.cf/dvd-audio-extractor-mac/" rel="nofollow">DVD Audio Extractor Mac</a></p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Steve</title>
+		<link>/openingaccessibility/2013/02/accessing-dvd-menus-on-android-tablets/#comment-30963</link>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+		<pubDate>Sun, 19 Jul 2015 15:18:06 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=104#comment-30963</guid>
+		<description><![CDATA[So pleased it was of use and hope your back improves]]></description>
+		<content:encoded><![CDATA[<p>So pleased it was of use and hope your back improves</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Kate</title>
+		<link>/openingaccessibility/2013/02/accessing-dvd-menus-on-android-tablets/#comment-30960</link>
+		<dc:creator><![CDATA[Kate]]></dc:creator>
+		<pubDate>Sun, 19 Jul 2015 14:41:41 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=104#comment-30960</guid>
+		<description><![CDATA[Was about to give up when I found your tutorial.
+Thank you so much for going to the trouble to share your findings.
+This was by far the easiest way to transfer the DVD including the Menu.
+I am using it for a DVD containing exercises for my back and that only makes sense WITH a menu....]]></description>
+		<content:encoded><![CDATA[<p>Was about to give up when I found your tutorial.<br />
+Thank you so much for going to the trouble to share your findings.<br />
+This was by far the easiest way to transfer the DVD including the Menu.<br />
+I am using it for a DVD containing exercises for my back and that only makes sense WITH a menu&#8230;.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Steve</title>
+		<link>/openingaccessibility/2013/02/accessing-dvd-menus-on-android-tablets/#comment-29168</link>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+		<pubDate>Tue, 28 Apr 2015 17:25:13 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=104#comment-29168</guid>
+		<description><![CDATA[I&#039;m afraid I can&#039;t offer any assistance. I suggest you talk to the player app folks.]]></description>
+		<content:encoded><![CDATA[<p>I&#8217;m afraid I can&#8217;t offer any assistance. I suggest you talk to the player app folks.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Nick</title>
+		<link>/openingaccessibility/2013/02/accessing-dvd-menus-on-android-tablets/#comment-28988</link>
+		<dc:creator><![CDATA[Nick]]></dc:creator>
+		<pubDate>Wed, 15 Apr 2015 14:23:24 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=104#comment-28988</guid>
+		<description><![CDATA[Hi i have the dvd and i copy all folder with .vob files and some .ifo and start the daroon player and the menu video with scenes selections and play movie i click pop-up in screen and nothing dont appers the menu navigation why?please help me thanks]]></description>
+		<content:encoded><![CDATA[<p>Hi i have the dvd and i copy all folder with .vob files and some .ifo and start the daroon player and the menu video with scenes selections and play movie i click pop-up in screen and nothing dont appers the menu navigation why?please help me thanks</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Android: How to read DVD (video_ts &#38; audio_ts). &#124; ssinfod</title>
+		<link>/openingaccessibility/2013/02/accessing-dvd-menus-on-android-tablets/#comment-27300</link>
+		<dc:creator><![CDATA[Android: How to read DVD (video_ts &#38; audio_ts). &#124; ssinfod]]></dc:creator>
+		<pubDate>Sat, 07 Feb 2015 21:58:06 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=104#comment-27300</guid>
+		<description><![CDATA[[&#8230;] /openingaccessibility/2013/02/accessing-dvd-menus-on-android-tablets/ [&#8230;]]]></description>
+		<content:encoded><![CDATA[<p>[&#8230;] <a href="/openingaccessibility/2013/02/accessing-dvd-menus-on-android-tablets/" rel="nofollow">/openingaccessibility/2013/02/accessing-dvd-menus-on-android-tablets/</a> [&#8230;]</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Steve</title>
+		<link>/openingaccessibility/2013/02/accessing-dvd-menus-on-android-tablets/#comment-27225</link>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+		<pubDate>Fri, 06 Feb 2015 10:20:21 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=104#comment-27225</guid>
+		<description><![CDATA[I seem to recall there was a little &#039;joystick&#039; cross control in the bottom right of these screen that lets you move up/down left/right between selectable items in the menu. I can&#039;t recall how you display it though.Perhaps touch an item or swipe from an edge?]]></description>
+		<content:encoded><![CDATA[<p>I seem to recall there was a little &#8216;joystick&#8217; cross control in the bottom right of these screen that lets you move up/down left/right between selectable items in the menu. I can&#8217;t recall how you display it though.Perhaps touch an item or swipe from an edge?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Torbjorn</title>
+		<link>/openingaccessibility/2013/02/accessing-dvd-menus-on-android-tablets/#comment-27135</link>
+		<dc:creator><![CDATA[Torbjorn]]></dc:creator>
+		<pubDate>Tue, 03 Feb 2015 21:13:52 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=104#comment-27135</guid>
+		<description><![CDATA[I have not found how to navigate the DVD menu in Wondershare player. Anyone that can give any input on this?]]></description>
+		<content:encoded><![CDATA[<p>I have not found how to navigate the DVD menu in Wondershare player. Anyone that can give any input on this?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Steve</title>
+		<link>/openingaccessibility/2013/02/accessing-dvd-menus-on-android-tablets/#comment-14054</link>
+		<dc:creator><![CDATA[Steve]]></dc:creator>
+		<pubDate>Sun, 25 May 2014 08:14:57 +0000</pubDate>
+		<guid isPermaLink="false">/openingaccessibility/?p=104#comment-14054</guid>
+		<description><![CDATA[Thats a pain. Did you report it to them? Unfortunately they dont seem to have a public bug tracker.]]></description>
+		<content:encoded><![CDATA[<p>Thats a pain. Did you report it to them? Unfortunately they dont seem to have a public bug tracker.</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>
