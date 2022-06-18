@@ -1,7 +1,7 @@
 ---
 layout: layouts/post.njk
 title: Easy way to work with URL Query Strings and Form Data
-date: 2022-06-18T08:53:18.871Z
+date: 2022-06-18
 ---
 In a recent bite sized #WhiteboardTheWeb twee [Use the URL object to fix your query param soup!](https://twitter.com/BHolmesDev/status/1537781446764535816) Ben Holmes showed how the Browser JavaScript `URL` object can make creating query strings much easer.
 
@@ -31,7 +31,7 @@ Note that correct URL character encoding/decoding is provided. For example, `?` 
 
 URLSearchParams can also be used with HTML form data as that has the same encoding "application/x-www-form-urlencoded". Note that multi-part forms, including those with file attachments, use a more conmplex encoding. The reason that are the same is that a key difference between a POST and GET form submission is the data is passed in the HTTP body for a POST and the URL query string for a GET.
 
-Node also provides URLSearchParams letting you use it in the backend. In fact, a use here is to convert a form encoded POST body (from a form submission) into a POJO for eashy access. I recently did this for a Netlify Function handling form submissions for the a new W3C WAI website feature. Here's the code.
+Node also provides URLSearchParams letting you use it in the backend. In fact, a use here is to convert a form encoded POST body (from a form submission) into a POJO for easy code access. This is effectively the reverse of passing a POJO to the constructor. I recently did this for a Netlify Function handling form submissions for the a new W3C WAI website feature. Here's the code.
 
 ```javascript
 function formEncodedToPOJO(formEncoded) {
