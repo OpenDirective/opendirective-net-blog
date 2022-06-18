@@ -26,3 +26,17 @@ function formEncodedToPOJO(formEncoded) {
 ```
 
 This is a little more complex as it implements the old `php` convention of supporting `[]` in the form element name to make the item in the POJO an array. This simplifies data handling. For example, with multiple checkboxes with the same name if there is only a single item checked the default form encoding provides a string value, but if many are check it provides an array. This extended handling ensure the often missed encoding gotcha is easyily handled by always having an array in the POJO.
+
+Here's an example markup using this feature
+
+```html
+<fieldset>
+  <legend>Options</legend>
+  <label>Option A
+    <input type="checkbox" name="options[]" value="option-a">
+  </label>
+  <label>Option B
+    <input type="checkbox" name="options[]" value="option-b">
+  </label>
+</fieldset>
+```
