@@ -40,3 +40,19 @@ Here's an example markup using this feature
   </label>
 </fieldset>
 ```
+
+And the resulting POJO when option A only is checked
+
+```javascript
+{
+  options: [ "option-a" ]
+}
+```
+
+Whereas, without the `[]` you would get
+
+```javascript
+{
+  options: "option-a"
+}
+```
