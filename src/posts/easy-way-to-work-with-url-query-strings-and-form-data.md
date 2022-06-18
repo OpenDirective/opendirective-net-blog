@@ -25,9 +25,11 @@ and the resulting URL is:
 "...?one=1&two=2"
 ```
 
+Note that correct URL character encoding/decoding is provided. For example, `?` maps to/from `%3f` and a space to/from `+`.
+
 ## Using with Form Data
 
-Also, it can be used with HTML form data as that has the same encoding "application/x-www-form-urlencoded". Note that multi-part forms, including those with file attachments, use a more conmplex encoding. The reason that are the same is that a key difference between a POST and GET form submission is the data is passed in the HTTP body for a POST and the URL query string for a GET.
+URLSearchParams can also be used with HTML form data as that has the same encoding "application/x-www-form-urlencoded". Note that multi-part forms, including those with file attachments, use a more conmplex encoding. The reason that are the same is that a key difference between a POST and GET form submission is the data is passed in the HTTP body for a POST and the URL query string for a GET.
 
 Node also provides URLSearchParams letting you use it in the backend. In fact, a use here is to convert a form encoded POST body (from a form submission) into a POJO for eashy access. I recently did this for a Netlify Function handling form submissions for the a new W3C WAI website feature. Here's the code.
 
