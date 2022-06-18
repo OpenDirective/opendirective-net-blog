@@ -1,7 +1,7 @@
 ---
-layout: layouts/post.njk
 title: Easy way to work with URL Query Strings and Form Data
 date: 2022-06-18
+tags:
 ---
 In a recent bite sized #WhiteboardTheWeb twee [Use the URL object to fix your query param soup!](https://twitter.com/BHolmesDev/status/1537781446764535816) Ben Holmes showed how the Browser JavaScript `URL` object can make creating query strings much easer.
 
