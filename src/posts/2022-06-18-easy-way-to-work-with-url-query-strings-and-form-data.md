@@ -3,7 +3,7 @@ title: Easy way to work with URL Query Strings and Form Data
 date: 2022-06-18
 tags: null
 ---
-<strong>"Rather than catenating encoded strings to make URL query strings and decoding HTML form data with bespoke logic, the `URLSearchParams` makes it easy to work with these encoded data formats.</strong>
+<strong>"Rather than catenating encoded strings to make URL query strings and decoding HTML form data with bespoke logic, the `URLSearchParams` object makes it easy to work with these encoded data formats.</strong>
 
 In a bite sized [#WhiteboardTheWeb tweet](https://twitter.com/BHolmesDev/status/1537781446764535816) titled "Use the URL object to fix your query param soup!", Ben Holmes showed how the Browser JavaScript `URL` object can make creating query strings easer.
 
