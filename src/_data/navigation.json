@@ -6,13 +6,13 @@
       "external": false
     },
     {
-      "text": "RSS",
-      "url": "/feed.xml",
+      "text": "Old blogs",
+      "url": "/old-blogs",
       "external": false
     },
     {
-      "text": "Old blogs",
-      "url": "/old-blogs",
+      "text": "RSS",
+      "url": "/feed.xml",
       "external": false
     }
   ]
