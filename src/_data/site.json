@@ -1,7 +1,7 @@
 {
-  "showThemeCredit": true,
+  "showThemeCredit": false,
   "name": "OpenDirective Blog",
-  "shortDesc": "Steve posts on his work at OpenDirective on Open Web Development, Accessibility and Music Technology.",
+  "shortDesc": "Steve posts on his work at OpenDirective on Open Web Development and Accessibility.",
   "url": "https://opendirective.net",
   "authorEmail": "steve@opendirective.com",
   "authorHandle": "@SteveALee",
